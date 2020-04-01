@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<id>https://statiq.dev/</id>
+	<title />
+	<link rel="self" href="https://statiq.dev/" />
+	<rights>2020</rights>
+	<updated>2020-04-01T13:39:14Z</updated>
+</feed>
