@@ -265,7 +265,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-web #titlebar .section { color: #2fb4fe; font-size: 1rem; }
 
-.section-web #titlebar .title { line-height: 0.9em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
+.section-web #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
 
 .section-web #undertitle { background-color: #15abfe; }
 
@@ -304,7 +304,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-docs #titlebar .section { color: #d07f00; font-size: 1rem; }
 
-.section-docs #titlebar .title { line-height: 0.9em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
+.section-docs #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
 
 .section-docs #undertitle { background-color: #b67000; }
 
@@ -343,7 +343,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-framework #titlebar .section { color: #b632ff; font-size: 1rem; }
 
-.section-framework #titlebar .title { line-height: 0.9em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
+.section-framework #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
 
 .section-framework #undertitle { background-color: #ad18ff; }
 
@@ -382,7 +382,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-blog #titlebar .section { color: #60686f; font-size: 1rem; }
 
-.section-blog #titlebar .title { line-height: 0.9em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
+.section-blog #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 1.35rem; }
 
 .section-blog #undertitle { background-color: #545b62; }
 
