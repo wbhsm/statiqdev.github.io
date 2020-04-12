@@ -1,114 +1,317 @@
-﻿<p>A <em>module</em> is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
+﻿<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="/assets/css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet" data-no-mirror="">
+        <link rel="stylesheet" href="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
+
+        <script src="/mirror/code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/mirror/stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a1cad7ed9a.js" crossorigin="anonymous" data-no-mirror=""></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
+
+        <title>Statiq Platform</title>
+    </head>
+    <body class="d-flex flex-column">
+        <div class="flex-grow-1 d-flex flex-column">
+            <div class="bg-red">
+                <div class="container">
+                    <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
+                </div>
+            </div>
+            <nav id="topnav" class="navbar navbar-expand-lg navbar-light">
+                <div class="container py-3">
+                    <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li id="nav-web" class="nav-item">
+                                <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
+                            </li>
+                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
+                            <li id="nav-docs" class="nav-item">
+                                <a class="nav-link text-orange font-weight-light font-size-lg" href="/docs">Docs</a>
+                            </li>
+                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
+                            <li id="nav-framework" class="nav-item">
+                                <a class="nav-link text-purple font-weight-light font-size-lg" href="/framework">Framework</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="flex-grow-1 d-flex flex-column section-framework">
+                    <div id="titlebar" class="py-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
+                                    <div class="section text-uppercase">framework</div>
+                                    <div class="text-white m-0 title">Modules</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="undertitle">
+                        <div class="container bg-white">                            
+                            <div class="row">
+                                    <div class="col-md-3 col-lg-2 bg-section">
+                                    </div>
+                                    <div class="col-md-9 col-lg-8">
+                                    </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-section">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="flex-grow-1 d-flex flex-column">
+                        <div class="container flex-grow-1 d-flex flex-column bg-white">
+                            <div class="row flex-grow-1 align-items-stretch">
+                                    <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                            <div class="sidebar-nav-item">
+                                                <a href="/framework">About Statiq Framework</a>
+                                            </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/extensibility">Extensibility</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/extensibility/modules">Modules</a>
+                                                            </div>
+                                                    </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/concepts">Concepts</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children active">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/documents">Documents</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/metadata">Metadata</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child active">
+                                                                <a href="/framework/concepts/modules">Modules</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/pipelines">Pipelines</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/execution">Execution</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/files">Files and Paths</a>
+                                                            </div>
+                                                    </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                            </div>
+                                                    </div>
+                                    </div>
+                                    <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
+                                        <p>A <em>module</em> is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
 <h1 id="configuration">Configuration</h1>
 <p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value. Creating a <code>Config&lt;TValue&gt;</code> is often done via factory methods from the <code>Config</code> static class. For example, if a module needs a string for a given setting it will accept a <code>Config&lt;string&gt;</code> which can be created by passing a <code>string</code> directly:</p>
-<pre><code class="language-csharp">new SomeModule(&quot;my-string&quot;)
+<pre><code class="language-csharp">new SomeModule("my-string")
 </code></pre>
 <p>or by using one of the many factory methods:</p>
 <pre><code class="language-csharp">new SomeModule(
-    Config.FromDocument(doc =&gt; doc.GetString(&quot;key&quot;)))
+    Config.FromDocument(doc =&gt; doc.GetString("key")))
 </code></pre>
 <h1 id="module-patterns">Module Patterns</h1>
-<p>Different modules treat inputs and outputs in different ways. Some modules just &quot;pass-through&quot; the documents that are input, some transform them in some way and output the results, and some exhibit more complex behavior. Some modules even exhibit different behavior depending on how the module was configured. The behavior can get especially confusing when considering some modules evaluate child modules which also output documents. In these cases, there are different behaviors for how the input documents and the result documents from the child modules are combined. The way inputs, outputs, and child module results are related can generally be described as a few different patterns and even though these probably don't cover the way <em>every</em> module or combination of modules works, they should help you understand the concepts involved.</p>
+<p>Different modules treat inputs and outputs in different ways. Some modules just "pass-through" the documents that are input, some transform them in some way and output the results, and some exhibit more complex behavior. Some modules even exhibit different behavior depending on how the module was configured. The behavior can get especially confusing when considering some modules evaluate child modules which also output documents. In these cases, there are different behaviors for how the input documents and the result documents from the child modules are combined. The way inputs, outputs, and child module results are related can generally be described as a few different patterns and even though these probably don't cover the way <em>every</em> module or combination of modules works, they should help you understand the concepts involved.</p>
 <h2 id="pass-through">Pass-Through</h2>
 <p>These modules just take the input documents and pass them on as the outputs:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1(I1)
-        Module-->O2(I2)
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1(I1)
+        Module--&gt;O2(I2)
 </div>
 <h2 id="transformation">Transformation</h2>
 <p>These modules apply some sort of transformation to the input documents and output one result for each input:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1("O1 (from I1)")
-        Module-->O2("O2 (from I2)")
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1("O1 (from I1)")
+        Module--&gt;O2("O2 (from I2)")
 </div>
 <h2 id="aggregation">Aggregation</h2>
 <p>These modules take multiple input documents and combine them into a single output document:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1("O1 (from I1 + I2)")
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1("O1 (from I1 + I2)")
 </div>
 <h2 id="splitting">Splitting</h2>
 <p>This is the opposite behavior of aggregation. These modules split each input document into multiple output documents:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1A("O1A (from I1)")
-        Module-->O1B("O1B (from I1)")
-        Module-->O2A("O2A (from I2)")
-        Module-->O2B("O2B (from I2)")
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1A("O1A (from I1)")
+        Module--&gt;O1B("O1B (from I1)")
+        Module--&gt;O2A("O2A (from I2)")
+        Module--&gt;O2B("O2B (from I2)")
 </div>
 <h2 id="concatenation">Concatenation</h2>
 <p>In this case, output documents that are independent from the input documents are output, but instead of replacing the input document they are concatenated with them:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1(I1)
-        Module-->O2(I2)
-        Module-->O3(O1)
-        Module-->O4(O2)
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1(I1)
+        Module--&gt;O2(I2)
+        Module--&gt;O3(O1)
+        Module--&gt;O4(O2)
 </div>
 <p>Note that the new documents may come from a sequence of child modules:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->Children["Module(s)"]
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;Children["Module(s)"]
         subgraph Child Modules
-            Children-->C1(C1)
-            Children-->C2(C2)
+            Children--&gt;C1(C1)
+            Children--&gt;C2(C2)
         end
-        Module-->O1(I1)
-        Module-->O2(I2)
-        Module-->O3(C1)
-        Module-->O4(C2)
+        Module--&gt;O1(I1)
+        Module--&gt;O2(I2)
+        Module--&gt;O3(C1)
+        Module--&gt;O4(C2)
 </div>
 <h2 id="replacement">Replacement</h2>
 <p>These modules just replace the entire input set of documents with a different output set:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->O1(O1)
-        Module-->O2(O2)
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;O1(O1)
+        Module--&gt;O2(O2)
 </div>
 <p>Note that the new documents may come from a sequence of child modules:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->Children["Module(s)"]
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;Children["Module(s)"]
         subgraph Child Modules
-            Children-->C1(C1)
-            Children-->C2(C2)
+            Children--&gt;C1(C1)
+            Children--&gt;C2(C2)
         end
-        Module-->O1(C1)
-        Module-->O2(C2)
+        Module--&gt;O1(C1)
+        Module--&gt;O2(C2)
 </div>
 <h2 id="combination">Combination</h2>
 <p>This pattern describes the combination of one or more input documents with the outputs from child modules:</p>
 <div class="mermaid">
     graph TD
-        I1(I1)-->Module
-        I2(I2)-->Module
-        Module-->Children["Module(s)"]
+        I1(I1)--&gt;Module
+        I2(I2)--&gt;Module
+        Module--&gt;Children["Module(s)"]
         subgraph Child Modules
-            Children-->C1(C1)
-            Children-->C2(C2)
+            Children--&gt;C1(C1)
+            Children--&gt;C2(C2)
         end
-        Module-->O1("O1 (from I1 + C1)")
-        Module-->O2("O2 (from I1 + C2)")
-        Module-->O3("O3 (from I2 + C1)")
-        Module-->O4("O4 (from I2 + C2)")
+        Module--&gt;O1("O1 (from I1 + C1)")
+        Module--&gt;O2("O2 (from I1 + C2)")
+        Module--&gt;O3("O3 (from I2 + C1)")
+        Module--&gt;O4("O4 (from I2 + C2)")
 </div>
 <h1 id="concurrency">Concurrency</h1>
 <p>Some modules process documents in parallel while others process them sequentially. Modules that process documents in parallel can often be forced to process documents sequentially by using the <code>WithParallelExecution(false)</code> extension method. This might be useful when the documents being processed or a configuration setting aren't thread-safe.</p>
+
+                                    </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#configuration">Configuration</a></p>
+                                                    <p class="small"><a href="#module-patterns">Module Patterns</a></p>
+                                                    <p class="small"><a href="#concurrency">Concurrency</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="p-3 text-white font-size-sm">
+            <div class="container">
+                <div>© 2020 Statiq/Dave Glick</div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                mermaid.initialize(
+                {
+                    flowchart:
+                    {
+                        useMaxWidth: false
+                    },
+					startOnLoad: false,
+					cloneCssStyles: false
+                });     
+                mermaid.init(undefined, ".mermaid");
+
+                // Remove the max-width setting that Mermaid sets
+                var mermaidSvg = $('.mermaid svg');
+                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.css('max-width', '');
+
+                // Make it scrollable
+				var target = document.querySelector(".mermaid svg");
+				if(target !== null)
+				{
+					var panZoom = window.panZoom = svgPanZoom(target, {
+						zoomEnabled: true,
+						controlIconsEnabled: true,
+						fit: true,
+						center: true,
+                        maxZoom: 20,
+                        zoomScaleSensitivity: 0.6
+					});			                          
+
+                    // Do the reset once right away to fit the diagram
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                    
+                    $(window).resize(function(){
+                        panZoom.resize();
+                        panZoom.fit();
+                        panZoom.center();
+                    });
+				}
+            });
+        </script>
+    
+</body></html>

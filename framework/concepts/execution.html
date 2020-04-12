@@ -1,5 +1,207 @@
-﻿<h1 id="engine">Engine</h1>
+﻿<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="/assets/css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet" data-no-mirror="">
+        <link rel="stylesheet" href="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
+
+        <script src="/mirror/code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/mirror/stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a1cad7ed9a.js" crossorigin="anonymous" data-no-mirror=""></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
+
+        <title>Statiq Platform</title>
+    </head>
+    <body class="d-flex flex-column">
+        <div class="flex-grow-1 d-flex flex-column">
+            <div class="bg-red">
+                <div class="container">
+                    <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
+                </div>
+            </div>
+            <nav id="topnav" class="navbar navbar-expand-lg navbar-light">
+                <div class="container py-3">
+                    <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li id="nav-web" class="nav-item">
+                                <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
+                            </li>
+                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
+                            <li id="nav-docs" class="nav-item">
+                                <a class="nav-link text-orange font-weight-light font-size-lg" href="/docs">Docs</a>
+                            </li>
+                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
+                            <li id="nav-framework" class="nav-item">
+                                <a class="nav-link text-purple font-weight-light font-size-lg" href="/framework">Framework</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="flex-grow-1 d-flex flex-column section-framework">
+                    <div id="titlebar" class="py-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
+                                    <div class="section text-uppercase">framework</div>
+                                    <div class="text-white m-0 title">Execution</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="undertitle">
+                        <div class="container bg-white">                            
+                            <div class="row">
+                                    <div class="col-md-3 col-lg-2 bg-section">
+                                    </div>
+                                    <div class="col-md-9 col-lg-8">
+                                    </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-section">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="flex-grow-1 d-flex flex-column">
+                        <div class="container flex-grow-1 d-flex flex-column bg-white">
+                            <div class="row flex-grow-1 align-items-stretch">
+                                    <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                            <div class="sidebar-nav-item">
+                                                <a href="/framework">About Statiq Framework</a>
+                                            </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/extensibility">Extensibility</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/extensibility/modules">Modules</a>
+                                                            </div>
+                                                    </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/concepts">Concepts</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children active">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/documents">Documents</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/metadata">Metadata</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/modules">Modules</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/pipelines">Pipelines</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child active">
+                                                                <a href="/framework/concepts/execution">Execution</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/files">Files and Paths</a>
+                                                            </div>
+                                                    </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                            </div>
+                                                    </div>
+                                    </div>
+                                    <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
+                                        <h1 id="engine">Engine</h1>
 <p>When pipelines in Statiq are executed, a special object called the <code>Engine</code> is responsible for coordinating activity. The engine contains all the global objects used to perform generation such as the <a href="/framework/concepts/files">file system abstraction</a>. It also creates the <a href="/framework/concepts/pipelines#concurrency-and-dependencies">pipeline dependency graph</a> and executes the <a href="/framework/concepts/modules">modules</a> in each pipeline.</p>
 <h1 id="execution-context">Execution Context</h1>
 <p>While executing pipelines and modules, the current state and other functionality is passed in an instance of <code>IExecutionContext</code>. This object contains lots of information such as the current pipeline, phase, and module, the settings and file system, the input documents to the module, and more. The current execution context is generally accessed through <a href="/framework/concepts/modules#configuration">configuration delegates</a> or a <a href="/framework/extensibility/modules">module execution method</a>.</p>
 <p>The context also implements <code>IDocumentFactory</code> so it can be used to create documents, <code>ILogger</code> so it can be used for logging, and <code>IServiceProvider</code> so it can be used as a dependency injection service provider.</p>
+
+                                    </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#engine">Engine</a></p>
+                                                    <p class="small"><a href="#execution-context">Execution Context</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/execution.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="p-3 text-white font-size-sm">
+            <div class="container">
+                <div>© 2020 Statiq/Dave Glick</div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                mermaid.initialize(
+                {
+                    flowchart:
+                    {
+                        useMaxWidth: false
+                    },
+					startOnLoad: false,
+					cloneCssStyles: false
+                });     
+                mermaid.init(undefined, ".mermaid");
+
+                // Remove the max-width setting that Mermaid sets
+                var mermaidSvg = $('.mermaid svg');
+                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.css('max-width', '');
+
+                // Make it scrollable
+				var target = document.querySelector(".mermaid svg");
+				if(target !== null)
+				{
+					var panZoom = window.panZoom = svgPanZoom(target, {
+						zoomEnabled: true,
+						controlIconsEnabled: true,
+						fit: true,
+						center: true,
+                        maxZoom: 20,
+                        zoomScaleSensitivity: 0.6
+					});			                          
+
+                    // Do the reset once right away to fit the diagram
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                    
+                    $(window).resize(function(){
+                        panZoom.resize();
+                        panZoom.fit();
+                        panZoom.center();
+                    });
+				}
+            });
+        </script>
+    
+</body></html>
