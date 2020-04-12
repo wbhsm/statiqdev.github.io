@@ -57,13 +57,13 @@
                     </div>
                 </div>
             </nav>
-            <div class="flex-grow-1 d-flex flex-column section-web">
+            <div class="flex-grow-1 d-flex flex-column section-blog">
                     <div id="titlebar" class="py-4">
                         <div class="container">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
-                                    <div class="section text-uppercase">web</div>
-                                    <div class="text-white m-0 title">Concepts</div>
+                                    <div class="section text-uppercase">blog</div>
+                                    <div class="text-white m-0 title">Statiq.Framework Release 1.0.0-alpha.24</div>
                                 </div>
                             </div>
                         </div>
@@ -84,92 +84,49 @@
                         <div class="container flex-grow-1 d-flex flex-column bg-white">
                             <div class="row flex-grow-1 align-items-stretch">
                                     <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                            <div class="sidebar-nav-item">
-                                                <a href="/web">About Statiq Web</a>
-                                            </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/getting-started">Getting Started</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children active">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/cli">Cli</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child active">
-                                                                <a href="/web/getting-started/concepts">Concepts</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/installation">Installation</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/license">License</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/content">Content</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/archives">Archives</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/feeds">Feeds</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/front-matter">Front Matter</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/linking">Linking</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/page-hierarchy">Page Hierarchy</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/shortcodes">Shortcodes</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/data">Data</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/data/formats">Formats</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/templates">Templates</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/markdown">Markdown</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/navigation">Navigation</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/razor">Razor</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/themes">Themes</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/deployment">Deployment</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/deployment/hosting">Hosting</a>
-                                                            </div>
-                                                    </div>
+
+    <h3>Topics</h3>
+    <ul>
+        <li><a href="/blog/topics/release">Release Notes</a></li>
+        <li><a href="/blog/topics/meta">Meta</a></li>
+    </ul>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Coming Soon</p>
+                                        
+
+<ul>
+<li>Added new <code>ProcessHtml</code> module for more flexible processing of DOM nodes.</li>
+<li>Added new <code>IEnumerable&lt;IDocument&gt;.Flatten()</code> extension to flatten document trees.</li>
+<li>Added new <code>IEnumerable&lt;IDocument&gt;.FilterSources()</code> and <code>IEnumerable&lt;IDocument&gt;.FilterDestinations()</code> extension methods.</li>
+<li>Added a new <code>FilterDestinations</code> module to filter documents by destination path.</li>
+<li>Added a <code>Config.ContainsSettings(params string[] keys)</code> config factory to return whether the settings contain all the specified keys.</li>
+<li>Refactored some methods from <code>IExecutionContext</code> into <code>IExecutionState</code> and moved implementation to <code>Engine</code>.</li>
+<li>Added new <code>EnumerateValues</code> module that will clone or create documents for each item in an enumeration.</li>
+<li>Added <code>Keys.ExcludeFromEvaluation</code> that can exclude all or some metadata values from automatic script evaluation.</li>
+<li>Added <code>IMetadata.GetNestedMetadata()</code> to get a nested metadata value (not called <code>IMetadata.GetMetadata()</code> to avoid conflicts with the old previous method of that name).</li>
+<li>Renamed <code>IMetadata.GetMetadata()</code> to <code>IMetadata.FilterMetadata()</code> which now returns a <code>FilteredMetadata</code> instance.</li>
+<li>Added new <code>FilteredMetadata</code> class to filter underlying metadata items by key(s).</li>
+<li>Refactored a bunch of default interface implementations back to extension methods (turns out default interface implementations are a little awkward to maintain).</li>
+<li>Moved scripting support and the <code>CompileScript</code> and <code>EvaluateScript</code> modules to <code>Statiq.Core</code>.</li>
+<li>Added <code>Microsoft.CodeAnalysis</code> to <code>Statiq.Core</code>.</li>
+<li>Metadata and configuration settings that are a string starting with "=&gt;" are now considered "scripted" and the content to the right of the arrow will be lazily evaluated as C# code - this is a <strong>big deal</strong> and the use cases will become apparent over time (I have lots of big ideas around this feature).</li>
+<li>Removed the <code>InterpolateMetadata</code> module in favor of more robust built-in scripted metadata.</li>
+<li>Removed the <code>Statiq.CodeAnalysis.IDocumentExtensions.Interpolate()</code> extension method in favor of more robust built-in scripted metadata.</li>
+<li>Changed <code>CancellationTokenSource</code> uses inside the engine to <code>CancellationToken</code> since the engine does not itself cancel execution.</li>
+<li>Surfaced the <code>CancellationToken</code> for a given execution through the <code>IExecutionState</code>.</li>
+<li>Added a check to ensure the engine is only performing one execution at a time (the outer execution loop is not concurrently safe).</li>
+<li>Major refactoring involving engine and execution context interfaces, added a new <code>IExecutionState</code> interface that essentially represents a run-time engine.</li>
+<li>Added a new <code>DocumentIdComparer</code> to compare documents by ID (#69, thanks @@mholo65).</li>
+<li>Removed <code>IParallelModule.WithSequentialExecution()</code> and standardized on <code>.WithParallelExecution(false)</code> instead to make default behavior of running in parallel clearer (I.e., you have to turn it off).</li>
+<li>Added additional configuration methods to <code>CacheDocuments</code> providing more control over when to invalidate cached documents (#78).</li>
+<li>Added <code>IReadOnlyPipeline</code> for runtime access to pipeline data without changing modules.</li>
+<li>Added <code>IExecutionContext.Pipeline</code> to get the currently executing pipeline from the execution context.</li>
+<li>Removed <code>IBootstrapper</code> and refactored to the one true <code>Bootstrapper</code>.</li>
+<li>Added a <code>BootstrapperFactory</code> available via <code>Bootstrapper.Factory</code> to create bootstrappers (this will make specialized creation extensions easier to discover).</li>
+</ul>
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/getting-started/concepts.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

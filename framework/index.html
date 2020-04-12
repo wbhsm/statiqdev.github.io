@@ -100,6 +100,9 @@
                                                 </div>
                                                     <div class="sidebar-nav-children">
                                                             <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
                                                                 <a href="/framework/concepts/documents">Documents</a>
                                                             </div>
                                                             <div class="sidebar-nav-child">
@@ -121,20 +124,65 @@
                                                                 <a href="/framework/concepts/files">Files and Paths</a>
                                                             </div>
                                                     </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                            </div>
+                                                    </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Statiq Framework is a powerful and extensible static generation toolkit that you can use to create your own special-purpose static generator applications.
-As the fundamental building blocks of <a href="/web">Statiq Web</a> and <a href="/docs">Statiq Docs</a> it's also important to undertand the underlying concepts and features
-since projects using those applications can also benefit from extensibility through Statiq Framework fucntionality.</p>
+                                        <p>Statiq Framework is a powerful static generation framework that can be used to create custom static generation applications. While many users will find that <a href="/web">Statiq Web</a> or <a href="/docs">Statiq Docs</a> have enough functionality built-in, crafting a custom static generator with Statiq Framework provides the most flexibility.</p>
+<h1 id="quick-start">Quick Start</h1>
+<p>The easiest way to get started with Statiq Framework is to install the <a href="https://www.nuget.org/packages/Statiq.App">Statiq.App</a> package into a .NET Core console application and use the <a href="/framework/usage/bootstrapper">bootstrapper</a> to configure everything.</p>
+<h2 id="step-1-install.net-core">Step 1: Install .NET Core</h2>
+<p>Statiq Framework consists of .NET Core libraries and <a href="https://dot.net">installing the .NET Core SDK</a> is the only prerequisite.</p>
+<h2 id="step-2-create-a.net-core-console-application">Step 2: Create a .NET Core Console Application</h2>
+<p>Create a new console application using the <code>dotnet</code> command-line interface:</p>
+<pre><code class="language-csharp">dotnet new console -o MyGenerator
+</code></pre>
+<h2 id="step-3-install-statiq.app">Step 3: Install Statiq.App</h2>
+<pre><code class="language-csharp">dotnet add package Statiq.App
+</code></pre>
+<h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
+<p>There are several ways to create and configure an <a href="/framework/concepts/execution#engine">engine</a>, but by far the easiest is to use the <a href="/framework/usage/bootstrapper">Bootstrapper</a>:</p>
+<pre><code class="language-csharp">using System;
+using Statiq.App;
+
+namespace MyGenerator
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateDefault(args)
+        .RunAsync();
+  }
+}
+</code></pre>
+<p>This creates a default <code>Bootstrapper</code> and passes it the <a href="/framework/usage/boostrapper#command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
+<p>This example is all you need for a minimal, functioning Statiq Framework application. The only problem is that it doesn’t actually do anything. Let’s add one more step and process some Markdown files.</p>
+<h2 id="step-5-add-a-pipeline-and-modules">Step 5: Add a Pipeline and Modules</h2>
+<p>Most functionality in Statiq Framework is provided by <a href="/framework/concepts/pipelines">pipelines</a> and <a href="/framework/concepts/modules">modules</a>. The <code>Bootstrapper</code> has several mechanisms for <a href="/framework/usage/bootstrapper#defining-pipelines">defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
+<p>TODO</p>
 <h4 class="h-section">Child Pages</h4>
 <h5><a href="/framework/extensibility">Extensibility</a></h5>
 <h5><a href="/framework/concepts">Concepts</a></h5>
 <p>Regardless of whether you run Statiq using an application like Statiq Web or directly by using Statiq Framework, understanding these concepts will go a long way towards making sense of how your generation works and how best to customize it to your needs.</p>
+<h5><a href="/framework/usage">Usage</a></h5>
+<p>Get started quickly and learn about how to create a static generation application using Statiq Framework.</p>
 
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#quick-start">Quick Start</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

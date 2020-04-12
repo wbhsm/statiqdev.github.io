@@ -100,6 +100,9 @@
                                                 </div>
                                                     <div class="sidebar-nav-children active">
                                                             <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
                                                                 <a href="/framework/concepts/documents">Documents</a>
                                                             </div>
                                                             <div class="sidebar-nav-child">
@@ -121,19 +124,30 @@
                                                                 <a href="/framework/concepts/files">Files and Paths</a>
                                                             </div>
                                                     </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                            </div>
+                                                    </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>When pipelines in Statiq are executed, a special object called the <code>Engine</code> is responsible for coordinating activity. The engine contains all the global objects used to perform generation such as the <a href="/framework/concepts/files">file system abstraction</a>. It also creates the <a href="/framework/concepts/pipelines#concurrency-and-dependencies">pipeline dependency graph</a> and executes the <a href="/framework/concepts/modules">modules</a> in each pipeline.</p>
+                                        <h1 id="engine">Engine</h1>
+<p>When pipelines in Statiq are executed, a special object called the <code>Engine</code> is responsible for coordinating activity. The engine contains all the global objects used to perform generation such as the <a href="/framework/concepts/files">file system abstraction</a>. It also creates the <a href="/framework/concepts/pipelines#concurrency-and-dependencies">pipeline dependency graph</a> and executes the <a href="/framework/concepts/modules">modules</a> in each pipeline.</p>
 <h1 id="execution-context">Execution Context</h1>
-<p>The engine creates an <em>execution context</em> for pipeline and module. It can be used to access the current input documents to the module, the output documents from other pipelines, global objects from the engine, and a variety of utility functionality. The current execution context is generally accessed through <a href="/framework/concepts/modules#configuration">configuration delegates</a> and the <a href="/framework/extensibility/modules">module execution method</a>.</p>
+<p>While executing pipelines and modules, the current state and other functionality is passed in an instance of <code>IExecutionContext</code>. This object contains lots of information such as the current pipeline, phase, and module, the settings and file system, the input documents to the module, and more. The current execution context is generally accessed through <a href="/framework/concepts/modules#configuration">configuration delegates</a> or a <a href="/framework/extensibility/modules">module execution method</a>.</p>
+<p>The context also implements <code>IDocumentFactory</code> so it can be used to create documents, <code>ILogger</code> so it can be used for logging, and <code>IServiceProvider</code> so it can be used as a dependency injection service provider.</p>
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#engine">Engine</a></p>
                                                     <p class="small"><a href="#execution-context">Execution Context</a></p>
                                             </div>
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/execution.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/execution.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

@@ -88,26 +88,6 @@
                                                 <a href="/web">About Statiq Web</a>
                                             </div>
                                                 <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/getting-started">Getting Started</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/cli">Cli</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/concepts">Concepts</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/installation">Installation</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/license">License</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
                                                     <a href="/web/content">Content</a>
                                                 </div>
                                                     <div class="sidebar-nav-children">
@@ -160,14 +140,52 @@
                                                 </div>
                                                     <div class="sidebar-nav-children">
                                                             <div class="sidebar-nav-child">
-                                                                <a href="/web/deployment/hosting">Hosting</a>
+                                                                <a href="/web/deployment/azure">Azure</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/web/deployment/github-pages">Github Pages</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/web/deployment/netlify">Netlify</a>
                                                             </div>
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Statiq Web is a collection of in-the-box behavior that provides a powerful static site generation capability for most use cases. It's built on top of <a href="/framework">Statiq Framework</a> so you can always extend or customize it beyond those base capabilities as well.</p>
+                                        <p>Statiq Web is a collection of in-the-box behavior that provides a powerful static site generation capability suitable for most use cases. It's built on top of <a href="/framework">Statiq Framework</a> so you can always extend or customize it beyond those base capabilities as well.</p>
+<h1 id="quick-start">Quick Start</h1>
+<p>The easiest way to get started with Statiq Web is to install the <a href="https://www.nuget.org/packages/Statiq.Web">Statiq.Web</a> package into a .NET Core console application and use the <a href="/framework/usage/bootstrapper">bootstrapper</a> to configure everything.</p>
+<h2 id="step-1-install.net-core">Step 1: Install .NET Core</h2>
+<p>Statiq Web consists of .NET Core libraries and <a href="https://dot.net">installing the .NET Core SDK</a> is the only prerequisite.</p>
+<h2 id="step-2-create-a.net-core-console-application">Step 2: Create a .NET Core Console Application</h2>
+<p>Create a new console application using the <code>dotnet</code> command-line interface:</p>
+<pre><code class="language-csharp">dotnet new console -o MySite
+</code></pre>
+<h2 id="step-3-install-statiq.web">Step 3: Install Statiq.Web</h2>
+<pre><code class="language-csharp">dotnet add package Statiq.Web
+</code></pre>
+<h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
+<p>Creating a <a href="/framework/usage/bootstrapper">Bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/concepts/pipelines">pipelines</a> or custom <a href="/framework/extensibility/modules">modules</a>, you shouldn’t need to for most sites.</p>
+<pre><code class="language-csharp">using System;
+using Statiq.App;
+using Statiq.Web;
+
+namespace MySite
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateWeb(args)
+        .RunAsync();
+  }
+}
+</code></pre>
+<h2 id="step-5-add-some-content">Step 5: Add Some Content</h2>
+<p>Start adding content by creating Markdown files in your “input” folder.</p>
+<h1 id="more-coming-soon">More Coming Soon</h1>
+<p>Statiq Web is still under active feature development and a lot more functionality is coming soon including support for themes.</p>
 <h4 class="h-section">Child Pages</h4>
-<h5><a href="/web/getting-started">Getting Started</a></h5>
 <h5><a href="/web/content">Content</a></h5>
 <h5><a href="/web/data">Data</a></h5>
 <h5><a href="/web/templates">Templates</a></h5>
@@ -176,7 +194,12 @@
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#quick-start">Quick Start</a></p>
+                                                    <p class="small"><a href="#more-coming-soon">More Coming Soon</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

@@ -57,13 +57,13 @@
                     </div>
                 </div>
             </nav>
-            <div class="flex-grow-1 d-flex flex-column section-web">
+            <div class="flex-grow-1 d-flex flex-column section-blog">
                     <div id="titlebar" class="py-4">
                         <div class="container">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
-                                    <div class="section text-uppercase">web</div>
-                                    <div class="text-white m-0 title">Hosting</div>
+                                    <div class="section text-uppercase">blog</div>
+                                    <div class="text-white m-0 title">Statiq.Framework Release 1.0.0-beta.2</div>
                                 </div>
                             </div>
                         </div>
@@ -84,92 +84,30 @@
                         <div class="container flex-grow-1 d-flex flex-column bg-white">
                             <div class="row flex-grow-1 align-items-stretch">
                                     <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                            <div class="sidebar-nav-item">
-                                                <a href="/web">About Statiq Web</a>
-                                            </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/getting-started">Getting Started</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/cli">Cli</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/concepts">Concepts</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/installation">Installation</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/getting-started/license">License</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/content">Content</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/archives">Archives</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/feeds">Feeds</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/front-matter">Front Matter</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/linking">Linking</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/page-hierarchy">Page Hierarchy</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/content/shortcodes">Shortcodes</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/data">Data</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/data/formats">Formats</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/templates">Templates</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/markdown">Markdown</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/navigation">Navigation</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/razor">Razor</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/web/templates/themes">Themes</a>
-                                                            </div>
-                                                    </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/web/deployment">Deployment</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children active">
-                                                            <div class="sidebar-nav-child active">
-                                                                <a href="/web/deployment/hosting">Hosting</a>
-                                                            </div>
-                                                    </div>
+
+    <h3>Topics</h3>
+    <ul>
+        <li><a href="/blog/topics/release">Release Notes</a></li>
+        <li><a href="/blog/topics/meta">Meta</a></li>
+    </ul>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Coming Soon</p>
+                                        
+
+<ul>
+<li>Changes the <code>GenerateFeeds</code> module to order by descending publish date to meet feed conventions and adds a <code>GeenrateFeeds.PreserveOrdering(bool)</code> method to revert to old behavior (#92).</li>
+<li>Fixed a bug with the <code>OptimizeFileName</code> stripping the path when optimizing the destination file name (#93).</li>
+<li>Added support for casting the dynamic object returned from <code>IDocument.AsDynamic()</code> back to an <code>IDocument</code>.</li>
+<li>Added a new <code>IReadOnlyPipelineCollection</code> object and exposed it via <code>IExecutionState.Pipelines</code> to provide the current set of read-only pipelines during execution.</li>
+<li>Added <code>IPipeline.GetAllDependencies()</code> extension methods to get the full set of <code>IPipeline.DependencyOf</code> and <code>IPipeline.Dependencies</code> for a given pipeline.</li>
+<li>Added <code>IPipeline.DependencyOf</code> to allow specifying which pipelines a given pipeline is a dependency of (the reverse of <code>IPipeline.Dependencies</code>).</li>
+<li>Tweaked the way <code>NormalizedPath.OptimizeFileName()</code> handles dashes (it no longer removes them and does a better job of collapsing them).</li>
+<li>Fixed <code>object.ToDocument()</code> and <code>object.ToDocuments()</code> extensions to construct the <code>ObjectDocument&lt;T&gt;</code> from the actual type of the object.</li>
+<li>Added <code>IDocument.AsDynamic()</code> (moved from the <code>RenderHandlebars</code> module, thanks @@mholo65).</li>
+</ul>
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/deployment/hosting.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

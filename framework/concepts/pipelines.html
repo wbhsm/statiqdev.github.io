@@ -100,6 +100,9 @@
                                                 </div>
                                                     <div class="sidebar-nav-children active">
                                                             <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
                                                                 <a href="/framework/concepts/documents">Documents</a>
                                                             </div>
                                                             <div class="sidebar-nav-child">
@@ -119,6 +122,14 @@
                                                             </div>
                                                             <div class="sidebar-nav-child">
                                                                 <a href="/framework/concepts/files">Files and Paths</a>
+                                                            </div>
+                                                    </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                             </div>
                                                     </div>
                                     </div>
@@ -163,7 +174,7 @@
 <h1 id="phases">Phases</h1>
 <p>Executing the modules in a pipeline happens in four phases. The phases are distinct due to the way concurrency and output documents are handled. The input documents to the first module in each phase are the output documents from the previous phase.</p>
 <h2 id="input-phase">Input Phase</h2>
-<p>The input phase executes first for all pipelines in parallel. No pipeline can access outputs from any other pipeline during the input phase. This phase is generally used to create documents by reading from disk, downloading from a web service, etc.</p>
+<p>The input phase is generally used for fetching data from an outside source and creating documents from that data. For example: the file system, a database, a web API, etc. The input phase is immediatly started for all pipelines concurrently and cannot access outputs from other pipelines.</p>
 <h2 id="process-phase">Process Phase</h2>
 <p>This is the main phase and it should contain most of the modules for a pipeline. All process phases across all pipelines are generally executed in parallel unless a pipeline declares dependencies in which case its process phase will be executed after the process phase of its dependencies. A module can access output documents from the process phase of its dependencies but not from other pipelines.</p>
 <h2 id="post-process-phase">Post-Process Phase</h2>
@@ -177,16 +188,16 @@
 <h2 id="deployment">Deployment</h2>
 <p>Deployment pipelines are special in that they don't execute by default. To execute your deployment pipelines you run Statiq with the <code>deploy</code> command. Modules in deployment pipelines can also read document outputs from other pipelines inside their output phase (unlike normal pipelines). In general, modules that deploy final output somewhere (like a web host) are added to the output phase of a deployment pipeline.</p>
 <h2 id="execution-policy">Execution Policy</h2>
-<p>A pipeline's execution policy determines if a pipeline is executed for a given run. By default, non-deployment pipelines are executed automatically and deployment pipelines are only executed when Statiq is launched with the <code>deploy</code> command. Pipelines are also executed if they are a dependency of an executing pipelines, regardless of policy.</p>
-<p>You can adjust this behavior and create sophisticated behaviors for your Statiq application by changing the <code>ExecutionPolicy</code> property.</p>
+<p>A pipeline's execution policy determines if a pipeline is executed. By default, non-deployment pipelines are executed automatically and deployment pipelines are only executed when Statiq is launched with the <code>deploy</code> command. Pipelines are also executed if they are a dependency of an executing pipeline, regardless of policy.</p>
+<p>You can adjust this behavior and create sophisticated behaviors for your Statiq application by changing the <code>ExecutionPolicy</code> property for each pipeline.</p>
 <h3 id="default">Default</h3>
-<p>The pipeline will be executed unless <code>Deployment</code> is <code>true</code> or a specific set of pipelines is specified from the command-line.</p>
+<p>Default pipelines are normally executed (I.e., they effectively have a policy of <code>Normal</code>, see below) <em>unless</em> the pipeline is a <a href="#deployment">Deployment pipeline</a> in which case the pipeline is manually executed or executed when the <code>deploy</code> command is run from the command-line interface. This policy is the most common and should be used for most pipelines.</p>
 <h3 id="normal">Normal</h3>
-<p>The pipeline will be executed unless a specific set of pipelines is specified from the command-line.</p>
+<p>Normal pipelines are always executed unless other pipelines are explicitly specified. A normal pipeline will also be executed if it’s the dependent of an executing pipeline.</p>
 <h3 id="manual">Manual</h3>
-<p>The pipeline will only be executed if specified or as a dependency.</p>
+<p>Manual pipelines are only executed if explicity specified. A manual pipeline will also be executed if it’s the dependent of an executing pipeline. This policy is useful for specialized pipelines that should only be executed on-demand and are not part of the normal generation process.</p>
 <h3 id="always">Always</h3>
-<p>The pipeline will always be executed.</p>
+<p>This policy means that the pipeline should always execute regardless of what pipelines are explicitly specified (if any). Pipelines with an always policy are useful for housekeeping and other tasks that should be carried out no matter what.</p>
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
@@ -196,7 +207,7 @@
                                                     <p class="small"><a href="#phases">Phases</a></p>
                                                     <p class="small"><a href="#special-types-of-pipelines">Special Types Of Pipelines</a></p>
                                             </div>
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/concepts/pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

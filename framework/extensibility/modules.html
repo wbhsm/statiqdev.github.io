@@ -100,6 +100,9 @@
                                                 </div>
                                                     <div class="sidebar-nav-children">
                                                             <div class="sidebar-nav-child">
+                                                                <a href="/framework/concepts/events">Events</a>
+                                                            </div>
+                                                            <div class="sidebar-nav-child">
                                                                 <a href="/framework/concepts/documents">Documents</a>
                                                             </div>
                                                             <div class="sidebar-nav-child">
@@ -121,16 +124,87 @@
                                                                 <a href="/framework/concepts/files">Files and Paths</a>
                                                             </div>
                                                     </div>
+                                                <div class="sidebar-nav-item has-children">
+                                                    <a href="/framework/usage">Usage</a>
+                                                </div>
+                                                    <div class="sidebar-nav-children">
+                                                            <div class="sidebar-nav-child">
+                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                            </div>
+                                                    </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality and writing your own is a good way to easily expand the capabilities of your generator application. Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The execution context passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
-<p>While you could implement this interface directly, in practice most modules are derived from a number of different base module classes:</p>
-<p>TODO</p>
-<p>Note that you should never call <code>IModule.ExecuteAsync(...)</code> directly. Instead, if you need to execute a module directly, you should call one of the <code>IExecutionContext.Execute(...)</code> overloads to execute the module through an existing execution context and engine.</p>
+                                        <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
+<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution/execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
+<p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>
+<ul>
+<li><code>Module</code> is a common module base class that's appropriate for most modules.
+<ul>
+<li><code>ParallelModule</code> can be used when documents should be processed in parallel.</li>
+<li><code>SyncModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ParallelSyncModule</code> can be used when documents should be processed in parallel but the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ParentModule</code> can be used to execute child modules.
+<ul>
+<li><code>SyncParentModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ForEachDocument</code> can be used to execute child modules against each input document one at a time.</li>
+<li><code>ForAllDocuments</code> can be used to execute child modules against all documents and is very useful for grouping a sequence of child modules into a single parent module.</li>
+</ul>
+</li>
+<li><code>ChildDocumentsModule</code> can be used to execute child modules and then combine or manipulate input documents based on the output documents of the child modules.
+<ul>
+<li><code>SyncChildDocumentsModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ConfigModule&lt;TValue&gt;</code> and <code>MultiConfigModule</code> can be used to manage <code>Config&lt;TValue&gt;</code> delegates for configuring the module (you can also manage configuration delegates yourself, these modules just make it a little easier).
+<ul>
+<li><code>ParallelConfigModule&lt;TValue&gt;</code> and <code>ParallelMultiConfigModule</code> can be used when documents should be processed in parallel.</li>
+<li><code>SyncConfigModule&lt;TValue&gt;</code> and <code>SyncMultiConfigModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ParallelSyncConfigModule&lt;TValue&gt;</code> and <code>ParallelSyncMultiConfigModule</code> can be used when documents should be processed in parallel but the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ReadDataModule</code> can be used to convert data from arbitrary data sources into output documents.</li>
+</ul>
+<p>When using the base module classes you should never call <code>IModule.ExecuteAsync(...)</code> directly. Instead, most of the module base classes above have both an <code>ExecuteContext</code> virtual method and/or an <code>ExecuteInput</code> virtual method.</p>
+<ul>
+<li>Overload the <code>ExecuteContext</code> method to have your code called once for all the input documents (available via <code>IExecutionContext.Inputs</code>). This is useful for modules that need to create new documents from scratch or that need to aggregate or operate on the input documents as a set.</li>
+<li>Overload the <code>ExecuteInput</code> method to have you code called once per document. This is useful when the module transforms or manipulates documents that are unrelated to each other.</li>
+</ul>
+<p>Here are some other guidelines and tips to follow when writing a module:</p>
+<ul>
+<li>Consider using the built-in <code>ExecuteConfig</code> module instead of writing your own.
+<ul>
+<li>You may not even need a new module. The <code>ExecuteConfig</code> module lets you specify a delegate that can return documents, content, and other types of data which will be converted to output documents as appropriate.</li>
+</ul>
+</li>
+<li>Use <code>Config&lt;T&gt;</code>.
+<ul>
+<li>If your module needs to accept user-configurable values, use <code>Config&lt;T&gt;</code>.</li>
+<li>Consider using one of the base module classes that deals with <code>Config&lt;T&gt;</code> like <code>ConfigModule</code> or <code>MultiConfigModule</code>.</li>
+</ul>
+</li>
+<li>Avoid document-to-document references (especially to/from children):
+<ul>
+<li>Try to avoid creating documents that reference other documents, especially in the top-level output documents (parent documents that reference children may be okay in some cases). If a document references another document and a following module clones the referenced document, the reference will still point to the old document and not the new clone.</li>
+</ul>
+</li>
+<li>Preserve input ordering:
+<ul>
+<li>Many modules output documents in a specific order and following modules should preserve that order whenever possible. The base module classes do this by default, but any explicit parallel operations should preserve ordering as well (I.e., by calling <code>.AsParallel().AsOrdered()</code>).</li>
+</ul>
+</li>
+<li>Only reference <code>Statiq.Common</code>:
+<ul>
+<li>If a module is in a separate assembly from your application you shouldn’t need a reference to <code>Statiq.Core</code>, and if you find that you do please open an issue so the appropriate functionality can be moved to <code>Statiq.Common</code>.</li>
+</ul>
+</li>
+<li>Name modules using a VerbNoun convention when possible.</li>
+</ul>
 
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                    <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/extensibility/modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/extensibility/modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
