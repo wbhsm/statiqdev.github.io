@@ -87,6 +87,9 @@
                                             <div class="sidebar-nav-item">
                                                 <a href="/web">About Statiq Web</a>
                                             </div>
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/web/configuration">Configuration</a>
+                                                </div>
                                                 <div class="sidebar-nav-item active has-children">
                                                     <a href="/web/content">Content</a>
                                                 </div>
@@ -151,12 +154,21 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Coming Soon</p>
+                                        <p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content.</p>
+<p>In general, your content should be placed in the “input” folder and is processed based on it’s media type (which is typically determined by file extension). The following extensions are recognized by default:</p>
+<ul>
+<li><code>.html</code> processes the file as plain HTML.</li>
+<li><code>.md</code> processes the file as <a href="/web/templates/markdown">Markdown</a>.</li>
+<li><code>.cshtml</code> processes the file as <a href="/web/templates/razor">Razor</a>.</li>
+</ul>
+<p>In all cases, global processing such as <a href="/web/content/shortcodes">shortcodes</a> is performed and <a href="/web/templates#layouts">layouts</a> and <a href="/web/templates/themes">themes</a> are applied.</p>
+<p>Many <a href="/web/templates/themes">themes</a> also support treating content differently depending on what subfolder the files are in. For example, themes for blogging often infer blog posts should go in a “input/posts” subfolder. In most cases the specific paths used for different types of content are <a href="/web/configuration">configurable</a>.</p>
 <h4 class="h-section">Child Pages</h4>
 <h5><a href="/web/content/archives">Archives</a></h5>
 <p>Archives allow you to group and page content.</p>
 <h5><a href="/web/content/feeds">Feeds</a></h5>
 <h5><a href="/web/content/front-matter">Front Matter</a></h5>
+<p>Front matter helps you define metadata for your files.</p>
 <h5><a href="/web/content/linking">Linking</a></h5>
 <h5><a href="/web/content/page-hierarchy">Page Hierarchy</a></h5>
 <h5><a href="/web/content/shortcodes">Shortcodes</a></h5>
