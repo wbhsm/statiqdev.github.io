@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Configuration</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -90,6 +90,9 @@
                                                 <div class="sidebar-nav-item active">
                                                     <a href="/web/configuration">Configuration</a>
                                                 </div>
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/web/preview-server">Preview Server</a>
+                                                </div>
                                                 <div class="sidebar-nav-item has-children">
                                                     <a href="/web/content">Content</a>
                                                 </div>
@@ -154,9 +157,30 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        
+                                        <p>Statiq has several mechanisms for specifying configuration data.</p>
+<p>At <a href="/framework/concepts/execution">execution time</a> all configuration data is combined into a single set of settings accessible via the <a href="/framework/concepts/execution#execution-context">execution context</a> which implement <code>IMetadata</code> for the purpose of providing configuration and setting data.</p>
+<h1 id="configuration-files">Configuration Files</h1>
+<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
+<h1 id="environment-variables">Environment Variables</h1>
+<h1 id="bootstrapper">Bootstrapper</h1>
+<h1 id="cascade-to-documents">Cascade To Documents</h1>
+<p>All configuration data "cascades" to documents. That means that any value set in the configuration file, environment variables, etc. is also available as document metadata unless otherwise overwritten. This include settings that would otherwise be set just at a document level. This feature can be very useful for situations when you want all documents to have a particular default value for a setting.</p>
+<p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
+<pre><code class="language-json">{
+    "Published": "=&gt; DateTime.Today"
+}
+</code></pre>
+<p>Note that this configuration value uses <a href="/framework/concepts/metadata#computed-metadata">computed metadata</a> to calculate the current <code>DateTime</code> at runtime.</p>
+
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#configuration-files">Configuration Files</a></p>
+                                                    <p class="small"><a href="#environment-variables">Environment Variables</a></p>
+                                                    <p class="small"><a href="#bootstrapper">Bootstrapper</a></p>
+                                                    <p class="small"><a href="#cascade-to-documents">Cascade To Documents</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/configuration.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Type Conversion</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -140,7 +140,8 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Statiq includes a powerful type conversion capability accessible through the static <code>TypeHelper</code> class. These utility methods check all .NET type conversion techniques including <code>TypeConverter</code>, <code>IConvertible</code>, casting, etc. in order to convert any type to any other compatible type. The conversion support is provided by a fork of the <a href="http://www.codeproject.com/Articles/248440/Universal-Type-Converter">UniversalTypeConverter</a> library. New conversions can also be added at run-time through the <code>TypeHelper.RegisterTypeConverter()</code> methods.</p>
+                                        <p>Statiq can perform a variety of powerful type conversions.</p>
+<p>The type conversion capability is accessible through the static <code>TypeHelper</code> class. These utility methods check all .NET type conversion techniques including <code>TypeConverter</code>, <code>IConvertible</code>, casting, etc. in order to convert any type to any other compatible type. The conversion support is provided by a fork of the <a href="http://www.codeproject.com/Articles/248440/Universal-Type-Converter">UniversalTypeConverter</a> library. New conversions can also be added at run-time through the <code>TypeHelper.RegisterTypeConverter()</code> methods.</p>
 <p>Converting between sequences of different types or from a single item to a sequence is also supported. If you request an <code>IList&lt;T&gt;</code>, <code>IEnumerable&lt;T&gt;</code>, or array of <code>T</code> and the original value is also enumerable, all elements will be converted to the requested type <code>T</code> and those that cannot be converted will be omitted from the result. If the original value is not enumerable, it will be returned as a single element of the requested enumerable type.</p>
 <p>While type conversion is most often used when dealing with <a href="/framework/concepts/metadata#type-conversion">metadata</a>, it’s also very helpful in situations when you only have string values (such as dealing with data from service endpoints).</p>
 

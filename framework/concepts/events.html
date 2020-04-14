@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Events</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -140,7 +140,7 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Events can be helpful when you need to implement cross-cutting behavior at runtime or when you need to modify the behavior of existing <a href="/framework/concepts/pipelines">pipelines</a>. Statiq has a global event mechanism that makes it easy to subscribe to and handle events.</p>
+                                        <p>Events let you hook into various stages of the generation process and can be helpful when you need to implement cross-cutting behavior at runtime or when you need to modify the behavior of existing <a href="/framework/concepts/pipelines">pipelines</a>. Statiq has a global event mechanism that makes it easy to subscribe to and handle events.</p>
 <p>You can subscribe to an event in an <a href="/framework/concepts/execution#engine">engine</a> through the <code>Events</code> property:</p>
 <pre><code class="language-csharp">engine.Events.Subscribe&lt;BeforeModuleExecution&gt;(
   evt =&gt; evt.Context.LogInformation(“I’m in a module!”));

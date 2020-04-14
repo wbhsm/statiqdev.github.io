@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Front Matter</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -90,6 +90,9 @@
                                                 <div class="sidebar-nav-item">
                                                     <a href="/web/configuration">Configuration</a>
                                                 </div>
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/web/preview-server">Preview Server</a>
+                                                </div>
                                                 <div class="sidebar-nav-item has-children">
                                                     <a href="/web/content">Content</a>
                                                 </div>
@@ -154,8 +157,8 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Front matter is a convenient way to define <a href="/framework/concepts/metadata">metadata</a> for your files inline with their content. Front matter is defined at the start of a file and is delimited from the rest of the file with a line consisting of a series of dashes: <code>---</code>.</p>
-<p>Front matter is written as YAML (support for more front matter formats such as JSON and XML is coming soon).</p>
+                                        <p>Front matter is a convenient way to define <a href="/framework/concepts/metadata">metadata</a> for your files inline with their content.</p>
+<p>Front matter is defined at the start of a file and is delimited from the rest of the file with a line consisting of a series of dashes: <code>---</code>. It's typically written as YAML (though support for more front matter formats such as JSON and XML is coming soon).</p>
 <p>For example, a file that contains front matter might look like:</p>
 <pre><code class="language-txt">Title: Some Title
 Description: This is a description.

@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Documents</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -140,7 +140,8 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>A <em>document</em> is a combination of <em>content</em> and <em><a href="/framework/concepts/metadata">metadata</a></em> as it makes it's way through the system. The content of a document is what most <a href="/framework/concepts/modules">modules</a> manipulate and is what you'll presumably output to disk at the end of the <a href="/framework/concepts/pipelines">pipeline</a>. Documents are immutable and once a value is added to the metadata by one module, it can never be removed by a subsequent one (though it can be overwritten by a cloned document). Though the documentation often talks about documents being "transformed" or "manipulated" by modules, this isn't strictly accurate. Instead modules return a new cloned copy of the document with different content and/or additional metadata, while maintaining all the metadata the original document had.</p>
+                                        <p>A <em>document</em> is a combination of <em>content</em> and <em><a href="/framework/concepts/metadata">metadata</a></em> as it makes it's way through the system.</p>
+<p>The content of a document is what most <a href="/framework/concepts/modules">modules</a> manipulate and is what you'll presumably output to disk at the end of the <a href="/framework/concepts/pipelines">pipeline</a>. Documents are immutable and once a value is added to the metadata by one module, it can never be removed by a subsequent one (though it can be overwritten by a cloned document). Though the documentation often talks about documents being "transformed" or "manipulated" by modules, this isn't strictly accurate. Instead modules return a new cloned copy of the document with different content and/or additional metadata, while maintaining all the metadata the original document had.</p>
 <p>For example, this visualizes a single document that contains some content as well as two metadata values:</p>
 <div class="mermaid">
     graph TD

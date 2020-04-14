@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Modules</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -140,7 +140,8 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>A <em>module</em> is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
+                                        <p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p>
+<p>A module is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
 <h1 id="configuration">Configuration</h1>
 <p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value. Creating a <code>Config&lt;TValue&gt;</code> is often done via factory methods from the <code>Config</code> static class. For example, if a module needs a string for a given setting it will accept a <code>Config&lt;string&gt;</code> which can be created by passing a <code>string</code> directly:</p>
 <pre><code class="language-csharp">new SomeModule("my-string")

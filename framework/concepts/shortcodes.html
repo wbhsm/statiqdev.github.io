@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq Platform</title>
+        <title>Statiq - Shortcodes</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -140,7 +140,8 @@
                                                     </div>
                                     </div>
                                     <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        
+                                        <p>Shortcodes are small but powerful macros that can generate content or add metadata to your documents.</p>
+
 <p>Statiq supports several templating engines like Markdown and Razor, but sometimes you need to generate some content regardless of the templating language you're using. Shortcodes are small text macros that can do big things and work across any templating engine. Statiq Framework and <a href="/web">Statiq Web</a> come with several helpful shortcodes and best of all it's very easy to add your own.</p>
 <h1 id="using-shortcodes">Using Shortcodes</h1>
 <p>Shortcodes are a special type of XML processing instruction delimited with <code>&lt;?#</code> and <code>?&gt;</code> (or <code>&lt;?!</code> and <code>?&gt;</code> depending on <a href="#processing-phases">processing phase</a>). This syntax allows the shortcodes to "fall-through" most templating engines like Markdown since those languages ignore XML processing instructions. Every shortcode has a name, often has parameters, and can optionally contain content depending on how and what the shortcode renders.</p>
