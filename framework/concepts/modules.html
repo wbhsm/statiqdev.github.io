@@ -83,64 +83,64 @@
                 <div class="flex-grow-1 d-flex flex-column">
                         <div class="container flex-grow-1 d-flex flex-column bg-white">
                             <div class="row flex-grow-1 align-items-stretch">
-                                    <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                            <div class="sidebar-nav-item">
-                                                <a href="/framework">About Statiq Framework</a>
-                                            </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/extensibility">Extensibility</a>
+                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/framework">About Statiq Framework</a>
                                                 </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/extensibility/modules">Modules</a>
-                                                            </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/extensibility">Extensibility</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/concepts">Concepts</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children active">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/events">Events</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/documents">Documents</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/metadata">Metadata</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child active">
-                                                                <a href="/framework/concepts/modules">Modules</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/pipelines">Pipelines</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/execution">Execution</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/shortcodes">Shortcodes</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/files">Files and Paths</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/concepts">Concepts</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/usage">Usage</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/type-conversion">Type Conversion</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children active">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/events">Events</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/documents">Documents</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/metadata">Metadata</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child active">
+                                                                    <a href="/framework/concepts/modules">Modules</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/pipelines">Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/execution">Execution</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/files">Files and Paths</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/usage">Usage</a>
                                                     </div>
-                                    </div>
-                                    <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                </div>
+                                                        </div>
+                                        </div>
+                                        <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
+                                            <p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p>
 <p>A module is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
 <h1 id="configuration">Configuration</h1>
 <p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value. Creating a <code>Config&lt;TValue&gt;</code> is often done via factory methods from the <code>Config</code> static class. For example, if a module needs a string for a given setting it will accept a <code>Config&lt;string&gt;</code> which can be created by passing a <code>string</code> directly:</p>
@@ -256,7 +256,7 @@
 <h1 id="concurrency">Concurrency</h1>
 <p>Some modules process documents in parallel while others process them sequentially. Modules that process documents in parallel can often be forced to process documents sequentially by using the <code>WithParallelExecution(false)</code> extension method. This might be useful when the documents being processed or a configuration setting aren't thread-safe.</p>
 
-                                    </div>
+                                        </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>

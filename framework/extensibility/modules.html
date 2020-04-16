@@ -83,64 +83,64 @@
                 <div class="flex-grow-1 d-flex flex-column">
                         <div class="container flex-grow-1 d-flex flex-column bg-white">
                             <div class="row flex-grow-1 align-items-stretch">
-                                    <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                            <div class="sidebar-nav-item">
-                                                <a href="/framework">About Statiq Framework</a>
-                                            </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/extensibility">Extensibility</a>
+                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/framework">About Statiq Framework</a>
                                                 </div>
-                                                    <div class="sidebar-nav-children active">
-                                                            <div class="sidebar-nav-child active">
-                                                                <a href="/framework/extensibility/modules">Modules</a>
-                                                            </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/extensibility">Extensibility</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/concepts">Concepts</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/events">Events</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/documents">Documents</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/metadata">Metadata</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/modules">Modules</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/pipelines">Pipelines</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/execution">Execution</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/shortcodes">Shortcodes</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/files">Files and Paths</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children active">
+                                                                <div class="sidebar-nav-child active">
+                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/concepts">Concepts</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/usage">Usage</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/type-conversion">Type Conversion</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/events">Events</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/documents">Documents</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/metadata">Metadata</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/modules">Modules</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/pipelines">Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/execution">Execution</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/files">Files and Paths</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/usage">Usage</a>
                                                     </div>
-                                    </div>
-                                    <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                </div>
+                                                        </div>
+                                        </div>
+                                        <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
+                                            <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
 <p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution/execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
 <p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>
 <ul>
@@ -208,7 +208,7 @@
 <li>Name modules using a VerbNoun convention when possible.</li>
 </ul>
 
-                                    </div>
+                                        </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                         <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/extensibility/modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>

@@ -83,64 +83,64 @@
                 <div class="flex-grow-1 d-flex flex-column">
                         <div class="container flex-grow-1 d-flex flex-column bg-white">
                             <div class="row flex-grow-1 align-items-stretch">
-                                    <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                            <div class="sidebar-nav-item">
-                                                <a href="/framework">About Statiq Framework</a>
-                                            </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/extensibility">Extensibility</a>
+                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                                <div class="sidebar-nav-item">
+                                                    <a href="/framework">About Statiq Framework</a>
                                                 </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/extensibility/modules">Modules</a>
-                                                            </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/extensibility">Extensibility</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/concepts">Concepts</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children active">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/events">Events</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/documents">Documents</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child active">
-                                                                <a href="/framework/concepts/metadata">Metadata</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/modules">Modules</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/pipelines">Pipelines</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/execution">Execution</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/shortcodes">Shortcodes</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/concepts/files">Files and Paths</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/concepts">Concepts</a>
                                                     </div>
-                                                <div class="sidebar-nav-item has-children">
-                                                    <a href="/framework/usage">Usage</a>
-                                                </div>
-                                                    <div class="sidebar-nav-children">
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/bootstrapper">Bootstrapper</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/configuration">Configuration</a>
-                                                            </div>
-                                                            <div class="sidebar-nav-child">
-                                                                <a href="/framework/usage/type-conversion">Type Conversion</a>
-                                                            </div>
+                                                        <div class="sidebar-nav-children active">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/events">Events</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/documents">Documents</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child active">
+                                                                    <a href="/framework/concepts/metadata">Metadata</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/modules">Modules</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/pipelines">Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/execution">Execution</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/files">Files and Paths</a>
+                                                                </div>
+                                                        </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/framework/usage">Usage</a>
                                                     </div>
-                                    </div>
-                                    <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                        <p>Metadata is the primary way information is passed though modules and pipelines via documents.</p>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/bootstrapper">Bootstrapper</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                </div>
+                                                        </div>
+                                        </div>
+                                        <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
+                                            <p>Metadata is the primary way information is passed though modules and pipelines via documents.</p>
 <p>Along with its content, every <a href="/framework/concepts/documents">document</a> contains <em>metadata</em>. As with documents, metadata is immutable and you must clone a document to add additional metadata. Several <a href="/framework/concepts/modules">modules</a>, such as <code>SetMetadata</code>, are designed to allow you to manipulate document metadata as part of your <a href="/framework/concepts/pipelines">pipeline</a>.</p>
 <h1 id="front-matter">Front Matter</h1>
 <p>One of the more common ways to set metadata is to use <em>front matter</em>. Front matter is a common concept in static generators and gets around the problem of how to define metadata for a file without creating a whole separate file. Typically, front matter is placed at the top of an input file and uses some sort of format (like YAML or JSON) to define key/value pairs. In Statiq, front matter can be extracted using the <code>ExtractFrontMatter</code> module. That module accepts child modules that process whatever content is contained in the front matter block, such as YAML or JSON. Often front matter is delimited from the actual file content by a series of dashes such as <code>---</code>, though an alternate delimiter can be specified in the module.</p>
@@ -163,7 +163,7 @@ This is the content of the file.
 <p>There are several extensions to make working with documents and metadata easier. One of the more powerful ones lets you generate an <code>ILookup&lt;T, IDocument&gt;</code> from a sequence of documents based on a metadata key. The signature of the extension method is <code>ILookup&lt;T, IDocument&gt; ToLookup&lt;T&gt;(this IEnumerable&lt;IDocument&gt; documents, string key)</code> where <code>key</code> is the metadata key that you want to generate a lookup for.</p>
 <p>For example, say you have a sequence of documents, some of which contain metadata for the key "Tags". Also, assume that some of the documents with "Tags" metadata contain a single value some contain arrays. If you simply call <code>Documents.ToLookup&lt;string&gt;("Tags")</code> you will get back an <code>ILookup&lt;T, IDocument&gt;</code> keyed by each possible tag string with a sequence of the documents that contain that tag as the value.</p>
 
-                                    </div>
+                                        </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>

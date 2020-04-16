@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq - Front Matter</title>
+        <title>Statiq - Enumerating Values</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">web</div>
-                                    <div class="text-white m-0 title">Front Matter</div>
+                                    <div class="text-white m-0 title">Enumerating Values</div>
                                 </div>
                             </div>
                         </div>
@@ -100,13 +100,13 @@
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/content/archives">Archives</a>
                                                                 </div>
-                                                                <div class="sidebar-nav-child">
+                                                                <div class="sidebar-nav-child active">
                                                                     <a href="/web/content/enumerating-values">Enumerating Values</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/content/feeds">Feeds</a>
                                                                 </div>
-                                                                <div class="sidebar-nav-child active">
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/web/content/front-matter">Front Matter</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
@@ -160,19 +160,58 @@
                                                         </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                            <p>Front matter is a convenient way to define <a href="/framework/concepts/metadata">metadata</a> for your files inline with their content.</p>
-<p>Front matter is defined at the start of a file and is delimited from the rest of the file with a line consisting of a series of dashes: <code>---</code>. It's typically written as YAML (though support for more front matter formats such as JSON and XML is coming soon).</p>
-<p>For example, a file that contains front matter might look like:</p>
-<pre><code class="language-txt">Title: Some Title
-Description: This is a description.
-Date: 5/25/2016
+                                            <p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/web/content/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p>
+<p>To use this feature, define a metadata key <code>Enumerate</code> with the values you want to create documents for. Each document will contain the original content and metadata along with an additional <code>Current</code> metadata value.</p>
+<p>To illustrate how this works, consider an <code>apple.md</code> file with the following front matter:</p>
+<pre><code class="language-txt">Enumerate:
+  - Red Delicious
+  - Honeycrisp
+  - Fuji
+  - McIntosh
 ---
-This is the content of the file.
+The current apple is &lt;?#= Current /?&gt;.
 </code></pre>
+<p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/web/templates/razor">Razor</a> syntax or another templating format.</p>
+<p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/configuration#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/concepts/metadata#computed-metadata">computed metadata</a>:</p>
+<pre><code class="language-txt">Enumerate:
+  - Red Delicious
+  - Honeycrisp
+  - Fuji
+  - McIntosh
+DestinationFileName: =&gt; $"apple-{Current}.html"
+---
+The current apple is &lt;?#= Current /?&gt;.
+</code></pre>
+<p>This works well to generate four pages for each of the apples, but what if we also want an index page with all of the apples? We can generate that as well by setting <code>EnumerateWithInput</code> to <code>true</code>. This will include the original input file without a <code>Current</code> value in addition to each of the documents from the enumerated values:</p>
+<pre><code class="language-txt">Enumerate:
+  - Red Delicious
+  - Honeycrisp
+  - Fuji
+  - McIntosh
+EnumerateWithInput: true
+DestinationFileName: &gt;
+  =&gt; Document.ContainsKey("Current") ? $"apple-{Document["Current"]}.html" : "apple.html"
+---
+@if (Document.ContainsKey("Current"))
+{
+    &lt;p&gt;The current apple is @Document.GetString("Current")&lt;/p&gt;
+}
+else
+{
+    &lt;p&gt;All the yummy apples:&lt;/p&gt;
+    &lt;ul&gt;
+        @foreach (string apple in @Document.GetList&lt;string&gt;("Enumerate"))
+        {
+            &lt;li&gt;&lt;a href="apple-@(apple.ToLower())"&gt;@apple&lt;/a&gt;&lt;/li&gt;
+        }
+    &lt;/ul&gt;
+}
+</code></pre>
+<p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/concepts/metadata#computed-metadata">computed metadata</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/content/front-matter.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/web/content/enumerating-values.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
