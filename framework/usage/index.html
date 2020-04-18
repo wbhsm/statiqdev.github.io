@@ -92,7 +92,7 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
                                                                 </div>
                                                         </div>
                                                     <div class="sidebar-nav-item has-children">
@@ -129,13 +129,16 @@
                                                     </div>
                                                         <div class="sidebar-nav-children active">
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/creating-pipelines">Creating Pipelines</a>
+                                                                    <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/type-conversion">Type Conversion</a>
@@ -147,6 +150,14 @@
 <h4 class="h-section mb-2">Child Pages</h4>
 <div>
 <div class="p-3 mb-2 bg-light page-box">
+<h4><a href="/framework/usage/adding-pipelines">Adding Pipelines</a></h4>
+<div class="font-size-sm">
+<p>TODO - discuss how modules are typically added to the pipeline in the constructor</p>
+</div>
+</div>
+</div>
+<div>
+<div class="p-3 mb-2 bg-light page-box">
 <h4><a href="/framework/usage/bootstrapper">Bootstrapper</a></h4>
 <div class="font-size-sm">
 <p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p>
@@ -155,17 +166,17 @@
 </div>
 <div>
 <div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/configuration">Configuration</a></h4>
+<h4><a href="/framework/usage/configuration-delegates">Configuration Delegates</a></h4>
 <div class="font-size-sm">
-<p>Statiq has several mechanisms for specifying configuration data.</p>
+<p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value.</p>
 </div>
 </div>
 </div>
 <div>
 <div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/creating-pipelines">Creating Pipelines</a></h4>
+<h4><a href="/framework/usage/settings">Settings</a></h4>
 <div class="font-size-sm">
-<p>TODO - discuss how modules are typically added to the pipeline in the constructor</p>
+<p>Settings let you define global <a href="/framework/concepts/metadata">metadata</a> that can be accessed from the <a href="/framework/concepts/execution#execution-context">execution context</a> or <a href="/framework/concepts/documents">documents</a>.</p>
 </div>
 </div>
 </div>

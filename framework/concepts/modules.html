@@ -92,7 +92,7 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
                                                                 </div>
                                                         </div>
                                                     <div class="sidebar-nav-item has-children">
@@ -129,13 +129,16 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/creating-pipelines">Creating Pipelines</a>
+                                                                    <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/type-conversion">Type Conversion</a>
@@ -145,14 +148,6 @@
                                         <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
                                             <p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p>
 <p>A module is a small single-purpose component that takes <a href="/framework/concepts/documents">documents</a> as input, does something based on those documents (possibly transforming them), and outputs documents as a result of whatever operation was performed. Modules are typically chained in a sequence called a <a href="/framework/concepts/pipelines">pipeline</a>.</p>
-<h1 id="configuration">Configuration</h1>
-<p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value. Creating a <code>Config&lt;TValue&gt;</code> is often done via factory methods from the <code>Config</code> static class. For example, if a module needs a string for a given setting it will accept a <code>Config&lt;string&gt;</code> which can be created by passing a <code>string</code> directly:</p>
-<pre><code class="language-csharp">new SomeModule("my-string")
-</code></pre>
-<p>or by using one of the many factory methods:</p>
-<pre><code class="language-csharp">new SomeModule(
-    Config.FromDocument(doc =&gt; doc.GetString("key")))
-</code></pre>
 <h1 id="module-patterns">Module Patterns</h1>
 <p>Different modules treat inputs and outputs in different ways. Some modules just "pass-through" the documents that are input, some transform them in some way and output the results, and some exhibit more complex behavior. Some modules even exhibit different behavior depending on how the module was configured. The behavior can get especially confusing when considering some modules evaluate child modules which also output documents. In these cases, there are different behaviors for how the input documents and the result documents from the child modules are combined. The way inputs, outputs, and child module results are related can generally be described as a few different patterns and even though these probably don't cover the way <em>every</em> module or combination of modules works, they should help you understand the concepts involved.</p>
 <h2 id="pass-through">Pass-Through</h2>
@@ -263,7 +258,6 @@
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#configuration">Configuration</a></p>
                                                     <p class="small"><a href="#module-patterns">Module Patterns</a></p>
                                                     <p class="small"><a href="#concurrency">Concurrency</a></p>
                                             </div>

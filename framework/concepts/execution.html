@@ -92,7 +92,7 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
                                                                 </div>
                                                         </div>
                                                     <div class="sidebar-nav-item has-children">
@@ -129,13 +129,16 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/creating-pipelines">Creating Pipelines</a>
+                                                                    <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/type-conversion">Type Conversion</a>
@@ -147,7 +150,7 @@
 <h1 id="engine">Engine</h1>
 <p>When pipelines in Statiq are executed, a special object called the <code>Engine</code> is responsible for coordinating activity. The engine contains all the global objects used to perform generation such as the <a href="/framework/concepts/files">file system abstraction</a>. It also creates the <a href="/framework/concepts/pipelines#concurrency-and-dependencies">pipeline dependency graph</a> and executes the <a href="/framework/concepts/modules">modules</a> in each pipeline.</p>
 <h1 id="execution-context">Execution Context</h1>
-<p>While executing pipelines and modules, the current state and other functionality is passed in an instance of <code>IExecutionContext</code>. This object contains lots of information such as the current pipeline, phase, and module, the settings and file system, the input documents to the module, and more. The current execution context is generally accessed through <a href="/framework/concepts/modules#configuration">configuration delegates</a> or a <a href="/framework/extensibility/modules">module execution method</a>.</p>
+<p>While executing pipelines and modules, the current state and other functionality is passed in an instance of <code>IExecutionContext</code>. This object contains lots of information such as the current pipeline, phase, and module, the settings and file system, the input documents to the module, and more. The current execution context is generally accessed through <a href="/framework/usage/configuration-delegates">configuration delegates</a> or a <a href="/framework/extensibility/creating-modules">module execution method</a>.</p>
 <h2 id="interfaces">Interfaces</h2>
 <p>The execution context implements a number of interfaces that provide additional capabilities:</p>
 <ul>

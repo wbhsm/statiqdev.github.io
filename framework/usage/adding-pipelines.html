@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq - Configuration</title>
+        <title>Statiq - Adding Pipelines</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">framework</div>
-                                    <div class="text-white m-0 title">Configuration</div>
+                                    <div class="text-white m-0 title">Adding Pipelines</div>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/modules">Modules</a>
+                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
                                                                 </div>
                                                         </div>
                                                     <div class="sidebar-nav-item has-children">
@@ -128,14 +128,17 @@
                                                         <a href="/framework/usage">Usage</a>
                                                     </div>
                                                         <div class="sidebar-nav-children active">
+                                                                <div class="sidebar-nav-child active">
+                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
+                                                                </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
-                                                                <div class="sidebar-nav-child active">
-                                                                    <a href="/framework/usage/configuration">Configuration</a>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/creating-pipelines">Creating Pipelines</a>
+                                                                    <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/type-conversion">Type Conversion</a>
@@ -143,29 +146,24 @@
                                                         </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 pt-4 pt-md-0 pb-4 px-4">
-                                            <p>Statiq has several mechanisms for specifying configuration data.</p>
-<p>At <a href="/framework/concepts/execution">execution time</a> all configuration data is combined into a single set of settings accessible via the <a href="/framework/concepts/execution#execution-context">execution context</a> which implement <code>IMetadata</code> for the purpose of providing configuration and setting data.</p>
-<h1 id="specifying-configuration">Specifying Configuration</h1>
-<h2 id="configuration-files">Configuration Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
-<h2 id="environment-variables">Environment Variables</h2>
-<h2 id="bootstrapper">Bootstrapper</h2>
-<h2 id="cascade-to-documents">Cascade To Documents</h2>
-<p>All configuration data "cascades" to documents. That means that any value set in the configuration file, environment variables, etc. is also available as document metadata unless otherwise overwritten. This include settings that would otherwise be set just at a document level. This feature can be very useful for situations when you want all documents to have a particular default value for a setting.</p>
-<p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
-<pre><code class="language-json">{
-    "Published": "=&gt; DateTime.Today"
-}
-</code></pre>
-<p>Note that this configuration value uses <a href="/framework/concepts/metadata#computed-metadata">computed metadata</a> to calculate the current <code>DateTime</code> at runtime.</p>
+                                            <h1 id="adding-modules">Adding Modules</h1>
+<p>TODO - discuss how modules are typically added to the pipeline in the constructor</p>
+<h1 id="service-injection">Service Injection</h1>
+<p>TODO - discuss how services can be injected into the pipeline constructor</p>
+<h1 id="using-the-bootstrapper">Using The Bootstrapper</h1>
+<p>TODO - adding modules using the bootstrapper, reflection to find modules, adding instances vs. types and lifecycle</p>
+<h2 id="pipeline-builder">Pipeline Builder</h2>
+<p>TODO - using the pipeline builder to create pipelines</p>
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#specifying-configuration">Specifying Configuration</a></p>
+                                                    <p class="small"><a href="#adding-modules">Adding Modules</a></p>
+                                                    <p class="small"><a href="#service-injection">Service Injection</a></p>
+                                                    <p class="small"><a href="#using-the-bootstrapper">Using The Bootstrapper</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/usage/configuration.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/framework/usage/adding-pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
