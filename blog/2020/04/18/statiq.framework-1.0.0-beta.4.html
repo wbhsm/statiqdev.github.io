@@ -17,7 +17,7 @@
         <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
 
-        <title>Statiq - Release Notes</title>
+        <title>Statiq - Statiq.Framework Release 1.0.0-beta.4</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -63,8 +63,12 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">blog</div>
-                                    <div class="text-white m-0 title">Release Notes</div>
+                                    <div class="text-white m-0 title">Statiq.Framework Release 1.0.0-beta.4</div>
 
+        <div class="text-white-50">
+            Saturday, April 18, 2020 in
+            <a href="/blog/topics/release"><span class="badge badge-dark">Release Notes</span></a>
+        </div>
                                 </div>
                             </div>
                         </div>
@@ -98,82 +102,19 @@
                                             
 
 
-    <p>Release notes for the various Statiq projects.</p>
-<div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/10/04/statiq.framework-1.0.0-alpha.7">Statiq.Framework Release 1.0.0-alpha.7</a></h4>
-                <div class="small text-black-50">
-                    Friday, October 4, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/10/03/statiq.framework-1.0.0-alpha.6">Statiq.Framework Release 1.0.0-alpha.6</a></h4>
-                <div class="small text-black-50">
-                    Thursday, October 3, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/10/01/statiq.framework-1.0.0-alpha.5">Statiq.Framework Release 1.0.0-alpha.5</a></h4>
-                <div class="small text-black-50">
-                    Tuesday, October 1, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/09/25/statiq.framework-1.0.0-alpha.4">Statiq.Framework Release 1.0.0-alpha.4</a></h4>
-                <div class="small text-black-50">
-                    Wednesday, September 25, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/09/20/statiq.framework-1.0.0-alpha.3">Statiq.Framework Release 1.0.0-alpha.3</a></h4>
-                <div class="small text-black-50">
-                    Friday, September 20, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/09/18/statiq.framework-1.0.0-alpha.2">Statiq.Framework Release 1.0.0-alpha.2</a></h4>
-                <div class="small text-black-50">
-                    Wednesday, September 18, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/09/09/statiq.framework-1.0.0-alpha.1">Statiq.Framework Release 1.0.0-alpha.1</a></h4>
-                <div class="small text-black-50">
-                    Monday, September 9, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex flex-row justify-content-between">
-            <div>
-            </div>
-            <div>
-                    <a class="btn btn-primary" href="/blog/topics/release/3" role="button">Newer</a>
-            </div>
-        </div>
-</div>
+<ul>
+<li>Added Handlebars media types.</li>
+<li>Added <code>WithInputDocument()</code> to the <code>EnumerateValues</code> module to include the original input document in the enumeration.</li>
+<li>Fixed some edge-case bugs in <code>LazyDocumentMetadataValue</code>.</li>
+<li>Added <code>&amp;lt;?#^ ... /?&gt;</code> as special syntax for the <code>Include</code> shortcode with the "^" character.</li>
+<li>Added support for HTTP/HTTPS schemes to the <code>Include</code> shortcode for including web content.</li>
+<li>Added <code>HttpClient.SendWithRetryAsync()</code> extension methods to send an HTTP request with a retry policy when a <code>HttpClient</code> is available.</li>
+<li>Added <code>IExecutionState.SendHttpRequestWithRetryAsync()</code> methods to send an HTTP request with a retry policy without needing an <code>HttpClient</code>.</li>
+<li>Removed the <code>ProcessIncludes</code> module in favor of the <code>Include</code> shortcode.</li>
+</ul>
+
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiq.dev/edit/master/input/blog/topics/index.cshtml"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
