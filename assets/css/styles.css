@@ -255,6 +255,45 @@ h2, h3 { color: #48bdfe; }
 
 #footer { background-color: #212529; }
 
+.bg-undefined { background-color: #545b62; }
+
+.text-undefined { color: #6c757d; }
+
+.icon-undefined { --fa-primary-color: #6c757d; --fa-secondary-color: #a1a8ae; }
+
+.section-undefined #titlebar { background: #3d4246 linear-gradient(180deg, #3d4246, #545b62) repeat-x !important; }
+
+.section-undefined #titlebar .section { display: none; visibility: hidden; }
+
+.section-undefined #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 2.1rem; }
+
+.section-undefined #undertitle { background-color: #545b62; }
+
+@media (min-width: 768px) { .section-undefined #undertitle > .container { min-height: 1.5rem; }
+  .section-undefined #undertitle > .container > .row { min-height: 1.5rem; } }
+
+.section-undefined .bg-section { background-color: #545b62; }
+
+.section-undefined .sidebar-nav-item { padding-top: 0.5rem; padding-bottom: 0.5rem; font-weight: 700; }
+
+.section-undefined .sidebar-nav-item.has-children { margin-bottom: 0; }
+
+.section-undefined .sidebar-nav-item.active a { color: #6c757d; }
+
+.section-undefined .sidebar-nav-item.active a:hover, .section-undefined .sidebar-nav-item.active a:focus, .section-undefined .sidebar-nav-item.active a:active { color: #6c757d; }
+
+.section-undefined .sidebar-nav-children { border-left: 3px solid #dee2e6; padding-left: 1rem; margin-bottom: 1rem; display: none; }
+
+@media (min-width: 768px) { .section-undefined .sidebar-nav-children { display: block; } }
+
+.section-undefined .sidebar-nav-children.active { display: block; }
+
+.section-undefined .sidebar-nav-child { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+.section-undefined .sidebar-nav-child.active a { color: #6c757d; }
+
+.section-undefined .sidebar-nav-child.active a:hover, .section-undefined .sidebar-nav-child.active a:focus, .section-undefined .sidebar-nav-child.active a:active { color: #6c757d; }
+
 .bg-web { background-color: #15abfe; }
 
 .text-web { color: #48bdfe; }
@@ -263,7 +302,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-web #titlebar { background: #0190df linear-gradient(180deg, #0190df, #15abfe) repeat-x !important; }
 
-.section-web #titlebar .section { color: #2fb4fe; font-size: 1rem; }
+.section-web #titlebar .section { color: #2fb4fe; font-size: 1rem; display: block; visibility: visible; }
 
 .section-web #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 2.1rem; }
 
@@ -302,7 +341,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-docs #titlebar { background: #835000 linear-gradient(180deg, #835000, #b67000) repeat-x !important; }
 
-.section-docs #titlebar .section { color: #d07f00; font-size: 1rem; }
+.section-docs #titlebar .section { color: #d07f00; font-size: 1rem; display: block; visibility: visible; }
 
 .section-docs #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 2.1rem; }
 
@@ -341,7 +380,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-framework #titlebar { background: #9300e4 linear-gradient(180deg, #9300e4, #ad18ff) repeat-x !important; }
 
-.section-framework #titlebar .section { color: #b632ff; font-size: 1rem; }
+.section-framework #titlebar .section { color: #b632ff; font-size: 1rem; display: block; visibility: visible; }
 
 .section-framework #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 2.1rem; }
 
@@ -380,7 +419,7 @@ h2, h3 { color: #48bdfe; }
 
 .section-blog #titlebar { background: #3d4246 linear-gradient(180deg, #3d4246, #545b62) repeat-x !important; }
 
-.section-blog #titlebar .section { color: #60686f; font-size: 1rem; }
+.section-blog #titlebar .section { color: #60686f; font-size: 1rem; display: block; visibility: visible; }
 
 .section-blog #titlebar .title { line-height: 1.5em; font-family: "Roboto Slab", serif; font-size: 2.1rem; }
 
