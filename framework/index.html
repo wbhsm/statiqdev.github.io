@@ -180,7 +180,7 @@ namespace MyGenerator
   }
 }
 </code></pre>
-<p>This creates a default <code>Bootstrapper</code> and passes it the <a href="/framework/usage/boostrapper#command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
+<p>This creates a default <code>Bootstrapper</code> and passes it the <a href="/framework/usage/bootstrapper#command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
 <p>This example is all you need for a minimal, functioning Statiq Framework application. The only problem is that it doesn’t actually do anything. Let’s add one more step and process some Markdown files.</p>
 <h2 id="step-5-add-a-pipeline-and-modules">Step 5: Add a Pipeline and Modules</h2>
 <p>Most functionality in Statiq Framework is provided by <a href="/framework/concepts/pipelines">pipelines</a> and <a href="/framework/concepts/modules">modules</a>. The <code>Bootstrapper</code> has several mechanisms for <a href="/framework/usage/bootstrapper#defining-pipelines">defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
@@ -215,7 +215,7 @@ namespace MyGenerator
                                                 <p class="small font-weight-bold">On This Page</p>
                                                     <p class="small"><a href="#quick-start">Quick Start</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
@@ -271,5 +271,7 @@ namespace MyGenerator
 				}
             });
         </script>
+        
+		
     
 </body></html>

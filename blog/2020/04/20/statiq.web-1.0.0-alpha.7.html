@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Statiq.Web Release 1.0.0-alpha.5</title>
+        <title>Statiq - Statiq.Web Release 1.0.0-alpha.7</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -68,10 +68,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">blog</div>
-                                    <div class="text-white m-0 title">Statiq.Web Release 1.0.0-alpha.5</div>
+                                    <div class="text-white m-0 title">Statiq.Web Release 1.0.0-alpha.7</div>
 
         <div class="text-white-50">
-            Sunday, April 12, 2020 in
+            Monday, April 20, 2020 in
             <a href="/blog/topics/release"><span class="badge badge-dark">Release Notes</span></a>
         </div>
                                 </div>
@@ -108,8 +108,9 @@
 
 
 <ul>
-<li>Refactored the <code>ReadGitHub</code> module to take configuration values.</li>
-<li>The "Content" and "Data" pipelines now concatenate all documents from pipelines that declare themselves a dependency using <code>IPipeline.DependencyOf</code>.</li>
+<li>Added xref support for links like "xref:xyz" where "xyz" is the value of the "Xref" metadata, the document title with spaces converted to underscores if no "Xref" value is defined, or the source file name if neither of those are available.</li>
+<li>Added <code>IExecutionContext.TryGetXrefDocument()</code> and <code>IExecutionContext.GetXrefDocument()</code> extension methods to get a document by xref.</li>
+<li>Added <code>IExecutionContext.TryGetXrefLink()</code> and <code>IExecutionContext.GetXrefLink()</code> extension methods to get a document link by xref.</li>
 </ul>
 
                                         </div>

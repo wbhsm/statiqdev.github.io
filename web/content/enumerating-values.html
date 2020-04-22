@@ -213,10 +213,11 @@ else
 }
 </code></pre>
 <p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/concepts/metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
+<p>TODO: Usage with the data pipeline - define apples with descriptions as .yml files</p>
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/enumerating-values.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/enumerating-values.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
@@ -272,5 +273,7 @@ else
 				}
             });
         </script>
+        
+		
     
 </body></html>

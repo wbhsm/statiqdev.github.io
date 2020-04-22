@@ -159,7 +159,7 @@
 <h2 id="interfaces">Interfaces</h2>
 <p>The execution context implements a number of interfaces that provide additional capabilities:</p>
 <ul>
-<li><p><code>IMetadata</code>: All <a href="/framework/usage/configuration">configuration</a> data can be accessed directly through the execution context as metadata.</p>
+<li><p><code>IMetadata</code>: All <a href="/framework/usage/settings">settings</a> can be accessed directly through the execution context as metadata.</p>
 </li>
 <li><p><code>ILogger</code>: All logging should be performed through the execution context, which tracks the current pipeline and module and logs them out along with your messages.</p>
 </li>
@@ -183,7 +183,7 @@
 </li>
 <li><p><code>FileSystem</code>: The current <a href="/framework/concepts/files#virtual-file-system">file system</a> abstraction.</p>
 </li>
-<li><p><code>Settings</code>: The application <a href="/framework/usage/configuration">configuration</a> as metadata (even though this is also exposed directly by the execution context by implementing <code>IMetadata</code>).</p>
+<li><p><code>Settings</code>: The application <a href="/framework/usage/settings">settings</a> as metadata (even though this is also exposed directly by the execution context by implementing <code>IMetadata</code>).</p>
 </li>
 <li><p><code>Shortcodes</code>: A read-only collection of all available <a href="/framework/concepts/shortcodes">shortcodes</a>.</p>
 </li>
@@ -222,7 +222,7 @@
                                                     <p class="small"><a href="#engine">Engine</a></p>
                                                     <p class="small"><a href="#execution-context">Execution Context</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/concepts/execution.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/concepts/execution.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
@@ -278,5 +278,7 @@
 				}
             });
         </script>
+        
+		
     
 </body></html>

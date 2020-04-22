@@ -152,7 +152,7 @@
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0">
                                             <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
-<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution/execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
+<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution#execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
 <p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>
 <ul>
 <li><code>Module</code> is a common module base class that's appropriate for most modules.
@@ -221,7 +221,7 @@
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https:/github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/extensibility/creating-modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/extensibility/creating-modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
@@ -277,5 +277,7 @@
 				}
             });
         </script>
+        
+		
     
 </body></html>

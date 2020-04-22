@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Statiq.Web Release 1.0.0-alpha.5</title>
+        <title>Statiq - Statiq.Framework Release 1.0.0-beta.6</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -68,10 +68,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">blog</div>
-                                    <div class="text-white m-0 title">Statiq.Web Release 1.0.0-alpha.5</div>
+                                    <div class="text-white m-0 title">Statiq.Framework Release 1.0.0-beta.6</div>
 
         <div class="text-white-50">
-            Sunday, April 12, 2020 in
+            Wednesday, April 22, 2020 in
             <a href="/blog/topics/release"><span class="badge badge-dark">Release Notes</span></a>
         </div>
                                 </div>
@@ -108,8 +108,11 @@
 
 
 <ul>
-<li>Refactored the <code>ReadGitHub</code> module to take configuration values.</li>
-<li>The "Content" and "Data" pipelines now concatenate all documents from pipelines that declare themselves a dependency using <code>IPipeline.DependencyOf</code>.</li>
+<li>Refactored the <code>ValidateLinks</code> module to accept <code>Config&lt;bool&gt;</code> settings.</li>
+<li>Changed shortcode semantics to only pass new metadata down (metadata is no longer merged up to host document, even though no existing shortcodes did that anyway).</li>
+<li>Refactored shortcodes to return a new <code>ShortcodeResult</code> object that includes content and nested metadata.</li>
+<li>Consolidated shortcode base types to only return variations of <code>ShortcodeResult</code> (instead of <code>Stream</code> and <code>string</code> versions as well).</li>
+<li>Added the <code>ILogger</code> interface to <code>IDocument</code> along with default implementations to support easier document logging with a document prefix (usually the source path).</li>
 </ul>
 
                                         </div>
