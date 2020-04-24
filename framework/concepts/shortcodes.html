@@ -93,14 +93,6 @@
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children active">
@@ -134,19 +126,22 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
@@ -234,6 +229,7 @@ Content
 <p>To write a shortcode as a class, implement <code>IShortcode</code>. The shortcode name will generally be the same as the implementing class name.</p>
 <h1 id="process-shortcodes">Process Shortcodes</h1>
 <p>To process shortcodes in your own pipelines, the <code>ProcessShortcodes</code> module is used to find shortcodes within a document and render them. It's generally an accepted pattern to use the <code>ProcessShortcodes</code> module after all other templates have been evaluated, but you can certainly use it earlier in your pipelines if you want to.</p>
+
 
 
                                         </div>

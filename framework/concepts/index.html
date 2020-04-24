@@ -92,14 +92,6 @@
                                                 <div class="sidebar-nav-item">
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
                                                     <div class="sidebar-nav-item active has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
@@ -134,92 +126,91 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0">
-                                            <p>Regardless of whether you run Statiq using an application like Statiq Web or directly by using Statiq Framework, understanding these concepts will go a long way towards making sense of how your generation works and how best to customize it to your needs.</p>
-<img src="/assets/flow.png" class="mw-100">
-<h4 class="h-section mb-2">Child Pages</h4>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/events">Events</a></h4>
-<div class="font-size-sm">
-<p>Events let you hook into various stages of the generation process and can be helpful when you need to implement cross-cutting behavior at runtime or when you need to modify the behavior of existing <a href="/framework/concepts/pipelines">pipelines</a>. Statiq has a global event mechanism that makes it easy to subscribe to and handle events.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/documents">Documents</a></h4>
-<div class="font-size-sm">
-<p>A <em>document</em> is a combination of <em>content</em> and <em><a href="/framework/concepts/metadata">metadata</a></em> as it makes it's way through the system.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/metadata">Metadata</a></h4>
-<div class="font-size-sm">
-<p>Metadata is the primary way information is passed though modules and pipelines via documents.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/modules">Modules</a></h4>
-<div class="font-size-sm">
-<p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/pipelines">Pipelines</a></h4>
-<div class="font-size-sm">
-<p>A pipeline is a series of modules executed in sequence that results in final output documents.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/execution">Execution</a></h4>
-<div class="font-size-sm">
-<p>Execution is when pipelines and the modules they contain are evaluated.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/shortcodes">Shortcodes</a></h4>
-<div class="font-size-sm">
-<p>Shortcodes are small but powerful macros that can generate content or add metadata to your documents.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/concepts/files">Files and Paths</a></h4>
-<div class="font-size-sm">
-<p>Statiq uses an IO abstraction layer designed to provide flexibility and consistency when dealing with files, directories, and path information.</p>
-</div>
-</div>
-</div>
+                                            <p>Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations. Think of it like LEGO® for static generation.</p>
+<ul>
+<li><p>Content and data can come from a variety of sources.</p>
+</li>
+<li><p><strong><a href="/framework/concepts/documents">Documents</a></strong> are created that each contain <strong>content</strong> and <strong><a href="/framework/concepts/metadata">metadata</a></strong>.</p>
+</li>
+<li><p>The documents are processed by <strong><a href="/framework/concepts/pipelines">pipelines</a></strong>.</p>
+</li>
+<li><p>Each pipeline consists of one or more <strong><a href="/framework/concepts/modules">modules</a></strong> that manipulate the documents given to it by transforming, aggregating, filtering, or producing entirely new documents.</p>
+</li>
+<li><p>The final output of each pipeline is made available to other pipelines and may be written to output files or deployed to hosting services.</p>
+</li>
+</ul>
+<div><img src="“/assets/flow.png”" class="“mw-100”"></div>
 
 
+                                                <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/events">Events</a></h4>
+                                                                <div class="font-size-sm"><p>Events let you hook into various stages of the generation process and can be helpful when you need to implement cross-cutting behavior at runtime or when you need to modify the behavior of existing <a href="/framework/concepts/pipelines">pipelines</a>. Statiq has a global event mechanism that makes it easy to subscribe to and handle events.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/documents">Documents</a></h4>
+                                                                <div class="font-size-sm"><p>A <em>document</em> is a combination of <em>content</em> and <em><a href="/framework/concepts/metadata">metadata</a></em> as it makes it's way through the system.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/metadata">Metadata</a></h4>
+                                                                <div class="font-size-sm"><p>Metadata is the primary way information is passed though modules and pipelines via documents.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/modules">Modules</a></h4>
+                                                                <div class="font-size-sm"><p>A module is a component that performs a specific action, usually by creating, processing, or manipulating documents.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/pipelines">Pipelines</a></h4>
+                                                                <div class="font-size-sm"><p>A pipeline is a series of modules executed in sequence that results in final output documents.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/execution">Execution</a></h4>
+                                                                <div class="font-size-sm"><p>Execution is when pipelines and the modules they contain are evaluated.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/shortcodes">Shortcodes</a></h4>
+                                                                <div class="font-size-sm"><p>Shortcodes are small but powerful macros that can generate content or add metadata to your documents.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/concepts/files">Files and Paths</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq uses an IO abstraction layer designed to provide flexibility and consistency when dealing with files, directories, and path information.</p></div>
+                                                        </div>
+                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/concepts/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>

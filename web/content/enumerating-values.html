@@ -92,11 +92,19 @@
                                                 <div class="sidebar-nav-item">
                                                     <a href="/web">About Statiq Web</a>
                                                 </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/web/data">Data</a>
+                                                    </div>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                </div>
+                                                        </div>
                                                     <div class="sidebar-nav-item">
                                                         <a href="/web/preview-server">Preview Server</a>
                                                     </div>
                                                     <div class="sidebar-nav-item">
-                                                        <a href="/web/settings">Settings</a>
+                                                        <a href="/web/web-settings">Web Settings</a>
                                                     </div>
                                                     <div class="sidebar-nav-item has-children">
                                                         <a href="/web/content">Content</a>
@@ -104,6 +112,12 @@
                                                         <div class="sidebar-nav-children active">
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/content/archives">Archives</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/content/content-hierarchy">Content Hierarchy</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/content/cross-references">Cross References</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child active">
                                                                     <a href="/web/content/enumerating-values">Enumerating Values</a>
@@ -115,32 +129,18 @@
                                                                     <a href="/web/content/front-matter">Front Matter</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/linking">Linking</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/page-hierarchy">Page Hierarchy</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/shortcodes">Shortcodes</a>
+                                                                    <a href="/web/content/web-shortcodes">Web Shortcodes</a>
                                                                 </div>
                                                         </div>
-                                                    <div class="sidebar-nav-item has-children">
+                                                    <div class="sidebar-nav-item">
                                                         <a href="/web/data">Data</a>
                                                     </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/data/formats">Formats</a>
-                                                                </div>
-                                                        </div>
                                                     <div class="sidebar-nav-item has-children">
                                                         <a href="/web/templates">Templates</a>
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/templates/markdown">Markdown</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/navigation">Navigation</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/templates/razor">Razor</a>
@@ -176,8 +176,8 @@
 ---
 The current apple is &lt;?#= Current /?&gt;.
 </code></pre>
-<p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/web/templates/razor">Razor</a> syntax or another templating format.</p>
-<p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/settings#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/concepts/metadata#computed-values">computed values</a>:</p>
+<p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/web-shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/web/templates/razor">Razor</a> syntax or another templating format.</p>
+<p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/web-settings#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/concepts/metadata#computed-values">computed values</a>:</p>
 <pre><code class="language-txt">Enumerate:
   - Red Delicious
   - Honeycrisp
@@ -212,8 +212,9 @@ else
     &lt;/ul&gt;
 }
 </code></pre>
-<p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/concepts/metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
+<p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/concepts/metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/web-shortcodes#if"><code>If</code></a> and <a href="/web/content/web-shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
 <p>TODO: Usage with the data pipeline - define apples with descriptions as .yml files</p>
+
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">

@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Settings</title>
+        <title>Statiq - Writing Modules</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -62,13 +62,13 @@
                     </div>
                 </div>
             </nav>
-            <div class="flex-grow-1 d-flex flex-column section-undefined section-web">
+            <div class="flex-grow-1 d-flex flex-column section-undefined section-framework">
                     <div id="titlebar" class="py-4">
                         <div class="container">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
-                                    <div class="section text-uppercase">web</div>
-                                    <div class="text-white m-0 title">Settings</div>
+                                    <div class="section text-uppercase">framework</div>
+                                    <div class="text-white m-0 title">Writing Modules</div>
                                 </div>
                             </div>
                         </div>
@@ -90,114 +90,134 @@
                             <div class="row flex-grow-1 align-items-stretch">
                                         <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
                                                 <div class="sidebar-nav-item">
-                                                    <a href="/web">About Statiq Web</a>
+                                                    <a href="/framework">About Statiq Framework</a>
                                                 </div>
-                                                    <div class="sidebar-nav-item">
-                                                        <a href="/web/preview-server">Preview Server</a>
-                                                    </div>
-                                                    <div class="sidebar-nav-item active">
-                                                        <a href="/web/settings">Settings</a>
-                                                    </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/content">Content</a>
+                                                        <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/archives">Archives</a>
+                                                                    <a href="/framework/concepts/events">Events</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/enumerating-values">Enumerating Values</a>
+                                                                    <a href="/framework/concepts/documents">Documents</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/feeds">Feeds</a>
+                                                                    <a href="/framework/concepts/metadata">Metadata</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/front-matter">Front Matter</a>
+                                                                    <a href="/framework/concepts/modules">Modules</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/linking">Linking</a>
+                                                                    <a href="/framework/concepts/pipelines">Pipelines</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/page-hierarchy">Page Hierarchy</a>
+                                                                    <a href="/framework/concepts/execution">Execution</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/shortcodes">Shortcodes</a>
+                                                                    <a href="/framework/concepts/shortcodes">Shortcodes</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/concepts/files">Files and Paths</a>
                                                                 </div>
                                                         </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/data">Data</a>
+                                                        <a href="/framework/usage">Usage</a>
                                                     </div>
-                                                        <div class="sidebar-nav-children">
+                                                        <div class="sidebar-nav-children active">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/data/formats">Formats</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/templates">Templates</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/markdown">Markdown</a>
+                                                                    <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/navigation">Navigation</a>
+                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/razor">Razor</a>
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/themes">Themes</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/deployment">Deployment</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/deployment/azure">Azure</a>
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/deployment/github-pages">Github Pages</a>
+                                                                    <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/deployment/netlify">Netlify</a>
+                                                                <div class="sidebar-nav-child active">
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0">
-                                            <p>Settings let you define global <a href="/framework/concepts/metadata">metadata</a> that can be accessed from the <a href="/framework/concepts/execution#execution-context">execution context</a> or <a href="/framework/concepts/documents">documents</a>.</p>
-<p>At <a href="/framework/concepts/execution">execution time</a> all settings are combined into a single set of metadata accessible via the <a href="/framework/concepts/execution#execution-context">execution context</a>, which implements <code>IMetadata</code> for the purpose of exposing settings values.</p>
-<h1 id="specifying-settings">Specifying Settings</h1>
-<h2 id="settings-files">Settings Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
-<h2 id="environment-variables">Environment Variables</h2>
-<h2 id="bootstrapper">Bootstrapper</h2>
-<h2 id="cascade-to-documents">Cascade To Documents</h2>
-<p>All settings "cascade" to documents. That means that any value defined in settings files, environment variables, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/concepts/metadata#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
-<p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
-<pre><code class="language-json">{
-    "Published": "=&gt; DateTime.Today"
-}
-</code></pre>
-<p>Note that this configuration value uses a <a href="/framework/concepts/metadata#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
-<h1 id="global-settings">Global Settings</h1>
-<h1 id="document-settings">Document Settings</h1>
-<h2 id="destinationpath"><code>DestinationPath</code></h2>
-<p>TODO</p>
-<h2 id="destinationfilename"><code>DestinationFileName</code></h2>
-<p>TODO</p>
-<h2 id="destinationextension"><code>DestinationExtension</code></h2>
-<p>TODO</p>
+                                            <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
+<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution#execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
+<p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>
+<ul>
+<li><code>Module</code> is a common module base class that's appropriate for most modules.
+<ul>
+<li><code>ParallelModule</code> can be used when documents should be processed in parallel.</li>
+<li><code>SyncModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ParallelSyncModule</code> can be used when documents should be processed in parallel but the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ParentModule</code> can be used to execute child modules.
+<ul>
+<li><code>SyncParentModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ForEachDocument</code> can be used to execute child modules against each input document one at a time.</li>
+<li><code>ForAllDocuments</code> can be used to execute child modules against all documents and is very useful for grouping a sequence of child modules into a single parent module.</li>
+</ul>
+</li>
+<li><code>ChildDocumentsModule</code> can be used to execute child modules and then combine or manipulate input documents based on the output documents of the child modules.
+<ul>
+<li><code>SyncChildDocumentsModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ConfigModule&lt;TValue&gt;</code> and <code>MultiConfigModule</code> can be used to manage <code>Config&lt;TValue&gt;</code> delegates for configuring the module (you can also manage configuration delegates yourself, these modules just make it a little easier).
+<ul>
+<li><code>ParallelConfigModule&lt;TValue&gt;</code> and <code>ParallelMultiConfigModule</code> can be used when documents should be processed in parallel.</li>
+<li><code>SyncConfigModule&lt;TValue&gt;</code> and <code>SyncMultiConfigModule</code> can be used when the module execution should be synchronous (I.e. not <code>async</code>).</li>
+<li><code>ParallelSyncConfigModule&lt;TValue&gt;</code> and <code>ParallelSyncMultiConfigModule</code> can be used when documents should be processed in parallel but the module execution should be synchronous (I.e. not <code>async</code>).</li>
+</ul>
+</li>
+<li><code>ReadDataModule</code> can be used to convert data from arbitrary data sources into output documents.</li>
+</ul>
+<p>When using the base module classes you should never call <code>IModule.ExecuteAsync(...)</code> directly. Instead, most of the module base classes above have both an <code>ExecuteContext</code> virtual method and/or an <code>ExecuteInput</code> virtual method.</p>
+<ul>
+<li>Overload the <code>ExecuteContext</code> method to have your code called once for all the input documents (available via <code>IExecutionContext.Inputs</code>). This is useful for modules that need to create new documents from scratch or that need to aggregate or operate on the input documents as a set.</li>
+<li>Overload the <code>ExecuteInput</code> method to have you code called once per document. This is useful when the module transforms or manipulates documents that are unrelated to each other.</li>
+</ul>
+<p>Here are some other guidelines and tips to follow when writing a module:</p>
+<ul>
+<li>Consider using the built-in <code>ExecuteConfig</code> module instead of writing your own.
+<ul>
+<li>You may not even need a new module. The <code>ExecuteConfig</code> module lets you specify a delegate that can return documents, content, and other types of data which will be converted to output documents as appropriate.</li>
+</ul>
+</li>
+<li>Use <code>Config&lt;T&gt;</code> <a href="/framework/usage/configuration-delegates">configuration delegates</a>.
+<ul>
+<li>If your module needs to accept user-configurable values, use <code>Config&lt;T&gt;</code>.</li>
+<li>Consider using one of the base module classes that deals with <code>Config&lt;T&gt;</code> like <code>ConfigModule</code> or <code>MultiConfigModule</code>.</li>
+</ul>
+</li>
+<li>Avoid document-to-document references (especially to/from children):
+<ul>
+<li>Try to avoid creating documents that reference other documents, especially in the top-level output documents (parent documents that reference children may be okay in some cases). If a document references another document and a following module clones the referenced document, the reference will still point to the old document and not the new clone.</li>
+</ul>
+</li>
+<li>Preserve input ordering:
+<ul>
+<li>Many modules output documents in a specific order and following modules should preserve that order whenever possible. The base module classes do this by default, but any explicit parallel operations should preserve ordering as well (I.e., by calling <code>.AsParallel().AsOrdered()</code>).</li>
+</ul>
+</li>
+<li>Only reference <code>Statiq.Common</code>:
+<ul>
+<li>If a module is in a separate assembly from your application you shouldn’t need a reference to <code>Statiq.Core</code>, and if you find that you do please open an issue so the appropriate functionality can be moved to <code>Statiq.Common</code>.</li>
+</ul>
+</li>
+<li>Name modules using a VerbNoun convention when possible.</li>
+</ul>
+
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                            <div class="border-bottom mb-3">
-                                                <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#specifying-settings">Specifying Settings</a></p>
-                                                    <p class="small"><a href="#global-settings">Global Settings</a></p>
-                                                    <p class="small"><a href="#document-settings">Document Settings</a></p>
-                                            </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/settings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/usage/writing-modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

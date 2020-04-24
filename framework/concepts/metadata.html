@@ -93,14 +93,6 @@
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children active">
@@ -134,19 +126,22 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
@@ -203,11 +198,14 @@ My number is &lt;?#= MyNumber /?&gt;.
 <h1 id="accessing-metadata">Accessing Metadata</h1>
 <p>Every <a href="/framework/concepts/documents">document</a> acts like a dictionary and implements <code>IReadOnlyDictionary&lt;string, object&gt;</code> for easy access. Metadata key/value pairs can be accessed through this interface.</p>
 <h2 id="type-conversion">Type Conversion</h2>
-<p>All metadata is represented internally as raw objects. This allows you to store not just strings, but more complex data as well. However, when you access metadata you probably don't want to think about how it's stored or what the original type was. For example, YAML doesn't really distinguish between numbers and strings when it reads data, it's only when getting a value that you care. To make metadata as easy to work with as possible, Statiq Framework includes a very powerful <a href="/framework/usage/type-conversion">type conversion capability</a> that lets you convert nearly any metadata value to any other compatible type. For example, when you call <code>IMetadata.Get&lt;TValue&gt;(string key)</code> it doesn’t matter what the underlying type of the metadata is because the type converter will convert it to the requested <code>TValue</code> type if at all possible.</p>
+<p>All metadata is represented internally as raw objects. This allows you to store not just strings, but more complex data as well. However, when you access metadata you probably don't want to think about how it's stored or what the original type was. For example, YAML doesn't really distinguish between numbers and strings when it reads data, it's only when getting a value that you care. To make metadata as easy to work with as possible, Statiq Framework includes a very powerful type conversion capability that lets you convert nearly any metadata value to any other compatible type. For example, when you call <code>IMetadata.Get&lt;TValue&gt;(string key)</code> it doesn’t matter what the underlying type of the metadata is because the type converter will convert it to the requested <code>TValue</code> type if at all possible.</p>
+<p>Converting between sequences of different types or from a single item to a sequence is also supported. If you request an <code>IList&lt;T&gt;</code>, <code>IEnumerable&lt;T&gt;</code>, or array of <code>T</code> and the original value is also enumerable, all elements will be converted to the requested type <code>T</code> and those that cannot be converted will be omitted from the result. If the original value is not enumerable, it will be returned as a single element of the requested enumerable type.</p>
+<p>While type conversion is most often used when dealing with metadata, it’s also very helpful in situations when you only have string values (such as dealing with data from service endpoints) and can be used directly from your own code. The type conversion capability is accessible through the static <code>TypeHelper</code> class. These utility methods check all .NET type conversion techniques including <code>TypeConverter</code>, <code>IConvertible</code>, casting, etc. in order to convert any type to any other compatible type. The conversion support is provided by a fork of the <a href="http://www.codeproject.com/Articles/248440/Universal-Type-Converter">UniversalTypeConverter</a> library. New conversions can also be added at run-time through the <code>TypeHelper.RegisterTypeConverter()</code> methods.</p>
 <h2 id="raw-values">Raw Values</h2>
 <h2 id="metadata-lookup">Metadata Lookup</h2>
 <p>There are several extensions to make working with documents and metadata easier. One of the more powerful ones lets you generate an <code>ILookup&lt;T, IDocument&gt;</code> from a sequence of documents based on a metadata key. The signature of the extension method is <code>ILookup&lt;T, IDocument&gt; ToLookup&lt;T&gt;(this IEnumerable&lt;IDocument&gt; documents, string key)</code> where <code>key</code> is the metadata key that you want to generate a lookup for.</p>
 <p>For example, say you have a sequence of documents, some of which contain metadata for the key "Tags". Also, assume that some of the documents with "Tags" metadata contain a single value some contain arrays. If you simply call <code>Documents.ToLookup&lt;string&gt;("Tags")</code> you will get back an <code>ILookup&lt;T, IDocument&gt;</code> keyed by each possible tag string with a sequence of the documents that contain that tag as the value.</p>
+
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">

@@ -93,14 +93,6 @@
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children active">
@@ -134,19 +126,22 @@
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
@@ -222,6 +217,7 @@
 <p>Note that relative globbing patterns are often evaluated from the perspective of your <code>input</code> folder and not necessarily from where your config file resides, especially if the pattern is telling Statiq where to find certain files for processing. If you're having problems and a globbing pattern isn't returning the files you think it should, try adjusting it to start from the <code>input</code> folder.</p>
 <h1 id="testing">Testing</h1>
 <p>Because the new IO abstraction includes support for virtual file systems, it can be used to greatly simplify testing your custom modules by providing files that don't actually have to exist on disk. Several classes in the <code>Statiq.Testing</code> library are provided to help with this.</p>
+
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">

@@ -93,14 +93,6 @@
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children">
@@ -134,19 +126,22 @@
                                                     </div>
                                                         <div class="sidebar-nav-children active">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child active">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
@@ -159,6 +154,7 @@
 <pre><code class="language-csharp">new SomeModule(
     Config.FromDocument(doc =&gt; doc.GetString("key")))
 </code></pre>
+
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">

@@ -93,14 +93,6 @@
                                                     <a href="/framework">About Statiq Framework</a>
                                                 </div>
                                                     <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/extensibility">Extensibility</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/extensibility/creating-modules">Creating Modules</a>
-                                                                </div>
-                                                        </div>
-                                                    <div class="sidebar-nav-item has-children">
                                                         <a href="/framework/concepts">Concepts</a>
                                                     </div>
                                                         <div class="sidebar-nav-children">
@@ -134,67 +126,66 @@
                                                     </div>
                                                         <div class="sidebar-nav-children active">
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/adding-pipelines">Adding Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/bootstrapper">Bootstrapper</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
                                                                     <a href="/framework/usage/settings">Settings</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/type-conversion">Type Conversion</a>
+                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
                                                                 </div>
                                                         </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0">
-                                            <p>If this is your first time using Statiq Framework, the <a href="/framework#quick-start">quick start</a> can be helpful. If you’ve used Statiq before or want to go into more detail, the following sections explain some of the functionality in more detail.</p>
-<h4 class="h-section mb-2">Child Pages</h4>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/adding-pipelines">Adding Pipelines</a></h4>
-<div class="font-size-sm">
-<p>TODO - discuss how modules are typically added to the pipeline in the constructor</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/bootstrapper">Bootstrapper</a></h4>
-<div class="font-size-sm">
-<p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/configuration-delegates">Configuration Delegates</a></h4>
-<div class="font-size-sm">
-<p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/settings">Settings</a></h4>
-<div class="font-size-sm">
-<p>Settings let you define global <a href="/framework/concepts/metadata">metadata</a> that can be accessed from the <a href="/framework/concepts/execution#execution-context">execution context</a> or <a href="/framework/concepts/documents">documents</a>.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/framework/usage/type-conversion">Type Conversion</a></h4>
-<div class="font-size-sm">
-<p>Statiq can perform a variety of powerful type conversions.</p>
-</div>
-</div>
-</div>
+                                            <p>Coming Soon</p>
 
 
+                                                <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/bootstrapper">Bootstrapper</a></h4>
+                                                                <div class="font-size-sm"><p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/configuration-delegates">Configuration Delegates</a></h4>
+                                                                <div class="font-size-sm"><p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/concepts/execution">execution time</a> and optionally uses the document and/or <a href="/framework/concepts/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/defining-pipelines">Defining Pipelines</a></h4>
+                                                                <div class="font-size-sm"><p>TODO - discuss how modules are typically added to the pipeline in the constructor</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/command-line">Command-Line Interface</a></h4>
+                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/settings">Settings</a></h4>
+                                                                <div class="font-size-sm"><p>Settings let you define global <a href="/framework/concepts/metadata">metadata</a> that can be accessed from the <a href="/framework/concepts/execution#execution-context">execution context</a> or <a href="/framework/concepts/documents">documents</a>.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/usage/writing-modules">Writing Modules</a></h4>
+                                                                <div class="font-size-sm"><p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p></div>
+                                                        </div>
+                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/usage/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>

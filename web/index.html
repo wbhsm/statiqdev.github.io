@@ -92,11 +92,19 @@
                                                 <div class="sidebar-nav-item active">
                                                     <a href="/web">About Statiq Web</a>
                                                 </div>
+                                                    <div class="sidebar-nav-item has-children">
+                                                        <a href="/web/data">Data</a>
+                                                    </div>
+                                                        <div class="sidebar-nav-children">
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                </div>
+                                                        </div>
                                                     <div class="sidebar-nav-item">
                                                         <a href="/web/preview-server">Preview Server</a>
                                                     </div>
                                                     <div class="sidebar-nav-item">
-                                                        <a href="/web/settings">Settings</a>
+                                                        <a href="/web/web-settings">Web Settings</a>
                                                     </div>
                                                     <div class="sidebar-nav-item has-children">
                                                         <a href="/web/content">Content</a>
@@ -104,6 +112,12 @@
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/content/archives">Archives</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/content/content-hierarchy">Content Hierarchy</a>
+                                                                </div>
+                                                                <div class="sidebar-nav-child">
+                                                                    <a href="/web/content/cross-references">Cross References</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/content/enumerating-values">Enumerating Values</a>
@@ -115,32 +129,18 @@
                                                                     <a href="/web/content/front-matter">Front Matter</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/linking">Linking</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/page-hierarchy">Page Hierarchy</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/shortcodes">Shortcodes</a>
+                                                                    <a href="/web/content/web-shortcodes">Web Shortcodes</a>
                                                                 </div>
                                                         </div>
-                                                    <div class="sidebar-nav-item has-children">
+                                                    <div class="sidebar-nav-item">
                                                         <a href="/web/data">Data</a>
                                                     </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/data/formats">Formats</a>
-                                                                </div>
-                                                        </div>
                                                     <div class="sidebar-nav-item has-children">
                                                         <a href="/web/templates">Templates</a>
                                                     </div>
                                                         <div class="sidebar-nav-children">
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/templates/markdown">Markdown</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/navigation">Navigation</a>
                                                                 </div>
                                                                 <div class="sidebar-nav-child">
                                                                     <a href="/web/templates/razor">Razor</a>
@@ -178,7 +178,7 @@
 <pre><code class="language-csharp">dotnet add package Statiq.Web
 </code></pre>
 <h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
-<p>Creating a <a href="/framework/usage/bootstrapper">Bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/usage/adding-pipelines">pipelines</a> or <a href="/framework/extensibility/creating-modules">custom modules</a>, you shouldn’t need to for most sites.</p>
+<p>Creating a <a href="/framework/usage/bootstrapper">Bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/usage/defining-pipelines">pipelines</a> or <a href="/framework/usage/writing-modules">custom modules</a>, you shouldn’t need to for most sites.</p>
 <pre><code class="language-csharp">using System;
 using Statiq.App;
 using Statiq.Web;
@@ -200,57 +200,50 @@ namespace MySite
 <div class="alert alert-info" role="alert">
   <strong>More coming soon!</strong> Statiq Web is still under active feature development and a lot more functionality is coming soon including support for themes.
 </div>
-<h4 class="h-section mb-2">Child Pages</h4>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/preview-server">Preview Server</a></h4>
-<div class="font-size-sm">
-<p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/settings">Settings</a></h4>
-<div class="font-size-sm">
-<p>Settings let you define global <a href="/framework/concepts/metadata">metadata</a> that can be accessed from the <a href="/framework/concepts/execution#execution-context">execution context</a> or <a href="/framework/concepts/documents">documents</a>.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/content">Content</a></h4>
-<div class="font-size-sm">
-<p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/data">Data</a></h4>
-<div class="font-size-sm">
-<p>Coming Soon</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/templates">Templates</a></h4>
-<div class="font-size-sm">
-<p>Coming Soon</p>
-</div>
-</div>
-</div>
-<div>
-<div class="p-3 mb-2 bg-light page-box">
-<h4><a href="/web/deployment">Deployment</a></h4>
-<div class="font-size-sm">
-<p>Coming Soon</p>
-</div>
-</div>
-</div>
 
 
+                                                <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/data">Data</a></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/preview-server">Preview Server</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/web-settings">Web Settings</a></h4>
+                                                                <div class="font-size-sm"><p>TODO</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content">Content</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/data">Data</a></h4>
+                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/templates">Templates</a></h4>
+                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/deployment">Deployment</a></h4>
+                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                        </div>
+                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
