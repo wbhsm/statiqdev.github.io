@@ -28,45 +28,58 @@
                     <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
                 </div>
             </div>
-            <nav id="topnav" class="navbar navbar-expand-md navbar-light">
+            <div class="bg-nav">
                 <div class="container-xl py-3">
-                    <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse-target" aria-controls="collapse-target" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse collapse-target">
-                        <ul class="navbar-nav mr-auto">
-                            <li id="nav-web" class="nav-item">
-                                <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
-                            </li>
-                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
-                            <li id="nav-docs" class="nav-item">
-                                <a class="nav-link text-orange font-weight-light font-size-lg" href="/docs">Docs</a>
-                            </li>
-                            <li class="nav-item mx-3 border-right d-none d-lg-block"></li>
-                            <li id="nav-framework" class="nav-item">
-                                <a class="nav-link text-purple font-weight-light font-size-lg" href="/framework">Framework</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/blog">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-bold" href="/license">License</a>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div class="offset-lg-2 col-12 col-lg-8 px-0">
+                            <nav class="navbar navbar-expand-md navbar-light align-items-start">
+                                <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-topnav" aria-controls="collapse-topnav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div id="collapse-topnav" class="collapse navbar-collapse flex-wrap">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li id="nav-web" class="nav-item">
+                                            <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
+                                        </li>
+                                        <li class="nav-item mx-3 border-right d-none d-md-block"></li>
+                                        <li id="nav-docs" class="nav-item">
+                                            <a class="nav-link text-orange font-weight-light font-size-lg" href="/docs">Docs</a>
+                                        </li>
+                                        <li class="nav-item mx-3 border-right d-none d-md-block"></li>
+                                        <li id="nav-framework" class="nav-item">
+                                            <a class="nav-link text-purple font-weight-light font-size-lg" href="/framework">Framework</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/blog">Blog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://twitter.com/statiqdev"><i class="fab fa-twitter"></i> Twitter</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link font-weight-bold text-red" href="/support"><i class="fad fa-heart icon-red"></i> Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-            </nav>
+            </div>
 
     <div id="hero" class="jumbotron jumbotron-fluid mb-0">
-        <div class="container">
-            <div class="display-4 text-white">Your imagination, your generator.</div> 
-            <p class="lead text-white">Statiq is the world's most powerful static generation platform, allowing you to use or create a static generator that's exactly what <em>you</em> need.</p>
+        <div class="container-xl">
+            <div class="row">
+                <div class=" offset-lg-2 col-12 col-lg-8">
+                    <div class="display-4 text-white">Your imagination, your generator.</div> 
+                    <p class="lead text-white">Statiq is the world's most powerful static generation platform, allowing you to use or create a static generator that's exactly what <em>you</em> need.</p>
+                </div>
+            </div>
         </div>
     </div>
             <div class="flex-grow-1 d-flex flex-column">
@@ -74,167 +87,21 @@
                         <div class="bg-white">
                             
 <div class="bg-dark">
-    <div class="container py-4">
-        <div class="row d-flex align-items-end">
-            <div class="col-sm-4">
-                <h3 class="d-inline text-white">Latest Posts</h3>
-            </div>
-                <div class="col-sm-4">
-                    <div class="text-muted"><small>Tuesday, April 28, 2020</small></div>
-                    <div><a href="/blog/2020/04/28/statiq.web-1.0.0-alpha.9" class="text-white">Statiq.Web Release 1.0.0-alpha.9</a></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="text-muted"><small>Wednesday, April 22, 2020</small></div>
-                    <div><a href="/blog/2020/04/22/statiq.web-1.0.0-alpha.8" class="text-white">Statiq.Web Release 1.0.0-alpha.8</a></div>
-                </div>
-        </div>
-    </div>
-</div>
-
-<div class="bg-light">
-    <div class="container">
-        <div class="row py-4">
-            <div class="col-lg-4">
-                <a href="/web" class="text-decoration-none">
-                    <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
-                    <div class="display-4 font-weight-light text-web mt-n2">Web</div>
-                </a>
-            </div>
-            <div class="col-lg-8">
-                <div class="row h-lg-100 d-flex align-items-center">
-                    <div class="col-lg-2 h-100 d-flex flex-column">
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
-                        <div class="product-icon d-none d-lg-block"><i class="fad fa-globe-africa icon-web"></i></div>
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+    <div class="container-xl py-4">
+        <div class="row">
+            <div class="offset-lg-2 col-12 col-lg-8">
+                <div class="row d-flex align-items-end">
+                    <div class="col-sm-4">
+                        <h3 class="d-inline text-white">Latest Posts</h3>
                     </div>
-                    <div class="col-12 col-lg-10">
-                        <p class="font-size-sm">
-                            A batteries-included static site generator that's appropriate for most use cases. Use it
-                            out-of-the-box or extend it with custom pipelines, data sources, and layouts.
-                        </p>
-                        <a href="/web" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
-                        <a href="/license" class="btn btn-primary">Buy A Commercial-Use License</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row py-4 border-top">
-            <div class="col-lg-4">
-                <a href="/docs" class="text-decoration-none">
-                    <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
-                    <div class="display-4 font-weight-light text-docs mt-n2">Docs</div>
-                </a>
-            </div>
-            <div class="col-lg-8">
-                <div class="row h-lg-100 d-flex align-items-center">
-                    <div class="col-lg-2 h-100 d-flex flex-column">
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
-                        <div class="product-icon d-none d-lg-block"><i class="fad fa-book icon-docs"></i></div>
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
-                    </div>
-                    <div class="col-12 col-lg-10">
-                        <p class="font-size-sm">
-                            Extends Statiq Web by adding support for generating .NET API documentation while still benefiting
-                            from all the capabilities of a robust general-purpose static site generator.
-                        </p>
-                        <a href="/docs" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
-                        <a href="/license" class="btn btn-primary">Buy A Commercial-Use License</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row py-4 border-top">
-            <div class="col-lg-4">
-                <a href="/framework" class="text-decoration-none">
-                    <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
-                    <div class="display-4 font-weight-light text-framework mt-n2">Framework</div>
-                </a>
-            </div>
-            <div class="col-lg-8">
-                <div class="row h-lg-100 d-flex align-items-center">
-                    <div class="col-lg-2 h-100 d-flex flex-column">
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
-                        <div class="product-icon d-none d-lg-block"><i class="fad fa-rocket-launch icon-framework"></i></div>
-                        <div class="border-left flex-grow-1 d-none d-lg-block"></div>
-                    </div>
-                    <div class="col-12 col-lg-10">
-                        <p class="font-size-sm">
-                            The framework behind Statiq Web and Statiq Docs with over 100 modules to help you easily build a custom
-                            static generator application specifically for your needs.
-                        </p>
-                        <a href="/framework" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container py-3">
-    <div class="row">
-        <div class="col-sm py-3">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fad fa-random fa-2x icon-md-100 icon-theme"></i>
-                </div>
-                <div class="col-md-10">
-                    <h3 class="font-weight-bold font-size-base text-dark mb-2">Templating Choice</h3>
-                    <p>
-                        Different types of content require different types of templates, and Statiq
-                        has you covered with support for Markdown and Razor
-                        (along with plain HTML) with more languages like Handlebars/Mustache and
-                        Liquid coming soon.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm py-3">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fad fa-table fa-2x icon-md-100 icon-theme"></i>
-                </div>
-                <div class="col-md-10">
-                    <h3 class="font-weight-bold font-size-base text-dark mb-2">Data Agility</h3>
-                    <p>
-                        Statiq understands a variety of data formats like YAML,
-                        JSON, and XML and is designed to plug
-                        any data format into any usage. From data files to front matter use the
-                        data format you're most comfortable in.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm py-3">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fad fa-tools fa-2x icon-md-100 icon-theme"></i>
-                </div>
-                <div class="col-md-10">
-                    <h3 class="font-weight-bold font-size-base text-dark mb-2">Ultimate Flexibility</h3>
-                    <p>
-                        Statiq is designed from the ground up to provide a simple and easy "happy path"
-                        through applications like <a href="/web">Statiq Web</a> while providing complete
-                        control when needed by extending them or using the full <a href="/framework">Statiq Framework</a>.
-                        You shouldn't have to compromise your vision because of your static generator.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm py-3">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fad fa-clouds fa-2x icon-md-100 icon-theme"></i>
-                </div>
-                <div class="col-md-10">
-                    <h3 class="font-weight-bold font-size-base text-dark mb-2">Deployment Built-In</h3>
-                    <p>
-                        What good is awesome tooling if figuring out how to deploy your
-                        site is a pain in the neck? Statiq comes with deployment capabilities
-                        built-in for popular scenarios such as <a href="#">Netlify</a> and
-                        <a href="#">Azure App Service</a> with GitHub Pages, AWS, and others coming soon.
-                    </p>
+                        <div class="col-sm-4">
+                            <div class="text-muted"><small>Tuesday, April 28, 2020</small></div>
+                            <div><a href="/blog/2020/04/28/statiq.web-1.0.0-alpha.9" class="text-white">Statiq.Web Release 1.0.0-alpha.9</a></div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-muted"><small>Wednesday, April 22, 2020</small></div>
+                            <div><a href="/blog/2020/04/22/statiq.web-1.0.0-alpha.8" class="text-white">Statiq.Web Release 1.0.0-alpha.8</a></div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -242,99 +109,282 @@
 </div>
 
 <div class="bg-light">
-    <div class="container py-3 font-size-sm">
-        <div class="text-center">
-            <h2>How It Works</h2>
-            <div><img src="/assets/flow.png" class="mw-100"></div>
+    <div class="container-xl">
+        <div class="row">
+            <div class="offset-lg-2 col-12 col-lg-8">        
+                <div class="row py-4">
+                    <div class="col-lg-4">
+                        <a href="/web" class="text-decoration-none">
+                            <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
+                            <div class="display-4 font-weight-light text-web mt-n2">Web</div>
+                        </a>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row h-lg-100 d-flex align-items-center">
+                            <div class="col-lg-2 h-100 d-flex flex-column">
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                                <div class="product-icon d-none d-lg-block"><i class="fad fa-globe-africa icon-web"></i></div>
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                            </div>
+                            <div class="col-12 col-lg-10">
+                                <p class="font-size-sm">
+                                    A batteries-included static site generator that's appropriate for most use cases. Use it
+                                    out-of-the-box or extend it with custom pipelines, data sources, and layouts.
+                                </p>
+                                <a href="/web" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
+                                <a href="/license" class="btn btn-primary">Buy A Commercial-Use License</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 border-top">
+                    <div class="col-lg-4">
+                        <a href="/docs" class="text-decoration-none">
+                            <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
+                            <div class="display-4 font-weight-light text-docs mt-n2">Docs</div>
+                        </a>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row h-lg-100 d-flex align-items-center">
+                            <div class="col-lg-2 h-100 d-flex flex-column">
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                                <div class="product-icon d-none d-lg-block"><i class="fad fa-book icon-docs"></i></div>
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                            </div>
+                            <div class="col-12 col-lg-10">
+                                <p class="font-size-sm">
+                                    Extends Statiq Web by adding support for generating .NET API documentation while still benefiting
+                                    from all the capabilities of a robust general-purpose static site generator.
+                                </p>
+                                <a href="/docs" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
+                                <a href="/license" class="btn btn-primary">Buy A Commercial-Use License</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 border-top">
+                    <div class="col-lg-4">
+                        <a href="/framework" class="text-decoration-none">
+                            <div><img src="/assets/wordmark.svg" class="product-wordmark" alt="Statiq"></div>
+                            <div class="display-4 font-weight-light text-framework mt-n2">Framework</div>
+                        </a>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row h-lg-100 d-flex align-items-center">
+                            <div class="col-lg-2 h-100 d-flex flex-column">
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                                <div class="product-icon d-none d-lg-block"><i class="fad fa-rocket-launch icon-framework"></i></div>
+                                <div class="border-left flex-grow-1 d-none d-lg-block"></div>
+                            </div>
+                            <div class="col-12 col-lg-10">
+                                <p class="font-size-sm">
+                                    The framework behind Statiq Web and Statiq Docs with over 100 modules to help you easily build a custom
+                                    static generator application specifically for your needs.
+                                </p>
+                                <a href="/framework" class="btn btn-dark font-weight-bold">Get Started <i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>
-            Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations.
-            Think of it like LEGO® for static generation.
-        </p>
-        <ul class="unordered">
-            <li>Content and data can come from a variety of sources including <strong>input files</strong>, <strong>databases</strong>, and <strong>services</strong>.</li>
-            <li><strong><a href="/framework/documents">Documents</a></strong> are created that each contain <strong>content</strong> and <strong><a href="/framework/documents#about-metadata">metadata</a></strong>.</li>
-            <li>The documents are processed by <strong><a href="/framework/pipelines">pipelines</a></strong>.</li>
-            <li>Each pipeline consists of one or more <strong><a href="/framework/pipelines/modules">modules</a></strong> that manipulate the documents given to it by transforming, aggregating, filtering, or producing entirely new documents.</li>
-            <li>The final output of each pipeline is made available to other pipelines and may be written to output files or deployed to hosting services.</li>
-        </ul>
     </div>
 </div>
 
-<div class="container py-3">
-    <div class="text-center">
-        <h2>Feature Comparison</h2>
+<div class="container-xl py-3">
+    <div class="row">
+        <div class="offset-lg-2 col-12 col-lg-8">
+            <div class="row">
+                <div class="col-sm py-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <i class="fad fa-random fa-2x icon-md-100 icon-theme"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="font-weight-bold font-size-base text-dark mb-2">Templating Choice</h3>
+                            <p>
+                                Different types of content require different types of templates, and Statiq
+                                has you covered with support for Markdown and Razor
+                                (along with plain HTML) with more languages like Handlebars/Mustache and
+                                Liquid coming soon.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm py-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <i class="fad fa-table fa-2x icon-md-100 icon-theme"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="font-weight-bold font-size-base text-dark mb-2">Data Agility</h3>
+                            <p>
+                                Statiq understands a variety of data formats like YAML,
+                                JSON, and XML and is designed to plug
+                                any data format into any usage. From data files to front matter use the
+                                data format you're most comfortable in.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm py-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <i class="fad fa-tools fa-2x icon-md-100 icon-theme"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="font-weight-bold font-size-base text-dark mb-2">Ultimate Flexibility</h3>
+                            <p>
+                                Statiq is designed from the ground up to provide a simple and easy "happy path"
+                                through applications like <a href="/web">Statiq Web</a> while providing complete
+                                control when needed by extending them or using the full <a href="/framework">Statiq Framework</a>.
+                                You shouldn't have to compromise your vision because of your static generator.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm py-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <i class="fad fa-clouds fa-2x icon-md-100 icon-theme"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="font-weight-bold font-size-base text-dark mb-2">Deployment Built-In</h3>
+                            <p>
+                                What good is awesome tooling if figuring out how to deploy your
+                                site is a pain in the neck? Statiq comes with deployment capabilities
+                                built-in for popular scenarios such as <a href="#">Netlify</a> and
+                                <a href="#">Azure App Service</a> with GitHub Pages, AWS, and others coming soon.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col" style="width: 40%"></th>
-                    <th scope="col" class="text-framework" style="width: 20%">Framework</th>
-                    <th scope="col" class="text-web" style="width: 20%">Web</th>
-                    <th scope="col" class="text-docs" style="width: 20%">Docs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">Preview server with live reload</td>
-                    <td></td>
-                    <td><i class="fad fa-check-square icon-web"></i></td>
-                    <td><i class="fad fa-check-square icon-docs"></i></td>
-                </tr>
-                <tr class="table-dark text-dark">
-                    <th scope="row" colspan="4">Deployment</th>
-                </tr>
-                <tr>
-                    <td scope="row">General deployment pipelines</td>
-                    <td><i class="fad fa-check-square icon-framework"></i></td>
-                    <td><i class="fad fa-check-square icon-web"></i></td>
-                    <td><i class="fad fa-check-square icon-docs"></i></td>
-                </tr>
-                <tr>
-                    <td scope="row">Out-of-the-box Netlify deployments</td>
-                    <td></td>
-                    <td><i class="fad fa-check-square icon-web"></i></td>
-                    <td><i class="fad fa-check-square icon-docs"></i></td>
-                </tr>
-                <tr>
-                    <td scope="row">Out-of-the-box Azure App Service deployments</td>
-                    <td></td>
-                    <td><i class="fad fa-check-square icon-web"></i></td>
-                    <td><i class="fad fa-check-square icon-docs"></i></td>
-                </tr>
-                <tr class="table-dark text-dark">
-                    <th scope="row" colspan="4">Licensing</th>
-                </tr>
-                <tr>
-                    <td scope="row">Open source</td>
-                    <td><i class="fad fa-check-square icon-framework"></i></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td scope="row">License</td>
-                    <td>MIT</td>
-                    <td>
-                        <div>Non-commercial (Prosperity)</div>
-                        <div><a href="/license" class="btn btn-primary btn-sm">Buy A Commercial-Use License</a></div>
-                    </td>
-                    <td>
-                        <div>Non-commercial (Prosperity)</div>
-                        <div><a href="/license" class="btn btn-primary btn-sm">Buy A Commercial-Use License</a></div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+</div>
+
+<div class="bg-light">
+    <div class="container-xl py-3 font-size-sm">
+        <div class="row">
+            <div class="offset-lg-2 col-12 col-lg-8">
+                <div class="text-center">
+                    <h2>How It Works</h2>
+                    <div><img src="/assets/flow.png" class="mw-100"></div>
+                </div>
+                <p>
+                    Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations.
+                    Think of it like LEGO® for static generation.
+                </p>
+                <ul class="unordered">
+                    <li>Content and data can come from a variety of sources including <strong>input files</strong>, <strong>databases</strong>, and <strong>services</strong>.</li>
+                    <li><strong><a href="/framework/documents">Documents</a></strong> are created that each contain <strong>content</strong> and <strong><a href="/framework/documents#about-metadata">metadata</a></strong>.</li>
+                    <li>The documents are processed by <strong><a href="/framework/pipelines">pipelines</a></strong>.</li>
+                    <li>Each pipeline consists of one or more <strong><a href="/framework/pipelines/modules">modules</a></strong> that manipulate the documents given to it by transforming, aggregating, filtering, or producing entirely new documents.</li>
+                    <li>The final output of each pipeline is made available to other pipelines and may be written to output files or deployed to hosting services.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-xl py-3">
+    <div class="row">
+        <div class="offset-lg-2 col-12 col-lg-8">
+            <div class="text-center">
+                <h2>Feature Comparison</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 40%"></th>
+                            <th scope="col" class="text-framework" style="width: 20%">Framework</th>
+                            <th scope="col" class="text-web" style="width: 20%">Web</th>
+                            <th scope="col" class="text-docs" style="width: 20%">Docs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">Preview server with live reload</td>
+                            <td></td>
+                            <td><i class="fad fa-check-square icon-web"></i></td>
+                            <td><i class="fad fa-check-square icon-docs"></i></td>
+                        </tr>
+                        <tr class="table-dark text-dark">
+                            <th scope="row" colspan="4">Deployment</th>
+                        </tr>
+                        <tr>
+                            <td scope="row">General deployment pipelines</td>
+                            <td><i class="fad fa-check-square icon-framework"></i></td>
+                            <td><i class="fad fa-check-square icon-web"></i></td>
+                            <td><i class="fad fa-check-square icon-docs"></i></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Out-of-the-box Netlify deployments</td>
+                            <td></td>
+                            <td><i class="fad fa-check-square icon-web"></i></td>
+                            <td><i class="fad fa-check-square icon-docs"></i></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Out-of-the-box Azure App Service deployments</td>
+                            <td></td>
+                            <td><i class="fad fa-check-square icon-web"></i></td>
+                            <td><i class="fad fa-check-square icon-docs"></i></td>
+                        </tr>
+                        <tr class="table-dark text-dark">
+                            <th scope="row" colspan="4">Licensing</th>
+                        </tr>
+                        <tr>
+                            <td scope="row">Open source</td>
+                            <td><i class="fad fa-check-square icon-framework"></i></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">License</td>
+                            <td>MIT</td>
+                            <td>
+                                <div>Non-commercial (Prosperity)</div>
+                                <div><a href="/license" class="btn btn-primary btn-sm">Buy A Commercial-Use License</a></div>
+                            </td>
+                            <td>
+                                <div>Non-commercial (Prosperity)</div>
+                                <div><a href="/license" class="btn btn-primary btn-sm">Buy A Commercial-Use License</a></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
                         </div>
                 </div>
             </div>
         </div>
-        <div id="footer" class="p-3 text-white font-size-sm">
+        <div id="footer" class="p-3 text-white">
             <div class="container-xl">
-                <div>© 2020 Statiq/Dave Glick</div>
+                <div class="row">
+                    <div class="offset-lg-2 col-12 col-lg-8">
+                        <div class="text-light text-center">
+                            <a href="/web" class="text-light pr-2 mr-1 border-right">Web</a>
+                            <a href="/docs" class="text-light pr-2 mr-1 border-right">Docs</a>
+                            <a href="/framework" class="text-light">Framework</a>
+                        </div>
+                        <div class="text-light text-center font-size-sm">
+                            <a href="/blog" class="text-light pr-2 mr-1">Blog</a>
+                            <a href="https://github.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://twitter.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a class="text-light font-weight-bold" href="/support"><i class="fad fa-heart"></i> Support</a>
+                        </div>
+                        <div class="pt-2 font-size-sm text-muted text-center">
+                            © 2020 Statiq/Dave Glick
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
