@@ -24,17 +24,17 @@
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
             <div class="bg-red">
-                <div class="container">
+                <div class="container-xl">
                     <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
                 </div>
             </div>
-            <nav id="topnav" class="navbar navbar-expand-lg navbar-light">
-                <div class="container py-3">
+            <nav id="topnav" class="navbar navbar-expand-md navbar-light">
+                <div class="container-xl py-3">
                     <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse-target" aria-controls="collapse-target" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse collapse-target">
                         <ul class="navbar-nav mr-auto">
                             <li id="nav-web" class="nav-item">
                                 <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
@@ -64,7 +64,7 @@
             </nav>
             <div class="flex-grow-1 d-flex flex-column section-undefined section-blog">
                     <div id="titlebar" class="py-4">
-                        <div class="container">
+                        <div class="container-xl">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">blog</div>
@@ -75,11 +75,11 @@
                         </div>
                     </div>
                     <div id="undertitle">
-                        <div class="container bg-white">                            
+                        <div class="container-xl">                            
                             <div class="row">
                                     <div class="col-md-3 col-lg-2 bg-section">
                                     </div>
-                                    <div class="col-md-9 col-lg-8">
+                                    <div class="col-md-9 col-lg-8 bg-white">
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-section">
                                 </div>
@@ -87,9 +87,10 @@
                         </div>
                     </div>
                 <div class="flex-grow-1 d-flex flex-column">
-                        <div class="container flex-grow-1 d-flex flex-column bg-white">
+                        <div class="container-xl flex-grow-1 d-flex flex-column">
                             <div class="row flex-grow-1 align-items-stretch">
-                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
+                                        <div class="col-md-3 col-lg-2 bg-body p-0">
+                                            <div class="sidebar collapse collapse-target">
 
     <h3>Topics</h3>
         <div class="sidebar-nav-item">
@@ -98,13 +99,23 @@
         <div class="sidebar-nav-item">
             <a href="/blog/topics/meta">Meta</a>
         </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0">
+                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             
 
 
     <p>Release notes for the various Statiq projects.</p>
 <div>
+        <div>
+            <div class="p-3 mb-2 bg-light page-box">
+                <h4><a href="/blog/2019/10/23/statiq.framework-1.0.0-alpha.12">Statiq.Framework Release 1.0.0-alpha.12</a></h4>
+                <div class="small text-black-50">
+                    Wednesday, October 23, 2019 in
+                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
+                </div>
+            </div>
+        </div>
         <div>
             <div class="p-3 mb-2 bg-light page-box">
                 <h4><a href="/blog/2019/10/23/statiq.framework-1.0.0-alpha.11">Statiq.Framework Release 1.0.0-alpha.11</a></h4>
@@ -186,15 +197,6 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="p-3 mb-2 bg-light page-box">
-                <h4><a href="/blog/2019/09/18/statiq.framework-1.0.0-alpha.2">Statiq.Framework Release 1.0.0-alpha.2</a></h4>
-                <div class="small text-black-50">
-                    Wednesday, September 18, 2019 in
-                    <a href="/blog/topics/release"><span class="badge badge-light">Release Notes</span></a>
-                </div>
-            </div>
-        </div>
         <div class="d-flex flex-row justify-content-between">
             <div>
                     <a class="btn btn-primary" href="/blog/topics/release/5" role="button">Older</a>
@@ -215,7 +217,7 @@
             </div>
         </div>
         <div id="footer" class="p-3 text-white font-size-sm">
-            <div class="container">
+            <div class="container-xl">
                 <div>© 2020 Statiq/Dave Glick</div>
             </div>
         </div>

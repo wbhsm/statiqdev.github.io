@@ -24,17 +24,17 @@
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
             <div class="bg-red">
-                <div class="container">
+                <div class="container-xl">
                     <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
                 </div>
             </div>
-            <nav id="topnav" class="navbar navbar-expand-lg navbar-light">
-                <div class="container py-3">
+            <nav id="topnav" class="navbar navbar-expand-md navbar-light">
+                <div class="container-xl py-3">
                     <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse-target" aria-controls="collapse-target" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse collapse-target">
                         <ul class="navbar-nav mr-auto">
                             <li id="nav-web" class="nav-item">
                                 <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
@@ -64,7 +64,7 @@
             </nav>
             <div class="flex-grow-1 d-flex flex-column section-undefined section-web">
                     <div id="titlebar" class="py-4">
-                        <div class="container">
+                        <div class="container-xl">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">web</div>
@@ -74,11 +74,11 @@
                         </div>
                     </div>
                     <div id="undertitle">
-                        <div class="container bg-white">                            
+                        <div class="container-xl">                            
                             <div class="row">
                                     <div class="col-md-3 col-lg-2 bg-section">
                                     </div>
-                                    <div class="col-md-9 col-lg-8">
+                                    <div class="col-md-9 col-lg-8 bg-white">
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-section">
                                 </div>
@@ -86,85 +86,87 @@
                         </div>
                     </div>
                 <div class="flex-grow-1 d-flex flex-column">
-                        <div class="container flex-grow-1 d-flex flex-column bg-white">
+                        <div class="container-xl flex-grow-1 d-flex flex-column">
                             <div class="row flex-grow-1 align-items-stretch">
-                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                                <div class="sidebar-nav-item">
-                                                    <a href="/web">About Statiq Web</a>
-                                                </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/data">Data</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/data/accessing-data">Accessing Data</a>
-                                                                </div>
-                                                        </div>
+                                        <div class="col-md-3 col-lg-2 bg-body p-0">
+                                            <div class="sidebar collapse collapse-target">
                                                     <div class="sidebar-nav-item">
-                                                        <a href="/web/preview-server">Preview Server</a>
+                                                        <a href="/web">About Statiq Web</a>
                                                     </div>
-                                                    <div class="sidebar-nav-item">
-                                                        <a href="/web/web-settings">Web Settings</a>
-                                                    </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/content">Content</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/archives">Archives</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/content-hierarchy">Content Hierarchy</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/cross-references">Cross References</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/enumerating-values">Enumerating Values</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/feeds">Feeds</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/front-matter">Front Matter</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/content/web-shortcodes">Web Shortcodes</a>
-                                                                </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/data">Data</a>
                                                         </div>
-                                                    <div class="sidebar-nav-item">
-                                                        <a href="/web/data">Data</a>
-                                                    </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/templates">Templates</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/markdown">Markdown</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/razor">Razor</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/templates/themes">Themes</a>
-                                                                </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/preview-server">Preview Server</a>
                                                         </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/web/deployment">Deployment</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children active">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/deployment/azure">Azure</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child active">
-                                                                    <a href="/web/deployment/github-pages">Github Pages</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/web/deployment/netlify">Netlify</a>
-                                                                </div>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/web-settings">Web Settings</a>
                                                         </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/content">Content</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/archives">Archives</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/content-hierarchy">Content Hierarchy</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/cross-references">Cross References</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/enumerating-values">Enumerating Values</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/feeds">Feeds</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/front-matter">Front Matter</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/web-shortcodes">Web Shortcodes</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/data">Data</a>
+                                                        </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/templates">Templates</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/templates/markdown">Markdown</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/templates/razor">Razor</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/templates/themes">Themes</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/deployment">Deployment</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/deployment/azure">Azure</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item active">
+                                                                        <a href="/web/deployment/github-pages">Github Pages</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/deployment/netlify">Netlify</a>
+                                                                    </div>
+                                                            </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0">
+                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Coming Soon</p>
 
 
@@ -178,7 +180,7 @@
             </div>
         </div>
         <div id="footer" class="p-3 text-white font-size-sm">
-            <div class="container">
+            <div class="container-xl">
                 <div>© 2020 Statiq/Dave Glick</div>
             </div>
         </div>

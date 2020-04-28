@@ -24,17 +24,17 @@
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
             <div class="bg-red">
-                <div class="container">
+                <div class="container-xl">
                     <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
                 </div>
             </div>
-            <nav id="topnav" class="navbar navbar-expand-lg navbar-light">
-                <div class="container py-3">
+            <nav id="topnav" class="navbar navbar-expand-md navbar-light">
+                <div class="container-xl py-3">
                     <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse-target" aria-controls="collapse-target" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse collapse-target">
                         <ul class="navbar-nav mr-auto">
                             <li id="nav-web" class="nav-item">
                                 <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
@@ -64,7 +64,7 @@
             </nav>
             <div class="flex-grow-1 d-flex flex-column section-undefined section-framework">
                     <div id="titlebar" class="py-4">
-                        <div class="container">
+                        <div class="container-xl">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 px-3 px-md-0">
                                     <div class="section text-uppercase">framework</div>
@@ -74,11 +74,11 @@
                         </div>
                     </div>
                     <div id="undertitle">
-                        <div class="container bg-white">                            
+                        <div class="container-xl">                            
                             <div class="row">
                                     <div class="col-md-3 col-lg-2 bg-section">
                                     </div>
-                                    <div class="col-md-9 col-lg-8">
+                                    <div class="col-md-9 col-lg-8 bg-white">
                                     </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-section">
                                 </div>
@@ -86,68 +86,107 @@
                         </div>
                     </div>
                 <div class="flex-grow-1 d-flex flex-column">
-                        <div class="container flex-grow-1 d-flex flex-column bg-white">
+                        <div class="container-xl flex-grow-1 d-flex flex-column">
                             <div class="row flex-grow-1 align-items-stretch">
-                                        <div class="sidebar col-md-3 col-lg-2 pt-2 bg-body">
-                                                <div class="sidebar-nav-item">
-                                                    <a href="/framework">About Statiq Framework</a>
-                                                </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/concepts">Concepts</a>
+                                        <div class="col-md-3 col-lg-2 bg-body p-0">
+                                            <div class="sidebar collapse collapse-target">
+                                                    <div class="sidebar-nav-item">
+                                                        <a href="/framework">About Statiq Framework</a>
                                                     </div>
-                                                        <div class="sidebar-nav-children">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/events">Events</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/documents">Documents</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/metadata">Metadata</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/modules">Modules</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/pipelines">Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/execution">Execution</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/shortcodes">Shortcodes</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/concepts/files">Files and Paths</a>
-                                                                </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/content">Content</a>
                                                         </div>
-                                                    <div class="sidebar-nav-item has-children">
-                                                        <a href="/framework/usage">Usage</a>
-                                                    </div>
-                                                        <div class="sidebar-nav-children active">
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/bootstrapper">Bootstrapper</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/configuration-delegates">Configuration Delegates</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/defining-pipelines">Defining Pipelines</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/command-line">Command-Line Interface</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child">
-                                                                    <a href="/framework/usage/settings">Settings</a>
-                                                                </div>
-                                                                <div class="sidebar-nav-child active">
-                                                                    <a href="/framework/usage/writing-modules">Writing Modules</a>
-                                                                </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/template-languages">Template Languages</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/shortcodes">Shortcodes</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/execution">Execution</a>
                                                         </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/engine">Engine</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/events">Events</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/execution-context">Execution Context</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/files">Files and Paths</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/pipelines">Pipelines and Modules</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/pipelines/defining-pipelines">Defining Pipelines</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/pipelines/modules">About Modules</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/pipelines/modules/module-patterns">Module Patterns</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item active">
+                                                                                    <a href="/framework/pipelines/modules/writing-modules">Writing Modules</a>
+                                                                                </div>
+                                                                        </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/running">Running Your Application</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/running/command-line">Command-Line Interface</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/running/debugging">Debugging</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/documents">Documents and Metadata</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/documents/front-matter">Front Matter</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/documents/metadata-values">Metadata Values</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/documents/accessing-metadata">Accessing Metadata</a>
+                                                                    </div>
+                                                            </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0">
-                                            <p><a href="/framework/concepts/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
-<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/concepts/execution#execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
+                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p><a href="/framework/pipelines/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
+<p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/execution#execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
 <p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>
 <ul>
 <li><code>Module</code> is a common module base class that's appropriate for most modules.
@@ -190,7 +229,7 @@
 <li>You may not even need a new module. The <code>ExecuteConfig</code> module lets you specify a delegate that can return documents, content, and other types of data which will be converted to output documents as appropriate.</li>
 </ul>
 </li>
-<li>Use <code>Config&lt;T&gt;</code> <a href="/framework/usage/configuration-delegates">configuration delegates</a>.
+<li>Use <code>Config&lt;T&gt;</code> <a href="/framework/configuration/configuration-delegates">configuration delegates</a>.
 <ul>
 <li>If your module needs to accept user-configurable values, use <code>Config&lt;T&gt;</code>.</li>
 <li>Consider using one of the base module classes that deals with <code>Config&lt;T&gt;</code> like <code>ConfigModule</code> or <code>MultiConfigModule</code>.</li>
@@ -217,7 +256,7 @@
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/usage/writing-modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/pipelines/modules/writing-modules.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
@@ -225,7 +264,7 @@
             </div>
         </div>
         <div id="footer" class="p-3 text-white font-size-sm">
-            <div class="container">
+            <div class="container-xl">
                 <div>© 2020 Statiq/Dave Glick</div>
             </div>
         </div>
