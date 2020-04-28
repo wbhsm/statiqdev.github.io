@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Web Settings</title>
+        <title>Statiq - Shortcodes</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -78,7 +78,7 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="section text-uppercase">web</div>
-                                        <div class="text-white m-0 title">Web Settings</div>
+                                        <div class="text-white m-0 title">Shortcodes</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,8 +120,8 @@
                                                         <div class="sidebar-nav-item">
                                                             <a href="/web/preview-server">Preview Server</a>
                                                         </div>
-                                                        <div class="sidebar-nav-item active">
-                                                            <a href="/web/web-settings">Web Settings</a>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/settings">Settings</a>
                                                         </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/content">Content</a>
@@ -145,8 +145,8 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/front-matter">Front Matter</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/web-shortcodes">Web Shortcodes</a>
+                                                                    <div class="sidebar-nav-item active">
+                                                                        <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item">
@@ -183,28 +183,15 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Settings let you define global <a href="/framework/documents#about-metadata">metadata</a> that can be accessed from the <a href="/framework/execution#execution-context">execution context</a> or <a href="/framework/documents">documents</a>.</p>
-<p>At <a href="/framework/execution">execution time</a> all settings are combined into a single set of metadata accessible via the <a href="/framework/execution#execution-context">execution context</a>, which implements <code>IMetadata</code> for the purpose of exposing settings values.</p>
-<h1 id="specifying-settings">Specifying Settings</h1>
-<h2 id="settings-files">Settings Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
-<h2 id="environment-variables">Environment Variables</h2>
-<h2 id="bootstrapper">Bootstrapper</h2>
-<h2 id="cascade-to-documents">Cascade To Documents</h2>
-<p>All settings "cascade" to documents. That means that any value defined in settings files, environment variables, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/documents/metadata-values#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
-<p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
-<pre><code class="language-json">{
-    "Published": "=&gt; DateTime.Today"
-}
-</code></pre>
-<p>Note that this configuration value uses a <a href="/framework/documents/metadata-values#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
-<h1 id="global-settings">Global Settings</h1>
-<h1 id="document-settings">Document Settings</h1>
-<h2 id="destinationpath"><code>DestinationPath</code></h2>
+                                            <p>Coming Soon</p>
+<h1 id="built-in-shortcodes">Built-In Shortcodes</h1>
+<h2 id="meta"><code>Meta</code></h2>
 <p>TODO</p>
-<h2 id="destinationfilename"><code>DestinationFileName</code></h2>
+<h2 id="include"><code>Include</code></h2>
 <p>TODO</p>
-<h2 id="destinationextension"><code>DestinationExtension</code></h2>
+<h2 id="if"><code>If</code></h2>
+<p>TODO</p>
+<h2 id="foreach"><code>ForEach</code></h2>
 <p>TODO</p>
 
 
@@ -212,11 +199,9 @@
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#specifying-settings">Specifying Settings</a></p>
-                                                    <p class="small"><a href="#global-settings">Global Settings</a></p>
-                                                    <p class="small"><a href="#document-settings">Document Settings</a></p>
+                                                    <p class="small"><a href="#built-in-shortcodes">Built-In Shortcodes</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/web-settings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/shortcodes.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
