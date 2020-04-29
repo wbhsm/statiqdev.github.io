@@ -160,9 +160,17 @@
                                                             <a href="/framework/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item has-children">
                                                                         <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
                                                                     </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                        </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/settings">Settings</a>
                                                                     </div>
@@ -271,7 +279,7 @@
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/pipelines/defining-pipelines">Defining Pipelines</a></h4>
-                                                                <div class="font-size-sm"><p>TODO - discuss how modules are typically added to the pipeline in the constructor</p></div>
+                                                                <div class="font-size-sm"><p>Pipelines are classes that implement the <code>IPipeline</code> interface, though you typically create one by deriving from the abstract <code>Pipeline</code> class which initializes several defaults for you.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

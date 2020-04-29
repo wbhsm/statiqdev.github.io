@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Shortcodes</title>
+        <title>Statiq - Bootstrapper</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -78,7 +78,7 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="section text-uppercase">framework</div>
-                                        <div class="text-white m-0 title">Shortcodes</div>
+                                        <div class="text-white m-0 title">Bootstrapper</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,7 +149,7 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/linking-to-documents">Linking To Documents</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -160,7 +160,7 @@
                                                             <a href="/framework/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
+                                                                    <div class="sidebar-nav-item active has-children">
                                                                         <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
@@ -209,101 +209,55 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Shortcodes are small but powerful macros that can generate content or add metadata to your documents.</p>
+                                            <p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p>
+<p>The <code>Bootstrapper</code> is defined in <a href="https://www.nuget.org/packages/Statiq.App">Statiq.App</a> and helps create an <a href="/framework/execution#engine">engine</a> and has fluent methods to configure it, add modules and pipelines, and process command-line arguments.</p>
+<h1 id="creating-a-bootstrapper">Creating A Bootstrapper</h1>
+<p>A bootstrapper can be created using the static <code>Bootstrapper.Factory</code> property:</p>
+<pre><code class="language-csharp">using System;
+using Statiq.App;
 
-<p>Statiq supports several templating engines like Markdown and Razor, but sometimes you need to generate some content regardless of the templating language you're using. Shortcodes are small text macros that can do big things and work across any templating engine. Statiq Framework and <a href="/web">Statiq Web</a> come with several helpful shortcodes and best of all it's very easy to add your own.</p>
-<h1 id="using-shortcodes">Using Shortcodes</h1>
-<p>Shortcodes are a special type of XML processing instruction delimited with <code>&lt;?#</code> and <code>?&gt;</code> (or <code>&lt;?!</code> and <code>?&gt;</code> depending on <a href="#processing-phases">processing phase</a>). This syntax allows the shortcodes to "fall-through" most templating engines like Markdown since those languages ignore XML processing instructions. Every shortcode has a name, often has parameters, and can optionally contain content depending on how and what the shortcode renders.</p>
-<p>A shortcode must always be closed with a <code>/</code> (similar to XML elements). If the shortcode contains no content, it can be self-closing by using a trailing slash: <code>&lt;?# ShortcodeName /?&gt;</code>. If the shortcode does contain content, it must be closed with a matching shortcode: <code>&lt;?# ShortcodeName ?&gt;content&lt;?#/ ShortcodeName ?&gt;</code>.</p>
-<h2 id="processing-phases">Processing Phases</h2>
-<p>Shortcodes are generally evaluated in two phases: pre-rendering and post-rendering (though when writing your own pipelines you can execute the shortcode module whenever you like).</p>
-<p>The pre-rendering phase is performed <em>before</em> any other templating engines like Markdown or Razor. That means any output from a shortcode in this phase will be processed by those engines. For example, if you want to include a Markdown document in another Markdown document, you'll need to evaluate the <code>Include</code> shortcode during the pre-rendering phase (otherwise the Markdown processor would have already been run and your included Markdown document would never get processed). The pre-rendering phase is indicated with a <code>!</code> delimiter instead of a <code>#</code>: <code>&lt;?! ShortcodeName /?&gt;</code> or <code>&lt;?! ShortcodeName ?&gt;content&lt;?!/ ShortcodeName ?&gt;</code>.</p>
-<p>The post-rendering phase happens <em>after</em> all template engines like Markdown and Razor have been evaluated. This is appropriate for most shortcodes and is indicated with a <code>#</code> delimiter as described above.</p>
-<h2 id="nesting-shortcodes">Nesting Shortcodes</h2>
-<p>Shortcodes can be nested, but keep in mind the current processing phase. If a shortcode result contains other shortcodes, those will be recursively processed but only if the nested shortcode is also part of the current phase.</p>
-<h2 id="shortcode-names">Shortcode Names</h2>
-<p>By convention shortcode names use CamelCase due to the fact that most of them come from .NET classes, which are also named with CamelCase. That said, the shortcode name is case-insensitive so if you prefer to use some other casing convention, you can.</p>
-<h2 id="parameters">Parameters</h2>
-<p>Some shortcodes accept parameters which can be either positional, named, or a mixture of both depending on the shortcode. Shortcode parameters appear in the opening shortcode element and are delimited from the shortcode name and each other by whitespace. If the value of a parameter requires whitespace of it's own it can be enclosed in quotes. Parameter names do not need to appear in any specific order and are specified as <code>key=value</code> (or <code>key="value"</code> if the value contains whitespace).</p>
-<p><strong>A single unnamed parameter value:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName parameter-value /?&gt;
+namespace MyGenerator
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateDefault(args)
+        .RunAsync();
+  }
+}
 </code></pre>
-<p><strong>A single unnamed quoted parameter value:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter value" /?&gt;
-</code></pre>
-<p><strong>Multiple unnammed positional parameter values:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter 1" parameter2 "parameter value 3" /?&gt;
-</code></pre>
-<p><strong>A single named parameter and value:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName Foo=Bar /?&gt;
-</code></pre>
-<p><strong>A single named parameter and quoted value:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName Foo="Bar Baz" /?&gt;
-</code></pre>
-<p><strong>A mixture of unnamed positional parameter values and named parameters:</strong></p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "unnamed value" Foo=Bar /?&gt;
-</code></pre>
-<p>Note that unnamed positional parameters almost always must appear before named parameters.</p>
-<h2 id="content">Content</h2>
-<p>In addition to parameters, some shortcodes accept or expect content. Shortcode content goes between the opening and closing shortcode tag and is sent verbatim to the shortcode:</p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter 1" ?&gt;
-Here is
-Some Shortcode
-Content
-&lt;?#/ ShortcodeName ?&gt;
-</code></pre>
-<p>Because shortcode content is just text in your file, it will be changed by any templating engine(s) before being processed. For example, if the shortcode about was part of a Markdown file, it would end up looking like this before being processed by the shortcode (notice the surrounding <code>&lt;p&gt;</code> that the Markdown engine added):</p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter 1" ?&gt;
-&lt;p&gt;Here is
-Some Shortcode
-Content&lt;/p&gt;
-&lt;?#/ ShortcodeName ?&gt;
-</code></pre>
-<p>Many times that behavior is desirable because we want to use the templating language for the shortcode content. Other times you may want the shortcode content to stay unprocessed by templating engines. In that case, you can surround the content inside a special XML processing instruction with the syntax <code>&lt;?* ... ?&gt;</code>. This works because like the shortcodes themselves, most templating engines will ignore XML processing instructions. The shortcode processor will remove the special wrapping XML processing instruction tags inside the content before processing.</p>
-<p>For example, this:</p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter 1" ?&gt;
-&lt;?*
-Here is
-Some Shortcode
-Content
-?&gt;
-&lt;?#/ ShortcodeName ?&gt;
-</code></pre>
-<p>Will not get an added <code>&lt;p&gt;</code> from the Markdown engine and instead will get processed by the shortcode as:</p>
-<pre><code class="language-txt">&lt;?# ShortcodeName "parameter 1" ?&gt;
-Here is
-Some Shortcode
-Content
-&lt;?#/ ShortcodeName ?&gt;
-</code></pre>
-<h1 id="writing-shortcodes">Writing Shortcodes</h1>
-<h2 id="bootstrapper">Bootstrapper</h2>
-<p>You can define shortcodes through the <code>Bootstrapper</code> which contains many <code>AddShortcode()</code> overloads for specifying shortcodes by delegates and other means.</p>
-<p>For example, if you add the following:</p>
-<pre><code class="language-txt">.AddShortcode("Foo", (string x) =&gt; $"ABC{x}XYZ");
-</code></pre>
-<p>And then use it in a document like this:</p>
-<pre><code class="language-txt">&lt;?# Foo ?&gt;123&lt;?#/ Foo ?&gt;
-</code></pre>
-<p>The output will be:</p>
-<pre><code class="language-txt">ABC123XYZ
-</code></pre>
-<h2 id="as-a-class">As A Class</h2>
-<p>To write a shortcode as a class, implement <code>IShortcode</code>. The shortcode name will generally be the same as the implementing class name.</p>
-<h1 id="process-shortcodes">Process Shortcodes</h1>
-<p>To process shortcodes in your own pipelines, the <code>ProcessShortcodes</code> module is used to find shortcodes within a document and render them. It's generally an accepted pattern to use the <code>ProcessShortcodes</code> module after all other templates have been evaluated, but you can certainly use it earlier in your pipelines if you want to.</p>
+<p>When using Statiq Framework you can create the boostrapper with the <code>.CreateDefault(args)</code> method on the <code>Factory</code>. Other Statiq projects like <a href="/web">Statiq Web</a> often have other factory methods like <code>.CreateWeb(args)</code>.</p>
+<h1 id="command-line-and-commands">Command Line and Commands</h1>
+<p>One of the more important responsibilities of the <code>Bootstrapper</code> is to manage the command-line interface by processing arguments and executing commands.</p>
+<h1 id="defining-pipelines">Defining Pipelines</h1>
+<h1 id="settings">Settings</h1>
 
 
-
+                                                <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a></h4>
+                                                                <div class="font-size-sm"><p>By default the Bootstrapper will automatically add all pipelines by type in the entry assembly via reflection, but you can also use it to add or define new pipelines.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a></h4>
+                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                        </div>
+                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#using-shortcodes">Using Shortcodes</a></p>
-                                                    <p class="small"><a href="#writing-shortcodes">Writing Shortcodes</a></p>
-                                                    <p class="small"><a href="#process-shortcodes">Process Shortcodes</a></p>
+                                                    <p class="small"><a href="#creating-a-bootstrapper">Creating A Bootstrapper</a></p>
+                                                    <p class="small"><a href="#command-line-and-commands">Command Line and Commands</a></p>
+                                                    <p class="small"><a href="#defining-pipelines">Defining Pipelines</a></p>
+                                                    <p class="small"><a href="#settings">Settings</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/content/shortcodes.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/bootstrapper/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

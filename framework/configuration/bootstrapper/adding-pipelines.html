@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Bootstrapper</title>
+        <title>Statiq - Adding Pipelines</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -78,7 +78,7 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="section text-uppercase">framework</div>
-                                        <div class="text-white m-0 title">Bootstrapper</div>
+                                        <div class="text-white m-0 title">Adding Pipelines</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -160,9 +160,17 @@
                                                             <a href="/framework/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item has-children">
                                                                         <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
                                                                     </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item active">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                        </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/settings">Settings</a>
                                                                     </div>
@@ -201,42 +209,25 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p>
-<p>The <code>Bootstrapper</code> is defined in <a href="https://www.nuget.org/packages/Statiq.App">Statiq.App</a> and helps create an <a href="/framework/execution#engine">engine</a> and has fluent methods to configure it, add modules and pipelines, and process command-line arguments.</p>
-<h1 id="creating-a-bootstrapper">Creating A Bootstrapper</h1>
-<p>A bootstrapper can be created using the static <code>Bootstrapper.Factory</code> property:</p>
-<pre><code class="language-csharp">using System;
-using Statiq.App;
-
-namespace MyGenerator
-{
-  public class Program
-  {
-    public static async Task&lt;int&gt; Main(string[] args) =&gt;
-      await Bootstrapper
-        .Factory
-        .CreateDefault(args)
-        .RunAsync();
-  }
-}
-</code></pre>
-<p>When using Statiq Framework you can create the boostrapper with the <code>.CreateDefault(args)</code> method on the <code>Factory</code>. Other Statiq projects like <a href="/web">Statiq Web</a> often have other factory methods like <code>.CreateWeb(args)</code>.</p>
-<h1 id="command-line-and-commands">Command Line and Commands</h1>
-<p>One of the more important responsibilities of the <code>Bootstrapper</code> is to manage the command-line interface by processing arguments and executing commands.</p>
-<h1 id="defining-pipelines">Defining Pipelines</h1>
-<h1 id="settings">Settings</h1>
+                                            <p>By default the Bootstrapper will automatically add all pipelines by type in the entry assembly via reflection, but you can also use it to add or define new pipelines.</p>
+<p>It contains several methods to add additional pipelines by either type or as an instance:</p>
+<ul>
+<li><p><code>AddPipeline&lt;TPipeline&gt;()</code> will add a pipeline by type (and enable <a href="#service-injection">service injection</a>).</p>
+</li>
+<li><p><code>AddPipeline(IPipeline)</code> and various overloads will add a pipeline instance.</p>
+</li>
+</ul>
+<h2 id="finding-pipelines-by-reflection">Finding Pipelines By Reflection</h2>
+<p>TODO</p>
+<h2 id="defining-directly">Defining Directly</h2>
+<p>TODO</p>
+<h2 id="pipeline-builder">Pipeline Builder</h2>
+<p>TODO - using the pipeline builder to create pipelines</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                            <div class="border-bottom mb-3">
-                                                <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#creating-a-bootstrapper">Creating A Bootstrapper</a></p>
-                                                    <p class="small"><a href="#command-line-and-commands">Command Line and Commands</a></p>
-                                                    <p class="small"><a href="#defining-pipelines">Defining Pipelines</a></p>
-                                                    <p class="small"><a href="#settings">Settings</a></p>
-                                            </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/bootstrapper.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/bootstrapper/adding-pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

@@ -160,9 +160,17 @@
                                                             <a href="/framework/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item has-children">
                                                                         <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
                                                                     </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                        </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/settings">Settings</a>
                                                                     </div>
@@ -201,23 +209,67 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <h1 id="adding-modules">Adding Modules</h1>
-<p>TODO - discuss how modules are typically added to the pipeline in the constructor</p>
+                                            <p>Pipelines are classes that implement the <code>IPipeline</code> interface, though you typically create one by deriving from the abstract <code>Pipeline</code> class which initializes several defaults for you.</p>
+<p>Most pipeline configuration happens in the pipeline’s constructor by editing properties of the base <code>Pipeline</code>, though you can add whatever extra capabilities or methods you want.</p>
+<h1 id="specifying-dependencies">Specifying Dependencies</h1>
+<p>Two properties can be used to specify dependency data of the pipeline:</p>
+<ul>
+<li><p><code>Dependencies</code> is a <code>HashSet&lt;string&gt;</code> that contains the names of pipelines that the current one depends on. In other words, any pipeline name in the <code>Dependencies</code> collection will be executed before the current pipeline is executed. If the current pipeline is specified as the only executing pipeline (for example, on the <a href="/framework/running/command-line">command line</a>) then it’s dependencies (and their dependencies) will also be executed.</p>
+</li>
+<li><p><code>DependencyOf</code> is a <code>HashSet&lt;string&gt;</code> that defines pipelines that this pipeline is a dependent of. In other words, it’s the opposite of the <code>Dependencies</code> collection and indicates the current pipeline should be executed before those specified in the <code>DependencyOf</code> collection. This property is particularly valuable when you’re trying to add behavior before pre-configured pipelines such as in <a href="/web">Statiq Web</a>.</p>
+</li>
+</ul>
+<h1 id="other-settings">Other Settings</h1>
+<p>In addition to specifying dependencies, other settings can be configured from the pipeline constructor:</p>
+<ul>
+<li><p><code>Isolated</code> is a <code>bool</code> that indicates if the pipeline is an <a href="/framework/pipelines#isolated">isolated pipeline</a>. This means that it will be executed independent of any other pipelines.</p>
+</li>
+<li><p><code>Deployment</code> is a <code>bool</code> that indicates if the pipeline is a <a href="/framework/pipelines#deployment">deployment pipeline</a> and should be executed when using the deployment command.</p>
+</li>
+<li><p><code>ExecutionPolicy</code> specifies the particular <a href="/framework/pipelines#execution-policy">execution policy</a> the pipeline should use.</p>
+</li>
+</ul>
+<h1 id="adding-modules">Adding Modules</h1>
+<p>Modules can be added to the pipeline through four <code>ModuleList</code> properties (which are essentially <code>IList&lt;IModule&gt;</code>) corresponding to the different <a href="/framework/pipelines#phases">pipeline phases</a>:</p>
+<ul>
+<li><p><code>InputModules</code></p>
+</li>
+<li><p><code>ProcessModules</code></p>
+</li>
+<li><p><code>PostProcessModules</code></p>
+</li>
+<li><p><code>OutputModules</code></p>
+</li>
+</ul>
+<p>You can either add modules individually (the properties are initialized with an empty list) or create a new <code>ModuleList</code> and set the property to that. Note that modules are added as instances, so adding a <code>ReadFiles</code> module to the input phase of a pipeline might look like:</p>
+<pre><code class="language-csharp">public class Content : Pipeline
+{
+  public Content()
+  {
+    InputModules = new ModuleList
+    {
+      new ReadFiles("**/*.md")
+    };
+
+    // Other pipeline configuration
+  }
+}
+</code></pre>
 <h1 id="service-injection">Service Injection</h1>
-<p>TODO - discuss how services can be injected into the pipeline constructor</p>
-<h1 id="using-the-bootstrapper">Using The Bootstrapper</h1>
-<p>TODO - adding modules using the bootstrapper, reflection to find modules, adding instances vs. types and lifecycle</p>
-<h2 id="pipeline-builder">Pipeline Builder</h2>
-<p>TODO - using the pipeline builder to create pipelines</p>
+<p>If the pipeline is <a href="/framework/configuration/bootstrapper/adding-pipelines">added by type</a>, any services that were <a href="/framework/configuration/bootstrapper/registering-services">registered with the dependency injection container</a> will be available to the constructor and you can inject them.</p>
+<h1 id="adding-pipelines">Adding Pipelines</h1>
+<p>You can add pipelines to an <code>[Engine](xref:engine)</code> directly using it's <code>Pipelines</code> property, but the easiest way to add and manipulate pipelines is <a href="/framework/configuration/bootstrapper/adding-pipelines">through the <code>Bootstrapper</code></a>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#specifying-dependencies">Specifying Dependencies</a></p>
+                                                    <p class="small"><a href="#other-settings">Other Settings</a></p>
                                                     <p class="small"><a href="#adding-modules">Adding Modules</a></p>
                                                     <p class="small"><a href="#service-injection">Service Injection</a></p>
-                                                    <p class="small"><a href="#using-the-bootstrapper">Using The Bootstrapper</a></p>
+                                                    <p class="small"><a href="#adding-pipelines">Adding Pipelines</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/pipelines/defining-pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
