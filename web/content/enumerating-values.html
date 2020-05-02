@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">web</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/web/content">Content</a></span>
+                                                    <span><a href="/web">Web</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Enumerating Values</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -182,7 +185,7 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/framework/documents/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p>
 <p>To use this feature, define a metadata key <code>Enumerate</code> with the values you want to create documents for. Each document will contain the original content and metadata along with an additional <code>Current</code> metadata value.</p>
 <p>To illustrate how this works, consider an <code>apple.md</code> file with the following front matter:</p>

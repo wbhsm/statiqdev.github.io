@@ -77,7 +77,11 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/pipelines/modules">About Modules</a></span>
+                                                    <span><a href="/framework/pipelines">Pipelines and Modules</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Writing Modules</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +147,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +169,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,7 +218,7 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p><a href="/framework/pipelines/modules">Modules</a> are the basic building blocks of Statiq functionality. If the out-of-the-box modules don’t satisfy your use case, it’s easy to customize generation by creating new modules.</p>
 <p>Modules implement the <code>IModule</code> interface which defines a single <code>Task&lt;IEnumerable&lt;IDocument&gt;&gt; ExecuteAsync(IExecutionContext context)</code> method. The <a href="/framework/execution#execution-context">execution context</a> passed to the <code>ExecuteAsync</code> method contains the input documents to the module as well as providing access to output documents from other pipelines and various engine and utility functionality.</p>
 <p>While you can implement <code>IModule</code> easily enough yourself, in practice most modules are derived from a number of different base module classes:</p>

@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/configuration">Configuration</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Bootstrapper</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,9 +217,8 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>The bootstrapper helps configure an engine, add modules and pipelines to it, and process command-line arguments.</p>
-<p>The <code>Bootstrapper</code> is defined in <a href="https://www.nuget.org/packages/Statiq.App">Statiq.App</a> and helps create an <a href="/framework/execution#engine">engine</a> and has fluent methods to configure it, add modules and pipelines, and process command-line arguments.</p>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p>The bootstrapper is the easiest way to configure an <a href="/framework/execution/engine">engine</a>, add <a href="/framework/pipelines">pipelines and modules</a> to it, and process <a href="/framework/running/command-line">command-line arguments</a>.</p>
 <h1 id="creating-a-bootstrapper">Creating A Bootstrapper</h1>
 <p>A bootstrapper can be created using the static <code>Bootstrapper.Factory</code> property:</p>
 <pre><code class="language-csharp">using System;
@@ -228,24 +236,55 @@ namespace MyGenerator
   }
 }
 </code></pre>
-<p>When using Statiq Framework you can create the boostrapper with the <code>.CreateDefault(args)</code> method on the <code>Factory</code>. Other Statiq projects like <a href="/web">Statiq Web</a> often have other factory methods like <code>.CreateWeb(args)</code>.</p>
-<h1 id="command-line-and-commands">Command Line and Commands</h1>
-<p>One of the more important responsibilities of the <code>Bootstrapper</code> is to manage the command-line interface by processing arguments and executing commands.</p>
-<h1 id="defining-pipelines">Defining Pipelines</h1>
-<h1 id="settings">Settings</h1>
+<p>When using Statiq Framework you can create a bootstrapper with the <code>.CreateDefault(args)</code> method on the <code>Factory</code>. Other Statiq projects like <a href="/web">Statiq Web</a> often have other factory methods like <code>.CreateWeb(args)</code>.</p>
+<p>The bootstrapper exposes a fluent API very similar to how ASP.NET Core and other modern .NET projects are provisioned.</p>
+<h1 id="default-behavior">Default Behavior</h1>
+<p>The bootstrapper does a lot by default when you call <code>.CreateDefault(args)</code>. However, if you'd rather have more control over any of the default behavior, you can call a different creation method:</p>
+<ul>
+<li><code>Create(string[] args)</code> will create the bootstrapper without any default behavior and it will be up to you to add any default behavior you want using other fluent methods.</li>
+<li><code>CreateDefault(string[] args, DefaultFeatures features)</code> will create a bootstrapper with only the default features you specify.</li>
+<li><code>CreateDefaultWithout(string[] args, DefaultFeatures features)</code> will create a bootstrapper with all the default features <em>except</em> the ones that you specify.</li>
+</ul>
+<p>The default behavior of the bootstrapper is controlled by <code>DefaultFeatures</code> flags:</p>
+<ul>
+<li><code>None</code>: No default features will be added.</li>
+<li><code>BootstrapperConfigurators</code>: Adds all implementations of <code>IConfigurator&lt;Bootstrapper&gt;</code> and <code>IConfigurator&lt;IBootstrapper&gt;</code> (see <a href="/framework/configuration/bootstrapper/configurators">configurators</a>).</li>
+<li><code>Logging</code>: Adds default logging providers such as the console logger.</li>
+<li><code>Settings</code>: Sets default values for certain <a href="/framework/configuration/settings">settings</a>.</li>
+<li><code>EnvironmentVariables</code>: Adds all environment variables as settings.</li>
+<li><code>ConfigurationFiles</code>: Adds support for <a href="/framework/configuration/settings#configuration-files">configuration files</a>.</li>
+<li><code>BuildCommands</code>: Adds the default <code>pipelines</code> and <code>deploy</code> <a href="/framework/configuration/bootstrapper/commands">commands</a> as well as all <code>ICommand</code> implementations.</li>
+<li><code>CustomCommands</code>: Adds all <code>ICommand</code> implementations without also adding the <code>pipelines</code> and <code>deploy</code> <a href="/framework/configuration/bootstrapper/commands">commands</a>.</li>
+<li><code>Shortcodes</code>: Adds all <a href="/framework/content/shortcodes">shortcodes</a>.</li>
+<li><code>Namespaces</code>: Adds all namespaces from all referenced assemblies to the <code>Namespaces</code> collection in the <a href="/framework/execution/engine">engine</a>.</li>
+<li><code>Pipelines</code>: Adds all <a href="/framework/pipelines">pipelines</a> in the entry assembly.</li>
+<li><code>All</code>: Configures all default features.</li>
+</ul>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a></h4>
-                                                                <div class="font-size-sm"><p>By default the Bootstrapper will automatically add all pipelines by type in the entry assembly via reflection, but you can also use it to add or define new pipelines.</p></div>
+                                                            <h4><a href="/framework/configuration/bootstrapper/configurators">Configurators</a></h4>
+                                                                <div class="font-size-sm"><p>Configurators are classes that can manipulate the <a href="/framework/execution/engine">engine</a>, <a href="/framework/configuration/bootstrapper">bootstrapper</a>, and other items at startup.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/configuration/bootstrapper/commands">Commands</a></h4>
+                                                                <div class="font-size-sm"><p>The <a href="/framework/running/command-line">command-line commands</a> are fully configurable which allows you to extend or replace the behavior of your generator with whatever you want.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                                <div class="font-size-sm"><p>TODO</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a></h4>
+                                                                <div class="font-size-sm"><p>By default the <a href="/framework/configuration/bootstrapper">bootstrapper</a> will automatically add all pipelines by type in the entry assembly via reflection, but you can also use it to add or define new pipelines.</p></div>
                                                         </div>
                                                     </div>
                                         </div>
@@ -253,9 +292,7 @@ namespace MyGenerator
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
                                                     <p class="small"><a href="#creating-a-bootstrapper">Creating A Bootstrapper</a></p>
-                                                    <p class="small"><a href="#command-line-and-commands">Command Line and Commands</a></p>
-                                                    <p class="small"><a href="#defining-pipelines">Defining Pipelines</a></p>
-                                                    <p class="small"><a href="#settings">Settings</a></p>
+                                                    <p class="small"><a href="#default-behavior">Default Behavior</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/bootstrapper/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>

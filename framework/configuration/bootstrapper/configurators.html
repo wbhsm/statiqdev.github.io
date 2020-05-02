@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Linking To Documents</title>
+        <title>Statiq - Configurators</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -77,8 +77,12 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
-                                        <div class="text-white m-0 title">Linking To Documents</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/configuration/bootstrapper">Bootstrapper</a></span>
+                                                    <span><a href="/framework/configuration">Configuration</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
+                                        <div class="text-white m-0 title">Configurators</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,11 +147,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item active">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -164,11 +168,17 @@
                                                                         <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item active">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,13 +218,24 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p>Configurators are classes that can manipulate the <a href="/framework/execution/engine">engine</a>, <a href="/framework/configuration/bootstrapper">bootstrapper</a>, and other items at startup.</p>
+<p>Configurators are used internally by the <a href="/framework/configuration/bootstrapper">bootstrapper</a> and while you generally won't need to use them directly, you can create your own configurators by implementing <code>IConfigurator&lt;TConfigurable&gt;</code> where <code>TConfigurable</code> is a type that implements <code>IConfigurable</code>. The following types currently implement <code>IConfigurable</code>:</p>
+<ul>
+<li><code>Bootstrapper</code>: the configurator can directly configure the current bootstrapper.</li>
+<li><code>Engine</code>: the configurator can directly configure the current engine.</li>
+<li><code>ConfigurableCommands</code>: used to configure the <a href="/framework/configuration/bootstrapper/commands">commands</a>.</li>
+<li><code>ConfigurableConfiguration</code>: used to configure the <code>IConfigurationBuilder</code> that maps <a href="/framework/configuration/settings#configuration-files">configuration files</a> to settings.</li>
+<li><code>ConfigurableServices</code>: used to configure the <code>IServiceCollection</code>.</li>
+<li><code>ConfigurableSettings</code>: used to configure <a href="/framework/configuration/settings">settings</a>.</li>
+</ul>
+<p>The <code>IConfigurator&lt;TConfigurable&gt;</code> interface contains a single <code>void Configure(TConfigurable configurable)</code> method that provides an instance of the configurable object.</p>
+<p>Because the bootstrapper <a href="/framework/configuration/bootstrapper#default-behavior">automatically registers all implementations of <code>IConfigurator&lt;Bootstrapper&gt;</code> and <code>IConfigurator&lt;IBootstrapper&gt;</code></a>, those types of configurators can be particularly helpful in extension scenarios where you have an library that should operate on whatever bootstrapper loads it.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/content/linking-to-documents.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/bootstrapper/configurators.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/configuration">Configuration</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Settings</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item active">
@@ -208,11 +217,11 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Settings let you define global <a href="/framework/documents#about-metadata">metadata</a> that can be accessed from the <a href="/framework/execution#execution-context">execution context</a> or <a href="/framework/documents">documents</a>.</p>
 <p>At <a href="/framework/execution">execution time</a> all settings are combined into a single set of metadata accessible via the <a href="/framework/execution#execution-context">execution context</a>, which implements <code>IMetadata</code> for the purpose of exposing settings values.</p>
 <h1 id="specifying-settings">Specifying Settings</h1>
-<h2 id="settings-files">Settings Files</h2>
+<h2 id="configuration-files">Configuration Files</h2>
 <p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <h2 id="bootstrapper">Bootstrapper</h2>

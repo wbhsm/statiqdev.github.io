@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Content</title>
+        <title>Statiq - Working With Content</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -77,8 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
-                                        <div class="text-white m-0 title">Content</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
+                                        <div class="text-white m-0 title">Working With Content</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,11 +145,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item active has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +167,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,15 +216,15 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Document content is what most <a href="/framework/pipelines/modules">modules</a> manipulate and it's what will presumably be output to disk at the end of a <a href="/framework/pipelines">pipeline</a>.Document content is often read from files, though it can also come from a database, a web service, or any other source. Documents are immutable and must be cloned to change their content.</p>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p>Document content is often read from files, though it can also come from a database, a web service, or any other source and there are a variety of <a href="/framework/pipelines/modules">modules</a> and other ways of working with content.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/framework/content/linking-to-documents">Linking To Documents</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                            <h4><a href="/framework/content/linking">Linking To Documents</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq is generally used to generate HTML and as such, it's often necessary to link from one document to another.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
@@ -228,7 +236,7 @@
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/content/template-languages">Template Languages</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                                <div class="font-size-sm"><p>A template language defines syntax you can use along with your content to describe how it should be rendered to a designated output format. Through various extension libraries, Statiq provides support for multiple templating engines and languages.</p></div>
                                                         </div>
                                                     </div>
                                         </div>

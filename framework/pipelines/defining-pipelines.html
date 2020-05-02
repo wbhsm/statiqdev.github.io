@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/pipelines">Pipelines and Modules</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Defining Pipelines</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,38 +217,29 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Pipelines are classes that implement the <code>IPipeline</code> interface, though you typically create one by deriving from the abstract <code>Pipeline</code> class which initializes several defaults for you.</p>
 <p>Most pipeline configuration happens in the pipeline’s constructor by editing properties of the base <code>Pipeline</code>, though you can add whatever extra capabilities or methods you want.</p>
 <h1 id="specifying-dependencies">Specifying Dependencies</h1>
 <p>Two properties can be used to specify dependency data of the pipeline:</p>
 <ul>
-<li><p><code>Dependencies</code> is a <code>HashSet&lt;string&gt;</code> that contains the names of pipelines that the current one depends on. In other words, any pipeline name in the <code>Dependencies</code> collection will be executed before the current pipeline is executed. If the current pipeline is specified as the only executing pipeline (for example, on the <a href="/framework/running/command-line">command line</a>) then it’s dependencies (and their dependencies) will also be executed.</p>
-</li>
-<li><p><code>DependencyOf</code> is a <code>HashSet&lt;string&gt;</code> that defines pipelines that this pipeline is a dependent of. In other words, it’s the opposite of the <code>Dependencies</code> collection and indicates the current pipeline should be executed before those specified in the <code>DependencyOf</code> collection. This property is particularly valuable when you’re trying to add behavior before pre-configured pipelines such as in <a href="/web">Statiq Web</a>.</p>
-</li>
+<li><code>Dependencies</code> is a <code>HashSet&lt;string&gt;</code> that contains the names of pipelines that the current one depends on. In other words, any pipeline name in the <code>Dependencies</code> collection will be executed before the current pipeline is executed. If the current pipeline is specified as the only executing pipeline (for example, on the <a href="/framework/running/command-line">command line</a>) then it’s dependencies (and their dependencies) will also be executed.</li>
+<li><code>DependencyOf</code> is a <code>HashSet&lt;string&gt;</code> that defines pipelines that this pipeline is a dependent of. In other words, it’s the opposite of the <code>Dependencies</code> collection and indicates the current pipeline should be executed before those specified in the <code>DependencyOf</code> collection. This property is particularly valuable when you’re trying to add behavior before pre-configured pipelines such as in <a href="/web">Statiq Web</a>.</li>
 </ul>
 <h1 id="other-settings">Other Settings</h1>
 <p>In addition to specifying dependencies, other settings can be configured from the pipeline constructor:</p>
 <ul>
-<li><p><code>Isolated</code> is a <code>bool</code> that indicates if the pipeline is an <a href="/framework/pipelines#isolated">isolated pipeline</a>. This means that it will be executed independent of any other pipelines.</p>
-</li>
-<li><p><code>Deployment</code> is a <code>bool</code> that indicates if the pipeline is a <a href="/framework/pipelines#deployment">deployment pipeline</a> and should be executed when using the deployment command.</p>
-</li>
-<li><p><code>ExecutionPolicy</code> specifies the particular <a href="/framework/pipelines#execution-policy">execution policy</a> the pipeline should use.</p>
-</li>
+<li><code>Isolated</code> is a <code>bool</code> that indicates if the pipeline is an <a href="/framework/pipelines#isolated">isolated pipeline</a>. This means that it will be executed independent of any other pipelines.</li>
+<li><code>Deployment</code> is a <code>bool</code> that indicates if the pipeline is a <a href="/framework/pipelines#deployment">deployment pipeline</a> and should be executed when using the deployment command.</li>
+<li><code>ExecutionPolicy</code> specifies the particular <a href="/framework/pipelines#execution-policy">execution policy</a> the pipeline should use.</li>
 </ul>
 <h1 id="adding-modules">Adding Modules</h1>
 <p>Modules can be added to the pipeline through four <code>ModuleList</code> properties (which are essentially <code>IList&lt;IModule&gt;</code>) corresponding to the different <a href="/framework/pipelines#phases">pipeline phases</a>:</p>
 <ul>
-<li><p><code>InputModules</code></p>
-</li>
-<li><p><code>ProcessModules</code></p>
-</li>
-<li><p><code>PostProcessModules</code></p>
-</li>
-<li><p><code>OutputModules</code></p>
-</li>
+<li><code>InputModules</code></li>
+<li><code>ProcessModules</code></li>
+<li><code>PostProcessModules</code></li>
+<li><code>OutputModules</code></li>
 </ul>
 <p>You can either add modules individually (the properties are initialized with an empty list) or create a new <code>ModuleList</code> and set the property to that. Note that modules are added as instances, so adding a <code>ReadFiles</code> module to the input phase of a pipeline might look like:</p>
 <pre><code class="language-csharp">public class Content : Pipeline
@@ -258,7 +258,7 @@
 <h1 id="service-injection">Service Injection</h1>
 <p>If the pipeline is <a href="/framework/configuration/bootstrapper/adding-pipelines">added by type</a>, any services that were <a href="/framework/configuration/bootstrapper/registering-services">registered with the dependency injection container</a> will be available to the constructor and you can inject them.</p>
 <h1 id="adding-pipelines">Adding Pipelines</h1>
-<p>You can add pipelines to an <a href="/framework/execution/engine"><code>Engine</code></a> directly using it's <code>Pipelines</code> property, but the easiest way to add and manipulate pipelines is <a href="/framework/configuration/bootstrapper/adding-pipelines">through the <code>Bootstrapper</code></a>.</p>
+<p>You can add pipelines to an <a href="/framework/execution/engine">engine</a> directly using it's <code>Pipelines</code> property, but the easiest way to add and manipulate pipelines is <a href="/framework/configuration/bootstrapper/adding-pipelines">through the bootstrapper</a>.</p>
 
 
                                         </div>

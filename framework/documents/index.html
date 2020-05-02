@@ -77,7 +77,9 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Documents and Metadata</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +145,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +167,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,8 +216,8 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>A document is a combination of content and metadata as it makes it’s way through the system.</p>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p>Documents are the primary unit of information in Statiq and are a combination of content and metadata.</p>
 <p>Documents are immutable and once their content is changed or a value is added to their metadata, it can never be removed (though it can be overwritten by a cloned document). Though the documentation often talks about documents being "transformed" or "manipulated" by <a href="/framework/pipelines">modules</a>, this isn't strictly accurate. Instead modules return a new cloned copy of the document with different content and/or additional metadata, while maintaining all the metadata the original document had.</p>
 <p>For example, this visualizes a single document that contains some content as well as two metadata values:</p>
 <div class="mermaid">
@@ -269,7 +277,7 @@
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/documents/front-matter">Front Matter</a></h4>
-                                                                <div class="font-size-sm"><p>Front matter lets you define metadata for a file in a header and is a common concept in static generators.</p></div>
+                                                                <div class="font-size-sm"><p>Front matter is a common concept in static generators and lets you define metadata for a file in a file header.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

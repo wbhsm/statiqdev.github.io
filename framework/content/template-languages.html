@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/content">Working With Content</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Template Languages</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,12 +217,32 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            <p>A template language defines syntax you can use along with your content to describe how it should be rendered to a designated output format. Through various extension libraries, Statiq provides support for multiple templating engines and languages.</p>
+<h1 id="html-output">HTML Output</h1>
+<ul>
+<li>The <code>RenderMarkdown</code> module in the <code>Statiq.Markdown</code> package renders Markdown content to HTML.
+<ul>
+<li>The <code>Statiq.Markdown</code> package also contains a <code>Markdown</code> shortcode you can use to render Markdown content in any other template, including raw HTML files.</li>
+</ul>
+</li>
+<li>The <code>RenderRazor</code> module in the <code>Statiq.Razor</code> package renders Razor templates to HTML, including full .NET Core 3.x conventions such as partials, layout files, and tag helpers.</li>
+<li>The <code>RenderHandlebars</code> module in the <code>Statiq.Handlebars</code> package renders Handlebars templates to HTML.</li>
+</ul>
+<h1 id="css-output">CSS Output</h1>
+<ul>
+<li>The <code>CompileSass</code> module in the <code>Statiq.Sass</code> package compiles Sass content to CSS.</li>
+<li>The <code>CompileLess</code> module in the <code>Statiq.Less</code> package compiles Less content to CSS.</li>
+</ul>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#html-output">HTML Output</a></p>
+                                                    <p class="small"><a href="#css-output">CSS Output</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/content/template-languages.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

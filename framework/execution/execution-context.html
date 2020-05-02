@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/execution">Execution</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Execution Context</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,64 +217,40 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>While executing <a href="/framework/pipelines">pipelines and modules</a>, the current state and other functionality is passed in an object called the execution context.</p>
 <p>The execution context contains lots of information such as the current pipeline, phase, and module, the settings and file system, the input documents to the module, and more. The current execution context is generally provided by <a href="/framework/configuration/configuration-delegates">configuration delegates</a> or a <a href="/framework/pipelines/modules/writing-modules">module execution method</a>.</p>
 <h1 id="interfaces">Interfaces</h1>
 <p>The execution context implements a number of interfaces that provide additional capabilities:</p>
 <ul>
-<li><p><code>IMetadata</code>: All <a href="/framework/configuration/settings">settings</a> can be accessed directly through the execution context as metadata.</p>
-</li>
-<li><p><code>ILogger</code>: All logging should be performed through the execution context, which tracks the current pipeline and module and logs them out along with your messages.</p>
-</li>
-<li><p><code>IDocumentFactory</code>: The execution context can be used to create new documents.</p>
-</li>
-<li><p><code>IServiceProvider</code>: allows you to use the execution context as a dependency injection service provider.</p>
-</li>
+<li><code>IMetadata</code>: All <a href="/framework/configuration/settings">settings</a> can be accessed directly through the execution context as metadata.</li>
+<li><code>ILogger</code>: All logging should be performed through the execution context, which tracks the current pipeline and module and logs them out along with your messages.</li>
+<li><code>IDocumentFactory</code>: The execution context can be used to create new documents.</li>
+<li><code>IServiceProvider</code>: allows you to use the execution context as a dependency injection service provider.</li>
 </ul>
 <h1 id="properties">Properties</h1>
 <p>In addition to directly implementing these interfaces, the execution context also contains a number of useful properties:</p>
 <ul>
-<li><p><code>ExecutionId</code>: Uniquely identifies the current execution cycle which can be helpful for managing caches or resetting data.</p>
-</li>
-<li><p><code>CancellationToken</code>: Should be used whenever by possible by modules and other code to provide cancellation support.</p>
-</li>
-<li><p><code>ApplicationState</code>: Contains initial application state data like the original command line arguments.</p>
-</li>
-<li><p><code>ClassCatalog</code>: A catalog of all classes in all referenced assemblies.</p>
-</li>
-<li><p><code>Events</code>: The collection of registered <a href="/framework/execution/events">events</a>.</p>
-</li>
-<li><p><code>FileSystem</code>: The current <a href="/framework/execution/files#virtual-file-system">file system</a> abstraction.</p>
-</li>
-<li><p><code>Settings</code>: The application <a href="/framework/configuration/settings">settings</a> as metadata (even though this is also exposed directly by the execution context by implementing <code>IMetadata</code>).</p>
-</li>
-<li><p><code>Shortcodes</code>: A read-only collection of all available <a href="/framework/content/shortcodes">shortcodes</a>.</p>
-</li>
-<li><p><code>Namespaces</code>: Gets a set of namespaces that should be brought into scope for modules that perform dynamic compilation.</p>
-</li>
-<li><p><code>MemoryStreamFactory</code>: Provides pooled memory streams (via the <code>RecyclableMemoryStream</code> library).</p>
-</li>
-<li><p><code>Outputs</code>: Gets the collection of outputs from all previously processed <a href="/framework/pipelines">pipelines</a>.</p>
-</li>
-<li><p><code>Services</code>: Gets the dependency injection service provider (even though this is also exposed directly by the execution context by implementing <code>IServiceProvider</code>).</p>
-</li>
-<li><p><code>ScriptHelper</code>: Gets a helper that can compile and evaluate C# scripts.</p>
-</li>
-<li><p><code>Pipelines</code>: Gets a read-only collection of all defined <a href="/framework/pipelines">pipelines</a>.</p>
-</li>
-<li><p><code>PipelineName</code>: Gets the name of the currently executing pipeline.</p>
-</li>
-<li><p><code>Pipeline</code>: Gets the currently executing pipeline.</p>
-</li>
-<li><p><code>Phase</code>: Gets the currently executing <a href="/framework/pipelines#phases">phase</a> of the current pipeline.</p>
-</li>
-<li><p><code>Parent</code>: Gets the parent execution context if currently in a nested <a href="/framework/pipelines/modules">module</a>.</p>
-</li>
-<li><p><code>Module</code>: Gets the current executing <a href="/framework/pipelines/modules">module</a>.</p>
-</li>
-<li><p><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a> (probably the most important property of the execution context).</p>
-</li>
+<li><code>ExecutionId</code>: Uniquely identifies the current execution cycle which can be helpful for managing caches or resetting data.</li>
+<li><code>CancellationToken</code>: Should be used whenever by possible by modules and other code to provide cancellation support.</li>
+<li><code>ApplicationState</code>: Contains initial application state data like the original command line arguments.</li>
+<li><code>ClassCatalog</code>: A catalog of all classes in all referenced assemblies.</li>
+<li><code>Events</code>: The collection of registered <a href="/framework/execution/events">events</a>.</li>
+<li><code>FileSystem</code>: The current <a href="/framework/execution/files#virtual-file-system">file system</a> abstraction.</li>
+<li><code>Settings</code>: The application <a href="/framework/configuration/settings">settings</a> as metadata (even though this is also exposed directly by the execution context by implementing <code>IMetadata</code>).</li>
+<li><code>Shortcodes</code>: A read-only collection of all available <a href="/framework/content/shortcodes">shortcodes</a>.</li>
+<li><code>Namespaces</code>: Gets a set of namespaces that should be brought into scope for modules that perform dynamic compilation.</li>
+<li><code>MemoryStreamFactory</code>: Provides pooled memory streams (via the <code>RecyclableMemoryStream</code> library).</li>
+<li><code>Outputs</code>: Gets the collection of outputs from all previously processed <a href="/framework/pipelines">pipelines</a>.</li>
+<li><code>Services</code>: Gets the dependency injection service provider (even though this is also exposed directly by the execution context by implementing <code>IServiceProvider</code>).</li>
+<li><code>ScriptHelper</code>: Gets a helper that can compile and evaluate C# scripts.</li>
+<li><code>Pipelines</code>: Gets a read-only collection of all defined <a href="/framework/pipelines">pipelines</a>.</li>
+<li><code>PipelineName</code>: Gets the name of the currently executing pipeline.</li>
+<li><code>Pipeline</code>: Gets the currently executing pipeline.</li>
+<li><code>Phase</code>: Gets the currently executing <a href="/framework/pipelines#phases">phase</a> of the current pipeline.</li>
+<li><code>Parent</code>: Gets the parent execution context if currently in a nested <a href="/framework/pipelines/modules">module</a>.</li>
+<li><code>Module</code>: Gets the current executing <a href="/framework/pipelines/modules">module</a>.</li>
+<li><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a> (probably the most important property of the execution context).</li>
 </ul>
 <h1 id="current-execution-context">Current Execution Context</h1>
 <p>You can get the current execution context at any time by calling <code>IExecutionContext.Current</code>. This static default interface property is implemented using an <code>AsyncLocal&lt;IExecutionContext&gt;</code> so it always contains the correct execution context even across asynchronous calls.</p>

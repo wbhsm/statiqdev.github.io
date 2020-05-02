@@ -77,7 +77,9 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">About Statiq Framework</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +145,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +167,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,7 +216,7 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Framework is a powerful static generation framework that can be used to create custom static generation applications. While many users will find that <a href="/web">Statiq Web</a> or <a href="/docs">Statiq Docs</a> have enough functionality built-in, crafting a custom static generator with Statiq Framework provides the most flexibility.</p>
 <h1 id="quick-start">Quick Start</h1>
 <p>The easiest way to get started with Statiq Framework is to install the <a href="https://www.nuget.org/packages/Statiq.App">Statiq.App</a> package into a .NET Core console application and use the <a href="/framework/configuration/bootstrapper">bootstrapper</a> to configure everything.</p>
@@ -222,7 +230,7 @@
 <pre><code class="language-csharp">dotnet add package Statiq.App
 </code></pre>
 <h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
-<p>There are several ways to create and configure an <a href="/framework/execution#engine">engine</a>, but by far the easiest is to use the <a href="/framework/configuration/bootstrapper">Bootstrapper</a>:</p>
+<p>There are several ways to create and configure an <a href="/framework/execution#engine">engine</a>, but by far the easiest is to use the <a href="/framework/configuration/bootstrapper">bootstrapper</a>:</p>
 <pre><code class="language-csharp">using System;
 using Statiq.App;
 
@@ -238,10 +246,10 @@ namespace MyGenerator
   }
 }
 </code></pre>
-<p>This creates a default <code>Bootstrapper</code> and passes it the <a href="/framework/configuration/bootstrapper#command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
+<p>This creates a default <code>Bootstrapper</code> instance and passes it the <a href="/framework/running/command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
 <p>This example is all you need for a minimal, functioning Statiq Framework application. The only problem is that it doesn’t actually do anything. Let’s add one more step and process some Markdown files.</p>
 <h2 id="step-5-add-a-pipeline-and-modules">Step 5: Add a Pipeline and Modules</h2>
-<p>Most functionality in Statiq Framework is provided by <a href="/framework/pipelines">pipelines</a> and <a href="/framework/pipelines/modules">modules</a>. The <code>Bootstrapper</code> has several mechanisms for <a href="/framework/configuration/bootstrapper#defining-pipelines">defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
+<p>Most functionality in Statiq Framework is provided by <a href="/framework/pipelines">pipelines</a> and <a href="/framework/pipelines/modules">modules</a>. The <a href="/framework/configuration/bootstrapper">bootstrapper</a> has several mechanisms for <a href="/framework/configuration/bootstrapper/adding-pipelines">adding and defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
 <h1 id="how-it-works">How It Works</h1>
 <p>Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations. Think of it like LEGO® for static generation.</p>
 <ul>
@@ -269,19 +277,19 @@ namespace MyGenerator
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/documents">Documents and Metadata</a></h4>
-                                                                <div class="font-size-sm"><p>A document is a combination of content and metadata as it makes it’s way through the system.</p></div>
+                                                                <div class="font-size-sm"><p>Documents are the primary unit of information in Statiq and are a combination of content and metadata.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/framework/content">Content</a></h4>
-                                                                <div class="font-size-sm"><p>Document content is what most <a href="/framework/pipelines/modules">modules</a> manipulate and it's what will presumably be output to disk at the end of a <a href="/framework/pipelines">pipeline</a>.Document content is often read from files, though it can also come from a database, a web service, or any other source. Documents are immutable and must be cloned to change their content.</p></div>
+                                                            <h4><a href="/framework/content">Working With Content</a></h4>
+                                                                <div class="font-size-sm"><p>Document content is often read from files, though it can also come from a database, a web service, or any other source and there are a variety of <a href="/framework/pipelines/modules">modules</a> and other ways of working with content.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/configuration">Configuration</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                                <div class="font-size-sm"><p>Statiq is highly configurable and everything from <a href="/framework/pipelines">pipelines and modules</a> to <a href="/framework/documents#about-metadata">metadata</a> (known as <a href="/framework/configuration/settings">settings</a> when used globally) can be easily customized to your needs.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

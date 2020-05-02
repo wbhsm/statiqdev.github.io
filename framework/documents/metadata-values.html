@@ -77,7 +77,10 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="section text-uppercase">framework</div>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/framework/documents">Documents and Metadata</a></span>
+                                                    <span><a href="/framework">Framework</a></span>
+                                        </div>
                                         <div class="text-white m-0 title">Metadata Values</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -143,11 +146,11 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/content">Content</a>
+                                                            <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/framework/content/linking-to-documents">Linking To Documents</a>
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/shortcodes">Shortcodes</a>
@@ -165,10 +168,16 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
@@ -208,7 +217,7 @@
                                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>There are lots of different ways of defining metadata as atomic values, complex objects, or powerful lazily evaluated scripts and delegates.</p>
 <p>Generally, metadata can be any instance of any type. Statiq's powerful <a href="/framework/documents/accessing-metadata#type-conversion">type conversion</a> will help convert the metadata object to whatever type you need when you retrieve the value. Sometimes though, you need to define metadata that's a little more powerful. The sections below describe types of metadata values that are treated separately.</p>
 <h1 id="computed-values">Computed Values</h1>
@@ -222,24 +231,15 @@ My number is &lt;?#= MyNumber /?&gt;.
 </code></pre>
 <p>The script also a number of predefined global properties available to it (see the <code>ScriptBase</code> class in <code>Statiq.Core</code> for all script properties):</p>
 <ul>
-<li><p><code>ExecutionState</code> contains the current <code>IExecutionState</code> object.</p>
-</li>
-<li><p><code>Context</code> (and the <code>ctx</code> shorthand) contain the current <a href="/framework/execution#execution-context">execution context</a>.</p>
-</li>
-<li><p><code>Document</code> (and the <code>doc</code> shorthand) contain the current <a href="/framework/documents">document</a>.</p>
-</li>
-<li><p><code>PipelineName</code>: Gets the name of the currently executing pipeline.</p>
-</li>
-<li><p><code>Pipeline</code>: Gets the currently executing pipeline.</p>
-</li>
-<li><p><code>Phase</code>: Gets the currently executing <a href="/framework/pipelines#phases">phase</a> of the current pipeline.</p>
-</li>
-<li><p><code>Parent</code>: Gets the parent execution context if currently in a nested <a href="/framework/pipelines/modules">module</a>.</p>
-</li>
-<li><p><code>Module</code>: Gets the current executing <a href="/framework/pipelines/modules">module</a>.</p>
-</li>
-<li><p><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a>.</p>
-</li>
+<li><code>ExecutionState</code> contains the current <code>IExecutionState</code> object.</li>
+<li><code>Context</code> (and the <code>ctx</code> shorthand) contain the current <a href="/framework/execution#execution-context">execution context</a>.</li>
+<li><code>Document</code> (and the <code>doc</code> shorthand) contain the current <a href="/framework/documents">document</a>.</li>
+<li><code>PipelineName</code>: Gets the name of the currently executing pipeline.</li>
+<li><code>Pipeline</code>: Gets the currently executing pipeline.</li>
+<li><code>Phase</code>: Gets the currently executing <a href="/framework/pipelines#phases">phase</a> of the current pipeline.</li>
+<li><code>Parent</code>: Gets the parent execution context if currently in a nested <a href="/framework/pipelines/modules">module</a>.</li>
+<li><code>Module</code>: Gets the current executing <a href="/framework/pipelines/modules">module</a>.</li>
+<li><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a>.</li>
 </ul>
 <p>In addition, all metadata values of the current document are exposed as properties in the script. For example, if a document has a metadata item with a key of "MyItem", a global property <code>MyItem</code> will be available to the script.</p>
 <h1 id="config-metadata">Config Metadata</h1>
