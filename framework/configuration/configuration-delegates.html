@@ -166,6 +166,9 @@
                                                                                     <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -214,6 +217,7 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Most modules that require configuration use a special <code>Config&lt;TValue&gt;</code> delegate. This type allows you to specify lazy logic that's evaluated at <a href="/framework/execution">execution time</a> and optionally uses the document and/or <a href="/framework/execution#execution-context">execution context</a>, is async or not, or just converts from a simple value.</p>
+<h1 id="factory-methods">Factory Methods</h1>
 <p>Creating a <code>Config&lt;TValue&gt;</code> is often done via factory methods from the <code>Config</code> static class. For example, if a module needs a string for a given setting it will accept a <code>Config&lt;string&gt;</code> which can be created by passing a <code>string</code> directly:</p>
 <pre><code class="language-csharp">new SomeModule("my-string")
 </code></pre>
@@ -221,10 +225,34 @@
 <pre><code class="language-csharp">new SomeModule(
     Config.FromDocument(doc =&gt; doc.GetString("key")))
 </code></pre>
+<p>Some of the available configuration delegate factory methods include:</p>
+<ul>
+<li><code>Config.FromContext()</code> overloads create a delegate using the <a href="/framework/execution/execution-context">execution context</a>.</li>
+<li><code>Config.FromDocument()</code> overloads create a delegate using the current <a href="/framework/documents">document</a>.</li>
+<li><code>Config.FromSetting()</code> overloads create a delegate using the value of a <a href="/framework/configuration/settings">setting</a>.</li>
+<li><code>Config.FromSettings()</code> overloads create a delegate using an action on the full set of <a href="/framework/configuration/settings">settings</a>.</li>
+<li><code>Config.FromValue()</code> overloads create a delegate using a single value.</li>
+</ul>
+<h1 id="value-casting">Value Casting</h1>
+<p>In addition to creating a configuration delegate using the <a href="#factory-methods">factory methods</a>, a <code>TValue</code> can be implicitly cast to the appropriate <code>Config&lt;TValue&gt;</code> type. For example, if a module argument is configured using a <code>Config&lt;string&gt;</code>, a simple <code>"string value"</code> can be passed to the module method and it will be implicitly converted to the appropriate delegate. This makes configuration delegate usage invisible in many simple cases.</p>
+<h1 id="extensions">Extensions</h1>
+<p>There are also several extensions that can help work with configuration delegates:</p>
+<ul>
+<li><code>CombineWith()</code> overloads combine two configuration delegates together in various ways.</li>
+<li><code>Transform()</code> overloads transform the configuration delegate at runtime using it's evaluated value.</li>
+<li><code>Cast()</code> casts a <code>Config&lt;TValue&gt;</code> of one <code>TValue</code> type to a different type.</li>
+<li><code>MakeEnumerable()</code> converts a <code>Config&lt;TValue&gt;</code> to a <code>Config&lt;IEnumerable&lt;TValue&gt;&gt;</code> with a single item in the enumerable.</li>
+</ul>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#factory-methods">Factory Methods</a></p>
+                                                    <p class="small"><a href="#value-casting">Value Casting</a></p>
+                                                    <p class="small"><a href="#extensions">Extensions</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/configuration-delegates.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

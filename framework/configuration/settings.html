@@ -166,6 +166,9 @@
                                                                                     <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/commands">Commands</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -215,26 +218,30 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Settings let you define global <a href="/framework/documents#about-metadata">metadata</a> that can be accessed from the <a href="/framework/execution#execution-context">execution context</a> or <a href="/framework/documents">documents</a>.</p>
 <p>At <a href="/framework/execution">execution time</a> all settings are combined into a single set of metadata accessible via the <a href="/framework/execution#execution-context">execution context</a>, which implements <code>IMetadata</code> for the purpose of exposing settings values.</p>
-<h1 id="specifying-settings">Specifying Settings</h1>
-<h2 id="configuration-files">Configuration Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Any values will be ...</p>
-<h2 id="environment-variables">Environment Variables</h2>
-<h2 id="bootstrapper">Bootstrapper</h2>
-<h2 id="cascade-to-documents">Cascade To Documents</h2>
-<p>All settings "cascade" to documents. That means that any value defined in settings files, environment variables, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/documents/metadata-values#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
+<h1 id="cascade-to-documents">Cascade To Documents</h1>
+<p>All settings "cascade" to <a href="/framework/documents">documents</a>. That means that any value defined in <a href="#configuration-files">configuration files</a>, <a href="#environment-variables">environment variables</a>, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/documents/metadata-values#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
 <p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
 <pre><code class="language-json">{
     "Published": "=&gt; DateTime.Today"
 }
 </code></pre>
-<p>Note that this configuration value uses a <a href="/framework/documents/metadata-values#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
+<p>Note that the setting demonstrated above uses a <a href="/framework/documents/metadata-values#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
+<h1 id="specifying-settings-with-the-bootstrapper">Specifying Settings With The Bootstrapper</h1>
+<p>Settings can be provided directly to the <a href="/framework/execution/engine">engine</a>, but the easiest and most common way to specify settings is to use a <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
+<h2 id="configuration-files">Configuration Files</h2>
+<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Additionally, a <code>statiq.json</code> file can also be used. Support for both is provisioned by the bootstrapper by default.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<p>The bootstrapper adds all existing environment variables as settings by default. This makes it easy to define settings for your generation from build servers.</p>
+<h2 id="fluent-api">Fluent API</h2>
+<p>The bootstrapper also contains <a href="/framework/configuration/bootstrapper/specifying-settings">fluent methods for specifying settings</a>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#specifying-settings">Specifying Settings</a></p>
+                                                    <p class="small"><a href="#cascade-to-documents">Cascade To Documents</a></p>
+                                                    <p class="small"><a href="#specifying-settings-with-the-bootstrapper">Specifying Settings With The Bootstrapper</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/configuration/settings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
