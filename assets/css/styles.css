@@ -323,7 +323,9 @@ code, code[class*="language-"], pre[class*="language-"] { background-color: #e9e
 
 .section-web #titlebar .breadcrumbs { color: #0ba7fe; font-size: 1rem; display: block; visibility: visible; }
 
-.section-web #titlebar .breadcrumbs span::after { content: "\25B8"; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+.section-web #titlebar .breadcrumbs span::after { content: "/"; font-weight: 700; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+
+.section-web #titlebar .breadcrumbs span:first-child:after { content: ''; }
 
 .section-web #titlebar .breadcrumbs a, .section-web #titlebar .breadcrumbs a:focus, .section-web #titlebar .breadcrumbs a:active { color: #2fb4fe; }
 
@@ -375,7 +377,9 @@ code, code[class*="language-"], pre[class*="language-"] { background-color: #e9e
 
 .section-docs #titlebar .breadcrumbs { color: #ac6900; font-size: 1rem; display: block; visibility: visible; }
 
-.section-docs #titlebar .breadcrumbs span::after { content: "\25B8"; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+.section-docs #titlebar .breadcrumbs span::after { content: "/"; font-weight: 700; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+
+.section-docs #titlebar .breadcrumbs span:first-child:after { content: ''; }
 
 .section-docs #titlebar .breadcrumbs a, .section-docs #titlebar .breadcrumbs a:focus, .section-docs #titlebar .breadcrumbs a:active { color: #d07f00; }
 
@@ -427,7 +431,9 @@ code, code[class*="language-"], pre[class*="language-"] { background-color: #e9e
 
 .section-framework #titlebar .breadcrumbs { color: #a90eff; font-size: 1rem; display: block; visibility: visible; }
 
-.section-framework #titlebar .breadcrumbs span::after { content: "\25B8"; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+.section-framework #titlebar .breadcrumbs span::after { content: "/"; font-weight: 700; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+
+.section-framework #titlebar .breadcrumbs span:first-child:after { content: ''; }
 
 .section-framework #titlebar .breadcrumbs a, .section-framework #titlebar .breadcrumbs a:focus, .section-framework #titlebar .breadcrumbs a:active { color: #b632ff; }
 
@@ -479,7 +485,9 @@ code, code[class*="language-"], pre[class*="language-"] { background-color: #e9e
 
 .section-blog #titlebar .breadcrumbs { color: #50565c; font-size: 1rem; display: block; visibility: visible; }
 
-.section-blog #titlebar .breadcrumbs span::after { content: "\25B8"; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+.section-blog #titlebar .breadcrumbs span::after { content: "/"; font-weight: 700; margin-left: 0.5rem; margin-right: 0.5rem; font-size: 1.25rem; }
+
+.section-blog #titlebar .breadcrumbs span:first-child:after { content: ''; }
 
 .section-blog #titlebar .breadcrumbs a, .section-blog #titlebar .breadcrumbs a:focus, .section-blog #titlebar .breadcrumbs a:active { color: #60686f; }
 

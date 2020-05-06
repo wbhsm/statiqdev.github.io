@@ -23,11 +23,6 @@
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
-            <div class="bg-red">
-                <div class="container-xl">
-                    <div class="text-center text-white p-4">This is an early build of the site and information may not be accurate or complete.</div>
-                </div>
-            </div>
             <div class="bg-nav">
                 <div class="container-xl py-3">
                     <div class="row">
@@ -222,17 +217,83 @@
                                             <p>By default the <a href="/framework/configuration/bootstrapper">bootstrapper</a> will automatically add all pipelines by type in the entry assembly via reflection, but you can also use it to add or define new pipelines.</p>
 <p>It contains several methods to add additional pipelines by either type or as an instance:</p>
 <ul>
-<li><p><code>AddPipeline&lt;TPipeline&gt;()</code> will add a pipeline by type (and enable <a href="#service-injection">service injection</a>).</p>
-</li>
-<li><p><code>AddPipeline(IPipeline)</code> and various overloads will add a pipeline instance.</p>
-</li>
+<li><code>AddPipeline&lt;TPipeline&gt;()</code> will add a pipeline by type.</li>
+<li><code>AddPipeline(IPipeline)</code> and various overloads will add a pipeline instance.</li>
 </ul>
 <h2 id="finding-pipelines-by-reflection">Finding Pipelines By Reflection</h2>
-<p>TODO</p>
-<h2 id="defining-directly">Defining Directly</h2>
-<p>TODO</p>
+<p>The bootstrapper also includes the ability to use reflection to find and add pipeline types:</p>
+<ul>
+<li><code>AddPipelines()</code> will add all pipelines defined in the entry assembly.</li>
+<li><code>AddPipelines(Assembly)</code> will add all pipelines defined in the specified assembly.</li>
+<li><code>AddPipelines(Type)</code> will add all pipelines defined as nested classes in the specified parent type.</li>
+<li><code>AddPipelines&lt;TParent&gt;()</code> will add all pipelines defined as nested classes in the specified parent type.</li>
+</ul>
+<h2 id="adding-directly">Adding Directly</h2>
+<p>You can add pipelines to the <code>IPipelineCollection</code> directly using the following extensions:</p>
+<ul>
+<li><code>AddPipelines(Action&lt;IPipelineCollection&gt;)</code></li>
+<li><code>AddPipelines(Action&lt;IReadOnlyConfigurationSettings, IPipelineCollection&gt;)</code></li>
+</ul>
+<h2 id="defining-pipelines">Defining Pipelines</h2>
+<p>In addition to adding pipelines defined as classes, the bootstrapper also has a robust set of extensions for directly defining pipelines:</p>
+<ul>
+<li><code>AddPipeline(...)</code> overloads will directly define a pipeline.</li>
+<li><code>AddSerialPipeline(...)</code> overloads will directly define a pipeline that has dependencies on all other currently defined pipelines.</li>
+<li><code>AddIsolatedPipeline(...)</code> overloads will directly define an <a href="/framework/pipelines#isolated">isolated pipeline</a>.</li>
+<li><code>AddDeploymentPipeline(...)</code> overloads will directly define a <a href="/framework/pipelines#deployment">deployment pipeline</a>.</li>
+</ul>
+<p>Each of these methods have overloads that allow you to:</p>
+<ul>
+<li>Specify a collection of <a href="/framework/pipelines/modules">modules</a> to be executed during the <a href="/framework/pipelines#process-phase">process phase</a> or other <a href="/framework/pipelines#phases">phases</a>.</li>
+<li>Specify files to read during the <a href="/framework/pipelines#input-phase">input phase</a>.</li>
+<li>Specify how to write files during the <a href="/framework/pipelines#output-phase">output phase</a>.</li>
+<li>Specify pipeline dependencies to other pipelines.</li>
+</ul>
 <h2 id="pipeline-builder">Pipeline Builder</h2>
-<p>TODO - using the pipeline builder to create pipelines</p>
+<p>The bootstrapper also provides a fluent API specifically for defining pipelines using a "builder" style:</p>
+<ul>
+<li><code>BuildPipeline(string, Action&lt;PipelineBuilder&gt;)</code> specifies a pipeline name and a delegate that uses a new <code>PipelineBuilder</code>.</li>
+</ul>
+<p>The <code>PipelineBuilder</code> includes a number of fluent methods for defining different parts of your pipeline:</p>
+<ul>
+<li><code>WithInputReadFiles()</code> overloads define files to read during the <a href="/framework/pipelines#input-phase">input phase</a>.</li>
+<li><code>WithOutputWriteFiles()</code> overloads define how to write files during the <a href="/framework/pipelines#output-phase">output phase</a>.</li>
+<li><code>AsSerial()</code> indicates that the pipeline should have dependencies on all other currently defined pipelines.</li>
+<li><code>AsIsolated()</code> indicates that the pipeline is an <a href="/framework/pipelines#isolated">isolated pipeline</a>.</li>
+<li><code>AsDeployment()</code> indicates that the pipeline is a <a href="/framework/pipelines#deployment">deployment pipeline</a>.</li>
+<li><code>WithInputModules()</code> adds modules to the <a href="/framework/pipelines#input-phase">input phase</a>.</li>
+<li><code>WithProcessModules()</code> adds modules to the <a href="/framework/pipelines#process-phase">process phase</a>.</li>
+<li><code>WithPostProcessModules()</code> adds modules to the <a href="/framework/pipelines#post-process-phase">post-process phase</a>.</li>
+<li><code>WithOutputModules()</code> adds modules to the <a href="/framework/pipelines#output-phase">output phase</a>.</li>
+<li><code>WithInputConfig()</code> uses a <a href="/framework/configuration/configuration-delegates">configuration delegate</a> to define the output of the <a href="/framework/pipelines#input-phase">input phase</a>.</li>
+<li><code>WithProcessConfig()</code> uses a <a href="/framework/configuration/configuration-delegates">configuration delegate</a> to define the output of the <a href="/framework/pipelines#process-phase">process phase</a>.</li>
+<li><code>WithPostProcessConfig()</code> uses a <a href="/framework/configuration/configuration-delegates">configuration delegate</a> to define the output of the <a href="/framework/pipelines#post-process-phase">post-process phase</a>.</li>
+<li><code>WithOutputConfig()</code> uses a <a href="/framework/configuration/configuration-delegates">configuration delegate</a> to define the output of the <a href="/framework/pipelines#output-phase">output phase</a>.</li>
+<li><code>WithDependencies()</code> defines the dependencies for the pipeline.</li>
+<li><code>WithExecutionPolicy()</code> indicates which <a href="/framework/pipelines#execution-policy">execution policy</a> the pipeline should use.</li>
+<li><code>ManuallyExecute()</code> indicates the pipeline should use the <a href="/framework/pipelines#manual">manual execution policy</a>.</li>
+<li><code>AlwaysExecute()</code> indicates the pipeline should use the <a href="/framework/pipelines#always">always execution policy</a>.</li>
+</ul>
+<p>To complete building the pipeline call <code>Build()</code>:</p>
+<pre><code class="language-csharp">using System;
+using Statiq.App;
+
+namespace MyGenerator
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateDefault(args)
+        .BuildPipeline("Render Markdown", builder =&gt; builder
+            .WithInputReadFiles("*.md")
+            .WithProcessModules(new RenderMarkdown())
+            .WithOutputWriteFiles(".html"))
+        .RunAsync();
+  }
+}
+</code></pre>
 
 
                                         </div>
