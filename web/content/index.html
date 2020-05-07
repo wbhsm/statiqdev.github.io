@@ -107,19 +107,16 @@
                                                         <a href="/web">About Statiq Web</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/data">Data</a>
+                                                            <a href="/web/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                        <a href="/web/configuration/preview-server">Preview Server</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/preview-server">Preview Server</a>
-                                                        </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/settings">Settings</a>
-                                                        </div>
                                                         <div class="sidebar-nav-item active has-children">
                                                             <a href="/web/content">Content</a>
                                                         </div>
@@ -155,9 +152,17 @@
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/web/data">Data</a>
                                                         </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/data/data-formats">Data Formats</a>
+                                                                    </div>
+                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
@@ -197,7 +202,7 @@
 <li><code>.cshtml</code> processes the file as <a href="/web/templates/razor">Razor</a>.</li>
 </ul>
 <p>In all cases, global processing such as <a href="/web/content/shortcodes">shortcodes</a> is performed and <a href="/web/templates#layouts">layouts</a> and <a href="/web/templates/themes">themes</a> are applied.</p>
-<p>Many <a href="/web/templates/themes">themes</a> also support treating content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/settings">configurable as settings</a>.</p>
+<p>Many <a href="/web/templates/themes">themes</a> also support treating content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/configuration/settings">configurable as settings</a>.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
@@ -228,7 +233,7 @@
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/content/enumerating-values">Enumerating Values</a></h4>
-                                                                <div class="font-size-sm"><p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/framework/documents/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p></div>
+                                                                <div class="font-size-sm"><p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/web/content/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

@@ -108,6 +108,37 @@
                                                         <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -155,43 +186,9 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/configuration">Configuration</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/settings">Settings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/execution">Execution</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/execution/engine">Engine</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/execution/execution-context">Execution Context</a>
                                                                     </div>
@@ -218,16 +215,16 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq uses an IO abstraction layer designed to provide flexibility and consistency when dealing with files, directories, and path information.</p>
 <h1 id="normalized-paths">Normalized Paths</h1>
-<p>Files and paths are generally represented in Statiq by the <code>NormalizedPath</code> struct. Paths can be either absolute (I.e., starting from the root of the file system) or relative. They can be easily joined together and otherwise manipulated.</p>
-<p>File and directory classes (implementations of <code>IFile</code> and <code>IDirectory</code>) point directly to a potential file or directory within a given file system. They are usually obtained using a normalized path that points to them. Each provider implements their own file and directory classes as appropriate for that provider. File and directory implementations often provide functionality for reading and writing files, creating directories, and otherwise manipulating the file system.</p>
+<p>Notional files and paths are generally represented in Statiq by the <code>NormalizedPath</code> struct. Think of it as a more standardized way of representing a path as a string. Paths can be either absolute (I.e., starting from the root of the file system) or relative. They can be easily joined together and otherwise manipulated.</p>
 <h1 id="virtual-file-system">Virtual File System</h1>
+<p>File and directory classes (implementations of <code>IFile</code> and <code>IDirectory</code>) point directly to a potential file or directory within a given file system. They are usually obtained using a normalized path that points to them. Each provider implements their own file and directory classes as appropriate for that provider. File and directory implementations often provide functionality for reading and writing files, creating directories, and otherwise manipulating the file system.</p>
 <p>The link between paths, file providers, and files and paths is managed by a virtual file system available through the <a href="/framework/execution#execution-context">execution context</a> as the <code>FileSystem</code> property. It stores all the root, input, and output paths and provides methods to join them with relative paths to get <code>IFile</code> and <code>IDirectory</code> instances.</p>
 <h2 id="root-path">Root Path</h2>
 <p>The root path is an absolute path that acts as a starting point for all other relative paths. By default the root path is set to the working path on the underlying file system from where you execute Statiq.</p>
 <h2 id="input-paths">Input Paths</h2>
 <p>Statiq uses multiple input paths that together comprise a virtual aggregated set of input files. This lets us do things like specify a set of canonical input files to use for a theme but then selectively override the theme files by putting replacements in an alternate input path with higher precedence.</p>
 <p>Input paths are stored in an ordered list. When checking for files, the paths at the end of the list take precedence over those at the start of the list. For example, if path "A" is at index 0, path "B" is at index 1, and they both have a file named "foo.md", the one from path "B" will be used. Further, all paths are aggregated so searching for files or evaluating <a href="#globbing">globbing</a> expressions will consider all files and directories in all input paths. In the example above, getting all input files will result in a set of files from both path "A" and path "B" (with files of the same name from path "B" replacing those from path "A").</p>
-<p>By default the output path is set to "input".</p>
+<p>By default a single input path of "input" is set.</p>
 <h2 id="output-path">Output Path</h2>
 <p>The output path is where Statiq will place output files by default. Note that many modules have the ability to manually specify an output path, so this behavior can be modified on a module by module basis.</p>
 <p>By default the output path is set to "output".</p>

@@ -108,6 +108,37 @@
                                                         <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -155,43 +186,9 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/configuration">Configuration</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/settings">Settings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/execution">Execution</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/execution/engine">Engine</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/execution/execution-context">Execution Context</a>
                                                                     </div>
@@ -305,7 +302,7 @@ Content
 <li><code>SyncMultiShortcode</code> is a base class for multiple-result synchronous shortcodes.</li>
 </ul>
 <h2 id="registering-your-shortcodes">Registering Your Shortcodes</h2>
-<p>Any custom shortcodes will need to be registered with the <a href="/framework/execution/engine">engine</a>.</p>
+<p>Any custom shortcodes will need to be registered with the <a href="/framework/execution#engine">engine</a>.</p>
 <p>This can be done through the <a href="/framework/configuration/bootstrapper">bootstrapper</a> using its <code>AddShortcode&lt;TShortcode&gt;()</code> extensions. Note that the bootstrapper automatically registers all shortcode types in all referenced assemblies by default so you'll rarely need to manually register shortcodes when using the bootstrapper.</p>
 <p>You can also register shortcodes directly with an engine using its <code>Shortcodes</code> property.</p>
 <h1 id="processing-shortcodes">Processing Shortcodes</h1>

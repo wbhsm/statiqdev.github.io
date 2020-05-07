@@ -108,6 +108,37 @@
                                                         <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item active">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -155,43 +186,9 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/configuration">Configuration</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item active">
-                                                                        <a href="/framework/configuration/settings">Settings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/execution">Execution</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/execution/engine">Engine</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/execution/execution-context">Execution Context</a>
                                                                     </div>
@@ -218,6 +215,28 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Settings let you define global <a href="/framework/documents#about-metadata">metadata</a> that can be accessed from the <a href="/framework/execution#execution-context">execution context</a> or <a href="/framework/documents">documents</a>.</p>
 <p>At <a href="/framework/execution">execution time</a> all settings are combined into a single set of metadata accessible via the <a href="/framework/execution#execution-context">execution context</a>, which implements <code>IMetadata</code> for the purpose of exposing settings values.</p>
+<p>Settings that you can use to control Statiq Framework include:</p>
+<ul>
+<li><code>Host</code>: The host to use when generating links (for example, "statiq.dev").</li>
+<li><code>LinksUseHttps</code>: Indicates if generated links should use HTTPS instead of HTTP as the scheme.</li>
+<li><code>LinkRoot</code>: The default relative root path to use when generating links (for example "/virtual/directory").</li>
+<li><code>LinkHideIndexPages</code>: Indicates whether to hide index pages by default when generating links.
+<ul>
+<li>When using the <a href="/framework/configuration/bootstrapper">bootstrapper</a> this defaults to <code>true</code>.</li>
+</ul>
+</li>
+<li><code>LinkHideExtensions</code>: Indicates whether to hide ".html" and ".htm" extensions by default when generating links.
+<ul>
+<li>When using the <a href="/framework/configuration/bootstrapper">bootstrapper</a> this defaults to <code>true</code>.</li>
+</ul>
+</li>
+<li><code>LinkLowercase</code>: Indicates that links should always be rendered in lowercase.</li>
+<li><code>UseStringContentFiles</code>: This will cause temporary backing files to be created for string document content instead of storing that content in memory.</li>
+<li><code>UseCache</code>: Indicates whether caching should be used.</li>
+<li><code>CleanOutputPath</code>: Indicates whether to clean the output path on each execution.</li>
+<li><code>DateTimeInputCulture</code>: Indicates the culture to use for reading and interpreting dates as input.</li>
+<li><code>DateTimeDisplayCulture</code>: Indicates the culture to use for displaying dates in output.</li>
+</ul>
 <h1 id="cascade-to-documents">Cascade To Documents</h1>
 <p>All settings "cascade" to <a href="/framework/documents">documents</a>. That means that any value defined in <a href="#configuration-files">configuration files</a>, <a href="#environment-variables">environment variables</a>, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/documents/metadata-values#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
 <p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
@@ -227,7 +246,7 @@
 </code></pre>
 <p>Note that the setting demonstrated above uses a <a href="/framework/documents/metadata-values#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
 <h1 id="specifying-settings-with-the-bootstrapper">Specifying Settings With The Bootstrapper</h1>
-<p>Settings can be provided directly to the <a href="/framework/execution/engine">engine</a>, but the easiest and most common way to specify settings is to use a <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
+<p>Settings can be provided directly to the <a href="/framework/execution#engine">engine</a>, but the easiest and most common way to specify settings is to use a <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
 <h2 id="configuration-files">Configuration Files</h2>
 <p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Additionally, a <code>statiq.json</code> file can also be used. Support for both is provisioned by the bootstrapper by default.</p>
 <h2 id="environment-variables">Environment Variables</h2>

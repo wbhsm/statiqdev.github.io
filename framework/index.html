@@ -107,6 +107,37 @@
                                                         <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -154,43 +185,9 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/configuration">Configuration</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/settings">Settings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/execution">Execution</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/execution/engine">Engine</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/execution/execution-context">Execution Context</a>
                                                                     </div>
@@ -268,6 +265,12 @@ namespace MyGenerator
                                                 <h4 class="h-section mb-2">Child Pages</h4>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/framework/configuration">Configuration</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq is highly configurable and everything from <a href="/framework/pipelines">pipelines and modules</a> to <a href="/framework/documents#about-metadata">metadata</a> (known as <a href="/framework/configuration/settings">settings</a> when used globally) can be easily customized to your needs.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/pipelines">Pipelines and Modules</a></h4>
                                                                 <div class="font-size-sm"><p>Pipelines and modules are the building blocks of a Statiq application. A generator defines pipelines that contain modules, and together they operate on documents to turn input into the final product.</p></div>
                                                         </div>
@@ -282,12 +285,6 @@ namespace MyGenerator
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/content">Working With Content</a></h4>
                                                                 <div class="font-size-sm"><p>Document content is often read from files, though it can also come from a database, a web service, or any other source and there are a variety of <a href="/framework/pipelines/modules">modules</a> and other ways of working with content.</p></div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/framework/configuration">Configuration</a></h4>
-                                                                <div class="font-size-sm"><p>Statiq is highly configurable and everything from <a href="/framework/pipelines">pipelines and modules</a> to <a href="/framework/documents#about-metadata">metadata</a> (known as <a href="/framework/configuration/settings">settings</a> when used globally) can be easily customized to your needs.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

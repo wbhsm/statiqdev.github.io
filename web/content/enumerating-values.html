@@ -108,19 +108,16 @@
                                                         <a href="/web">About Statiq Web</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/data">Data</a>
+                                                            <a href="/web/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                        <a href="/web/configuration/preview-server">Preview Server</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/preview-server">Preview Server</a>
-                                                        </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/settings">Settings</a>
-                                                        </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/content">Content</a>
                                                         </div>
@@ -156,9 +153,17 @@
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/web/data">Data</a>
                                                         </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/data/data-formats">Data Formats</a>
+                                                                    </div>
+                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
@@ -190,7 +195,7 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/framework/documents/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p>
+                                            <p>Statiq Web has a nifty feature where you can declare a sequence of values to be enumerated within the <a href="/web/content/front-matter">front matter</a> of a file and it will create additional documents for each of the values.</p>
 <p>To use this feature, define a metadata key <code>Enumerate</code> with the values you want to create documents for. Each document will contain the original content and metadata along with an additional <code>Current</code> metadata value.</p>
 <p>To illustrate how this works, consider an <code>apple.md</code> file with the following front matter:</p>
 <pre><code class="language-txt">Enumerate:
@@ -202,7 +207,7 @@
 The current apple is &lt;?#= Current /?&gt;.
 </code></pre>
 <p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/web/templates/razor">Razor</a> syntax or another templating format.</p>
-<p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/settings#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/documents#about-metadata#computed-values">computed values</a>:</p>
+<p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/configuration/settings#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/documents#about-metadata#computed-values">computed values</a>:</p>
 <pre><code class="language-txt">Enumerate:
   - Red Delicious
   - Honeycrisp
@@ -238,7 +243,7 @@ else
 }
 </code></pre>
 <p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/documents#about-metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
-<p>TODO: Usage with the data pipeline - define apples with descriptions as .yml files</p>
+<!-- TODO: Usage with the data pipeline - define apples with descriptions as .yml files -->
 
 
                                         </div>

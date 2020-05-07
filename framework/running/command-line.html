@@ -108,6 +108,37 @@
                                                         <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/configuration">Configuration</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -155,43 +186,9 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/framework/configuration">Configuration</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/settings">Settings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/execution">Execution</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/framework/execution/engine">Engine</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/execution/execution-context">Execution Context</a>
                                                                     </div>
@@ -216,14 +213,47 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Statiq provides a number of default commands and arguments to execute and control your pipeline execution.</p>
+<p>You can run your Statiq application directly using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run"><code>dotnet run</code></a> but you need to <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#options">delimit arguments for your Statiq application</a> with a <code>--</code> between the <code>dotnet run</code> command and the arguments you want to pass to your Statiq application. Anything after the <code>--</code> will be passed to Statiq.</p>
+<p>In general, calling <code>dotnet run</code> will compile your application, run the default pipelines, and generate output.</p>
+<h1 id="getting-help">Getting Help</h1>
+<p>You can view help for any command with the <code>--help</code> option:</p>
+<pre><code class="language-txt">dotnet run -- --help
+
+USAGE:
+    DotnetFoundationWeb.dll [pipelines] [OPTIONS]
+
+ARGUMENTS:
+    [pipelines]    The pipeline(s) to execute
+
+OPTIONS:
+    -h, --help                  Prints help information
+    -l, --log-level &lt;LEVEL&gt;     Sets the minimum log level ("Critical", "Error", "Warning", "Information", "Debug", "Trace", "None")
+        --attach                Pause execution at the start of the program until a debugger is attached
+    -f, --log-file &lt;LOGFILE&gt;    Log all messages to the specified log file
+    -s, --setting &lt;SETTING&gt;     Specifies a setting as a key=value pair (the value can be omited)
+    -i, --input &lt;PATH&gt;          The path(s) of input files, can be absolute or relative to the current folder
+    -o, --output &lt;PATH&gt;         The path to output files, can be absolute or relative to the current folder
+        --noclean               Prevents cleaning of the output path on each execution
+        --nocache               Prevents caching information during execution (less memory usage but slower execution)
+        --stdin                 Reads standard input at startup and sets ApplicationInput in the execution context
+        --serial                Executes pipeline phases and modules in serial
+    -r, --root                  The root folder to use
+    -n, --normal                Executes normal pipelines as well as those specified
+
+COMMANDS:
+    pipelines    Executes the specified pipelines
+    deploy       Executes deployment pipelines
+</code></pre>
 <h1 id="defining-commands">Defining Commands</h1>
+<p>Additional commands can be <a href="/framework/configuration/bootstrapper/commands">defined using a bootstrapper</a>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#getting-help">Getting Help</a></p>
                                                     <p class="small"><a href="#defining-commands">Defining Commands</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/running/command-line.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
