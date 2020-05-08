@@ -220,6 +220,7 @@
 <h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
 <p>Creating a <a href="/framework/configuration/bootstrapper">bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/pipelines/defining-pipelines">pipelines</a> or <a href="/framework/pipelines/modules/writing-modules">custom modules</a>, you shouldn’t need to for most sites.</p>
 <pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
 using Statiq.App;
 using Statiq.Web;
 
