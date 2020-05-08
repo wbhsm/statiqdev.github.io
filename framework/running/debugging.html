@@ -215,7 +215,11 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>One of the most powerful aspects of your static generator being a .NET application is that you have access to the full .NET development environment and tooling, including robust debugging support.</p>
 <p>A Statiq application can be debugged easily by attaching a debugger to it. Additionally, if you start the application from within Visual Studio in debug mode, it can be debugged just like any other application.</p>
-<p>The <a href="/framework/running/command-line">command-line interface</a> also provides a helpful <code>--attach</code> argument you can use to pause execution at application start, print out the current process ID, and wait for a debugger to attach. Use this argument when you want to debug a Statiq application from the command line.</p>
+<p>The <a href="/framework/running/command-line">command-line interface</a> also provides two flags to assist with debugging:</p>
+<ul>
+<li><code>--debug</code>: Launches a debugger selection window to select (and launch) a debugger.</li>
+<li><code>--attach</code>: Pauses execution at application start, prints out the current process ID, and waits for a debugger to attach.</li>
+</ul>
 
 
                                         </div>
