@@ -111,9 +111,6 @@
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/configuration/preview-server">Preview Server</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
                                                             </div>
@@ -191,19 +188,44 @@
                                                                         <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/running">Running</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/running/command-line">Command-Line Interface</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/running/preview-server">Preview Server</a>
+                                                                    </div>
+                                                            </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Statiq Web is designed to make the most common scenarios extremely easy without requiring any configuration, but sometimes you need a little more control.</p>
+<h1 id="bootstrapper-defaults">Bootstrapper Defaults</h1>
+<p>When you create a bootstrapper using the <code>Bootstrapper.Factory.CreateWeb(args)</code> extension method, it automatically configures all <a href="/framework/configuration/bootstrapper#default-behavior">default behavior</a>. If you'd rather have more control over bootstrapper default behavior, you can use the <code>AddWeb()</code> extension method after creating a standard bootstrapper instead.</p>
+<p>For example, this creates a bootstrapper without adding pipelines from the entry assembly automatically:</p>
+<pre><code class="language-csharp">using System;
+using Statiq.App;
+using Statiq.Web;
+
+namespace MySite
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateDefaultWithout(args, DefaultFeatures.Pipelines)
+        .AddWeb()
+        .RunAsync();
+  }
+}
+</code></pre>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/configuration/preview-server">Preview Server</a></h4>
-                                                                <div class="font-size-sm"><p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p></div>
-                                                        </div>
-                                                    </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/configuration/settings">Settings</a></h4>
@@ -212,6 +234,10 @@
                                                     </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#bootstrapper-defaults">Bootstrapper Defaults</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/configuration/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

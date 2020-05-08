@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Archives</title>
+        <title>Statiq - Preview Server</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -73,10 +73,10 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
-                                                    <span><a href="/web/content">Content</a></span>
+                                                    <span><a href="/web/running">Running</a></span>
                                                     <span><a href="/web">Web</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Archives</div>
+                                        <div class="text-white m-0 title">Preview Server</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +119,7 @@
                                                             <a href="/web/content">Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content/archives">Archives</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -196,19 +196,46 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/running/command-line">Command-Line Interface</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item active">
                                                                         <a href="/web/running/preview-server">Preview Server</a>
                                                                     </div>
                                                             </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Archives are one of the most powerful features of Statiq Web and allow you to group and page content.</p>
+                                            <p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p>
+<h1 id="configuration">Configuration</h1>
+<p>TODO</p>
+<ul>
+<li>Set port</li>
+<li>Virtual path</li>
+</ul>
+<h1 id="live-reload">Live Reload</h1>
+<p>TODO</p>
+<h1 id="serving-without-build">Serving Without Build</h1>
+<p>TODO</p>
+<ul>
+<li>'serve' command</li>
+</ul>
+<h1 id="usage-outside-statiq-web">Usage Outside Statiq Web</h1>
+<p>TODO</p>
+<ul>
+<li>Include "Statiq.Web.Hosting.Commands" package</li>
+<li>Add hosting commands to <code>Bootstrapper</code></li>
+<li>Subject to Prosperity license terms</li>
+</ul>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/archives.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#configuration">Configuration</a></p>
+                                                    <p class="small"><a href="#live-reload">Live Reload</a></p>
+                                                    <p class="small"><a href="#serving-without-build">Serving Without Build</a></p>
+                                                    <p class="small"><a href="#usage-outside-statiq-web">Usage Outside Statiq Web</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/preview-server.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

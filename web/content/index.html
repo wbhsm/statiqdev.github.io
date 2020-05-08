@@ -111,9 +111,6 @@
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/configuration/preview-server">Preview Server</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
                                                             </div>
@@ -191,18 +188,30 @@
                                                                         <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/web/running">Running</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/running/command-line">Command-Line Interface</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/running/preview-server">Preview Server</a>
+                                                                    </div>
+                                                            </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content.</p>
-<p>In general, your content should be placed in the "input" folder (or a sub-folder) and is processed based on it’s media type (which is typically determined by file extension). The following extensions are recognized by default:</p>
+<p>Content files should be placed in the <code>input</code> folder (or a sub-folder) and are processed based on their media type (which is determined by file extension). The following extensions are recognized by default:</p>
 <ul>
 <li><code>.html</code> processes the file as plain HTML.</li>
 <li><code>.md</code> processes the file as <a href="/web/templates/markdown">Markdown</a>.</li>
 <li><code>.cshtml</code> processes the file as <a href="/web/templates/razor">Razor</a>.</li>
 </ul>
+<p>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how content files are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default.</p>
 <p>In all cases, global processing such as <a href="/web/content/shortcodes">shortcodes</a> is performed and <a href="/web/templates#layouts">layouts</a> and <a href="/web/templates/themes">themes</a> are applied.</p>
-<p>Many <a href="/web/templates/themes">themes</a> also support treating content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/configuration/settings">configurable as settings</a>.</p>
+<p>Many <a href="/web/templates/themes">themes</a> treat content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/configuration/settings">configurable as settings</a>.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>

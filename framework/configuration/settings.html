@@ -237,6 +237,7 @@
 <li><code>DateTimeInputCulture</code>: Indicates the culture to use for reading and interpreting dates as input.</li>
 <li><code>DateTimeDisplayCulture</code>: Indicates the culture to use for displaying dates in output.</li>
 </ul>
+<p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>Keys</code> class.</p>
 <h1 id="cascade-to-documents">Cascade To Documents</h1>
 <p>All settings "cascade" to <a href="/framework/documents">documents</a>. That means that any value defined in <a href="#configuration-files">configuration files</a>, <a href="#environment-variables">environment variables</a>, etc. is also available as document metadata unless otherwise overwritten by the document. This include settings that would conventionally be set just at a document level (for example, a page title). This feature can be very useful for situations when you want all documents to have a particular default value for a setting or when you want to use a common <a href="/framework/documents/metadata-values#computed-values">computed value</a> to define a script to use to calculate a different value for each document.</p>
 <p>For example, if you want to set the "Published" key of <em>every</em> document to the date the site was built you can add this to your <code>appsettings.json</code> file:</p>
