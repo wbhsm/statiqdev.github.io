@@ -132,6 +132,9 @@
                                                                         <a href="/web/content/enumerating-values">Enumerating Values</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -203,7 +206,9 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>TODO</p>
+                                            <p>Directory metadata allows you to specify metadata that applies to all files in a given directory (and optionally all subdirectories).</p>
+<p>By default, directory metadata files are named <code>_directory.*</code> where the extension is one of the supported data formats like <code>.json</code>, <code>.yaml</code>, or <code>.yml</code>. The file name(s) and applicable paths can be controlled by the <code>DirectoryMetadataFiles</code> <a href="/web/configuration/settings">setting</a>. The default value is <code>**/_{d,D}irectory.{json,yaml,yml}</code>.</p>
+<p>Any metadata defined in a directory metadata file will be applied to all files in the same directory and all subdirectories by default. To turn off recursive application and only apply metadata to files in the same directory set <code>Recursive</code> to <code>false</code> in the directory metadata file.</p>
 
 
                                         </div>

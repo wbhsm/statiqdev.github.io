@@ -19,7 +19,7 @@
         
 		
 
-        <title>Statiq - Running</title>
+        <title>Statiq - Excerpts And Headings</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -73,9 +73,10 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/web/content">Content</a></span>
                                                     <span><a href="/web">Web</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Running</div>
+                                        <div class="text-white m-0 title">Excerpts And Headings</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +131,7 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/enumerating-values">Enumerating Values</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item active">
                                                                         <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -191,7 +192,7 @@
                                                                         <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item active has-children">
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/web/running">Running</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -205,25 +206,47 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Statiq Web attempts to extract an excerpt and headings from your content and stores them in metadata.</p>
+<h1 id="excerpt">Excerpt</h1>
+<p>The excerpt can be used when you want to display a short amount of content for a document without displaying the whole document. It's useful for <a href="/web/content/archives">archives</a>, <a href="/web/content/feeds">feeds</a>, or any other time you want to show several documents in one view.</p>
+<p>By default the excerpt is taken from the first <code>&lt;p&gt;</code> element it finds. Alternativly, you can control where the excerpt ends by inserting an excerpt separator contained in your HTML (either <code>excerpt</code> or <code>more</code>). All <code>&lt;p&gt;</code> content up to the separator will be used.</p>
+<p>For example:</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+  ...
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="header"&gt;...&lt;/div&gt;
+    &lt;div id="content"&gt;
+      &lt;p&gt;
+        Fruit keeps you healthy.
+        &lt;!-- excerpt --&gt;
+        Different kinds of fruit includes apples, oranges, etc.
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Will result in an excerpt of:</p>
+<pre><code class="language-html">&lt;p&gt;Fruit keeps you healthy.&lt;/p&gt;
+</code></pre>
+<p>The excerpt is stored in an <code>Excerpt</code> metadata value.</p>
+<h1 id="headings">Headings</h1>
+<p>All headings for a document are automatically gathered and represented by documents stored in the <code>Headings</code> metadata value. A new document is created for each heading. The new heading documents contain metadata with the level of the heading, the children of the heading (the following headings with one deeper level), and optionally the heading content which is also set as the content of each heading document. The heading documents have the following metadata:</p>
+<ul>
+<li><code>Level</code>: The level of the heading.</li>
+<li><code>HeadingId</code>: The <code>id</code> attribute of the heading if it has one.</li>
+</ul>
+<p>The heading documents can be used to create a table-of-contents, an "on this page" sidebar, or any other use cases where knowing the headings in a document might be helpful.</p>
 
 
-                                                <h4 class="h-section mb-2">Child Pages</h4>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/running/command-line">Command-Line Interface</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/running/preview-server">Preview Server</a></h4>
-                                                                <div class="font-size-sm"><p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p></div>
-                                                        </div>
-                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#excerpt">Excerpt</a></p>
+                                                    <p class="small"><a href="#headings">Headings</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/excerpts-and-headings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

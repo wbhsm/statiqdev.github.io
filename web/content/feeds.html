@@ -132,6 +132,9 @@
                                                                         <a href="/web/content/enumerating-values">Enumerating Values</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item active">
@@ -203,7 +206,46 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Feed files let you define RSS, Atom, and/or RDF feeds for any content or data in your site.</p>
+<p>Feed files can be named anything you like and should be one of the supported data formats such as <code>.json</code>, <code>.yaml</code>, or <code>.yml</code>. They are identified by having metadata values for <code>FeedRss</code>, <code>FeedAtom</code>, and/or <code>FeedRdf</code>.</p>
+<p>The following metadata controls the feed:</p>
+<ul>
+<li><code>FeedPipelines</code>: The pipeline(s) to get documents for the feed from. Defaults to the <code>Content</code> pipeline if not defined.</li>
+<li><code>FeedSources</code>: A globbing pattern to filter documents from the feed pipeline(s) based on source path (or all documents from the pipeline(s) if not defined).</li>
+<li><code>FeedFilter</code>: An additional metadata filter for documents from the feed pipeline(s) that should return a <code>bool</code>.</li>
+<li><code>FeedOrderKey</code>: The metadata key that sorting should be based on.</li>
+<li><code>FeedOrderDescending</code>: Indicates that feed items should be sorted in descending order.</li>
+<li><code>FeedSize</code>: The number of items the feed should contain after sorting.</li>
+<li><code>FeedRss</code>: A <code>bool</code> indicating if an RSS feed should be output.</li>
+<li><code>FeedAtom</code>: A <code>bool</code> indicating if an Atom feed should be output.</li>
+<li><code>FeedRdf</code>: A <code>bool</code> indicating if an RDF feed should be output.</li>
+</ul>
+<p>The following metadata describes the feed:</p>
+<ul>
+<li><code>FeedId</code>: A URI that links to the root of the site by default.</li>
+<li><code>FeedTitle</code>: The title of the feed or site (defaults to the global <code>Title</code> setting).</li>
+<li><code>FeedDescription</code>: A description of the feed or site (defaults to the global <code>Description</code> setting).</li>
+<li><code>FeedAuthor</code>: The author of the feed (generally an email address).</li>
+<li><code>FeedPublished</code>: The date the feed was published (defaults to the current date).</li>
+<li><code>FeedUpdated</code>: The date the feed was updated (defaults to the current date).</li>
+<li><code>FeedLink</code>: A URI to the feed location (defaults to the destination path).</li>
+<li><code>FeedImageLink</code>: An image to associate with the feed.</li>
+</ul>
+<p>The following metadata describes items in the feed and should be set in the feed item documents to override the defaults (all are optional and the feed will use sensible defaults if these aren't defined):</p>
+<ul>
+<li><code>FeedItemId</code>: A unique ID (usually a link) to the feed item (defaults to an absolute link to the document).</li>
+<li><code>FeedItemTitle</code>: The title of the feed item (defaults to the value of <code>Title</code>).</li>
+<li><code>FeedItemDescription</code>: A description of the feed item (defaults to the value of <code>Description</code> and falls back to the value of <code>Excerpt</code> if <code>Description</code> is not defined).</li>
+<li><code>FeedItemAuthor</code>: The author of the feed item (usually an email address).</li>
+<li><code>FeedItemPublished</code>: The date the item was published (defaults to the value of <code>Published</code>).</li>
+<li><code>FeedItemUpdated</code>: The date the item was updated (defaults to the value of <code>Published</code>).</li>
+<li><code>FeedItemLink</code>: A link to the feed item (defaults to an absolute link to the document).</li>
+<li><code>FeedItemImageLink</code>: An absolute link to an image that represents the feed item (defaults to the value of <code>Image</code>).</li>
+<li><code>FeedItemContent</code>: The full content of the feed item (defaults to the value of <code>Content</code> or the full document content).</li>
+<li><code>FeedItemThreadLink</code>: A link to a comments thread for the feed item.</li>
+<li><code>FeedItemThreadCount</code>: The number of comments on the feed item.</li>
+<li><code>FeedItemThreadUpdated</code>: The date the comments thread and count were updated.</li>
+</ul>
 
 
                                         </div>

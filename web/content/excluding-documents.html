@@ -131,6 +131,9 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/enumerating-values">Enumerating Values</a>
                                                                     </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
+                                                                    </div>
                                                                     <div class="sidebar-nav-item active">
                                                                         <a href="/web/content/excluding-documents">Excluding Documents</a>
                                                                     </div>
@@ -203,7 +206,9 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>TODO</p>
+                                            <p>Documents can be easily excluded from generation, either by removing them entirely or by suppressing their output (but still processing them in the appropriate pipeline).</p>
+<p>To hide a document entirely, set the <code>Excluded</code> metadata value to <code>true</code>. By default, any file with a <code>Published</code> metadata value greater than the current date will be automatically excluded.</p>
+<p>To prevent a document from outputting but still include it in pipelines and the generation, set the metadata value of <code>ShouldOutput</code> to <code>false</code>. This is helpful when you want the document to be available to other documents without itself being an output. For example if you use a set of Markdown files to define content that's only intended to be included within other outputs.</p>
 
 
                                         </div>
