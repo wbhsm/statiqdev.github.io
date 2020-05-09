@@ -237,7 +237,7 @@ My number is &lt;?#= MyNumber /?&gt;.
 <li><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a>.</li>
 </ul>
 <p>In addition, all metadata values of the current document are exposed as properties in the script. For example, if a document has a metadata item with a key of "MyItem", a global property <code>MyItem</code> will be available to the script.</p>
-<h1 id="config-metadata">Config Metadata</h1>
+<h1 id="configuration-delegates">Configuration Delegates</h1>
 <p>Another way of accessing the current <a href="/framework/documents">document</a> or <a href="/framework/execution#execution-context">execution context</a> while computing a lazy metadata value is to use a <a href="/framework/configuration/configuration-delegates">configuration delegate</a>. When an instance of <code>IConfig</code> is added as a metadata value, it will be evaluated on every request for that value.</p>
 <h1 id="lazy-values">Lazy Values</h1>
 <p>In more advanced scenarios you sometimes want to defer figuring out the value of a metadata item until it’s accessed. This can help when the data to determine the value isn’t available yet, when computing the value would be expensive and you don’t know if it’ll actually need to be accessed, or you want to compute a fresh value each time it’s accessed. This can be accomplished by implementing <code>IMetadataValue</code>. If an object that implements that interface is added as a metadata value, it’s <code>object Get(IMetadata metadata)</code> method will be called when the value is requested (the <code>metadata</code> argument is the current metadata object, for example the <a href="/framework/documents">document</a>).</p>
@@ -248,7 +248,7 @@ My number is &lt;?#= MyNumber /?&gt;.
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
                                                     <p class="small"><a href="#computed-values">Computed Values</a></p>
-                                                    <p class="small"><a href="#config-metadata">Config Metadata</a></p>
+                                                    <p class="small"><a href="#configuration-delegates">Configuration Delegates</a></p>
                                                     <p class="small"><a href="#lazy-values">Lazy Values</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/documents/metadata-values.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>

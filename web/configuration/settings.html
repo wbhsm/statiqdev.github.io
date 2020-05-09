@@ -218,6 +218,28 @@
 <li><code>ValidateLinksAsError</code>: Indicates that link validation failures should be treated as errors and fail the build.</li>
 </ul>
 <p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class.</p>
+<p>You can change settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
+<pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
+using Statiq.App;
+using Statiq.Web;
+
+namespace MySite
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateWeb(args)
+        .AddSetting(
+          WebKeys.ValidateAbsoluteLinks,
+          true)
+        .RunAsync();
+  }
+}
+</code></pre>
+<p>As with any other metadata, setting values can be <a href="/framework/documents/metadata-values#computed-values">computed values</a> or <a href="/framework/configuration/configuration-delegates">configuration delegates</a> and their value will be evaluated at run-time.</p>
 
 
                                         </div>

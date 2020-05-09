@@ -207,6 +207,7 @@
 <p>When you create a bootstrapper using the <code>Bootstrapper.Factory.CreateWeb(args)</code> extension method, it automatically configures all <a href="/framework/configuration/bootstrapper#default-behavior">default behavior</a>. If you'd rather have more control over bootstrapper default behavior, you can use the <code>AddWeb()</code> extension method after creating a standard bootstrapper instead.</p>
 <p>For example, this creates a bootstrapper without adding pipelines from the entry assembly automatically:</p>
 <pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
 using Statiq.App;
 using Statiq.Web;
 
