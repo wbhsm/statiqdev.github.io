@@ -126,9 +126,6 @@
                                                                         <a href="/web/content/content-hierarchy">Content Hierarchy</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/cross-references">Cross References</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content/directory-metadata">Directory Metadata</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -142,6 +139,9 @@
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/front-matter">Front Matter</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content/links-and-cross-references">Links And Cross References</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/resource-mirroring">Resource Mirroring</a>
@@ -203,15 +203,31 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
-<h1 id="generation-navigation">Generation Navigation</h1>
+                                            <p>Documents from the <code>Content</code> pipeline are structured in a hierarchy that makes it easy to navigate them similar to their location on disk.</p>
+<p>When you get documents from the <code>Content</code> pipeline, for example by using <code>Outputs["Content"]</code>, the return value is likely just a single document or a small number of root documents. Each of the return documents potentially contains child documents (usually in a <code>Children</code> metadata value), and those child document may contain child documents to form a tree.</p>
+<p>Documents with a name of <code>index.*</code> are considered to be the parent of other documents in their directory. If no index document exists in a directory, a "placeholder" parent document is created which can be identified by having a <code>TreePlaceholder</code> metadata value.</p>
+<h1 id="navigating-the-tree">Navigating The Tree</h1>
+<p>A number of <code>IDocument</code> extension methods exist to help navigate the document hiearchy:</p>
+<ul>
+<li><code>GetParent()</code>: Gets the parent document of a given document.</li>
+<li><code>HasChildren()</code>: Returns if the document has any child documents.</li>
+<li><code>GetChildren()</code>: Gets the child documents of a given document.</li>
+<li><code>GetDescendants()</code>: Gets all descendant documents of a given document.</li>
+<li><code>GetDescendantsAndSelf()</code>: Gets all descendant documents of a given document including the given document.</li>
+</ul>
+<p>The methods above that return a collection (including the return value of getting documents from a pipeline like <code>Outputs["Content"]</code> all return a <code>DocumentList&lt;IDocument&gt;</code>. <code>DocumentList&lt;IDocument&gt;</code> exposes an indexer that filters documents by a destination pattern:</p>
+<pre><code class="language-csharp">IDocument result = Outputs["Content"]["first/second/third.html"];
+</code></pre>
+<h1 id="flattening">Flattening</h1>
+<p>There are many times when instead of a hiearchy you'd rather have a flat collection of documents. Calling <code>Flatten()</code> on a collection of documents will collapse the entire tree into a flat sequence. Note that each document will still contain it's children, it's just that they'll all be part of the result sequence.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#generation-navigation">Generation Navigation</a></p>
+                                                    <p class="small"><a href="#navigating-the-tree">Navigating The Tree</a></p>
+                                                    <p class="small"><a href="#flattening">Flattening</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/content-hierarchy.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
