@@ -208,10 +208,10 @@
 <pre><code class="language-html">&lt;a href="@@document.GetLink()"&gt;My Link&lt;/a&gt;
 </code></pre>
 <p>A <a href="/web/templates/razor">Razor</a> <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper">HTML helper</a> called <code>DocumentLink()</code> is also available that will create an entire link element:</p>
-<pre><code class="language-txt">@@Html.DocumentLink(document);
+<pre><code class="language-txt">@Html.DocumentLink(document);
 </code></pre>
 <p>A number of overloads exist to control things like link text:</p>
-<pre><code class="language-txt">@@Html.DocumentLink(document, "My Link");
+<pre><code class="language-txt">@Html.DocumentLink(document, "My Link");
 </code></pre>
 <h1 id="cross-references">Cross References</h1>
 <p>Statiq Web also provides an alternate way of linking to documents via simple cross references that doesn't require you to have a document instance or know the document path. Cross references are indicated with a <code>xref:</code> URI scheme and use a special identifier to locate documents.</p>
