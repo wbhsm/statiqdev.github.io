@@ -211,7 +211,7 @@
 <p>Statiq supports several templating engines like Markdown and Razor, but sometimes you need to generate some content regardless of the templating language you're using. Shortcodes are small text macros that can do big things and work across any templating engine. <a href="/framework/content/shortcodes">The shortcodes page in Statiq Framework</a> discusses the basics of shortcodes, how to use them, and how to write your own.</p>
 <h1 id="statiq-web-shortcodes">Statiq Web Shortcodes</h1>
 <p>Statiq Web comes with several web-specific shortcodes.</p>
-<h2 id="embed-and-oembed-support"><code>Embed</code> And oEmbed Support</h2>
+<h2 id="embed-and-oembed-support">Embed And oEmbed Support</h2>
 <p><a href="https://oembed.com">oEmbed is a format</a> for fetching the embedded representation of third-party content The <code>Embed</code> shortcode provides general-purpose oEmbed support by calling an oEmbed endpoint and rendering the embedded content:</p>
 <pre><code class="language-html">&lt;?# Embed https://codepen.io/api/oembed https://codepen.io/gingerdude/pen/JXwgdK /?&gt;
 </code></pre>
@@ -222,12 +222,12 @@
 <li><code>Format</code>: An optional format to use ("xml" or "json").</li>
 </ul>
 <p><a href="https://oembed.com/#section7">Many sites</a> have implemented oEmbed support and some site-specific shortcodes for some of them are also available:</p>
-<h3 id="giphy"><code>Giphy</code></h3>
+<h3 id="giphy">Giphy</h3>
 <p>Embeds a gif from Giphy:</p>
 <pre><code class="language-html">&lt;?# Giphy excited-birthday-yeah-yoJC2GnSClbPOkV0eA /?&gt;
 </code></pre>
 <p>The only argument is the ID of the gif which can be obtained from it's URL: the ID for the URL <a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a> is <code>excited-birthday-yeah-yoJC2GnSClbPOkV0eA</code>.</p>
-<h3 id="gist"><code>Gist</code></h3>
+<h3 id="gist">Gist</h3>
 <p>Embeds a gist from GitHub:</p>
 <pre><code class="language-html">&lt;?# Gist 10a2f6e0186fa34b8a7b4bd7d436785d /?&gt;
 </code></pre>
@@ -237,7 +237,7 @@
 <li><code>Username</code>: Contains the username the gist belongs to (optional).</li>
 <li><code>File</code>: Specifies the file within the gist to embed (optional).</li>
 </ul>
-<h3 id="twitter"><code>Twitter</code></h3>
+<h3 id="twitter">Twitter</h3>
 <p>Embeds a Tweet from Twitter:</p>
 <pre><code class="language-html">&lt;?# Twitter 123456789 /?&gt;
 </code></pre>
@@ -249,13 +249,13 @@
 <li><code>Theme</code>: Optionally "light" or "dark". When set to "dark", the Tweet is displayed with light text over a dark background.</li>
 <li><code>OmitScript</code>: When set to <code>true</code>, the <code>&lt;script&gt;</code> element that contains the Twitter embed JavaScript code will not be rendered (for example, if you're including it at the top of the page).</li>
 </ul>
-<h3 id="youtube"><code>YouTube</code></h3>
+<h3 id="youtube">YouTube</h3>
 <p>Embeds a video from YouTube:</p>
 <pre><code class="language-html">&lt;?# YouTube u5ayTqlLWQQ /?&gt;
 </code></pre>
 <p>The only argument is the ID of the video to embed.</p>
 <h2 id="other-shortcodes">Other Shortcodes</h2>
-<h3 id="link"><code>Link</code></h3>
+<h3 id="link">Link</h3>
 <p>Renders a link from the given path, using default settings or specifying overrides as appropriate:</p>
 <pre><code class="language-html">&lt;?# Link "/foo/bar" /?&gt;
 </code></pre>
@@ -271,7 +271,7 @@
 <li><code>HideExtensions</code>: If set to <code>true</code>, extensions will be hidden.</li>
 <li><code>Lowercase</code>: If set to <code>true</code>, links will be rendered in all lowercase.</li>
 </ul>
-<h3 id="figure"><code>Figure</code></h3>
+<h3 id="figure">Figure</h3>
 <p>Generates HTML5 <code>&lt;figure&gt;</code> elements:</p>
 <pre><code class="language-html">&lt;?# Figure Src="/assets/statiq.png" ?&gt;
 Statiq Logo
@@ -294,7 +294,7 @@ Statiq Logo
 <li><code>Height</code>: The <code>height</code> attribute of the image.</li>
 <li><code>Width</code>: The <code>width</code> attribute of the image.</li>
 </ul>
-<h3 id="table"><code>Table</code></h3>
+<h3 id="table">Table</h3>
 <p>Renders an HTML table. The content of the shortcode contains the table with each row on a new line and each column separated by new lines. Enclose columns in quotes if they contain a space. Note that since the content of a shortcode may get processed by template engines like Markdown and the content of this shortcode should not be, you probably want to wrap the shortcode content in the special XML processing instruction that will get trimmed like <code>&lt;?* ... ?&gt;</code> so it "passes through" any template engines (see example below).</p>
 <pre><code class="language-html">&lt;?# Table Class=table HeaderRows=1 ?&gt;
 &lt;?*
