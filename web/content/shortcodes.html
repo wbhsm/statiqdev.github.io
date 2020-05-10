@@ -206,23 +206,147 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
-<h1 id="built-in-shortcodes">Built-In Shortcodes</h1>
-<h2 id="meta"><code>Meta</code></h2>
-<p>TODO</p>
-<h2 id="include"><code>Include</code></h2>
-<p>TODO</p>
-<h2 id="if"><code>If</code></h2>
-<p>TODO</p>
-<h2 id="foreach"><code>ForEach</code></h2>
-<p>TODO</p>
+                                            <p>Shortcodes are small but powerful macros that can generate content or add metadata to your documents.</p>
+
+<p>Statiq supports several templating engines like Markdown and Razor, but sometimes you need to generate some content regardless of the templating language you're using. Shortcodes are small text macros that can do big things and work across any templating engine. <a href="/framework/content/shortcodes">The shortcodes page in Statiq Framework</a> discusses the basics of shortcodes, how to use them, and how to write your own.</p>
+<h1 id="statiq-web-shortcodes">Statiq Web Shortcodes</h1>
+<p>Statiq Web comes with several web-specific shortcodes.</p>
+<h2 id="embed-and-oembed-support"><code>Embed</code> And oEmbed Support</h2>
+<p><a href="https://oembed.com">oEmbed is a format</a> for fetching the embedded representation of third-party content The <code>Embed</code> shortcode provides general-purpose oEmbed support by calling an oEmbed endpoint and rendering the embedded content:</p>
+<pre><code class="language-html">&lt;?# Embed https://codepen.io/api/oembed https://codepen.io/gingerdude/pen/JXwgdK /?&gt;
+</code></pre>
+<p>The <code>Embed</code> shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Endpoint</code>: The oEmbed endpoint.</li>
+<li><code>Url</code>: The embeded URL to fetch an embed for.</li>
+<li><code>Format</code>: An optional format to use ("xml" or "json").</li>
+</ul>
+<p><a href="https://oembed.com/#section7">Many sites</a> have implemented oEmbed support and some site-specific shortcodes for some of them are also available:</p>
+<h3 id="giphy"><code>Giphy</code></h3>
+<p>Embeds a gif from Giphy:</p>
+<pre><code class="language-html">&lt;?# Giphy excited-birthday-yeah-yoJC2GnSClbPOkV0eA /?&gt;
+</code></pre>
+<p>The only argument is the ID of the gif which can be obtained from it's URL: the ID for the URL <a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a> is <code>excited-birthday-yeah-yoJC2GnSClbPOkV0eA</code>.</p>
+<h3 id="gist"><code>Gist</code></h3>
+<p>Embeds a gist from GitHub:</p>
+<pre><code class="language-html">&lt;?# Gist 10a2f6e0186fa34b8a7b4bd7d436785d /?&gt;
+</code></pre>
+<p>This shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Id</code>: The ID of the gist.</li>
+<li><code>Username</code>: Contains the username the gist belongs to (optional).</li>
+<li><code>File</code>: Specifies the file within the gist to embed (optional).</li>
+</ul>
+<h3 id="twitter"><code>Twitter</code></h3>
+<p>Embeds a Tweet from Twitter:</p>
+<pre><code class="language-html">&lt;?# Twitter 123456789 /?&gt;
+</code></pre>
+<p>This shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Id</code>: the ID of the Tweet. This can be found at the end of the URL when you copy a link to a Tweet.</li>
+<li><code>HideMedia</code>: When set to <code>true</code>, links in a Tweet are not expanded to photo, video, or link previews.</li>
+<li><code>HideThread</code>: When set to <code>true</code>, a collapsed version of the previous Tweet in a conversation thread will not be displayed when the requested Tweet is in reply to another Tweet.</li>
+<li><code>Theme</code>: Optionally "light" or "dark". When set to "dark", the Tweet is displayed with light text over a dark background.</li>
+<li><code>OmitScript</code>: When set to <code>true</code>, the <code>&lt;script&gt;</code> element that contains the Twitter embed JavaScript code will not be rendered (for example, if you're including it at the top of the page).</li>
+</ul>
+<h3 id="youtube"><code>YouTube</code></h3>
+<p>Embeds a video from YouTube:</p>
+<pre><code class="language-html">&lt;?# YouTube u5ayTqlLWQQ /?&gt;
+</code></pre>
+<p>The only argument is the ID of the video to embed.</p>
+<h2 id="other-shortcodes">Other Shortcodes</h2>
+<h3 id="link"><code>Link</code></h3>
+<p>Renders a link from the given path, using default settings or specifying overrides as appropriate:</p>
+<pre><code class="language-html">&lt;?# Link "/foo/bar" /?&gt;
+</code></pre>
+<p>This shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Path</code>: The path to get a link for.</li>
+<li><code>IncludeHost</code>: If set to <code>true</code> the host configured in the output settings will be included in the link, otherwise the host will be omitted and only the root path will be included (default).</li>
+<li><code>Host</code>: The host to use for the link.</li>
+<li><code>Root</code>: The root of the link. The value of this argument is prepended to the path.</li>
+<li><code>Scheme</code>: The scheme to use for the link (this will override the <code>UseHttps</code> argument).</li>
+<li><code>UseHttps</code>: If set to <code>true</code>, HTTPS will be used as the scheme for the link.</li>
+<li><code>HideIndexPages</code>: If set to <code>true</code>, "index.html" and "index.html" file names will be hidden.</li>
+<li><code>HideExtensions</code>: If set to <code>true</code>, extensions will be hidden.</li>
+<li><code>Lowercase</code>: If set to <code>true</code>, links will be rendered in all lowercase.</li>
+</ul>
+<h3 id="figure"><code>Figure</code></h3>
+<p>Generates HTML5 <code>&lt;figure&gt;</code> elements:</p>
+<pre><code class="language-html">&lt;?# Figure Src="/assets/statiq.png" ?&gt;
+Statiq Logo
+&lt;?#/ Figure ?&gt;
+</code></pre>
+<p>Will result in the following HTML:</p>
+<pre><code class="language-html">&lt;figure&gt;
+  &lt;img src="/assets/statiq.png" /&gt;
+  &lt;figcaption&gt;Statiq Logo&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+<p>This shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Src</code>: URL of the image to be displayed.</li>
+<li><code>Link</code>: If the image needs to be hyperlinked, URL of the destination.</li>
+<li><code>Target</code>: Optional <code>target</code> attribute for the URL if <code>Link</code> parameter is set.</li>
+<li><code>Rel</code>: Optional <code>rel</code> attribute for the URL if <code>Link</code> parameter is set.</li>
+<li><code>Alt</code>: Alternate text for the image if the image cannot be displayed.</li>
+<li><code>Class</code>: The <code>class</code> attribute to apply to the <code>figure</code> element.</li>
+<li><code>Height</code>: The <code>height</code> attribute of the image.</li>
+<li><code>Width</code>: The <code>width</code> attribute of the image.</li>
+</ul>
+<h3 id="table"><code>Table</code></h3>
+<p>Renders an HTML table. The content of the shortcode contains the table with each row on a new line and each column separated by new lines. Enclose columns in quotes if they contain a space. Note that since the content of a shortcode may get processed by template engines like Markdown and the content of this shortcode should not be, you probably want to wrap the shortcode content in the special XML processing instruction that will get trimmed like <code>&lt;?* ... ?&gt;</code> so it "passes through" any template engines (see example below).</p>
+<pre><code class="language-html">&lt;?# Table Class=table HeaderRows=1 ?&gt;
+&lt;?*
+Vehicle "Number Of Wheels"
+Bike 2
+Car 4
+Truck "A Whole Lot"
+?&gt;
+&lt;?#/ Table ?&gt;
+</code></pre>
+<p>Will result in the following HTML:</p>
+<pre><code class="language-html">&lt;table class="table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Vehicle&lt;/th&gt;
+      &lt;th&gt;Number Of Wheels&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bike&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Car&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Truck&lt;/td&gt;
+      &lt;td&gt;A Whole Lot&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p>This shortcode accepts the following arguments:</p>
+<ul>
+<li><code>Class</code>: The <code>class</code> attribute to apply to the <code>table</code> element.</li>
+<li><code>HeaderRows</code>: The number of header rows in the table.</li>
+<li><code>FooterRows</code>: The number of footer rows in the table.</li>
+<li><code>HeaderCols</code>: The number of header columns to the left of the table.</li>
+<li><code>HeaderClass</code>: The <code>class</code> attribute to apply to the <code>&lt;thead&gt;</code> element.</li>
+<li><code>BodyClass</code>: The <code>class</code> attribute to apply to the <code>&lt;tbody&gt;</code> element.</li>
+<li><code>FooterClass</code>: The <code>class</code> attribute to apply to the <code>&lt;tfoot&gt;</code> element.</li>
+</ul>
+
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#built-in-shortcodes">Built-In Shortcodes</a></p>
+                                                    <p class="small"><a href="#statiq-web-shortcodes">Statiq Web Shortcodes</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/shortcodes.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>

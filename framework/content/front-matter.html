@@ -73,7 +73,7 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
-                                                    <span><a href="/framework/documents">Documents and Metadata</a></span>
+                                                    <span><a href="/framework/content">Working With Content</a></span>
                                                     <span><a href="/framework">Framework</a></span>
                                         </div>
                                         <div class="text-white m-0 title">Front Matter</div>
@@ -161,9 +161,6 @@
                                                             <a href="/framework/documents">Documents and Metadata</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item active">
-                                                                        <a href="/framework/documents/front-matter">Front Matter</a>
-                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/documents/metadata-values">Metadata Values</a>
                                                                     </div>
@@ -175,6 +172,9 @@
                                                             <a href="/framework/content">Working With Content</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item active">
+                                                                        <a href="/framework/content/front-matter">Front Matter</a>
+                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/content/linking">Linking To Documents</a>
                                                                     </div>
@@ -213,8 +213,9 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Front matter is a common concept in static generators and lets you define metadata for a file in a file header.</p>
-<p>Typically, front matter is placed at the top of an input file and uses some sort of format (like YAML or JSON) to define key/value pairs. In Statiq, front matter can be extracted using the <code>ExtractFrontMatter</code> module. That module accepts child modules that process whatever content is contained in the front matter block, such as YAML or JSON. Front matter is often delimited from the actual file content by a series of dashes such as <code>—</code>, though an alternate delimiter can be specified in the module.</p>
+                                            <p>Front matter is a common concept in static generators that lets you define metadata for a file in a file header.</p>
+<p>Typically, front matter is placed at the top of an input file and uses some sort of format (like YAML or JSON) to define key/value pairs. In Statiq, front matter can be extracted using the <code>ExtractFrontMatter</code> module. That module accepts child modules that process whatever content is contained in the front matter block, such as YAML or JSON.</p>
+<p>Front matter is delimited by a single line of three dashes following the front matter. A leading line of three dashes in addition to the trailing dashes is also supported for compatibility with other generators. An alternate delimiter can be specified in the module.</p>
 <p>A file that contains front matter might look like this:</p>
 <pre><code class="language-txt">Title: Some Title
 Description: This is a description.
@@ -228,7 +229,7 @@ This is the content of the file.
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/documents/front-matter.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/content/front-matter.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
