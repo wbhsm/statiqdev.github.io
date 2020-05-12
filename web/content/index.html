@@ -153,43 +153,15 @@
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item has-children">
+                                                        <div class="sidebar-nav-item">
                                                             <a href="/web/data">Data</a>
                                                         </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/data-formats">Data Formats</a>
-                                                                    </div>
-                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/markdown">Markdown</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/razor">Razor</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/templates/themes">Themes</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/deployment">Deployment</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/azure">Azure</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/github-pages">Github Pages</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
@@ -210,8 +182,8 @@
 <p>Content files should be placed in the <code>input</code> folder (or a sub-folder) and are processed based on their media type (which is determined by file extension). The following extensions are recognized by default:</p>
 <ul>
 <li><code>.html</code> processes the file as plain HTML.</li>
-<li><code>.md</code> processes the file as <a href="/web/templates/markdown">Markdown</a>.</li>
-<li><code>.cshtml</code> processes the file as <a href="/web/templates/razor">Razor</a>.</li>
+<li><code>.md</code> processes the file as <a href="/framework/content/template-languages#markdown">Markdown</a>.</li>
+<li><code>.cshtml</code> processes the file as <a href="/framework/content/template-languages#razor">Razor</a>.</li>
 </ul>
 <p>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how content files are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default.</p>
 <p>In all cases, global processing (such as processing <a href="/web/content/front-matter">front matter</a> and applying <a href="/web/content/shortcodes">shortcodes</a>) is performed and <a href="/web/templates#layouts">layouts</a> and <a href="/web/templates/themes">themes</a> are applied.</p>

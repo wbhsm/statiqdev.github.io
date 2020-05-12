@@ -153,43 +153,15 @@
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item active has-children">
+                                                        <div class="sidebar-nav-item active">
                                                             <a href="/web/data">Data</a>
                                                         </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/data-formats">Data Formats</a>
-                                                                    </div>
-                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/markdown">Markdown</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/razor">Razor</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/templates/themes">Themes</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/deployment">Deployment</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/azure">Azure</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/github-pages">Github Pages</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
@@ -215,7 +187,7 @@
 <p>Regardless of format the data files are parsed and the data in them is added as <a href="/framework/documents#about-metadata">metadata</a> to the resulting documents.</p>
 <p>The <code>DataFiles</code> <a href="/web/configuration/settings">setting</a> controls how data files are located and is set to <code>**/{!_,}*.{json,yaml,yml}</code> by default.</p>
 <h1 id="accessing-data-files">Accessing Data Files</h1>
-<p>Data files are processed by the <code>Data</code> pipeline and can be accessed through the <code>Outputs</code> property of the <a href="/framework/execution/execution-context">execution context</a> (which is also available directly in some templating languages like <a href="/web/templates/razor">Razor</a>.</p>
+<p>Data files are processed by the <code>Data</code> pipeline and can be accessed through the <code>Outputs</code> property of the <a href="/framework/execution/execution-context">execution context</a> (which is also available directly in some templating languages like <a href="/framework/content/template-languages#razor">Razor</a>.</p>
 <p>The resulting data documents are output from the pipeline in a hierarchy, so only documents representing top-level folders are returned from the <code>Outputs</code> collection. To flatten the documents and filter for a set of ones you want you'll need to call <code>.Flatten()</code> first.</p>
 <p>For example, the following code will find all documents containing data from YAML files that describe different fruits stored in a <code>food/fruit</code> folder under the default <code>input</code> folder:</p>
 <pre><code class="language-csharp">IDocument[] fruits = Outputs["Data"]
@@ -225,19 +197,6 @@
 </code></pre>
 
 
-                                                <h4 class="h-section mb-2">Child Pages</h4>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/data/accessing-data">Accessing Data</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/data/data-formats">Data Formats</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
-                                                        </div>
-                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">

@@ -154,43 +154,15 @@
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item has-children">
+                                                        <div class="sidebar-nav-item">
                                                             <a href="/web/data">Data</a>
                                                         </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/accessing-data">Accessing Data</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/data/data-formats">Data Formats</a>
-                                                                    </div>
-                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/markdown">Markdown</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/razor">Razor</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/templates/themes">Themes</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/deployment">Deployment</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/azure">Azure</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/github-pages">Github Pages</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/netlify">Netlify</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
@@ -218,7 +190,7 @@
 ---
 The current apple is &lt;?#= Current /?&gt;.
 </code></pre>
-<p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/web/templates/razor">Razor</a> syntax or another templating format.</p>
+<p>This will result in 4 documents, one for each of the apples. It uses the shorthand <a href="/web/content/shortcodes#meta"><code>Meta</code></a> shortcode syntax to output the name of the current enumerated value, but could also have used <a href="/framework/content/template-languages#razor">Razor</a> syntax or another templating format.</p>
 <p>Unfortunately this file will also result in all four documents having the same destination path and being written to the same file on disk, overwriting each other. We need to add a <a href="/web/configuration/settings#destinationfilename"><code>DestinationFileName</code></a> document configuration value to specify the file name of each apple-specific document. Since the destination path also needs to access the "Current" metadata value that the enumeration produces, we'll have to use <a href="/framework/documents#about-metadata#computed-values">computed values</a>:</p>
 <pre><code class="language-txt">Enumerate:
   - Red Delicious
@@ -254,7 +226,7 @@ else
     &lt;/ul&gt;
 }
 </code></pre>
-<p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/documents#about-metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/web/templates/razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/web/templates/markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
+<p>We need to change the <code>DestinationFileName</code> setting in this case since the <a href="/framework/documents#about-metadata#computed-values">computed value</a> will need to compile when a <code>Current</code> value isn't available (so it must be accessed through the <code>Document</code>). This example also uses <a href="/framework/content/template-languages#razor">Razor</a> syntax (and would presumably be named <code>apple.cshtml</code>) given the complexity of the logic. The <a href="/web/content/shortcodes#if"><code>If</code></a> and <a href="/web/content/shortcodes#foreach"><code>ForEach</code></a> shortcodes <em>could</em> actually handle this in a <a href="/framework/content/template-languages#markdown">Markdown</a> file as well, but the syntax wouldn't be as easy to read for the purpose of this example.</p>
 <!-- TODO: Usage with the data pipeline - define apples with descriptions as .yml files -->
 
 
