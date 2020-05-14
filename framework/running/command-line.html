@@ -214,15 +214,13 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq provides a number of default commands and arguments to execute and control your pipeline execution.</p>
-<p>You can run your Statiq application directly using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run"><code>dotnet run</code></a> but you need to <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#options">delimit arguments for your Statiq application</a> with a <code>--</code> between the <code>dotnet run</code> command and the arguments you want to pass to your Statiq application. Anything after the <code>--</code> will be passed to Statiq.</p>
-<p>In general, calling <code>dotnet run</code> will compile your application, run the default pipelines, and generate output.</p>
+                                            <p>Statiq provides a number of default commands and arguments to control execution.</p>
 <h1 id="getting-help">Getting Help</h1>
 <p>You can view help for any command with the <code>--help</code> option:</p>
 <pre><code class="language-txt">dotnet run -- --help
 
 USAGE:
-    DotnetFoundationWeb.dll [pipelines] [OPTIONS]
+    MyGenerator.dll [pipelines] [OPTIONS]
 
 ARGUMENTS:
     [pipelines]    The pipeline(s) to execute

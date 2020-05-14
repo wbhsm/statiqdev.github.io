@@ -220,7 +220,7 @@
 <p>This will ensure files in the <code>input</code> directory don't get compiled or copied to the output folder. The reason we don't add the <code>input</code> folder to the <code>&lt;DefaultItemExcludes&gt;</code> above is because unlike the <code>output</code> folder, we want the <code>input</code> folder to show up in the Visual Studio file tree so we can edit input files.</p>
 <p>If you use a different input folder or have added input folders, add those as well.</p>
 <h2 id="step-5-create-a-bootstrapper">Step 5: Create a Bootstrapper</h2>
-<p>Creating a <a href="/framework/configuration/bootstrapper">bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/pipelines/defining-pipelines">pipelines</a> or <a href="/framework/pipelines/modules/writing-modules">custom modules</a>, you shouldn’t need to for most sites.</p>
+<p>Creating a <a href="/framework/configuration/bootstrapper">bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/pipelines/defining-pipelines">pipelines</a> or <a href="/framework/pipelines/modules/writing-modules">custom modules</a>, you shouldn’t need to for most sites. Add the following code in your <code>Program.cs</code> file:</p>
 <pre><code class="language-csharp">using System;
 using System.Threading.Tasks;
 using Statiq.App;
@@ -273,7 +273,7 @@ namespace MySite
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/running">Running</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
+                                                                <div class="font-size-sm"><p>Once you've added some <a href="/web/content">content</a> and/or <a href="/web/data">data</a>, you can run your generator application.</p></div>
                                                         </div>
                                                     </div>
                                         </div>

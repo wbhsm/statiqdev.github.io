@@ -178,7 +178,12 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Once you've added some <a href="/web/content">content</a> and/or <a href="/web/data">data</a>, you can run your generator application.</p>
+<h1 id="dotnet-run">dotnet run</h1>
+<p>You can run your Statiq application directly using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run"><code>dotnet run</code></a> but you need to <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#options">delimit arguments for your Statiq application</a> with a <code>--</code> between the <code>dotnet run</code> command and the arguments you want to pass to your Statiq application. Anything after the <code>--</code> will be passed to Statiq.</p>
+<p>In general, calling <code>dotnet run</code> will compile your application, run the default pipelines, and generate output. Statiq Web includes <a href="/web/running/command-line">a variety of commands and arguments</a> you can use to control execution.</p>
+<h1 id="dotnet-publish">dotnet publish</h1>
+<p>Alternativly you can publish your application using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish"><code>dotnet publish</code></a>. This will create an executable for your generator that you can run without compilation. For more information see <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli">Publish .NET Core apps with the .NET Core CLI</a>.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
@@ -196,6 +201,11 @@
                                                     </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#dotnet-run">dotnet run</a></p>
+                                                    <p class="small"><a href="#dotnet-publish">dotnet publish</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
