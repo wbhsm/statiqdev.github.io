@@ -116,49 +116,59 @@
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/content">Content</a>
+                                                            <a href="/web/content-and-data">Content And Data</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/web/content-and-data/content">Content</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/content-hierarchy">Content Hierarchy</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/excerpts-and-headings">Excerpts And Headings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/links-and-cross-references">Links And Cross References</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/resource-mirroring">Resource Mirroring</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/shortcodes">Shortcodes</a>
+                                                                                </div>
+                                                                        </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/archives">Archives</a>
+                                                                        <a href="/web/content-and-data/data">Data</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/web/content-and-data/metadata">Metadata</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/metadata/directory-metadata">Directory Metadata</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/metadata/sidecar-files">Sidecar Files</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/metadata/front-matter">Front Matter</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/enumerating-values">Enumerating Values</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/content-hierarchy">Content Hierarchy</a>
+                                                                        <a href="/web/content-and-data/archives">Archives</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/directory-metadata">Directory Metadata</a>
+                                                                        <a href="/web/content-and-data/feeds">Feeds</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/enumerating-values">Enumerating Values</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/excluding-documents">Excluding Documents</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/feeds">Feeds</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/front-matter">Front Matter</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/links-and-cross-references">Links And Cross References</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/resource-mirroring">Resource Mirroring</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/shortcodes">Shortcodes</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content/sidecar-files">Sidecar Files</a>
+                                                                        <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/data">Data</a>
-                                                        </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/templates">Templates</a>
                                                         </div>
@@ -181,7 +191,7 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Once you've added some <a href="/web/content">content</a> and/or <a href="/web/data">data</a>, you can run your generator application.</p>
+                                            <p>Once you've added some <a href="/web/content-and-data">content and/or data</a>, you can run your generator application.</p>
 <h1 id="dotnet-run">dotnet run</h1>
 <p>You can run your Statiq application directly using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run"><code>dotnet run</code></a> but you need to <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#options">delimit arguments for your Statiq application</a> with a <code>--</code> between the <code>dotnet run</code> command and the arguments you want to pass to your Statiq application. Anything after the <code>--</code> will be passed to Statiq.</p>
 <p>In general, calling <code>dotnet run</code> will compile your application, run the default pipelines, and generate output. Statiq Web includes <a href="/web/running/command-line">a variety of commands and arguments</a> you can use to control execution.</p>
