@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
 	<channel>
 		<title />
 		<link>https://statiq.dev/</link>
 		<description />
 		<copyright>2020</copyright>
-		<pubDate>Fri, 15 May 2020 02:50:09 GMT</pubDate>
-		<lastBuildDate>Fri, 15 May 2020 02:50:09 GMT</lastBuildDate>
+		<pubDate>Mon, 18 May 2020 02:38:34 GMT</pubDate>
+		<lastBuildDate>Mon, 18 May 2020 02:38:34 GMT</lastBuildDate>
+		<item>
+			<title>New Statiq Website</title>
+			<link>https://statiq.dev/blog/2020/03/22/new-statiq-website</link>
+			<description>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;</description>
+			<guid>https://statiq.dev/blog/2020/03/22/new-statiq-website</guid>
+			<pubDate>Sun, 22 Mar 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;
+&lt;p&gt;Lots of content sections are still "Coming Soon" so I'll be working on filling those in and refining the information architecture in the coming days and weeks. Please let me know if there's anything specific you'd like to see more of. And now that it's clear how to &lt;a href="https://statiq.dev/web"&gt;get started&lt;/a&gt; you've got no excuses not to take the alpha releases for a little spin.&lt;/p&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
 	</channel>
 </rss>

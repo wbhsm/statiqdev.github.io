@@ -4,5 +4,15 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2020</rights>
-	<updated>2020-05-15T02:50:09Z</updated>
+	<updated>2020-05-18T02:38:34Z</updated>
+	<entry>
+		<id>https://statiq.dev/blog/2020/03/22/new-statiq-website</id>
+		<title>New Statiq Website</title>
+		<link href="https://statiq.dev/blog/2020/03/22/new-statiq-website" />
+		<updated>2020-03-22T00:00:00Z</updated>
+		<content>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;
+&lt;p&gt;Lots of content sections are still "Coming Soon" so I'll be working on filling those in and refining the information architecture in the coming days and weeks. Please let me know if there's anything specific you'd like to see more of. And now that it's clear how to &lt;a href="https://statiq.dev/web"&gt;get started&lt;/a&gt; you've got no excuses not to take the alpha releases for a little spin.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;</summary>
+	</entry>
 </feed>

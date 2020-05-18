@@ -20,7 +20,7 @@
         
 		
 
-        <title>Statiq - Excluding Documents</title>
+        <title>Statiq - Sidecar Files</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -77,7 +77,7 @@
                                                     <span><a href="/web/content">Content</a></span>
                                                     <span><a href="/web">Web</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Excluding Documents</div>
+                                        <div class="text-white m-0 title">Sidecar Files</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,7 +135,7 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/excerpts-and-headings">Excerpts And Headings</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -153,7 +153,7 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content/shortcodes">Shortcodes</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item active">
                                                                         <a href="/web/content/sidecar-files">Sidecar Files</a>
                                                                     </div>
                                                             </div>
@@ -182,14 +182,14 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Documents can be easily excluded from generation, either by removing them entirely or by suppressing their output (but still processing them in the appropriate pipeline).</p>
-<p>To hide a document entirely, set the <code>Excluded</code> metadata value to <code>true</code>. By default, any file with a <code>Published</code> metadata value greater than the current date will be automatically excluded.</p>
-<p>To prevent a document from outputting but still include it in pipelines and the generation, set the metadata value of <code>ShouldOutput</code> to <code>false</code>. This is helpful when you want the document to be available to other documents without itself being an output. For example if you use a set of Markdown files to define content that's only intended to be included within other outputs.</p>
+                                            <p>Sidecar files let you define metadata in a separate file.</p>
+<p>They are similar to <a href="/web/content/front-matter">front matter</a> in that the metadata in a sidecar file is applied to a document, but instead of the metadata being defined at the top of a file, it's defined alongside the file. Sidecar files can be JSON or YAML and are typically named <code>_[filename].json</code> or <code>_[filename].yaml</code>.</p>
+<p>Sidecar file support can be globally turned off by <a href="/web/configuration/settings">setting</a> <code>ProcessSidecarFiles</code> to <code>false</code>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/excluding-documents.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content/sidecar-files.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
