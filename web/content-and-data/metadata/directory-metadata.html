@@ -195,7 +195,7 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Directory metadata allows you to specify metadata that applies to all files in a given directory (and optionally all subdirectories).</p>
 <p>By default, directory metadata files are named <code>_directory.*</code> where the extension is one of the supported data formats like <code>.json</code>, <code>.yaml</code>, or <code>.yml</code>. The file name(s) and applicable paths can be controlled by the <code>DirectoryMetadataFiles</code> <a href="/web/configuration/settings">setting</a>. The default value is <code>**/_{d,D}irectory.{json,yaml,yml}</code>.</p>
-<p>Any metadata defined in a directory metadata file will be applied to all files in the same directory and all subdirectories by default. To turn off recursive application and only apply metadata to files in the same directory set <code>Recursive</code> to <code>false</code> in the directory metadata file.</p>
+<p>Any metadata defined in a directory metadata file will be applied to all files in the same directory and all subdirectories by default. To turn off recursive application and only apply metadata to files in the same directory set <code>Recursive</code> to <code>false</code> in the directory metadata file. Directory metadata files closer to the file being applied take precedence over those higher up the folder tree.</p>
 <p>Local metadata in the front matter of a file overrides any defined directory metadata.</p>
 <p>Directory metadata support can be globally turned off by <a href="/web/configuration/settings">setting</a> <code>ApplyDirectoryMetadata</code> to <code>false</code>.</p>
 
