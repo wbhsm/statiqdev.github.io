@@ -20,7 +20,7 @@
         
 		
 
-        <title>Statiq - Running</title>
+        <title>Statiq - Redirects</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -74,9 +74,11 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                                    <span><a href="/web/content-and-data/content">Content</a></span>
+                                                    <span><a href="/web/content-and-data">Content And Data</a></span>
                                                     <span><a href="/web">Web</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Running</div>
+                                        <div class="text-white m-0 title">Redirects</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,7 +134,7 @@
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/web/content-and-data/content/links-and-cross-references">Links And Cross References</a>
                                                                                 </div>
-                                                                                <div class="sidebar-nav-item">
+                                                                                <div class="sidebar-nav-item active">
                                                                                     <a href="/web/content-and-data/content/redirects">Redirects</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -180,7 +182,7 @@
                                                                         <a href="/web/templates/themes">Themes</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item active has-children">
+                                                        <div class="sidebar-nav-item has-children">
                                                             <a href="/web/running">Running</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
@@ -194,35 +196,22 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Once you've added some <a href="/web/content-and-data">content and/or data</a>, you can run your generator application.</p>
-<h1 id="dotnet-run">dotnet run</h1>
-<p>You can run your Statiq application directly using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run"><code>dotnet run</code></a> but you need to <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#options">delimit arguments for your Statiq application</a> with a <code>--</code> between the <code>dotnet run</code> command and the arguments you want to pass to your Statiq application. Anything after the <code>--</code> will be passed to Statiq.</p>
-<p>In general, calling <code>dotnet run</code> will compile your application, run the default pipelines, and generate output. Statiq Web includes <a href="/web/running/command-line">a variety of commands and arguments</a> you can use to control execution.</p>
-<h1 id="dotnet-publish">dotnet publish</h1>
-<p>Alternativly you can publish your application using <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish"><code>dotnet publish</code></a>. This will create an executable for your generator that you can run without compilation. For more information see <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli">Publish .NET Core apps with the .NET Core CLI</a>.</p>
+                                            <p>Statiq can generate redirects for your content if it changes location.</p>
+<p>To indicate that a redirect should be created for a content file, add the <code>RedirectFrom</code> <a href="/web/content-and-data/metadata">metadata</a> (in <a href="/web/content-and-data/metadata/front-matter">front matter</a> or otherwise). The value should be the relative path(s) of the old location of the file. You can specify more than one old location and redirects will be created for all of them.</p>
+<p>For example:</p>
+<pre><code class="language-txt">RedirectFrom:
+- old-folder/file
+- another-old-folder/file
+---
+This is my content.
+</code></pre>
+<p>By default a client-side redirect file using a <a href="https://en.wikipedia.org/wiki/Meta_refresh"><code>META-REFRESH</code> header</a> in an HTML file will be output at the old location(s) pointing to the current output location. To disable the generation of client-side redirect files, set the <a href="/web/configuration/settings">setting</a> <code>MetaRefreshRedirects</code> to <code>false</code>.</p>
+<p>You can also create a <a href="https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file">Netlify redirect file</a> by <a href="/web/configuration/settings">setting</a> <code>NetlifyRedirects</code> to <code>true</code>.</p>
 
 
-                                                <h4 class="h-section mb-2">Child Pages</h4>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/running/command-line">Command-Line Interface</a></h4>
-                                                                <div class="font-size-sm"><p>Coming Soon</p></div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="p-3 mb-2 bg-light page-box">
-                                                            <h4><a href="/web/running/preview-server">Preview Server</a></h4>
-                                                                <div class="font-size-sm"><p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p></div>
-                                                        </div>
-                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                            <div class="border-bottom mb-3">
-                                                <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#dotnet-run">dotnet run</a></p>
-                                                    <p class="small"><a href="#dotnet-publish">dotnet publish</a></p>
-                                            </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/content/redirects.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

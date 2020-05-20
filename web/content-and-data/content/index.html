@@ -134,6 +134,9 @@
                                                                                     <a href="/web/content-and-data/content/links-and-cross-references">Links And Cross References</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/redirects">Redirects</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
                                                                                     <a href="/web/content-and-data/content/resource-mirroring">Resource Mirroring</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -202,6 +205,23 @@
 <p>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how content files are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default. This loads all <code>.html</code>, <code>.cshtml</code>, and <code>.md</code> files in any input directory unless it starts with an underscore <code>_</code>.</p>
 <p>In all cases, global processing (such as processing <a href="/web/content-and-data/metadata/front-matter">front matter</a> and applying <a href="/web/content-and-data/content/shortcodes">shortcodes</a>) is performed and <a href="/web/templates#layouts">layouts</a> and <a href="/web/templates/themes">themes</a> are applied.</p>
 <p>Many <a href="/web/templates/themes">themes</a> treat content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/configuration/settings">configurable as settings</a>.</p>
+<h1 id="accessing-content-files">Accessing Content Files</h1>
+<p>Content files are processed by the <code>Content</code> pipeline and can be accessed through the <code>Outputs</code> property of the <a href="/framework/execution/execution-context">execution context</a> (which is also available directly in some templating languages like <a href="/framework/content/template-languages#razor">Razor</a> as an <code>Outputs</code> property).</p>
+<p>The resulting content documents are output from the pipeline in a <a href="/web/content-and-data/content/content-hierarchy">hierarchy</a>, so only documents representing top-level folders are returned from the <code>Outputs</code> collection. To flatten the documents and filter for a set of ones you want you'll need to call <code>.Flatten()</code> first. You can also use <code>.FilterSources()</code> and <code>.FilterDestinations()</code> extension methods to filter the collection of output documents using a <a href="/framework/execution/files#globbing">globbing pattern</a>.</p>
+<p>For example, the following code will find all content documents that describe different fruits stored in a <code>food/fruit</code> folder under the default <code>input</code> folder:</p>
+<pre><code class="language-csharp">IDocument[] fruits = Outputs["Data"]
+  .FilterSources("food/fruit/*")
+  .ToArray();
+</code></pre>
+<h1 id="preventing-content-file-output">Preventing Content File Output</h1>
+<p>By default content files are output to their destination path. You may want to adjust this behavior for individual content files or entire directories. This behavior can be controlled with the <code>ShouldOutput</code> metadata and there are a few ways to set it:</p>
+<ul>
+<li>Set <code>ShouldOutput</code> to <code>false</code> directly in the data file which will prevent that file from being output.</li>
+<li>Set <code>ShouldOutput</code> to <code>false</code> for an individual file, and entire directory, or an entire directory tree in a <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> file.</li>
+<li>Set <code>ShouldOutput</code> to <code>false</code> in a <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> file.</li>
+<li>Set <code>ShouldOutput</code> to <code>false</code> in <a href="/web/content-and-data/metadata/front-matter">front matter</a>.</li>
+</ul>
+<p>Preventing content file output can be helpful when you want to define partial content (like product descriptions, personal biographies, etc.) for inclusion in other documents without resulting in an output file.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
@@ -225,6 +245,12 @@
                                                     </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content-and-data/content/redirects">Redirects</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq can generate redirects for your content if it changes location.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/content-and-data/content/resource-mirroring">Resource Mirroring</a></h4>
                                                                 <div class="font-size-sm"><p>Statiq Web can locally mirror remote resources such as scripts and stylesheet links.</p></div>
                                                         </div>
@@ -237,6 +263,11 @@
                                                     </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#accessing-content-files">Accessing Content Files</a></p>
+                                                    <p class="small"><a href="#preventing-content-file-output">Preventing Content File Output</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/content/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

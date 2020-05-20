@@ -134,6 +134,9 @@
                                                                                     <a href="/web/content-and-data/content/links-and-cross-references">Links And Cross References</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/content/redirects">Redirects</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
                                                                                     <a href="/web/content-and-data/content/resource-mirroring">Resource Mirroring</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -207,6 +210,8 @@
 <li><code>ValidateAbsoluteLinks</code>: Indicates that absolute links should be validated (may add considerable time to your generation process).</li>
 <li><code>ValidateRelativeLinks</code>: Indicates that relative links should be validated (the default value is <code>true</code>).</li>
 <li><code>ValidateLinksAsError</code>: Indicates that link validation failures should be treated as errors and fail the build.</li>
+<li><code>MetaRefreshRedirects</code>: Generates META-REFRESH <a href="/web/content-and-data/content/redirects">redirect pages</a> (the default value is <code>true</code>).</li>
+<li><code>NetlifyRedirects</code>: Generates a Netlify <a href="/web/content-and-data/content/redirects">redirects file</a>.</li>
 </ul>
 <p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class.</p>
 <p>You can change settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
