@@ -20,7 +20,7 @@
         
 		
 
-        <title>Statiq - Preview Server</title>
+        <title>Statiq - Azure App Service</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -74,10 +74,10 @@
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
-                                                    <span><a href="/web/running">Running Your Application</a></span>
+                                                    <span><a href="/web/deployment">Deployment</a></span>
                                                     <span><a href="/web">Web</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Preview Server</div>
+                                        <div class="text-white m-0 title">Azure App Service</div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,7 +185,7 @@
                                                             <a href="/web/deployment">Deployment</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
+                                                                    <div class="sidebar-nav-item active">
                                                                         <a href="/web/deployment/azure-app-service">Azure App Service</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -202,46 +202,76 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/running/command-line">Command-Line Interface</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/running/preview-server">Preview Server</a>
                                                                     </div>
                                                             </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p>
-<h1 id="configuration">Configuration</h1>
-<p>TODO</p>
+                                            <p>Statiq can be configured to deploy to <a href="https://azure.microsoft.com/en-us/services/app-service/">Azure App Service</a>.</p>
+<p>The first step is to set up a new Web App which can be found under App Services in the
+Azure portal. Once you have the web app set up and configured, you'll need to get the
+<a href="https://github.com/projectkudu/kudu/wiki/Deployment-credentials">deployment credentials</a>.</p>
+<p>The following <a href="/web/configuration/settings">settings</a> are used to configure deployment to Azure App Service:</p>
 <ul>
-<li>Set port</li>
-<li>Virtual path</li>
+<li><code>AzureAppServiceSiteName</code>: The name of the site in Azure App Service.</li>
+<li><code>AzureAppServiceUsername</code>: The Azure App Service username to use for deployment.</li>
+<li><code>AzureAppServicePassword</code>: The Azure App Service password to use for deployment.</li>
 </ul>
-<h1 id="live-reload">Live Reload</h1>
-<p>TODO</p>
-<h1 id="serving-without-build">Serving Without Build</h1>
-<p>TODO</p>
-<ul>
-<li>'serve' command</li>
-</ul>
-<h1 id="usage-outside-statiq-web">Usage Outside Statiq Web</h1>
-<p>TODO</p>
-<ul>
-<li>Include "Statiq.Web.Hosting.Commands" package</li>
-<li>Add hosting commands to <code>Bootstrapper</code></li>
-<li>Subject to Prosperity license terms</li>
-</ul>
+<p>It's customary to set one or more of these settings as an environment variable in continuous
+integration environments (particularly secrets like the password). In these scenarios you can either
+set an environment variable with the name of the setting or set the setting to an alternate environment
+variable (which itself will be added as a setting) using a
+<a href="/framework/documents/metadata-values#computed-values">computed value</a> or
+<a href="/framework/configuration/configuration-delegates">configuration delegate</a>.</p>
+<p>Using a computed value in <code>appsettings.json</code>:</p>
+<pre><code class="language-json">{
+    "AzureAppServiceSiteName": "MySiteName",
+    "AzureAppServiceUsername": "MyUsername",
+    "AzureAppServicePassword": "=&gt; PASSWORD_VAR"
+}
+</code></pre>
+<p>The <a href="/framework/configuration/bootstrapper">bootstrapper</a> also has an extension method for configuring deployment:</p>
+<pre><code class="language-csharp">await Bootstrapper
+    .Factory
+    .CreateWeb(args)
+    .DeployToAzureAppService(
+        "MySiteName",
+        "MyUsername",
+        Config.FromSetting&lt;string&gt;("PASSWORD_VAR")
+    )
+    // ...
+    .RunAsync();
+</code></pre>
+<p>You'll probably want support for extensionless URLs like most other static site hosts.
+Azure App Service and IIS don't support this by default, but you can configure it using
+the following <code>web.config</code> file:</p>
+<pre><code class="language-xml">&lt;configuration&gt;
+  &lt;system.webServer&gt;
+    &lt;rewrite&gt;
+      &lt;rules&gt;
+        &lt;rule name="html"&gt;
+          &lt;match url="(.*)" /&gt;
+          &lt;conditions&gt;
+            &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt;
+            &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt;
+          &lt;/conditions&gt;
+          &lt;action type="Rewrite" url="{R:1}.html" /&gt;
+        &lt;/rule&gt;
+      &lt;/rules&gt;
+    &lt;/rewrite&gt;
+  &lt;/system.webServer&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>Place this file in your <code>input</code> folder and it will get copied to the <code>output</code> folder and deployed.
+A more detailed examination of <code>web.config</code> files for static sites can be found
+<a href="http://andyhansen.co.nz/posts/web-config-for-a-static-site">at this blog post</a>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                            <div class="border-bottom mb-3">
-                                                <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#configuration">Configuration</a></p>
-                                                    <p class="small"><a href="#live-reload">Live Reload</a></p>
-                                                    <p class="small"><a href="#serving-without-build">Serving Without Build</a></p>
-                                                    <p class="small"><a href="#usage-outside-statiq-web">Usage Outside Statiq Web</a></p>
-                                            </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/preview-server.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/deployment/azure-app-service.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
