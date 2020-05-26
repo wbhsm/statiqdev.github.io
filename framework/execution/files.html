@@ -225,10 +225,10 @@
 <h2 id="input-paths">Input Paths</h2>
 <p>Statiq uses multiple input paths that together comprise a virtual aggregated set of input files. This lets us do things like specify a set of canonical input files to use for a theme but then selectively override the theme files by putting replacements in an alternate input path with higher precedence.</p>
 <p>Input paths are stored in an ordered list. When checking for files, the paths at the end of the list take precedence over those at the start of the list. For example, if path "A" is at index 0, path "B" is at index 1, and they both have a file named "foo.md", the one from path "B" will be used. Further, all paths are aggregated so searching for files or evaluating <a href="#globbing">globbing</a> expressions will consider all files and directories in all input paths. In the example above, getting all input files will result in a set of files from both path "A" and path "B" (with files of the same name from path "B" replacing those from path "A").</p>
-<p>By default a single input path of "input" is set.</p>
+<p>By default a single input path of <code>input</code> is set.</p>
 <h2 id="output-path">Output Path</h2>
 <p>The output path is where Statiq will place output files by default. Note that many modules have the ability to manually specify an output path, so this behavior can be modified on a module by module basis.</p>
-<p>By default the output path is set to "output".</p>
+<p>By default the output path is set to <code>output</code>.</p>
 <h1 id="globbing">Globbing</h1>
 <p>Globbing (or globs) is a particular syntax for specifying files or directories using wildcards and other path-based search criteria. Statiq uses a sophisticated globbing engine to give you a lot of flexibility when searching for files. Even better, the globbing engine works with any file provider, be it the local file system or something else.</p>
 <p>To demonstrate, let's assume the following files exist in our file provider:</p>

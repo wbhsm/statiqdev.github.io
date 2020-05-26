@@ -251,7 +251,12 @@
 <h1 id="specifying-settings-with-the-bootstrapper">Specifying Settings With The Bootstrapper</h1>
 <p>Settings can be provided directly to the <a href="/framework/execution#engine">engine</a>, but the easiest and most common way to specify settings is to use a <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
 <h2 id="configuration-files">Configuration Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of an <code>appsettings.json</code> file. Additionally, a <code>statiq.json</code> file can also be used. Support for both is provisioned by the bootstrapper by default.</p>
+<p>As with many other .NET Core applications, Statiq supports the use of configuiration files with one of the following names:</p>
+<ul>
+<li><code>appsettings.json</code></li>
+<li><code>statiq.json</code></li>
+</ul>
+<p>Support for both is provisioned by the bootstrapper by default.</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <p>The bootstrapper adds all existing environment variables as settings by default. This makes it easy to define settings for your generation from build servers.</p>
 <h2 id="fluent-api">Fluent API</h2>

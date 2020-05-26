@@ -209,7 +209,41 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Themes allow you to apply general content, data, layouts, and settings to your own site.</p>
+<p>In general, themes are placed in a <code>theme</code> folder alongside the <code>input</code> folder.
+Inside the <code>theme</code> folder is a theme <code>input</code> folder that contains any type of file the normal <code>input</code> folder would.
+The theme folder is combined with other input folders in the <a href="/framework/execution/files#virtual-file-system">virtual file system</a>
+at a lower priority (that is, any files in your <code>input</code> folder will take precedence over theme files). Themes can take advantage
+of this property by providing files that are intended to be overridden.</p>
+<p>Themes can also include <a href="/framework/configuration/settings#configuration-files">configuration files</a> that contain global settings which are applied
+at a lower priority then other configuration files or settings from other sources. Theme configuration files go in the <code>theme</code>
+folder and can be named:</p>
+<ul>
+<li><code>themesettings.json</code></li>
+<li><code>statiq.json</code></li>
+</ul>
+<p>A folder structure with a theme and both application and theme configuration files might look like:</p>
+<ul>
+<li><code>appsettings.json</code></li>
+<li><code>input\</code>
+<ul>
+<li><code>content-file.md</code></li>
+</ul>
+</li>
+<li><code>theme\</code>
+<ul>
+<li><code>themesettings.json</code></li>
+<li><code>input\</code>
+<ul>
+<li><code>styles.css</code></li>
+<li><code>_Layout.cshtml</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Themes can be copied into the <code>theme</code> folder from anywhere. In the future, Statiq will support built-in commands for
+obtaining and working with themes.</p>
 
 
                                         </div>
