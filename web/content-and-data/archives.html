@@ -144,6 +144,9 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/templates">Templates</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/data">Data</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item has-children">
@@ -173,14 +176,9 @@
                                                                         <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/templates">Templates</a>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/themes">Themes</a>
                                                         </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/themes">Themes</a>
-                                                                    </div>
-                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/deployment">Deployment</a>
                                                         </div>
@@ -210,7 +208,7 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Archives are one of the most powerful features of Statiq Web and allow you to group and page content.</p>
-<p>An archive is defined as a normal <a href="/web/templates">template</a> that contains special metadata. When Statiq Web sees the metadata below it will process the file as an archive and produce the archive outputs. Archives are processed in the <code>Archive</code> <a href="/framework/pipelines">pipeline</a>.</p>
+<p>An archive is defined as a normal <a href="/web/content-and-data/templates">template</a> that contains special metadata. When Statiq Web sees the metadata below it will process the file as an archive and produce the archive outputs. Archives are processed in the <code>Archive</code> <a href="/framework/pipelines">pipeline</a>.</p>
 <p>There are two types of archive pages that the pipeline can produce from a single archive file: <em>indexes</em> and <em>groups</em>. To illustrate the difference, consider a blog where each post contains one or more tags. You probabably want a single <em>index</em> page that lists all the available tags. You probably also want individual <em>group</em> pages for each tag that lists the blog posts containing that tag, and you may want those lists of posts to be paginated and ordered.</p>
 <p>A single archive file can produce both types of output documents. The template in the file is used for both, and you can tell whether an index or a group is being rendered by whether or not the document contains the <code>GroupKey</code> metadata key which contains the group value. For example, in a Razor archive template you might have the following:</p>
 <pre><code class="language-html">@if (Document.ContainsKey(Keys.GroupKey))

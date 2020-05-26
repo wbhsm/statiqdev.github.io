@@ -143,6 +143,9 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/templates">Templates</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/data">Data</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item has-children">
@@ -172,14 +175,9 @@
                                                                         <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/templates">Templates</a>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/themes">Themes</a>
                                                         </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/templates/themes">Themes</a>
-                                                                    </div>
-                                                            </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/web/deployment">Deployment</a>
                                                         </div>
@@ -214,7 +212,7 @@
 <li>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how <a href="/web/content-and-data/content">content files</a> are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default. This loads all <code>.html</code>, <code>.cshtml</code>, and <code>.md</code> files in any input directory unless it starts with an underscore <code>_</code>.</li>
 <li>The <code>DataFiles</code> <a href="/web/configuration/settings">setting</a> controls how data files are located and is set to <code>**/{!_,}*.{json,yaml,yml}</code> by default. This loads all <code>.json</code>, <code>.yaml</code>, and <code>.yml</code> files in any input directory unless it starts with an underscore <code>_</code>.</li>
 </ul>
-<p>Both <a href="/web/content-and-data/content">content files</a> and <a href="/web/content-and-data/data">data files</a> support functionality like <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> files, <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files, and <a href="/web/content-and-data/metadata/front-matter">front matter</a>. The main difference is that <a href="/web/templates">templates</a> like <a href="/framework/content/template-languages#markdown">Markdown</a> and <a href="/framework/content/template-languages#razor">Razor</a> are processed for content files whereas data files are parsed as data formats like JSON and YAML and add to the <a href="/framework/documents">metadata of a document</a>.</p>
+<p>Both <a href="/web/content-and-data/content">content files</a> and <a href="/web/content-and-data/data">data files</a> support functionality like <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> files, <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files, and <a href="/web/content-and-data/metadata/front-matter">front matter</a>. The main difference is that <a href="/web/content-and-data/templates">templates</a> like <a href="/framework/content/template-languages#markdown">Markdown</a> and <a href="/framework/content/template-languages#razor">Razor</a> are processed for content files whereas data files are parsed as data formats like JSON and YAML and add to the <a href="/framework/documents">metadata of a document</a>.</p>
 <p>Features like <a href="/web/content-and-data/archives">archives</a> and <a href="/web/content-and-data/feeds">feeds</a> also let you work with content and data and produce different kinds of outputs from them.</p>
 
 
@@ -223,6 +221,12 @@
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/content-and-data/content">Content</a></h4>
                                                                 <div class="font-size-sm"><p>Content files contain the pages of your site and are processed based on their media type (which is determined by file extension).</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content-and-data/templates">Templates</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq Web supports multiple template languages (<em>templates</em>) and you can specify which ones should be applied for your site.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
