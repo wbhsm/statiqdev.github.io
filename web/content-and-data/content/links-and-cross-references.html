@@ -210,7 +210,7 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Web provides a number of ways to link to documents.</p>
 <p>Given a document you can generate a relative link to it using the <a href="/framework/content/linking"><code>GetLink()</code> extension methods</a> (for example, in a <a href="/framework/content/template-languages#razor">Razor</a> template):</p>
-<pre><code class="language-html">&lt;a href="@document.GetLink()"&gt;My Link&lt;/a&gt;
+<pre><code class="language-html">&lt;a href="@Document.GetLink()"&gt;My Link&lt;/a&gt;
 </code></pre>
 <p>A <a href="/framework/content/template-languages#razor">Razor</a> <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper">HTML helper</a> called <code>DocumentLink()</code> is also available that will create an entire link element:</p>
 <pre><code class="language-txt">@Html.DocumentLink(document);
