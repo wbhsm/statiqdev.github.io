@@ -207,11 +207,50 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Coming Soon</p>
+                                            <p>Statiq Web provides a number of default commands and arguments to control execution.</p>
+<h1 id="getting-help">Getting Help</h1>
+<p>You can view help for any command with the <code>--help</code> option:</p>
+<pre><code class="language-txt">dotnet run -- --help
+
+USAGE:
+    MyGenerator.dll [pipelines] [OPTIONS]
+
+ARGUMENTS:
+    [pipelines]    The pipeline(s) to execute
+
+OPTIONS:
+    -h, --help                  Prints help information
+    -l, --log-level &lt;LEVEL&gt;     Sets the minimum log level ("Critical", "Error", "Warning", "Information", "Debug", "Trace", "None")
+        --attach                Pause execution at the start of the program until a debugger is attached
+        --debug                 Allows you to select a debugger to attach
+    -f, --log-file &lt;LOGFILE&gt;    Log all messages to the specified log file
+    -s, --setting &lt;SETTING&gt;     Specifies a setting as a key=value pair (the value can be omited)
+    -i, --input &lt;PATH&gt;          The path(s) of input files, can be absolute or relative to the current folder
+    -o, --output &lt;PATH&gt;         The path to output files, can be absolute or relative to the current folder
+        --noclean               Prevents cleaning of the output path on each execution
+        --nocache               Prevents caching information during execution (less memory usage but slower execution)
+        --stdin                 Reads standard input at startup and sets ApplicationInput in the execution context
+        --serial                Executes pipeline phases and modules in serial
+    -r, --root                  The root folder to use
+    -n, --normal                Executes normal pipelines as well as those specified
+
+COMMANDS:
+    pipelines    Executes the specified pipelines
+    deploy       Executes deployment pipelines
+    preview      Builds the site and serves it, optionally watching for changes, rebuilding, and triggering client reload by default
+    serve        Serves a folder, optionally watching for changes and triggering client reload by default
+</code></pre>
+<h1 id="defining-commands">Defining Commands</h1>
+<p>Additional commands can be <a href="/framework/configuration/bootstrapper/commands">defined using a bootstrapper</a>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#getting-help">Getting Help</a></p>
+                                                    <p class="small"><a href="#defining-commands">Defining Commands</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/command-line.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
