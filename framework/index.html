@@ -227,31 +227,7 @@
 <pre><code class="language-csharp">dotnet add package Statiq.App --version 1.0.0-beta.9
 </code></pre>
 <p>Use whatever is the <a href="https://www.nuget.org/packages/Statiq.App">most recent version of Statiq.App</a>. The <code>--version</code> flag is needed while the package is pre-release.</p>
-<h2 id="step-4-edit-the-project-file">Step 4: Edit The Project File</h2>
-<p>This step is optional but is helpful to prevent certain kinds of problems later. Open the project file that was created in the previous step (for example, <code>MyGenerator.csproj</code>). Add the following to the <code>&lt;PropertyGroup&gt;</code> at the top:</p>
-<pre><code class="language-xml">&lt;PropertyGroup&gt;
-  &lt;OutputType&gt;Exe&lt;/OutputType&gt;
-  &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
-  &lt;RunWorkingDirectory&gt;$(MSBuildProjectDirectory)&lt;/RunWorkingDirectory&gt;
-  &lt;DefaultItemExcludes&gt;$(DefaultItemExcludes);output\**&lt;/DefaultItemExcludes&gt;
-&lt;/PropertyGroup&gt;
-</code></pre>
-<p>The <code>&lt;RunWorkingDirectory&gt;</code> will ensure the working directory is equivalent to the project directory so if you run your console application from a different location it can still find the correct root and input folders.</p>
-<p>The <code>&lt;DefaultItemExcludes&gt;</code> will help exclude the files generated in the <code>output</code> folder from the application compilation.</p>
-<p>Also add the following <code>&lt;ItemGroup&gt;</code> elements to the file:</p>
-<pre><code class="language-xml">&lt;ItemGroup&gt;
-  &lt;Compile Remove="input\**" /&gt;
-&lt;/ItemGroup&gt;
-
-&lt;ItemGroup&gt;
-  &lt;None Include="input\**"&gt;
-    &lt;CopyToOutputDirectory&gt;Never&lt;/CopyToOutputDirectory&gt;
-  &lt;/None&gt;
-&lt;/ItemGroup&gt;
-</code></pre>
-<p>This will ensure files in the <code>input</code> directory don't get compiled or copied to the output folder. The reason we don't add the <code>input</code> folder to the <code>&lt;DefaultItemExcludes&gt;</code> above is because unlike the <code>output</code> folder, we want the <code>input</code> folder to show up in the Visual Studio file tree so we can edit input files.</p>
-<p>If you use a different input folder or have added input folders, add those as well.</p>
-<h2 id="step-5-create-a-bootstrapper">Step 5: Create a Bootstrapper</h2>
+<h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
 <p>There are several ways to create and configure an <a href="/framework/execution#engine">engine</a>, but by far the easiest is to use the <a href="/framework/configuration/bootstrapper">bootstrapper</a>. Add the following code in your <code>Program.cs</code> file:</p>
 <pre><code class="language-csharp">using System;
 using System.Threading.Tasks;
@@ -271,7 +247,7 @@ namespace MyGenerator
 </code></pre>
 <p>This creates a default <code>Bootstrapper</code> instance and passes it the <a href="/framework/running/command-line">command-line arguments</a> so it can process them with the <code>.CreateDefault(args)</code> call. Then it executes the specified command (from the command-line) during the final <code>.RunAsync()</code> call.</p>
 <p>This example is all you need for a minimal, functioning Statiq Framework application. The only problem is that it doesn’t actually do anything. Let’s add one more step and process some Markdown files.</p>
-<h2 id="step-6-add-a-pipeline-and-modules">Step 6: Add a Pipeline and Modules</h2>
+<h2 id="step-5-add-a-pipeline-and-modules">Step 5: Add a Pipeline and Modules</h2>
 <p>Most functionality in Statiq Framework is provided by <a href="/framework/pipelines">pipelines</a> and <a href="/framework/pipelines/modules">modules</a>. The <a href="/framework/configuration/bootstrapper">bootstrapper</a> has several mechanisms for <a href="/framework/configuration/bootstrapper/adding-pipelines">adding and defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
 <h1 id="how-it-works">How It Works</h1>
 <p>Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations. Think of it like LEGO® for static generation.</p>

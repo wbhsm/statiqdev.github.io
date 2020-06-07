@@ -143,9 +143,6 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/templates">Templates</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/data">Data</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item has-children">
@@ -173,6 +170,9 @@
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/templates">Templates</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item">
@@ -220,31 +220,7 @@
 <pre><code class="language-csharp">dotnet add package Statiq.Web --version 1.0.0-alpha.12
 </code></pre>
 <p>Use whatever is the <a href="https://www.nuget.org/packages/Statiq.Web">most recent version of Statiq.Web</a>. The <code>--version</code> flag is needed while the package is pre-release.</p>
-<h2 id="step-4-edit-the-project-file">Step 4: Edit The Project File</h2>
-<p>This step is optional but is helpful to prevent certain kinds of problems later. Open the project file that was created in the previous step (for example, <code>MyGenerator.csproj</code>). Add the following to the <code>&lt;PropertyGroup&gt;</code> at the top:</p>
-<pre><code class="language-xml">&lt;PropertyGroup&gt;
-  &lt;OutputType&gt;Exe&lt;/OutputType&gt;
-  &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
-  &lt;RunWorkingDirectory&gt;$(MSBuildProjectDirectory)&lt;/RunWorkingDirectory&gt;
-  &lt;DefaultItemExcludes&gt;$(DefaultItemExcludes);output\**&lt;/DefaultItemExcludes&gt;
-&lt;/PropertyGroup&gt;
-</code></pre>
-<p>The <code>&lt;RunWorkingDirectory&gt;</code> will ensure the working directory is equivalent to the project directory so if you run your console application from a different location it can still find the correct root and input folders.</p>
-<p>The <code>&lt;DefaultItemExcludes&gt;</code> will help exclude the files generated in the <code>output</code> folder from the application compilation.</p>
-<p>Also add the following <code>&lt;ItemGroup&gt;</code> elements to the file:</p>
-<pre><code class="language-xml">&lt;ItemGroup&gt;
-  &lt;Compile Remove="input\**" /&gt;
-&lt;/ItemGroup&gt;
-
-&lt;ItemGroup&gt;
-  &lt;None Include="input\**"&gt;
-    &lt;CopyToOutputDirectory&gt;Never&lt;/CopyToOutputDirectory&gt;
-  &lt;/None&gt;
-&lt;/ItemGroup&gt;
-</code></pre>
-<p>This will ensure files in the <code>input</code> directory don't get compiled or copied to the output folder. The reason we don't add the <code>input</code> folder to the <code>&lt;DefaultItemExcludes&gt;</code> above is because unlike the <code>output</code> folder, we want the <code>input</code> folder to show up in the Visual Studio file tree so we can edit input files.</p>
-<p>If you use a different input folder or have added input folders, add those as well.</p>
-<h2 id="step-5-create-a-bootstrapper">Step 5: Create a Bootstrapper</h2>
+<h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
 <p>Creating a <a href="/framework/configuration/bootstrapper">bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/pipelines/defining-pipelines">pipelines</a> or <a href="/framework/pipelines/modules/writing-modules">custom modules</a>, you shouldn’t need to for most sites. Add the following code in your <code>Program.cs</code> file:</p>
 <pre><code class="language-csharp">using System;
 using System.Threading.Tasks;
@@ -263,7 +239,7 @@ namespace MySite
   }
 }
 </code></pre>
-<h2 id="step-6-add-some-content">Step 6: Add Some Content</h2>
+<h2 id="step-5-add-some-content">Step 5: Add Some Content</h2>
 <p>Start adding content by creating <a href="/framework/content/template-languages#markdown">Markdown</a> files in your "input" folder.</p>
 
 
