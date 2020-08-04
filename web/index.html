@@ -251,6 +251,13 @@ namespace MySite
 </code></pre>
 <h2 id="step-5-add-some-content">Step 5: Add Some Content</h2>
 <p>Start adding content by creating <a href="/framework/content/template-languages#markdown">Markdown</a> files in your "input" folder.</p>
+<h2 id="step-6-run-it">Step 6: Run it!</h2>
+<p>Let the magic happen:</p>
+<pre><code>dotnet run
+</code></pre>
+<p>Or run it and <a href="/web/running/preview-server">preview the generated site</a>:</p>
+<pre><code>dotnet run -- preview
+</code></pre>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
@@ -336,7 +343,7 @@ namespace MySite
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

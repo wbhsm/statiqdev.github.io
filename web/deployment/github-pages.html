@@ -225,7 +225,7 @@
 <li><code>GitHubUsername</code>: The username to use for deployment.</li>
 <li><code>GitHubPassword</code>: The password to use for deployment.</li>
 <li><code>GitHubToken</code>: The token to use for deployment (configure either this <em>or</em> username and password).</li>
-<li><code>GitHubBranch</code>: The branch to deploy to (defaults to <code>gh-pages</code> but you should change this to <code>master</code> for organization sites).</li>
+<li><code>GitHubBranch</code>: The branch to deploy to (defaults to <code>gh-pages</code> but you should change this to the configured GitHub Pages branch such as <code>main</code> or <code>master</code> for organization sites).</li>
 </ul>
 <p>It's customary to set one or more of these settings as an environment variable in continuous
 integration environments (particularly secrets like the password). In these scenarios you can either
@@ -277,6 +277,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@master
+      with:
+        submodules: recursive
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.100' # SDK Version to use.
@@ -335,7 +337,7 @@ jobs:
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

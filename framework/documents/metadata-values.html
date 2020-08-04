@@ -247,7 +247,9 @@ My number is &lt;?#= MyNumber /?&gt;.
 <li><code>Module</code>: Gets the current executing <a href="/framework/pipelines/modules">module</a>.</li>
 <li><code>Inputs</code>: The collection of input <a href="/framework/documents">documents</a> to the current <a href="/framework/pipelines/modules">module</a>.</li>
 </ul>
-<p>In addition, all metadata values of the current document are exposed as properties in the script. For example, if a document has a metadata item with a key of "MyItem", a global property <code>MyItem</code> will be available to the script.</p>
+<p>In addition, all metadata conversion methods are exposed as global methods. For example, if a document has another metadata value called <code>Foo</code> and you wanted to get the <code>int</code> value of that in another metadata value you could write something like this in your front matter:</p>
+<pre><code>Bar: =&gt; GetInt("Foo") + 2
+</code></pre>
 <h1 id="configuration-delegates">Configuration Delegates</h1>
 <p>Another way of accessing the current <a href="/framework/documents">document</a> or <a href="/framework/execution#execution-context">execution context</a> while computing a lazy metadata value is to use a <a href="/framework/configuration/configuration-delegates">configuration delegate</a>. When an instance of <code>IConfig</code> is added as a metadata value, it will be evaluated on every request for that value.</p>
 <h1 id="lazy-values">Lazy Values</h1>
@@ -308,7 +310,7 @@ My number is &lt;?#= MyNumber /?&gt;.
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

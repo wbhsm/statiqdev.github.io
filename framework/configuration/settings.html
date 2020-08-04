@@ -258,15 +258,29 @@
 }
 </code></pre>
 <p>Note that the setting demonstrated above uses a <a href="/framework/documents/metadata-values#computed-values">computed value</a> to calculate the current <code>DateTime</code> at runtime.</p>
+<h2 id="preventing-settings-cascade">Preventing Settings Cascade</h2>
+<p>There may be times when you want to get the metadata of a document <em>without</em> the settings cascade. This can be accomplished by calling <code>WithoutSettings()</code>:</p>
+<pre><code class="language-csharp">bool documentDefinesFoo = doc.WithoutSettings().ContainsKey("Foo");
+</code></pre>
 <h1 id="specifying-settings-with-the-bootstrapper">Specifying Settings With The Bootstrapper</h1>
 <p>Settings can be provided directly to the <a href="/framework/execution#engine">engine</a>, but the easiest and most common way to specify settings is to use a <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
 <h2 id="configuration-files">Configuration Files</h2>
-<p>As with many other .NET Core applications, Statiq supports the use of configuiration files with one of the following names:</p>
+<p>As with many other .NET Core applications, Statiq supports the use of configuration files with one of the following names (by default):</p>
 <ul>
+<li><code>settings.json</code></li>
+<li><code>settings.yml</code></li>
+<li><code>settings.yaml</code></li>
+<li><code>settings.xml</code></li>
 <li><code>appsettings.json</code></li>
+<li><code>appsettings.yml</code></li>
+<li><code>appsettings.yaml</code></li>
+<li><code>appsettings.xml</code></li>
 <li><code>statiq.json</code></li>
+<li><code>statiq.yml</code></li>
+<li><code>statiq.yaml</code></li>
+<li><code>statiq.xml</code></li>
 </ul>
-<p>Support for both is provisioned by the bootstrapper by default.</p>
+<p>Support for the above configuration files is added by the default <a href="/framework/configuration/bootstrapper">bootstrapper</a>.</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <p>The bootstrapper adds all existing environment variables as settings by default. This makes it easy to define settings for your generation from build servers.</p>
 <h2 id="fluent-api">Fluent API</h2>
@@ -326,7 +340,7 @@
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

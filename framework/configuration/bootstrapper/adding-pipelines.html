@@ -287,6 +287,7 @@
 </ul>
 <p>To complete building the pipeline call <code>Build()</code>:</p>
 <pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
 using Statiq.App;
 using Statiq.Markdown;
 
@@ -356,7 +357,7 @@ namespace MyGenerator
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

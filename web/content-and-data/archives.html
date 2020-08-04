@@ -219,7 +219,7 @@
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Archives are one of the most powerful features of Statiq Web and allow you to group and page content.</p>
 <p>An archive is defined as a normal <a href="/web/content-and-data/templates">template</a> that contains special metadata. When Statiq Web sees the metadata below it will process the file as an archive and produce the archive outputs. Archives are processed in the <code>Archive</code> <a href="/framework/pipelines">pipeline</a>.</p>
-<p>There are two types of archive pages that the pipeline can produce from a single archive file: <em>indexes</em> and <em>groups</em>. To illustrate the difference, consider a blog where each post contains one or more tags. You probabably want a single <em>index</em> page that lists all the available tags. You probably also want individual <em>group</em> pages for each tag that lists the blog posts containing that tag, and you may want those lists of posts to be paginated and ordered.</p>
+<p>There are two types of archive pages that the pipeline can produce from a single archive file: <em>indexes</em> and <em>groups</em>. To illustrate the difference, consider a blog where each post contains one or more tags. You probably want a single <em>index</em> page that lists all the available tags. You probably also want individual <em>group</em> pages for each tag that lists the blog posts containing that tag, and you may want those lists of posts to be paginated and ordered.</p>
 <p>A single archive file can produce both types of output documents. The template in the file is used for both, and you can tell whether an index or a group is being rendered by whether or not the document contains the <code>GroupKey</code> metadata key which contains the group value. For example, in a Razor archive template you might have the following:</p>
 <pre><code class="language-html">@if (Document.ContainsKey(Keys.GroupKey))
 {
@@ -234,7 +234,7 @@ else
   &lt;/div&gt;
 }
 </code></pre>
-<p>In a group page the value of <code>GroupKey</code> contains the group value (for example, the tag) and the child documents (accessable with <code>Document.GetChildren()</code>) contains each item (for example, each blog post for the tag).</p>
+<p>In a group page the value of <code>GroupKey</code> contains the group value (for example, the tag) and the child documents (accessible with <code>Document.GetChildren()</code>) contains each item (for example, each blog post for the tag).</p>
 <p>In an index page the child documents contains each of groups (for example, each tag).</p>
 <p>The following metadata controls the archive and should be placed in the <a href="/framework/content/front-matter">front matter</a> of the archive template:</p>
 <ul>
@@ -242,6 +242,7 @@ else
 <li><code>ArchiveSources</code>: A globbing pattern to filter documents from the archive pipeline(s) based on source path (or all documents from the pipeline(s) if not defined).</li>
 <li><code>ArchiveFilter</code>: An additional metadata filter for documents from the archive pipeline(s) that should return a <code>bool</code>.</li>
 <li><code>ArchiveKey</code>: The key to use for generating archive groups. The source documents will be grouped by the key value(s). If this is not defined, only a single archive index with the source documents will be generated.</li>
+<li><code>ArchiveKeyComparer</code>: Should return a comparer to be used for comparing archive keys. For example, use <code>ArchiveKeyComparer: =&gt; StringComparer.OrdinalIgnoreCase.ToConvertingEqualityComparer()</code> to convert the value of archive keys to a string and compare them using a case-insensitive ordinal string comparison.</li>
 <li><code>ArchivePageSize</code>: The number of items on each group page (or all group items if not defined). The current page index is stored in the <code>Index</code> metadata value.</li>
 <li><code>ArchiveTitle</code>: The title of each group output document. This is usually a <a href="/framework/documents/metadata-values#computed-values">computed value</a> that calculates the title based on the group key. If this value is not specified, the default title will be "[Archive Title] - [Group Key] (Page [Index (If Paged)])".</li>
 <li><code>ArchiveDestination</code>: The destination path of each group output document. This is usually a <a href="/framework/documents/metadata-values#computed-values">computed value</a> that calculates the destination based on the group key. If this value is not specified, the default group destination will be "[Archive File Path]/[Archive File Name]/[Group Key]/[Index (If Paged)].html". The destination path of the archive index follows normal destination calculation and will be placed at the same relative path as the archive file or can be changed with metadata like <code>DestinationPath</code>.</li>
@@ -298,7 +299,7 @@ else
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

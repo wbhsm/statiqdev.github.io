@@ -225,8 +225,8 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>You can use the bootstrapper to specify <a href="/framework/configuration/settings">settings</a>, either from various sources like configuration file and environment variables, or by using fluent methods.</p>
-<p>By default, the bootstrapper will add settings from <code>appsettings.json</code> and <code>statiq.json</code> files as well as all environment variables. This behavior can be controlled via the <a href="/framework/configuration/bootstrapper#default-behavior">bootstrapper default behavior</a>.</p>
+                                            <p>You can use the bootstrapper to specify <a href="/framework/configuration/settings">settings</a>, either from various sources like <a href="/framework/configuration/settings#configuration-files">configuration files</a> and environment variables, or by using fluent methods.</p>
+<p>By default, the bootstrapper will add settings from <a href="/framework/configuration/settings#configuration-files">a variety of configuration files</a> as well as all environment variables. This behavior can be controlled via the <a href="/framework/configuration/bootstrapper#default-behavior">bootstrapper default behavior</a>.</p>
 <p>In addition, you can specify settings directly using fluent methods:</p>
 <ul>
 <li><code>AddSetting()</code> specifies a single setting and it's value.</li>
@@ -284,7 +284,7 @@
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

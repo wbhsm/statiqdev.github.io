@@ -244,7 +244,7 @@ namespace MySite
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/configuration/settings">Settings</a></h4>
-                                                                <div class="font-size-sm"><p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior.</p></div>
+                                                                <div class="font-size-sm"><p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior. Global settings that apply to the generation process and all documents are generally defined <a href="/framework/configuration/settings#configuration-files">in a configuration file</a>. Most settings are also appropriate to define <a href="/web/content-and-data/metadata/directory-metadata">at the directory level</a> or <a href="/web/content-and-data/metadata/front-matter">per-document</a> if you only want them to apply to specific files.</p></div>
                                                         </div>
                                                     </div>
                                         </div>
@@ -299,7 +299,7 @@ namespace MySite
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

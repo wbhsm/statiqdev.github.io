@@ -259,6 +259,31 @@ namespace MyGenerator
 <p>This example is all you need for a minimal, functioning Statiq Framework application. The only problem is that it doesn’t actually do anything. Let’s add one more step and process some Markdown files.</p>
 <h2 id="step-5-add-a-pipeline-and-modules">Step 5: Add a Pipeline and Modules</h2>
 <p>Most functionality in Statiq Framework is provided by <a href="/framework/pipelines">pipelines</a> and <a href="/framework/pipelines/modules">modules</a>. The <a href="/framework/configuration/bootstrapper">bootstrapper</a> has several mechanisms for <a href="/framework/configuration/bootstrapper/adding-pipelines">adding and defining pipelines</a>. For this last step lets add a quick pipeline to read Markdown files, render them, and write them back out to disk using some fluent methods to define a pipeline and add modules to it:</p>
+<pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
+using Statiq.App;
+using Statiq.Markdown;
+
+namespace MyGenerator
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateDefault(args)
+        .BuildPipeline("Render Markdown", builder =&gt; builder
+            .WithInputReadFiles("*.md")
+            .WithProcessModules(new RenderMarkdown())
+            .WithOutputWriteFiles(".html"))
+        .RunAsync();
+  }
+}
+</code></pre>
+<h2 id="step-6-run-it">Step 6: Run it!</h2>
+<p>Let the magic happen:</p>
+<pre><code>dotnet run
+</code></pre>
 <h1 id="how-it-works">How It Works</h1>
 <p>Statiq is powerful because it combines a few simple building blocks that can be rearranged and used in limitless combinations. Think of it like LEGO® for static generation.</p>
 <ul>
@@ -273,11 +298,7 @@ namespace MyGenerator
 <li><p>The final output of each pipeline is made available to other pipelines and may be written to output files or deployed to hosting services.</p>
 </li>
 </ul>
-<div><img src="/assets/flow.png" class="mw-100"></div>
-<h2 id="step-6-run-it">Step 6: Run it!</h2>
-<p>Let see the Statiq magic happen.</p>
-<pre><code class="language-csharp">dotnet run
-</code></pre>
+<div><img src="/assets/flow.png" class="img-fluid"></div>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
@@ -370,7 +391,7 @@ namespace MyGenerator
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

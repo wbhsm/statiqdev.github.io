@@ -278,7 +278,7 @@ namespace MyGenerator
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a></h4>
-                                                                <div class="font-size-sm"><p>You can use the bootstrapper to specify <a href="/framework/configuration/settings">settings</a>, either from various sources like configuration file and environment variables, or by using fluent methods.</p></div>
+                                                                <div class="font-size-sm"><p>You can use the bootstrapper to specify <a href="/framework/configuration/settings">settings</a>, either from various sources like <a href="/framework/configuration/settings#configuration-files">configuration files</a> and environment variables, or by using fluent methods.</p></div>
                                                         </div>
                                                     </div>
                                                     <div>
@@ -352,7 +352,7 @@ namespace MyGenerator
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable

@@ -217,11 +217,12 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior.</p>
+                                            <p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior. Global settings that apply to the generation process and all documents are generally defined <a href="/framework/configuration/settings#configuration-files">in a configuration file</a>. Most settings are also appropriate to define <a href="/web/content-and-data/metadata/directory-metadata">at the directory level</a> or <a href="/web/content-and-data/metadata/front-matter">per-document</a> if you only want them to apply to specific files.</p>
 <p>The following global settings are available:</p>
 <ul>
-<li><code>ContentFiles</code>: The globbing pattern(s) that will be used to read <a href="/web/content-and-data/content">content files</a>.</li>
-<li><code>DataFiles</code>: The globbing pattern(s) that will be used to read <a href="/web/content-and-data/data">data files</a>.</li>
+<li><code>ContentFiles</code>: The globbing pattern(s) that are be used to read <a href="/web/content-and-data/content">content files</a>.</li>
+<li><code>DataFiles</code>: The globbing pattern(s) that are be used to read <a href="/web/content-and-data/data">data files</a>.</li>
+<li><code>AssetFiles</code>: The globbing pattern(s) that are be used to find and copy asset files to the output folder.</li>
 <li><code>DirectoryMetadataFiles</code>: The globbing pattern(s) that will be used to read <a href="/web/content-and-data/metadata/directory-metadata">directory metadata files</a>.</li>
 <li><code>OptimizeContentFileNames</code>: Indicates that content output file names should be optimized to remove spaces, etc.</li>
 <li><code>OptimizeDataFileNames</code>: Indicates that data output file names should be optimized to remove spaces, etc.</li>
@@ -229,6 +230,9 @@
 <li><code>ProcessSidecarFiles</code>: Set to <code>false</code> to prevent processing sidecar files.</li>
 <li><code>GenerateSitemap</code>: Indicates that a sitemap file should be generated (the default value is <code>true</code>).</li>
 <li><code>MirrorResources</code>: Indicates that <a href="/web/content-and-data/content/resource-mirroring">resource mirroring</a> should be enabled.</li>
+<li><code>PublishedUsesLastModifiedDate</code>: Controls whether a file modified date should be used for getting published dates (the default value is <code>true</code>).</li>
+<li><code>MakeLinksAbsolute</code>: Set to <code>true</code> to rewrite all relative links as absolute.</li>
+<li><code>MakeLinksRootRelative</code>: Set to <code>true</code> to rewrite all relative links as root-relative.</li>
 <li><code>ValidateAbsoluteLinks</code>: Indicates that absolute links should be validated (may add considerable time to your generation process).</li>
 <li><code>ValidateRelativeLinks</code>: Indicates that relative links should be validated (the default value is <code>true</code>).</li>
 <li><code>ValidateLinksAsError</code>: Indicates that link validation failures should be treated as errors and fail the build.</li>
@@ -236,7 +240,7 @@
 <li><code>NetlifyRedirects</code>: Generates a Netlify <a href="/web/content-and-data/content/redirects">redirects file</a>.</li>
 </ul>
 <p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class.</p>
-<p>You can change settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
+<p>You can also define settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
 <pre><code class="language-csharp">using System;
 using System.Threading.Tasks;
 using Statiq.App;
@@ -309,7 +313,7 @@ namespace MySite
 
                 // Remove the max-width setting that Mermaid sets
                 var mermaidSvg = $('.mermaid svg');
-                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.addClass('img-fluid');
                 mermaidSvg.css('max-width', '');
 
                 // Make it scrollable
