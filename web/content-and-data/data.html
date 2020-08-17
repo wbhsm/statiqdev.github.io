@@ -59,7 +59,7 @@
                                     </ul>
                                     <ul class="navbar-nav">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/blog">Blog</a>
+                                            <a class="nav-link" href="/news">News</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
@@ -83,11 +83,13 @@
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
-                                        <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
-                                                    <span><a href="/web/content-and-data">Content And Data</a></span>
-                                                    <span><a href="/web">Web</a></span>
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column flex-md-row">
+                                                <span><a href="/web">Web</a></span>
+                                                <span><a href="/web/content-and-data">Content And Data</a></span>
                                         </div>
-                                        <div class="text-white m-0 title">Data</div>
+                                        <div class="text-white m-0 title">
+                                            Data                                            
+                                        </div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,9 +137,6 @@
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
                                                                                 <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/content-hierarchy">Content Hierarchy</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
                                                                                     <a href="/web/content-and-data/content/excerpts-and-headings">Excerpts And Headings</a>
                                                                                 </div>
                                                                                 <div class="sidebar-nav-item">
@@ -170,6 +169,9 @@
                                                                                     <a href="/web/content-and-data/metadata/front-matter">Front Matter</a>
                                                                                 </div>
                                                                         </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/document-hierarchy">Document Hierarchy</a>
+                                                                    </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/enumerating-values">Enumerating Values</a>
                                                                     </div>
@@ -227,9 +229,9 @@
 <p>The <code>DataFiles</code> <a href="/web/configuration/settings">setting</a> controls how data files are located and is set to <code>**/{!_,}*.{json,yaml,yml}</code> by default. This loads all <code>.json</code>, <code>.yaml</code>, and <code>.yml</code> files in any input directory unless it starts with an underscore <code>_</code>.</p>
 <h1 id="accessing-data-files">Accessing Data Files</h1>
 <p>Data files are processed by the <code>Data</code> pipeline and can be accessed through the <code>Outputs</code> property of the <a href="/framework/execution/execution-context">execution context</a> (which is also available directly in some templating languages like <a href="/framework/content/template-languages#razor">Razor</a> as an <code>Outputs</code> property).</p>
-<p>Unlike <a href="/web/content-and-data/content">content files</a>, the resulting data documents are not output from the pipeline in a <a href="/web/content-and-data/content/content-hierarchy">hierarchy</a> and all documents regardless of depth are part of the collection obtained from the <code>Outputs</code> without requiring the use of <code>.Flatten()</code>. You can also use <code>.FilterSources()</code> and <code>.FilterDestinations()</code> extension methods to filter the collection of output documents using a <a href="/framework/execution/files#globbing">globbing pattern</a>.</p>
 <p>For example, the following code will find all documents containing data from YAML files that describe different fruits stored in a <code>food/fruit</code> folder under the default <code>input</code> folder:</p>
-<pre><code class="language-csharp">IDocument[] fruits = Outputs["Data"]
+<pre><code class="language-csharp">IDocument[] fruits = Outputs
+  .FromPipeline("Data")
   .FilterSources("food/fruit/*")
   .ToArray();
 </code></pre>
@@ -267,7 +269,7 @@
                             <a href="/framework" class="text-light">Framework</a>
                         </div>
                         <div class="text-light text-center font-size-sm">
-                            <a href="/blog" class="text-light pr-2 mr-1">Blog</a>
+                            <a href="/news" class="text-light pr-2 mr-1">News</a>
                             <a href="https://github.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-github"></i> GitHub</a>
                             <a href="https://twitter.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-twitter"></i> Twitter</a>
                             <a class="text-light font-weight-bold" href="/support"><i class="fad fa-heart"></i> Support</a>

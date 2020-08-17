@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicons/site.webmanifest">
+        <link rel="shortcut icon" type="image/png" href="/assets/favicons/favicon.ico">
+        <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#e9ecef">
+        <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+        <meta name="msapplication-TileColor" content="#e9ecef">
+        <meta name="theme-color" content="#e9ecef">
+
+        <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet" data-no-mirror="">
+        <link rel="stylesheet" href="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
+        <link href="/assets/css/styles.css" rel="stylesheet">
+
+        <script src="/mirror/code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/mirror/stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a1cad7ed9a.js" crossorigin="anonymous" data-no-mirror=""></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/quicklink@2.0.0/dist/quicklink.umd.js"></script>
+        
+		
+
+        <title>Statiq - Statiq.Framework Release 1.0.0-alpha.24</title>
+    </head>
+    <body class="d-flex flex-column">
+        <div class="flex-grow-1 d-flex flex-column">
+            <div class="bg-nav">
+                <div class="container-xl py-3">
+                    <div class="row">
+                        <div class="offset-lg-2 col-12 col-lg-8 px-0">
+                            <nav class="navbar navbar-expand-md navbar-light align-items-start">
+                                <a class="navbar-brand" href="/"><img id="logo" src="/assets/statiq.svg" alt="Statiq Framework"></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-topnav" aria-controls="collapse-topnav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div id="collapse-topnav" class="collapse navbar-collapse flex-wrap">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li id="nav-web" class="nav-item">
+                                            <a class="nav-link text-blue font-weight-light font-size-lg" href="/web">Web</a>
+                                        </li>
+                                        <li class="nav-item mx-3 border-right d-none d-md-block"></li>
+                                        <li id="nav-docs" class="nav-item">
+                                            <a class="nav-link text-orange font-weight-light font-size-lg" href="/docs">Docs</a>
+                                        </li>
+                                        <li class="nav-item mx-3 border-right d-none d-md-block"></li>
+                                        <li id="nav-framework" class="nav-item">
+                                            <a class="nav-link text-purple font-weight-light font-size-lg" href="/framework">Framework</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/news">News</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://github.com/statiqdev"><i class="fab fa-github"></i> GitHub</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://twitter.com/statiqdev"><i class="fab fa-twitter"></i> Twitter</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link font-weight-bold text-red" href="/support"><i class="fad fa-heart icon-red"></i> Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex flex-column section-undefined section-news">
+                    <div id="titlebar" class="py-4">
+                        <div class="container-xl">
+                            <div class="row">
+                                <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
+                                    <div class="flex-grow-1">
+                                        <div class="breadcrumbs text-uppercase d-flex flex-column flex-md-row">
+                                                <span><a href="/news">News</a></span>
+                                        </div>
+                                        <div class="text-white m-0 title">
+                                            Statiq.Framework Release 1.0.0-alpha.24                                            
+                                        </div>
+
+        <div class="text-white-50">
+            Monday, February 10, 2020 in
+            <a href="/news/topics/release"><span class="badge badge-dark">Release Notes</span></a>
+        </div>
+                                    </div>
+                                        <div class="navbar navbar-expand-md navbar-dark p-0">
+                                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                                                <span class="navbar-toggler-icon"></span>
+                                            </button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="undertitle">
+                        <div class="container-xl">                            
+                            <div class="row">
+                                    <div class="col-md-3 col-lg-2 bg-section">
+                                    </div>
+                                    <div class="col-md-9 col-lg-8 bg-white">
+                                    </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-section">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="flex-grow-1 d-flex flex-column">
+                        <div class="container-xl flex-grow-1 d-flex flex-column">
+                            <div class="row flex-grow-1 align-items-stretch">
+                                        <div class="col-md-3 col-lg-2 bg-body">
+                                            <div id="collapse-sidebar" class="sidebar collapse px-0 px-md-3 pt-3">
+
+    <div class="sidebar-nav-item has-children">
+        <a href="/news/topics">Topics</a>
+    </div>
+    <div class="sidebar-nav-children">
+            <div class="sidebar-nav-item">
+                <a href="/news/topics/release">Release Notes</a>
+            </div>
+            <div class="sidebar-nav-item">
+                <a href="/news/topics/meta">Meta</a>
+            </div>
+    </div>
+                                            </div>
+                                        </div>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            
+
+
+<ul>
+<li>Added new <code>ProcessHtml</code> module for more flexible processing of DOM nodes.</li>
+<li>Added new <code>IEnumerable&lt;IDocument&gt;.Flatten()</code> extension to flatten document trees.</li>
+<li>Added new <code>IEnumerable&lt;IDocument&gt;.FilterSources()</code> and <code>IEnumerable&lt;IDocument&gt;.FilterDestinations()</code> extension methods.</li>
+<li>Added a new <code>FilterDestinations</code> module to filter documents by destination path.</li>
+<li>Added a <code>Config.ContainsSettings(params string[] keys)</code> config factory to return whether the settings contain all the specified keys.</li>
+<li>Refactored some methods from <code>IExecutionContext</code> into <code>IExecutionState</code> and moved implementation to <code>Engine</code>.</li>
+<li>Added new <code>EnumerateValues</code> module that will clone or create documents for each item in an enumeration.</li>
+<li>Added <code>Keys.ExcludeFromEvaluation</code> that can exclude all or some metadata values from automatic script evaluation.</li>
+<li>Added <code>IMetadata.GetNestedMetadata()</code> to get a nested metadata value (not called <code>IMetadata.GetMetadata()</code> to avoid conflicts with the old previous method of that name).</li>
+<li>Renamed <code>IMetadata.GetMetadata()</code> to <code>IMetadata.FilterMetadata()</code> which now returns a <code>FilteredMetadata</code> instance.</li>
+<li>Added new <code>FilteredMetadata</code> class to filter underlying metadata items by key(s).</li>
+<li>Refactored a bunch of default interface implementations back to extension methods (turns out default interface implementations are a little awkward to maintain).</li>
+<li>Moved scripting support and the <code>CompileScript</code> and <code>EvaluateScript</code> modules to <code>Statiq.Core</code>.</li>
+<li>Added <code>Microsoft.CodeAnalysis</code> to <code>Statiq.Core</code>.</li>
+<li>Metadata and configuration settings that are a string starting with "=&gt;" are now considered "scripted" and the content to the right of the arrow will be lazily evaluated as C# code - this is a <strong>big deal</strong> and the use cases will become apparent over time (I have lots of big ideas around this feature).</li>
+<li>Removed the <code>InterpolateMetadata</code> module in favor of more robust built-in scripted metadata.</li>
+<li>Removed the <code>Statiq.CodeAnalysis.IDocumentExtensions.Interpolate()</code> extension method in favor of more robust built-in scripted metadata.</li>
+<li>Changed <code>CancellationTokenSource</code> uses inside the engine to <code>CancellationToken</code> since the engine does not itself cancel execution.</li>
+<li>Surfaced the <code>CancellationToken</code> for a given execution through the <code>IExecutionState</code>.</li>
+<li>Added a check to ensure the engine is only performing one execution at a time (the outer execution loop is not concurrently safe).</li>
+<li>Major refactoring involving engine and execution context interfaces, added a new <code>IExecutionState</code> interface that essentially represents a run-time engine.</li>
+<li>Added a new <code>DocumentIdComparer</code> to compare documents by ID (#69, thanks @@mholo65).</li>
+<li>Removed <code>IParallelModule.WithSequentialExecution()</code> and standardized on <code>.WithParallelExecution(false)</code> instead to make default behavior of running in parallel clearer (I.e., you have to turn it off).</li>
+<li>Added additional configuration methods to <code>CacheDocuments</code> providing more control over when to invalidate cached documents (#78).</li>
+<li>Added <code>IReadOnlyPipeline</code> for runtime access to pipeline data without changing modules.</li>
+<li>Added <code>IExecutionContext.Pipeline</code> to get the currently executing pipeline from the execution context.</li>
+<li>Removed <code>IBootstrapper</code> and refactored to the one true <code>Bootstrapper</code>.</li>
+<li>Added a <code>BootstrapperFactory</code> available via <code>Bootstrapper.Factory</code> to create bootstrappers (this will make specialized creation extensions easier to discover).</li>
+</ul>
+
+
+                                        </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/news/posts/Statiq.Framework-1.0.0-alpha.24.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="p-3 text-white">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="offset-lg-2 col-12 col-lg-8">
+                        <div class="text-light text-center">
+                            <a href="/web" class="text-light pr-2 mr-1 border-right">Web</a>
+                            <a href="/docs" class="text-light pr-2 mr-1 border-right">Docs</a>
+                            <a href="/framework" class="text-light">Framework</a>
+                        </div>
+                        <div class="text-light text-center font-size-sm">
+                            <a href="/news" class="text-light pr-2 mr-1">News</a>
+                            <a href="https://github.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://twitter.com/statiqdev" class="text-light pr-2 mr-1"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a class="text-light font-weight-bold" href="/support"><i class="fad fa-heart"></i> Support</a>
+                        </div>
+                        <div class="pt-2 font-size-sm text-muted text-center">
+                            © 2020 Statiq/Dave Glick
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                quicklink.listen();
+                
+                mermaid.initialize(
+                {
+                    flowchart:
+                    {
+                        useMaxWidth: false
+                    },
+					startOnLoad: false,
+					cloneCssStyles: false
+                });     
+                mermaid.init(undefined, ".mermaid");
+
+                // Remove the max-width setting that Mermaid sets
+                var mermaidSvg = $('.mermaid svg');
+                mermaidSvg.addClass('img-fluid');
+                mermaidSvg.css('max-width', '');
+
+                // Make it scrollable
+				var target = document.querySelector(".mermaid svg");
+				if(target !== null)
+				{
+					var panZoom = window.panZoom = svgPanZoom(target, {
+						zoomEnabled: true,
+						controlIconsEnabled: true,
+						fit: true,
+						center: true,
+                        maxZoom: 20,
+                        zoomScaleSensitivity: 0.6
+					});			                          
+
+                    // Do the reset once right away to fit the diagram
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                    
+                    $(window).resize(function(){
+                        panZoom.resize();
+                        panZoom.fit();
+                        panZoom.center();
+                    });
+				}
+            });
+        </script>
+        
+		
+    
+</body></html>

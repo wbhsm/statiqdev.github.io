@@ -4,15 +4,1141 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2020</rights>
-	<updated>2020-08-04T20:54:51Z</updated>
+	<updated>2020-08-17T00:53:30Z</updated>
 	<entry>
-		<id>https://statiq.dev/blog/2020/03/22/new-statiq-website</id>
+		<id>https://statiq.dev/news/2020/08/17/statiq.web-1.0.0-beta.3</id>
+		<title>Statiq.Web Release 1.0.0-beta.3</title>
+		<link href="https://statiq.dev/news/2020/08/17/statiq.web-1.0.0-beta.3" />
+		<updated>2020-08-17T00:16:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.20"&gt;1.0.0-beta.20&lt;/a&gt;.
+This version of Statiq Framework contains breaking changes which Statiq Web will inherit.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;Content&lt;/code&gt; pipeline no longer creates any metadata-based tree structure (I.e. the metadata key &lt;code&gt;Children&lt;/code&gt; is no longer set). Instead, consider
+using methods from &lt;code&gt;Outputs&lt;/code&gt; such as &lt;code&gt;Outputs.GetChildren(doc)&lt;/code&gt; or the new &lt;code&gt;OutputPages&lt;/code&gt; property (see the Statiq Framework 1.0.0-beta.20 release notes for more details).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;MinimumStatiqWebVersion&lt;/code&gt; key to perform a check for the minimum allowed version of Statiq Web. If this is set to something higher than the current version
+of Statiq Web, an error will be logged and execution will stop. Any setting that starts will this key will be considered, so it's recommended the use of this key be
+suffixed with a unique identifier to avoid conflicts between components (for example &lt;code&gt;MinimumStatiqWebVersion-MySite&lt;/code&gt;). While not required or typically necessary for sites,
+it's recommended that themes set this in their theme settings file (for example &lt;code&gt;MinimumStatiqWebVersion-CleanBlog&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/08/17/statiq.framework-1.0.0-beta.20</id>
+		<title>Statiq.Framework Release 1.0.0-beta.20</title>
+		<link href="https://statiq.dev/news/2020/08/17/statiq.framework-1.0.0-beta.20" />
+		<updated>2020-08-17T00:12:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;IDocument.GetParent()&lt;/code&gt;, &lt;code&gt;IDocument.HasChildren()&lt;/code&gt;, &lt;code&gt;IDocument.GetDescendants()&lt;/code&gt;, and &lt;code&gt;IDocument.GetDescendantsAndSelf()&lt;/code&gt; extension methods
+(&lt;code&gt;IDocument.GetChildren()&lt;/code&gt; still remains since it's fetching actual metadata values). Instead, the appropriate tree concept can now be accessed via an implementation
+of the &lt;code&gt;IDocumentTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; interface. This change may break navigation, so &lt;code&gt;Outputs&lt;/code&gt; or &lt;code&gt;OutputPages&lt;/code&gt; should be considered for generating navigation instead.&lt;/li&gt;
+&lt;li&gt;Added an &lt;code&gt;OutputPages&lt;/code&gt; property to the engine and execution context to make it easier to filter outputs by &amp;quot;pages&amp;quot; (by default, documents with a destination path ending in &amp;quot;.htm&amp;quot; or &amp;quot;.html&amp;quot;).
+This is what you should use to generate navigation going forward.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Outputs.Get()&lt;/code&gt; and &lt;code&gt;OutputPages.Get()&lt;/code&gt; to support getting a single document from those collections by destination path, which is faster than globbing.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IDocumentTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; interface to encapsulate different kinds of document tree traversal logic.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;DocumentMetadataTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; implementation to represent document trees as the result of metadata containing child documents.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;DocumentPathTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; implementation to represent document trees as the result of file paths.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.AsMetadataTree()&lt;/code&gt; extension method to get a &lt;code&gt;DocumentMetadataTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; instance that creates a tree from document metadata containing child documents.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.AsDestinationTree()&lt;/code&gt; extension method to get a &lt;code&gt;DocumentPathTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; instance that creates a tree from document destination paths.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.AsSourceTree()&lt;/code&gt; extension method to get a &lt;code&gt;DocumentPathTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; instance that creates a tree from document source paths.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;FilteredDocumentList&amp;lt;TDocument&amp;gt;&lt;/code&gt; return type for &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterDestinations()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterSources()&lt;/code&gt; calls
+(including &lt;code&gt;Outputs[string[] patterns]&lt;/code&gt;) which implements the new &lt;code&gt;IDocumentTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; and lets you treat the resulting filtered documents as a tree from the filter return.&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;IDocumentTree&amp;lt;TDocument&amp;gt;&lt;/code&gt; interface to &lt;code&gt;IPipelineOutputs&lt;/code&gt; with default implementations that operate on document destination paths. This means you can call
+methods like &lt;code&gt;Outputs.GetChildren(doc)&lt;/code&gt; to get all the children across all pipelines of the given document, etc.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;IndexFileName&lt;/code&gt; setting to control the default file name of index files (defaults to &lt;code&gt;index.html&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;PageFileExtensions&lt;/code&gt; setting to control the default file extensions of &amp;quot;pages&amp;quot; for things like &lt;code&gt;OutputPages&lt;/code&gt; filtering and link generation (defaults to &amp;quot;.html&amp;quot; and &amp;quot;.htm&amp;quot;).&lt;/li&gt;
+&lt;li&gt;Added a new constructor to the &lt;code&gt;SetDestination&lt;/code&gt; module that will change the destination of documents to the first value of the &lt;code&gt;PageFileExtensions&lt;/code&gt; setting (default of &amp;quot;.html&amp;quot;).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;MinimumStatiqFrameworkVersion&lt;/code&gt; key to perform a check for the minimum allowed version of Statiq Framework. If this is set to something higher than the current version
+of Statiq Framework, an error will be logged and execution will stop. Any setting that starts will this key will be considered, so it's recommended the use of this key be
+suffixed with a unique identifier to avoid conflicts between components (for example &lt;code&gt;MinimumStatiqFrameworkVersion-MySite&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Refactored settings and configuration implementations. You shouldn't notice anything usage-wise, but keep an eye out for anything that doesn't work as expected&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/08/04/statiq.web-1.0.0-beta.2</id>
+		<title>Statiq.Web Release 1.0.0-beta.2</title>
+		<link href="https://statiq.dev/news/2020/08/04/statiq.web-1.0.0-beta.2" />
+		<updated>2020-08-04T01:01:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.19"&gt;1.0.0-beta.19&lt;/a&gt;.
+This version of Statiq Framework includes internal refactoring that provides a big performance boost.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;AssetFiles&lt;/code&gt; settings to configure the globbing patterns used for copying assets.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/08/04/statiq.framework-1.0.0-beta.19</id>
+		<title>Statiq.Framework Release 1.0.0-beta.19</title>
+		<link href="https://statiq.dev/news/2020/08/04/statiq.framework-1.0.0-beta.19" />
+		<updated>2020-08-04T00:27:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Lots of under-the-hood refactoring to make things faster.&lt;/li&gt;
+&lt;li&gt;Fix for invalid URIs in the &lt;code&gt;ValidateLinks&lt;/code&gt; module (#119).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/07/29/statiq.web-1.0.0-beta.1</id>
+		<title>Statiq.Web Release 1.0.0-beta.1</title>
+		<link href="https://statiq.dev/news/2020/07/29/statiq.web-1.0.0-beta.1" />
+		<updated>2020-07-29T16:51:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.18"&gt;1.0.0-beta.18&lt;/a&gt;.
+This version of Statiq Framework contains breaking changes which Statiq Web will inherit.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; The &lt;code&gt;Content&lt;/code&gt; pipeline no longer nests output documents and instead all documents are now output.
+&lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.FilterDestinations(&amp;quot;*.html&amp;quot;)&lt;/code&gt; or &lt;code&gt;Outputs[&amp;quot;*.html&amp;quot;]&lt;/code&gt; can be used to get &amp;quot;root&amp;quot; documents.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;MakeLinksAbsolute&lt;/code&gt; setting to rewrite relative links to be absolute.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;MakeLinksRootRelative&lt;/code&gt; setting to rewrite relative links to be root-relative.&lt;/li&gt;
+&lt;li&gt;Suppressed archive output when there's no documents to archive.&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;CacheDocuments&lt;/code&gt; module to additional pipelines for faster rebuild times.&lt;/li&gt;
+&lt;li&gt;Added an &lt;code&gt;ArchiveKeyComparer&lt;/code&gt; metadata that allows specifying a specific comparer for use with archive groups (usually with script metadata).&lt;/li&gt;
+&lt;li&gt;Added ability for all pipelines to ensure every document gets a &lt;code&gt;Published&lt;/code&gt; value, either from an existing value or from the file name or modified date.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;PublishedUsesLastModifiedDate&lt;/code&gt; setting to control whether a file modified date should be used for getting published dates.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;settings&lt;/code&gt; as a default settings file name in themes (with support for JSON, YAML, or XML formats).&lt;/li&gt;
+&lt;li&gt;Added support for sidecar files in other input directories at the same relative path (I.e. themes).&lt;/li&gt;
+&lt;li&gt;Added support for &lt;code&gt;themesettings&lt;/code&gt; and &lt;code&gt;statiq&lt;/code&gt; YAML (&lt;code&gt;.yml&lt;/code&gt; and &lt;code&gt;.yaml&lt;/code&gt;) and XML (&lt;code&gt;.xml&lt;/code&gt;) configuration files in themes.&lt;/li&gt;
+&lt;li&gt;Fixed a bug on engine reruns (I.e. the preview command).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/07/29/statiq.framework-1.0.0-beta.18</id>
+		<title>Statiq.Framework Release 1.0.0-beta.18</title>
+		<link href="https://statiq.dev/news/2020/07/29/statiq.framework-1.0.0-beta.18" />
+		<updated>2020-07-29T16:45:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the IPipelineOutputs&lt;code&gt;indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline. To use the previous behavior, call&lt;/code&gt;IPipelineOutputs.FromPipeline(string)&lt;code&gt;. This will make the more common case (finding a document or documents among all pipelines) easier. To refactor your code to match the old behavior, do a string search for &amp;quot;Outputs[&amp;quot; and replace with &lt;/code&gt;Outputs.FromPipeline()`.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the &lt;code&gt;DocumentList&amp;lt;TDocument&amp;gt;&lt;/code&gt; indexer to return all matching documents instead of the first matching document. To refactor your code
+to match the old behavior add a &lt;code&gt;.FirstOrDefault()&lt;/code&gt; after the call to the indexer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;CompileScript&lt;/code&gt; module in favor of global script caching (so using the &lt;code&gt;EvaluateScript&lt;/code&gt; module will also cache the script compilation, removing the need for a separate cached assembly).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed all but a single string-based evaluation method from &lt;code&gt;IScriptHelper&lt;/code&gt; to promote global script compilation caching.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed global metadata properties from scripted documents, metadata, and shortcodes due to performance penalty and inability to cache across documents.
+Uses of global properties that refer to other metadata will have to be replaced with &lt;code&gt;Get()&lt;/code&gt; variants. For example, a scripted metadata value &lt;code&gt;=&amp;gt; Foo&lt;/code&gt; should become &lt;code&gt;=&amp;gt; Get(&amp;quot;Foo&amp;quot;)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Renamed the &lt;code&gt;AbsolutizeLinks&lt;/code&gt; module to &lt;code&gt;MakeLinksAbsolute&lt;/code&gt; for clarity and to match with the new &lt;code&gt;MakeLinksRootRelative&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;MakeLinksRootRelative&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.ContainsById(IDocument)&lt;/code&gt; extension method to determine if a sequence contains an equivalent document by ID.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ConcurrentCache&amp;lt;TKey, TValue&amp;gt;&lt;/code&gt; helper class that uses &lt;code&gt;Lazy&amp;lt;T&amp;gt;&lt;/code&gt;, which improves performance of internals by avoiding duplicate value factory evaluation.&lt;/li&gt;
+&lt;li&gt;Script compilations are now globally cached, dramatically improving performance of scripted documents, metadata, and shortcodes.&lt;/li&gt;
+&lt;li&gt;Fixed some bugs with the &lt;code&gt;CacheDocuments&lt;/code&gt; module and document hash code generation.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IComparer&amp;lt;T&amp;gt;.ToConvertingComparer()&lt;/code&gt; extension method that converts a typed comparer into a &lt;code&gt;IComparer&amp;lt;object&amp;gt;&lt;/code&gt; that performs type conversions.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEqualityComparer&amp;lt;T&amp;gt;.ToConvertingComparer()&lt;/code&gt; extension method that converts a typed comparer into a &lt;code&gt;IComparer&amp;lt;object&amp;gt;&lt;/code&gt; that performs type conversions.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;RemoveTreePlaceholders&lt;/code&gt; module to remove tree placeholder documents without flattening.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;MergeMetadata&lt;/code&gt; and &lt;code&gt;MergeDocuments&lt;/code&gt; modules no longer merge settings (since they're inherited by the document regardless).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IMetadata.WithoutSettings()&lt;/code&gt; to return filtered metadata without any settings values.&lt;/li&gt;
+&lt;li&gt;Added the key being requested to &lt;code&gt;IMetadataValue.Get()&lt;/code&gt; so that metadata values can use it if needed.&lt;/li&gt;
+&lt;li&gt;Added recursive metadata expansion detection of &lt;code&gt;IMetadataValue&lt;/code&gt; metadata values (it will now throw an error so you know which key is recursively expanding).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;RenderSectionOrPartial(string sectionName, string partialName)&lt;/code&gt; helper to the base Razor page.&lt;/li&gt;
+&lt;li&gt;Added feed metadata to the output documents from &lt;code&gt;GenerateFeeds&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;AddRtlSupport&lt;/code&gt; module in &lt;code&gt;Statiq.Html&lt;/code&gt; that automatically adds RTL attributes to HTML elements (#113, #15, thanks &amp;#64;&amp;#64;encrypt0r).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.RemoveTreePlaceholders()&lt;/code&gt; extension method.&lt;/li&gt;
+&lt;li&gt;Added an option to remove tree placeholder documents in the &lt;code&gt;FlattenTree&lt;/code&gt; module and the &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.Flatten()&lt;/code&gt; extension methods.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;settings&lt;/code&gt; as a default settings file name (with support for JSON, YAML, or XML formats).&lt;/li&gt;
+&lt;li&gt;Added support for &lt;code&gt;appsettings&lt;/code&gt; and &lt;code&gt;statiq&lt;/code&gt; YAML (&lt;code&gt;.yml&lt;/code&gt; and &lt;code&gt;.yaml&lt;/code&gt;) and XML (&lt;code&gt;.xml&lt;/code&gt;) configuration files.&lt;/li&gt;
+&lt;li&gt;Added containing types to the symbol ID for nested symbols in the &lt;code&gt;AnalyzeCSharp&lt;/code&gt; module (#116).&lt;/li&gt;
+&lt;li&gt;Added a message about using a higher log level when an error occurs (#115).&lt;/li&gt;
+&lt;li&gt;Fixed a bug on engine reruns (I.e. the Statiq.Web preview command).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/07/08/statiq.web-1.0.0-alpha.21</id>
+		<title>Statiq.Web Release 1.0.0-alpha.21</title>
+		<link href="https://statiq.dev/news/2020/07/08/statiq.web-1.0.0-alpha.21" />
+		<updated>2020-07-08T02:21:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.17"&gt;1.0.0-beta.17&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/07/08/statiq.framework-1.0.0-beta.17</id>
+		<title>Statiq.Framework Release 1.0.0-beta.17</title>
+		<link href="https://statiq.dev/news/2020/07/08/statiq.framework-1.0.0-beta.17" />
+		<updated>2020-07-08T02:16:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Made &lt;code&gt;RenderRazor.WithLayout()&lt;/code&gt; take precedence over an available &lt;code&gt;_ViewStart.cshtml&lt;/code&gt; file (by ignoring the &lt;code&gt;_ViewStart.cshtml&lt;/code&gt; file entirely which previously took precedence in this case).&lt;/li&gt;
+&lt;li&gt;Fixed some bugs with input-relative path finding for Razor layouts and partials (#102).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/19/statiq.web-1.0.0-alpha.20</id>
+		<title>Statiq.Web Release 1.0.0-alpha.20</title>
+		<link href="https://statiq.dev/news/2020/06/19/statiq.web-1.0.0-alpha.20" />
+		<updated>2020-06-19T00:27:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;OutputPath&lt;/code&gt; setting so the output path can be set from the command-line or configuration file.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ExcludedPaths&lt;/code&gt; setting so excluded paths can be set from the command-line or configuration file.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;InputPaths&lt;/code&gt; setting so input paths can be set from the command-line or configuration file.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.16"&gt;1.0.0-beta.16&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/19/statiq.framework-1.0.0-beta.16</id>
+		<title>Statiq.Framework Release 1.0.0-beta.16</title>
+		<link href="https://statiq.dev/news/2020/06/19/statiq.framework-1.0.0-beta.16" />
+		<updated>2020-06-19T00:27:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;NormalizedPath.ContainsDescendantOrSelf()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;NormalizedPath.ContainsChildOrSelf()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed several bugs with the implementation of &lt;code&gt;NormalizedPath.GetRelativeOutputPath()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IReadOnlyFileSystem.GetRelativeOutputPath()&lt;/code&gt; extension.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IReadOnlyFileSystem.GetRelativeInputPath()&lt;/code&gt; extension.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFileSystem.ExcludedPaths&lt;/code&gt; to indicate input paths that should be excluded from processing.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;.GetInstance(Type)&lt;/code&gt; and &lt;code&gt;.GetInstance&amp;lt;TType&amp;gt;()&lt;/code&gt; methods to the &lt;code&gt;ClassCatalog&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed a bug where custom commands were being added twice (#103).&lt;/li&gt;
+&lt;li&gt;Fixed a bug in the &lt;code&gt;GenerateRedirects&lt;/code&gt; module for original files ending in &lt;code&gt;.htm&lt;/code&gt; (#105).&lt;/li&gt;
+&lt;li&gt;Updated &lt;code&gt;Spectre.Cli&lt;/code&gt; to version 0.35.0 with better internal command registration (#110, thanks &amp;#64;&amp;#64;patriksvensson).&lt;/li&gt;
+&lt;li&gt;Removed restriction on only using &lt;code&gt;IDocument&lt;/code&gt; models in Razor (#108, #23, thanks &amp;#64;&amp;#64;alanta).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.19</id>
+		<title>Statiq.Web Release 1.0.0-alpha.19</title>
+		<link href="https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.19" />
+		<updated>2020-06-07T14:36:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added the new &lt;code&gt;Statiq.Web.props&lt;/code&gt; file to a &lt;code&gt;buildTransitive&lt;/code&gt; folder in the package so it flows transitively to consumers.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/07/statiq.framework-1.0.0-beta.15</id>
+		<title>Statiq.Framework Release 1.0.0-beta.15</title>
+		<link href="https://statiq.dev/news/2020/06/07/statiq.framework-1.0.0-beta.15" />
+		<updated>2020-06-07T14:32:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added the new &lt;code&gt;Statiq.App.props&lt;/code&gt; file to a &lt;code&gt;buildTransitive&lt;/code&gt; folder in the package so it flows transitively to consumers.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.18</id>
+		<title>Statiq.Web Release 1.0.0-alpha.18</title>
+		<link href="https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.18" />
+		<updated>2020-06-07T14:07:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Bug fix for unclosed &lt;code&gt;&amp;lt;ItemGroup&amp;gt;&lt;/code&gt; in the new props file (#909, thanks &amp;#64;&amp;#64;drmathias).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/06/statiq.web-1.0.0-alpha.17</id>
+		<title>Statiq.Web Release 1.0.0-alpha.17</title>
+		<link href="https://statiq.dev/news/2020/06/06/statiq.web-1.0.0-alpha.17" />
+		<updated>2020-06-06T20:38:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a &lt;code&gt;IncludeInSitemap&lt;/code&gt; setting to control whether a document should be included in the sitemap (#907, thanks &amp;#64;&amp;#64;drmathias).&lt;/li&gt;
+&lt;li&gt;Fixed a bug that required feed items to have URI IDs when the specification indicates they can also be arbitrary strings (#906).&lt;/li&gt;
+&lt;li&gt;Added a props file to the Statiq.Web package to automatically set the default theme, extensions, and archetypes MSBuild props.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.14"&gt;1.0.0-beta.14&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;GatherHeadingsLevel&lt;/code&gt; key that can be used to adjust the headings level when gathering headings globally or per-document (#904).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/06/06/statiq.framework-1.0.0-beta.14</id>
+		<title>Statiq.Framework Release 1.0.0-beta.14</title>
+		<link href="https://statiq.dev/news/2020/06/06/statiq.framework-1.0.0-beta.14" />
+		<updated>2020-06-06T19:39:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed a bug with async context-based &lt;code&gt;Config&lt;/code&gt; delegates not indicating that they don't require a document.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IReadOnlyPipelineCollection IExecutionState.ExecutingPipelines&lt;/code&gt; property that provides the currently executing pipelines.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ThrowExceptionIf&lt;/code&gt; module that throws an exception if a condition is true.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Config&amp;lt;bool&amp;gt;.IsFalse()&lt;/code&gt; extension method.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Config.ContainsAnySettings()&lt;/code&gt; extension method.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IReadOnlyDictionary&amp;lt;K, V&amp;gt;.ContainsAnyKeys()&lt;/code&gt; extension methods.&lt;/li&gt;
+&lt;li&gt;Fixed a bug regarding disposal of a content stream in the &lt;code&gt;StartProcess&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Fixed a bug that required feed items to have URI IDs when the specification indicates they can also be arbitrary strings.&lt;/li&gt;
+&lt;li&gt;Added a props file to the Statiq.App package to automatically set the default output exclusion and input content MSBuild props.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;OrderDocuments&lt;/code&gt; module sorting by string value for default keys.&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;GatherHeadings&lt;/code&gt; to take a &lt;code&gt;Config&amp;lt;int&amp;gt;&lt;/code&gt; for specifying the level.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/26/statiq.web-1.0.0-alpha.16</id>
+		<title>Statiq.Web Release 1.0.0-alpha.16</title>
+		<link href="https://statiq.dev/news/2020/05/26/statiq.web-1.0.0-alpha.16" />
+		<updated>2020-05-26T02:25:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.13"&gt;1.0.0-beta.13&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added support for reading &lt;code&gt;themesettings.json&lt;/code&gt; and &lt;code&gt;statiq.json&lt;/code&gt; from the theme paths.&lt;/li&gt;
+&lt;li&gt;Added support for theme paths and configuring them via the bootstrapper and/or settings.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/26/statiq.framework-1.0.0-beta.13</id>
+		<title>Statiq.Framework Release 1.0.0-beta.13</title>
+		<link href="https://statiq.dev/news/2020/05/26/statiq.framework-1.0.0-beta.13" />
+		<updated>2020-05-26T02:21:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Removed the &lt;code&gt;StreamContent&lt;/code&gt; content provider in favor of the new &lt;code&gt;MemoryContent&lt;/code&gt; content provider (should also provide a nice performance boost since there's no more stream locking).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext.GetContentProvider()&lt;/code&gt; extensions that take a &lt;code&gt;byte[]&lt;/code&gt; buffer.&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;MemoryContent&lt;/code&gt; content provider that wraps a &lt;code&gt;byte[]&lt;/code&gt; buffer.&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;IEngine.Settings&lt;/code&gt; to be mutable, settings can now be added directly to the engine after instantiation.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with case-insensitive settings from the command line.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with computed metadata settings from the command line.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/20/statiq.web-1.0.0-alpha.15</id>
+		<title>Statiq.Web Release 1.0.0-alpha.15</title>
+		<link href="https://statiq.dev/news/2020/05/20/statiq.web-1.0.0-alpha.15" />
+		<updated>2020-05-20T20:30:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added redirect support.&lt;/li&gt;
+&lt;li&gt;Added deployment support for Azure App Service.&lt;/li&gt;
+&lt;li&gt;Added deployment support for Netlify.&lt;/li&gt;
+&lt;li&gt;Added deployment support for GitHub Pages.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Enumerate&lt;/code&gt; support to data files.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/20/statiq.framework-1.0.0-beta.12</id>
+		<title>Statiq.Framework Release 1.0.0-beta.12</title>
+		<link href="https://statiq.dev/news/2020/05/20/statiq.framework-1.0.0-beta.12" />
+		<updated>2020-05-20T20:25:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added document flattening by default when using the &lt;code&gt;DocumentFileProvider&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added document flattening by default when using &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterSources()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterDestinations()&lt;/code&gt; extensions.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IReadOnlyDictionary&amp;lt;TKey, TValue&amp;gt;.ContainsKeys()&lt;/code&gt; extension utility method.&lt;/li&gt;
+&lt;li&gt;Added multiple key test to the &lt;code&gt;ExecuteIf&lt;/code&gt; module.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/18/statiq.web-1.0.0-alpha.14</id>
+		<title>Statiq.Web Release 1.0.0-alpha.14</title>
+		<link href="https://statiq.dev/news/2020/05/18/statiq.web-1.0.0-alpha.14" />
+		<updated>2020-05-18T02:33:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added support for directory metadata for data files.&lt;/li&gt;
+&lt;li&gt;Added support for front matter in data files.&lt;/li&gt;
+&lt;li&gt;Added support for sidecar files as &lt;code&gt;_[filename].[json|yaml]&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ProcessSidecarFiles&lt;/code&gt; setting to turn sidecar files off.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ApplyDirectoryMetadata&lt;/code&gt; setting to turn directory metadata off.&lt;/li&gt;
+&lt;li&gt;Added better xref error messages.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/18/statiq.framework-1.0.0-beta.11</id>
+		<title>Statiq.Framework Release 1.0.0-beta.11</title>
+		<link href="https://statiq.dev/news/2020/05/18/statiq.framework-1.0.0-beta.11" />
+		<updated>2020-05-18T02:27:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed the &lt;code&gt;ProcessSidecarFile&lt;/code&gt; module to pass the media type to child modules.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.RunTestAsync()&lt;/code&gt; extensions to assist with testing entire bootstrappers.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;AsDependencyOf()&lt;/code&gt; methods to &lt;code&gt;PipelineBuilder&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a collection initializer to &lt;code&gt;TestFileProvider&lt;/code&gt; to make adding test files easier.&lt;/li&gt;
+&lt;li&gt;Added full &lt;code&gt;NormalizedPath&lt;/code&gt; support to &lt;code&gt;TestFileProvider&lt;/code&gt; internals.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/15/statiq.web-1.0.0-alpha.13</id>
+		<title>Statiq.Web Release 1.0.0-alpha.13</title>
+		<link href="https://statiq.dev/news/2020/05/15/statiq.web-1.0.0-alpha.13" />
+		<updated>2020-05-15T01:46:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed a bug in the preview command that exited on failures.&lt;/li&gt;
+&lt;li&gt;Changed preview server to listen to any hostname/IP on the specified port (this allows use from services like Gitpod).&lt;/li&gt;
+&lt;li&gt;Renamed the root namespaces of the extension libraries brought over from Statiq Framework to match new project names.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/15/statiq.framework-1.0.0-beta.10</id>
+		<title>Statiq.Framework Release 1.0.0-beta.10</title>
+		<link href="https://statiq.dev/news/2020/05/15/statiq.framework-1.0.0-beta.10" />
+		<updated>2020-05-15T01:40:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Better engine and pipeline exception handling and log messages.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;--debug&lt;/code&gt; CLI flag to launch a debugger and attach it.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.12</id>
+		<title>Statiq.Web Release 1.0.0-alpha.12</title>
+		<link href="https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.12" />
+		<updated>2020-05-07T14:33:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a new &lt;code&gt;Bootstrapper.AddWeb()&lt;/code&gt; extension to add Statiq Web functionality to an existing bootstrapper.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.11</id>
+		<title>Statiq.Web Release 1.0.0-alpha.11</title>
+		<link href="https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.11" />
+		<updated>2020-05-07T02:16:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changed resource mirroring to be opt-in instead of opt-out (you now need to set &lt;code&gt;MirrorResources&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; to enable) (#896).&lt;/li&gt;
+&lt;li&gt;Fix to filter tree placeholder pages out of the &lt;code&gt;Sitemap&lt;/code&gt; pipeline (#895).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/07/statiq.framework-1.0.0-beta.9</id>
+		<title>Statiq.Framework Release 1.0.0-beta.9</title>
+		<link href="https://statiq.dev/news/2020/05/07/statiq.framework-1.0.0-beta.9" />
+		<updated>2020-05-07T02:04:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fix not to reuse a &lt;code&gt;HttpRequest&lt;/code&gt; during retry, changed the &lt;code&gt;HttpClient.SendWithRetryAsync()&lt;/code&gt; and related methods to take a factory instead of a single request (#98).&lt;/li&gt;
+&lt;li&gt;Fix for a &lt;code&gt;PipelineBuilder&lt;/code&gt; with no actions to return an empty pipeline.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.AddDeploymentPipeline()&lt;/code&gt; overloads.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/06/statiq.web-1.0.0-alpha.10</id>
+		<title>Statiq.Web Release 1.0.0-alpha.10</title>
+		<link href="https://statiq.dev/news/2020/05/06/statiq.web-1.0.0-alpha.10" />
+		<updated>2020-05-06T12:28:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changed the default theme input path to &amp;quot;theme/input&amp;quot; in preparation for work on dedicated theme folders (see #891).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;RenderPostProcessTemplates&lt;/code&gt; key that prevents running post-processing templates like Razor.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ShouldOutput&lt;/code&gt; key that controls outputting a particular document to disk (but doesn't remove it from the pipeline like &lt;code&gt;Excluded&lt;/code&gt; does).&lt;/li&gt;
+&lt;li&gt;Added support for directory metadata (by default as &lt;code&gt;_directory.yaml&lt;/code&gt; files).&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;ContentFiles&lt;/code&gt; and &lt;code&gt;DataFiles&lt;/code&gt; settings to control the file globbing patterns.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;GenerateSitemap&lt;/code&gt; setting and &lt;code&gt;Sitemap&lt;/code&gt; pipeline to generate sitemap files by default.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;Excluded&lt;/code&gt; key that indicates a document should be filtered out of the content or data pipeline.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with feeds not flattening the content document tree.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/06/statiq.framework-1.0.0-beta.8</id>
+		<title>Statiq.Framework Release 1.0.0-beta.8</title>
+		<link href="https://statiq.dev/news/2020/05/06/statiq.framework-1.0.0-beta.8" />
+		<updated>2020-05-06T12:17:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;IReadOnlyDictionary&amp;lt;string, Type&amp;gt;&lt;/code&gt; implementation to &lt;code&gt;ClassCatalog&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Optimized &lt;code&gt;ScriptMetadataValue&lt;/code&gt; metadata caching for big performance gains in certain scenarios.&lt;/li&gt;
+&lt;li&gt;Ensures that document metadata can't override the properties from &lt;code&gt;IDocument&lt;/code&gt; (&lt;code&gt;Id&lt;/code&gt;, &lt;code&gt;Source&lt;/code&gt;, &lt;code&gt;Destination&lt;/code&gt;, and &lt;code&gt;ContentProvider&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;ApplyDirectoryMetadata&lt;/code&gt; module in favor of a more specific/powerful capability in Statiq Web (it never really made sense in Framework anyway).&lt;/li&gt;
+&lt;li&gt;Fixed default &lt;code&gt;GenerateSitemap&lt;/code&gt; document destination to &amp;quot;sitemap.xml&amp;quot;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/05/04/statiq.framework-1.0.0-beta.7</id>
+		<title>Statiq.Framework Release 1.0.0-beta.7</title>
+		<link href="https://statiq.dev/news/2020/05/04/statiq.framework-1.0.0-beta.7" />
+		<updated>2020-05-04T12:29:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a &lt;code&gt;IDocument.GetParent()&lt;/code&gt; overload that uses the current execution context and doesn't require passing in a set of candidate documents.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;GenerateFeeds&lt;/code&gt; module now replaces relative links in item descriptions and content.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;AbsolutizeLinks&lt;/code&gt; module to &lt;code&gt;Statiq.Html&lt;/code&gt; to turn all links in a document to absolute.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/28/statiq.web-1.0.0-alpha.9</id>
+		<title>Statiq.Web Release 1.0.0-alpha.9</title>
+		<link href="https://statiq.dev/news/2020/04/28/statiq.web-1.0.0-alpha.9" />
+		<updated>2020-04-28T00:42:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed xref resolution to report all errors in a given document at once.&lt;/li&gt;
+&lt;li&gt;Changed the xref space placeholder character to a dash to match/roundtrip automatic file name titles.&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;ChildPages&lt;/code&gt; shortcode (it should really be part of the theme).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/22/statiq.web-1.0.0-alpha.8</id>
+		<title>Statiq.Web Release 1.0.0-alpha.8</title>
+		<link href="https://statiq.dev/news/2020/04/22/statiq.web-1.0.0-alpha.8" />
+		<updated>2020-04-22T17:51:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added support for validating links.&lt;/li&gt;
+&lt;li&gt;Refactored xref error messages to display for all documents at once (instead of one at a time).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/22/statiq.framework-1.0.0-beta.6</id>
+		<title>Statiq.Framework Release 1.0.0-beta.6</title>
+		<link href="https://statiq.dev/news/2020/04/22/statiq.framework-1.0.0-beta.6" />
+		<updated>2020-04-22T17:17:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Refactored the &lt;code&gt;ValidateLinks&lt;/code&gt; module to accept &lt;code&gt;Config&amp;lt;bool&amp;gt;&lt;/code&gt; settings.&lt;/li&gt;
+&lt;li&gt;Changed shortcode semantics to only pass new metadata down (metadata is no longer merged up to host document, even though no existing shortcodes did that anyway).&lt;/li&gt;
+&lt;li&gt;Refactored shortcodes to return a new &lt;code&gt;ShortcodeResult&lt;/code&gt; object that includes content and nested metadata.&lt;/li&gt;
+&lt;li&gt;Consolidated shortcode base types to only return variations of &lt;code&gt;ShortcodeResult&lt;/code&gt; (instead of &lt;code&gt;Stream&lt;/code&gt; and &lt;code&gt;string&lt;/code&gt; versions as well).&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;ILogger&lt;/code&gt; interface to &lt;code&gt;IDocument&lt;/code&gt; along with default implementations to support easier document logging with a document prefix (usually the source path).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/20/statiq.web-1.0.0-alpha.7</id>
+		<title>Statiq.Web Release 1.0.0-alpha.7</title>
+		<link href="https://statiq.dev/news/2020/04/20/statiq.web-1.0.0-alpha.7" />
+		<updated>2020-04-20T22:22:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added xref support for links like &amp;quot;xref:xyz&amp;quot; where &amp;quot;xyz&amp;quot; is the value of the &amp;quot;Xref&amp;quot; metadata, the document title with spaces converted to underscores if no &amp;quot;Xref&amp;quot; value is defined, or the source file name if neither of those are available.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext.TryGetXrefDocument()&lt;/code&gt; and &lt;code&gt;IExecutionContext.GetXrefDocument()&lt;/code&gt; extension methods to get a document by xref.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext.TryGetXrefLink()&lt;/code&gt; and &lt;code&gt;IExecutionContext.GetXrefLink()&lt;/code&gt; extension methods to get a document link by xref.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/20/statiq.framework-1.0.0-beta.5</id>
+		<title>Statiq.Framework Release 1.0.0-beta.5</title>
+		<link href="https://statiq.dev/news/2020/04/20/statiq.framework-1.0.0-beta.5" />
+		<updated>2020-04-20T22:10:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a &lt;code&gt;Markdown&lt;/code&gt; shortcode to render Markdown content anywhere (for example, in another templating language like Razor).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/18/statiq.web-1.0.0-alpha.6</id>
+		<title>Statiq.Web Release 1.0.0-alpha.6</title>
+		<link href="https://statiq.dev/news/2020/04/18/statiq.web-1.0.0-alpha.6" />
+		<updated>2020-04-18T01:22:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added support for Handlebars for files with a &amp;quot;.hbs&amp;quot; or &amp;quot;.handlebars&amp;quot; extension.&lt;/li&gt;
+&lt;li&gt;Added ability to specify a default template via the &lt;code&gt;Bootstrapper.SetDefaultTemplate()&lt;/code&gt; extension.&lt;/li&gt;
+&lt;li&gt;Added a powerful capability to add, modify, and remove template modules like Markdown, Razor, etc. via the &lt;code&gt;Bootstrapper.ConfigureTemplates()&lt;/code&gt; extension.&lt;/li&gt;
+&lt;li&gt;Refactored metadata processing into a new common &lt;code&gt;ProcessMetadata&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;OptimizeFileName&lt;/code&gt; module with &lt;code&gt;OptimizeContentFileNames&lt;/code&gt; and &lt;code&gt;OptimizeDataFileNames&lt;/code&gt; settings to control it.&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;SetDestination&lt;/code&gt; module to the &amp;quot;Data&amp;quot; pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/18/statiq.framework-1.0.0-beta.4</id>
+		<title>Statiq.Framework Release 1.0.0-beta.4</title>
+		<link href="https://statiq.dev/news/2020/04/18/statiq.framework-1.0.0-beta.4" />
+		<updated>2020-04-18T01:16:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added Handlebars media types.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;WithInputDocument()&lt;/code&gt; to the &lt;code&gt;EnumerateValues&lt;/code&gt; module to include the original input document in the enumeration.&lt;/li&gt;
+&lt;li&gt;Fixed some edge-case bugs in &lt;code&gt;LazyDocumentMetadataValue&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;&amp;amp;lt;?#^ ... /?&amp;gt;&lt;/code&gt; as special syntax for the &lt;code&gt;Include&lt;/code&gt; shortcode with the &amp;quot;^&amp;quot; character.&lt;/li&gt;
+&lt;li&gt;Added support for HTTP/HTTPS schemes to the &lt;code&gt;Include&lt;/code&gt; shortcode for including web content.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;HttpClient.SendWithRetryAsync()&lt;/code&gt; extension methods to send an HTTP request with a retry policy when a &lt;code&gt;HttpClient&lt;/code&gt; is available.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionState.SendHttpRequestWithRetryAsync()&lt;/code&gt; methods to send an HTTP request with a retry policy without needing an &lt;code&gt;HttpClient&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;ProcessIncludes&lt;/code&gt; module in favor of the &lt;code&gt;Include&lt;/code&gt; shortcode.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/12/statiq.web-1.0.0-alpha.5</id>
+		<title>Statiq.Web Release 1.0.0-alpha.5</title>
+		<link href="https://statiq.dev/news/2020/04/12/statiq.web-1.0.0-alpha.5" />
+		<updated>2020-04-12T15:40:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Refactored the &lt;code&gt;ReadGitHub&lt;/code&gt; module to take configuration values.&lt;/li&gt;
+&lt;li&gt;The &amp;quot;Content&amp;quot; and &amp;quot;Data&amp;quot; pipelines now concatenate all documents from pipelines that declare themselves a dependency using &lt;code&gt;IPipeline.DependencyOf&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/12/statiq.framework-1.0.0-beta.3</id>
+		<title>Statiq.Framework Release 1.0.0-beta.3</title>
+		<link href="https://statiq.dev/news/2020/04/12/statiq.framework-1.0.0-beta.3" />
+		<updated>2020-04-12T15:18:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;OrderDocuments&lt;/code&gt; module will now attempt to convert incompatible values.&lt;/li&gt;
+&lt;li&gt;Improved document path error messages to include path.&lt;/li&gt;
+&lt;li&gt;Added support to &lt;code&gt;IDocument.ToDocument()&lt;/code&gt; extensions to return or clone the original object if it's an &lt;code&gt;IDocument&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/10/statiq.framework-1.0.0-beta.2</id>
+		<title>Statiq.Framework Release 1.0.0-beta.2</title>
+		<link href="https://statiq.dev/news/2020/04/10/statiq.framework-1.0.0-beta.2" />
+		<updated>2020-04-10T23:48:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changes the &lt;code&gt;GenerateFeeds&lt;/code&gt; module to order by descending publish date to meet feed conventions and adds a &lt;code&gt;GeenrateFeeds.PreserveOrdering(bool)&lt;/code&gt; method to revert to old behavior (#92).&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;OptimizeFileName&lt;/code&gt; stripping the path when optimizing the destination file name (#93).&lt;/li&gt;
+&lt;li&gt;Added support for casting the dynamic object returned from &lt;code&gt;IDocument.AsDynamic()&lt;/code&gt; back to an &lt;code&gt;IDocument&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;IReadOnlyPipelineCollection&lt;/code&gt; object and exposed it via &lt;code&gt;IExecutionState.Pipelines&lt;/code&gt; to provide the current set of read-only pipelines during execution.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IPipeline.GetAllDependencies()&lt;/code&gt; extension methods to get the full set of &lt;code&gt;IPipeline.DependencyOf&lt;/code&gt; and &lt;code&gt;IPipeline.Dependencies&lt;/code&gt; for a given pipeline.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IPipeline.DependencyOf&lt;/code&gt; to allow specifying which pipelines a given pipeline is a dependency of (the reverse of &lt;code&gt;IPipeline.Dependencies&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Tweaked the way &lt;code&gt;NormalizedPath.OptimizeFileName()&lt;/code&gt; handles dashes (it no longer removes them and does a better job of collapsing them).&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;object.ToDocument()&lt;/code&gt; and &lt;code&gt;object.ToDocuments()&lt;/code&gt; extensions to construct the &lt;code&gt;ObjectDocument&amp;lt;T&amp;gt;&lt;/code&gt; from the actual type of the object.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IDocument.AsDynamic()&lt;/code&gt; (moved from the &lt;code&gt;RenderHandlebars&lt;/code&gt; module, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/09/statiq.web-1.0.0-alpha.4</id>
+		<title>Statiq.Web Release 1.0.0-alpha.4</title>
+		<link href="https://statiq.dev/news/2020/04/09/statiq.web-1.0.0-alpha.4" />
+		<updated>2020-04-09T12:42:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a new DeployGitHubPages module.&lt;/li&gt;
+&lt;li&gt;Moved the preview and serve commands into Statiq.Web from Statiq.App.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.GitHub into Statiq Web as Statiq.Web.GitHub from Statiq Framework.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Netifly into Statiq Web as Statiq.Web.Netlify from Statiq Framework.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Azure into Statiq Web as Statiq.Web.Azure from Statiq Framework.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Aws into Statiq Web as Statiq.Web.Aws from Statiq Framework.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Hosting into Statiq Web as Statiq.Web.Hosting from Statiq Framework.&lt;/li&gt;
+&lt;li&gt;Moved HTML-based shortcodes from Statiq.Core.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with &lt;code&gt;ArchiveKey&lt;/code&gt; when using a string-based key.&lt;/li&gt;
+&lt;li&gt;Added support for setting archive document source.&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;GatherHeadings&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;ChildPages&lt;/code&gt; shortcode.&lt;/li&gt;
+&lt;li&gt;Added shortcode support.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;CreateTree&lt;/code&gt;/&lt;code&gt;FlattenTree&lt;/code&gt; to the Content pipeline.&lt;/li&gt;
+&lt;li&gt;Added support for ordering documents in the Content pipeline using the &amp;quot;Index&amp;quot; metadata value.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/04/09/statiq.framework-1.0.0-beta.1</id>
+		<title>Statiq.Framework Release 1.0.0-beta.1</title>
+		<link href="https://statiq.dev/news/2020/04/09/statiq.framework-1.0.0-beta.1" />
+		<updated>2020-04-09T03:11:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added Statiq.Handlebars and a &lt;code&gt;RenderHandlebars&lt;/code&gt; module (#67, #90, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;li&gt;Refactored the &lt;code&gt;OptimizeFileName&lt;/code&gt; module and added some extra configuration methods.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;NormalizedPath.OptimizeFileName()&lt;/code&gt; as both an instance method and static helper to clean up and optimize file names for the web.&lt;/li&gt;
+&lt;li&gt;Moved &lt;code&gt;ForEachDocument&lt;/code&gt; and &lt;code&gt;ForAllDocuments&lt;/code&gt; modules to Statiq.Common so they can be used as base module classes for extensions.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;SetDestination&lt;/code&gt; module when a string-based path is used that starts with a &amp;quot;.&amp;quot; but isn't an extension.&lt;/li&gt;
+&lt;li&gt;Fixed an unusual edge-case bug when evaluating scripts with assemblies that have the same simple name (I.e. LINQPad queries).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IHtmlHelper.DocumentLink()&lt;/code&gt; HTML helper extensions to Statiq.Razor.&lt;/li&gt;
+&lt;li&gt;Removed &amp;quot;theme&amp;quot; from the set of default input paths (added by default only in Statiq Web).&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;CommandUtilities&lt;/code&gt; in Statiq.App public.&lt;/li&gt;
+&lt;li&gt;Moved the serve command to Statiq Web.&lt;/li&gt;
+&lt;li&gt;Moved the preview command to Statiq Web.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Hosting to Statiq Web as Statiq.Web.Hosting.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Aws to Statiq Web as Statiq.Web.Aws.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Azure to Statiq Web as Statiq.Web.Azure.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.Netlify to Statiq Web as Statiq.Web.Netlify.&lt;/li&gt;
+&lt;li&gt;Moved Statiq.GitHub to Statiq Web as Statiq.Web.GitHub.&lt;/li&gt;
+&lt;li&gt;Moved &lt;code&gt;ActionFileSystemWatcher&lt;/code&gt; to Statiq.Common and made it public.&lt;/li&gt;
+&lt;li&gt;Moved &lt;code&gt;InterlockedBool&lt;/code&gt; to Statiq.Common and made it public.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ShortcodeHelper&lt;/code&gt; static class to Statiq.Common and moved shortcode argument parsing helper method there.&lt;/li&gt;
+&lt;li&gt;Moved HTML-based shortcodes to Statiq.Web.&lt;/li&gt;
+&lt;li&gt;Removed the need to pass &lt;code&gt;IExecutionContext&lt;/code&gt; to a bunch of different extension methods that can rely on &lt;code&gt;IExecutionContext.Current&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext.HasCurrent&lt;/code&gt; to check if a current execution context is available.&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;IExecutionContext.Current&lt;/code&gt; to throw if no execution context is available.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IDocument&lt;/code&gt; extensions to clone documents from string or &lt;code&gt;Stream&lt;/code&gt; content.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext&lt;/code&gt; extensions to create documents from string or &lt;code&gt;Stream&lt;/code&gt; content.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;DocumentShortcode&lt;/code&gt; and &lt;code&gt;SyncDocumentShortcode&lt;/code&gt; as base classes for single document-based shortcodes.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ContentShortcode&lt;/code&gt; and &lt;code&gt;SyncContentShortcode&lt;/code&gt; as base classes for simple string-based shortcodes.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IMetadata.GetDocumentList()&lt;/code&gt; to &lt;code&gt;IMetadata.GetDocuments()&lt;/code&gt; and added a new &lt;code&gt;IMetadata.GetDocumentList()&lt;/code&gt; that returns a &lt;code&gt;DocumentList&amp;lt;IDocument&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;IPipelineOutputs&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;&lt;/code&gt; extensions to return &lt;code&gt;DocumentList&amp;lt;TDocument&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;DocumentList&amp;lt;TDocument&amp;gt;&lt;/code&gt; which wraps a set of documents, eliminating nulls, and provides an indexer for filtering destinations.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.FirstOrDefaultSource()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.FirstOrDefaultDestination()&lt;/code&gt; extensions.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/03/27/statiq.framework-1.0.0-alpha.29</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.29</title>
+		<link href="https://statiq.dev/news/2020/03/27/statiq.framework-1.0.0-alpha.29" />
+		<updated>2020-03-27T02:39:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Moved a bunch of &lt;code&gt;IBootstrapper&lt;/code&gt; extensions to Statiq.Common so they're available from extension libraries in an &lt;code&gt;IInitializer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IConfigurableBootstrapper&lt;/code&gt; to &lt;code&gt;IBootstrapper&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;IInitializer&lt;/code&gt; interface that can be used for library/module initialization (but only when using the &lt;code&gt;Bootstrapper&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Refactored the &lt;code&gt;RenderRazor&lt;/code&gt; module to use the built-in service collection when possible.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;IServiceCollection.AddRazor()&lt;/code&gt; extension to register Razor services out-of-band.&lt;/li&gt;
+&lt;li&gt;Refactored the &lt;code&gt;ClassCatalog&lt;/code&gt; to &lt;code&gt;Statiq.Common&lt;/code&gt; and exposed it via the &lt;code&gt;IExecutionState&lt;/code&gt; interface.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;.WithSource()&lt;/code&gt; to the &lt;code&gt;PaginateDocuments&lt;/code&gt; and &lt;code&gt;GroupDocuments&lt;/code&gt; modules.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;Keys.Order&lt;/code&gt; key and made the &lt;code&gt;OrderDocuments&lt;/code&gt; module support it.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;keepExisting&lt;/code&gt; parameter to the &lt;code&gt;GenerateExcerpt&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Removed some ambiguous &lt;code&gt;IShortcodeColletion.Add()&lt;/code&gt; extensions.&lt;/li&gt;
+&lt;li&gt;Added a bunch of &lt;code&gt;Bootstrapper.AddShortcode()&lt;/code&gt; extensions.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ForAllDocuments&lt;/code&gt; module that can act as a parent module to arbitrary child modules.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;If&lt;/code&gt; shortcode (#789).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ForEach&lt;/code&gt; shortcode (#789).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;TypeHelper.TryConvert()&lt;/code&gt; method that takes a target &lt;code&gt;Type&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added support for &amp;quot;script strings&amp;quot; to metadata get extensions (if the key starts with &amp;quot;=&amp;gt;&amp;quot; it will be treated as a script and evaluated instead of getting the metadata value directly).&lt;/li&gt;
+&lt;li&gt;Refactored &lt;code&gt;IShortcode&lt;/code&gt; to return multiple shortcode result documents and concatenates their content.&lt;/li&gt;
+&lt;li&gt;Modified &lt;code&gt;CreateTree&lt;/code&gt; sort delegate to include the &lt;code&gt;IExecutionContext&lt;/code&gt; and to sort by input document order by default (instead of path/file name).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IDocument.IdEquals()&lt;/code&gt; extension method.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IDocument.GetLink()&lt;/code&gt; extension method that calls &lt;code&gt;IExecutionContext.GetLink()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IDocument.HasChildren()&lt;/code&gt; extension method.&lt;/li&gt;
+&lt;li&gt;Added an empty constructor to &lt;code&gt;OrderDocuments&lt;/code&gt; that orders documents by the &lt;code&gt;Keys.Index&lt;/code&gt; value and then the file name by default.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IConfig.Cast&amp;lt;TValue&amp;gt;()&lt;/code&gt; convenience extension method.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/03/22/new-statiq-website</id>
 		<title>New Statiq Website</title>
-		<link href="https://statiq.dev/blog/2020/03/22/new-statiq-website" />
+		<link href="https://statiq.dev/news/2020/03/22/new-statiq-website" />
 		<updated>2020-03-22T00:00:00Z</updated>
 		<content>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;
 &lt;p&gt;Lots of content sections are still "Coming Soon" so I'll be working on filling those in and refining the information architecture in the coming days and weeks. Please let me know if there's anything specific you'd like to see more of. And now that it's clear how to &lt;a href="https://statiq.dev/web"&gt;get started&lt;/a&gt; you've got no excuses not to take the alpha releases for a little spin.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;I know, I know. It's a little embarrassing that a static site generator didn't actually have a static site (or any site for that matter). In my defense, I've been working so hard on actually building the thing that getting a site up and running was a secondary concern. Well the embarrassment is over and Statiq now has a lovely information and documentation site (if I do say so myself).&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/03/08/statiq.web-1.0.0-alpha.3</id>
+		<title>Statiq.Web Release 1.0.0-alpha.3</title>
+		<link href="https://statiq.dev/news/2020/03/08/statiq.web-1.0.0-alpha.3" />
+		<updated>2020-03-08T21:21:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a new Feeds pipeline that creates RSS and Atom feeds based on a definition file.&lt;/li&gt;
+&lt;li&gt;Added a new Data pipeline that reads YAML and JSON files.&lt;/li&gt;
+&lt;li&gt;Added excerpt generation (in the &amp;quot;Excerpt&amp;quot; metadata key) to the Content pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/03/08/statiq.framework-1.0.0-alpha.28</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.28</title>
+		<link href="https://statiq.dev/news/2020/03/08/statiq.framework-1.0.0-alpha.28" />
+		<updated>2020-03-08T21:13:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;ctx&lt;/code&gt; and &lt;code&gt;doc&lt;/code&gt; shorthand properties to the scripted metadata script host.&lt;/li&gt;
+&lt;li&gt;Ensured that scripted metadata uses a strongly-typed property in the script host for metadata properties like &lt;code&gt;Source&lt;/code&gt; and &lt;code&gt;Destination&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &amp;quot;.yml&amp;quot; to file extensions mapped to the &amp;quot;text/yaml&amp;quot; media type.&lt;/li&gt;
+&lt;li&gt;Added ability to include all inputs in generated feeds from &lt;code&gt;GenerateFeeds&lt;/code&gt; by setting maximum items to 0&lt;/li&gt;
+&lt;li&gt;Refactored Statiq.Hosting usage of Newtonsoft.Json to System.Text.Json.&lt;/li&gt;
+&lt;li&gt;Moved the &lt;code&gt;ParseJson&lt;/code&gt; module into Statiq.Core, refactored it to use System.Text.Json, and removed the &lt;code&gt;Statiq.Json&lt;/code&gt; extension library.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IMetadata.GetNestedMetadata()&lt;/code&gt; to &lt;code&gt;IMetadata.GetMetadata()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;TypeHelper.RegisterTypeConverter()&lt;/code&gt; methods to register type converters at runtime.&lt;/li&gt;
+&lt;li&gt;Added a type converter that can convert &lt;code&gt;IMetadata&lt;/code&gt; to &lt;code&gt;IDocument&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/02/29/statiq.framework-1.0.0-alpha.27</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.27</title>
+		<link href="https://statiq.dev/news/2020/02/29/statiq.framework-1.0.0-alpha.27" />
+		<updated>2020-02-29T01:06:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added support to &lt;code&gt;MergeDocuments&lt;/code&gt; and &lt;code&gt;MergeMetadata&lt;/code&gt; for keeping existing metadata when merging.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;MergeContent&lt;/code&gt; module that merges content from child modules to input documents.&lt;/li&gt;
+&lt;li&gt;Added an overload to the &lt;code&gt;SetContent&lt;/code&gt; module that accepts a full &lt;code&gt;IContentProvider&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed a small bug with &lt;code&gt;MetadataDictionary&lt;/code&gt; initialization when items content &lt;code&gt;IMetadataValue&lt;/code&gt; or &lt;code&gt;Config&amp;lt;T&amp;gt;&lt;/code&gt; values.&lt;/li&gt;
+&lt;li&gt;Added several new document metadata outputs to the &lt;code&gt;Paginate&lt;/code&gt; module include &lt;code&gt;Previous&lt;/code&gt; and &lt;code&gt;Next&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;LazyDocumentMetadataValue&lt;/code&gt; that can be used to lazily find a given document as a metadata value (I.e. after cloning).&lt;/li&gt;
+&lt;li&gt;Renamed the &amp;quot;Transform&amp;quot; phase to &amp;quot;PostProcess&amp;quot; to better reflect the intended semantics and make it easier to explain.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/02/25/statiq.framework-1.0.0-alpha.26</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.26</title>
+		<link href="https://statiq.dev/news/2020/02/25/statiq.framework-1.0.0-alpha.26" />
+		<updated>2020-02-25T03:15:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a phase timeline graphic to the execution summary output.&lt;/li&gt;
+&lt;li&gt;Added some &lt;code&gt;Span&amp;lt;char&amp;gt;.Replace()&lt;/code&gt; extension methods.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;NormalizedPath.ReplaceInvalidFileNameChars()&lt;/code&gt; and &lt;code&gt;NormalizedPath.ReplaceInvalidPathChars()&lt;/code&gt; static methods.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IMetadata.GetRawEnumerable()&lt;/code&gt; and an &lt;code&gt;IMetadata.GetRawEnumerable()&lt;/code&gt; extension method to make enumerating raw key-value pairs easier.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ExecuteBranch&lt;/code&gt; module that can execute multiple branches of modules.&lt;/li&gt;
+&lt;li&gt;Added config overrides to the modules that operate on document sets.&lt;/li&gt;
+&lt;li&gt;Fixes a bug with &lt;code&gt;MirrorResources&lt;/code&gt; and files that contain &amp;quot;index&amp;quot; in their name.&lt;/li&gt;
+&lt;li&gt;Combines &lt;code&gt;FilePath&lt;/code&gt; and &lt;code&gt;DirectoryPath&lt;/code&gt; into a single consolidated `NormalizedPath (#79).&lt;/li&gt;
+&lt;li&gt;Fixes a race condition in &lt;code&gt;Process.WaitForExit(int)&lt;/code&gt; calls (thanks &amp;#64;&amp;#64;duncanawoods).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/02/12/statiq.framework-1.0.0-alpha.25</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.25</title>
+		<link href="https://statiq.dev/news/2020/02/12/statiq.framework-1.0.0-alpha.25" />
+		<updated>2020-02-12T03:42:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added support for object-based settings to the bootstrapper (as opposed to just initial string-based configuration).&lt;/li&gt;
+&lt;li&gt;Added support for &lt;code&gt;IConfig&lt;/code&gt; metadata values.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;LastWriteTime&lt;/code&gt; and &lt;code&gt;CreationTime&lt;/code&gt; to &lt;code&gt;IFileSystemEntry&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed a race condition in &lt;code&gt;ScriptMetadataValue&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Changed behavior of &lt;code&gt;SetDestination&lt;/code&gt; when using a config value to make &lt;code&gt;DestinationPath&lt;/code&gt;, &lt;code&gt;DestinationFileName&lt;/code&gt;, and &lt;code&gt;DestinationExtension&lt;/code&gt; take precedence (with an option to override).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Context&lt;/code&gt; property for the current &lt;code&gt;IExecutionContext&lt;/code&gt; to the available script properties (I.e., for use in metadata value scripts via &amp;quot;=&amp;gt;&amp;quot; notation).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/02/10/statiq.framework-1.0.0-alpha.24</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.24</title>
+		<link href="https://statiq.dev/news/2020/02/10/statiq.framework-1.0.0-alpha.24" />
+		<updated>2020-02-10T15:36:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added new &lt;code&gt;ProcessHtml&lt;/code&gt; module for more flexible processing of DOM nodes.&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.Flatten()&lt;/code&gt; extension to flatten document trees.&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.FilterSources()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.FilterDestinations()&lt;/code&gt; extension methods.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;FilterDestinations&lt;/code&gt; module to filter documents by destination path.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Config.ContainsSettings(params string[] keys)&lt;/code&gt; config factory to return whether the settings contain all the specified keys.&lt;/li&gt;
+&lt;li&gt;Refactored some methods from &lt;code&gt;IExecutionContext&lt;/code&gt; into &lt;code&gt;IExecutionState&lt;/code&gt; and moved implementation to &lt;code&gt;Engine&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;EnumerateValues&lt;/code&gt; module that will clone or create documents for each item in an enumeration.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Keys.ExcludeFromEvaluation&lt;/code&gt; that can exclude all or some metadata values from automatic script evaluation.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IMetadata.GetNestedMetadata()&lt;/code&gt; to get a nested metadata value (not called &lt;code&gt;IMetadata.GetMetadata()&lt;/code&gt; to avoid conflicts with the old previous method of that name).&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IMetadata.GetMetadata()&lt;/code&gt; to &lt;code&gt;IMetadata.FilterMetadata()&lt;/code&gt; which now returns a &lt;code&gt;FilteredMetadata&lt;/code&gt; instance.&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;FilteredMetadata&lt;/code&gt; class to filter underlying metadata items by key(s).&lt;/li&gt;
+&lt;li&gt;Refactored a bunch of default interface implementations back to extension methods (turns out default interface implementations are a little awkward to maintain).&lt;/li&gt;
+&lt;li&gt;Moved scripting support and the &lt;code&gt;CompileScript&lt;/code&gt; and &lt;code&gt;EvaluateScript&lt;/code&gt; modules to &lt;code&gt;Statiq.Core&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Microsoft.CodeAnalysis&lt;/code&gt; to &lt;code&gt;Statiq.Core&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Metadata and configuration settings that are a string starting with &amp;quot;=&amp;gt;&amp;quot; are now considered &amp;quot;scripted&amp;quot; and the content to the right of the arrow will be lazily evaluated as C# code - this is a &lt;strong&gt;big deal&lt;/strong&gt; and the use cases will become apparent over time (I have lots of big ideas around this feature).&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;InterpolateMetadata&lt;/code&gt; module in favor of more robust built-in scripted metadata.&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;Statiq.CodeAnalysis.IDocumentExtensions.Interpolate()&lt;/code&gt; extension method in favor of more robust built-in scripted metadata.&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;CancellationTokenSource&lt;/code&gt; uses inside the engine to &lt;code&gt;CancellationToken&lt;/code&gt; since the engine does not itself cancel execution.&lt;/li&gt;
+&lt;li&gt;Surfaced the &lt;code&gt;CancellationToken&lt;/code&gt; for a given execution through the &lt;code&gt;IExecutionState&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a check to ensure the engine is only performing one execution at a time (the outer execution loop is not concurrently safe).&lt;/li&gt;
+&lt;li&gt;Major refactoring involving engine and execution context interfaces, added a new &lt;code&gt;IExecutionState&lt;/code&gt; interface that essentially represents a run-time engine.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;DocumentIdComparer&lt;/code&gt; to compare documents by ID (#69, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;li&gt;Removed &lt;code&gt;IParallelModule.WithSequentialExecution()&lt;/code&gt; and standardized on &lt;code&gt;.WithParallelExecution(false)&lt;/code&gt; instead to make default behavior of running in parallel clearer (I.e., you have to turn it off).&lt;/li&gt;
+&lt;li&gt;Added additional configuration methods to &lt;code&gt;CacheDocuments&lt;/code&gt; providing more control over when to invalidate cached documents (#78).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IReadOnlyPipeline&lt;/code&gt; for runtime access to pipeline data without changing modules.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionContext.Pipeline&lt;/code&gt; to get the currently executing pipeline from the execution context.&lt;/li&gt;
+&lt;li&gt;Removed &lt;code&gt;IBootstrapper&lt;/code&gt; and refactored to the one true &lt;code&gt;Bootstrapper&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;BootstrapperFactory&lt;/code&gt; available via &lt;code&gt;Bootstrapper.Factory&lt;/code&gt; to create bootstrappers (this will make specialized creation extensions easier to discover).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/01/13/statiq.framework-1.0.0-alpha.23</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.23</title>
+		<link href="https://statiq.dev/news/2020/01/13/statiq.framework-1.0.0-alpha.23" />
+		<updated>2020-01-13T17:23:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changing target for all projects to .NET Core 3.1 LTS&lt;/li&gt;
+&lt;li&gt;New &lt;code&gt;Eval&lt;/code&gt; shortcode (#37, #68, thanks &amp;#64;&amp;#64;ProH4Ck)&lt;/li&gt;
+&lt;li&gt;Fixes the &lt;code&gt;CacheDocuments&lt;/code&gt; module and excludes &lt;code&gt;IDocument.Id&lt;/code&gt; from hash calculation (#74, thanks &amp;#64;&amp;#64;mholo65)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/12/13/statiq.framework-1.0.0-alpha.22</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.22</title>
+		<link href="https://statiq.dev/news/2019/12/13/statiq.framework-1.0.0-alpha.22" />
+		<updated>2019-12-13T04:35:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixes a bug with &lt;code&gt;MirrorResources&lt;/code&gt; and relative links (#72, thanks &amp;#64;&amp;#64;dafergu2)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;PhaseOutputs&lt;/code&gt; collection now returns output documents from the most recent available phase or an empty result set if no phases were defined.&lt;/li&gt;
+&lt;li&gt;Adds .wasm as a supported media type (required for WebAssembly streaming).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/12/05/statiq.framework-1.0.0-alpha.21</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.21</title>
+		<link href="https://statiq.dev/news/2019/12/05/statiq.framework-1.0.0-alpha.21" />
+		<updated>2019-12-05T19:33:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixes a bug with parallel modules when they return a null enumerable.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;AnalyzeCSharp.WithCompilationAssemblyName()&lt;/code&gt; to set the name of the module compilation (#71).&lt;/li&gt;
+&lt;li&gt;Adds a metadata key &amp;quot;Compilation&amp;quot; to &lt;code&gt;AnalyzeCSharp&lt;/code&gt; output documents to get the Roslyn &lt;code&gt;Compilation&lt;/code&gt; from the module (#71).&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;IConfig.EnsureNonNull()&lt;/code&gt; and &lt;code&gt;IConfig.EnsureNonDocument()&lt;/code&gt; extensions to simplify config parameter checks.&lt;/li&gt;
+&lt;li&gt;Refactors many of the configuration methods in &lt;code&gt;AnalyzeCSharp&lt;/code&gt; to take configs instead of atomic values.&lt;/li&gt;
+&lt;li&gt;Ensures namespace documents from &lt;code&gt;AnalyzeCSharp&lt;/code&gt; contain the &amp;quot;ContainingAssembly&amp;quot; metadata (#70).&lt;/li&gt;
+&lt;li&gt;Build script support for non-Windows platforms via a new &lt;code&gt;build.sh&lt;/code&gt; (#65, thanks &amp;#64;&amp;#64;khalidabuhakmeh).&lt;/li&gt;
+&lt;li&gt;Adds a &lt;code&gt;Config&amp;lt;TValue&amp;gt;.MakeEnumerable()&lt;/code&gt; extension to transform a config into an enumerable value.&lt;/li&gt;
+&lt;li&gt;Adds a common &lt;code&gt;MultiConfigModuleBase&lt;/code&gt; for &lt;code&gt;MultiConfigModule&lt;/code&gt; and &lt;code&gt;ParallelMultiConfigModule&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;CombineConfig&lt;/code&gt; helper methods to &lt;code&gt;MultiConfigModuleBase&lt;/code&gt; to help with combining config values during configuration.&lt;/li&gt;
+&lt;li&gt;Refactors several of the &lt;code&gt;StartProcess&lt;/code&gt; configuration methods to take configs.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/24/statiq.framework-1.0.0-alpha.20</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.20</title>
+		<link href="https://statiq.dev/news/2019/11/24/statiq.framework-1.0.0-alpha.20" />
+		<updated>2019-11-24T04:22:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Split &lt;code&gt;DefaultFeatures.Commands&lt;/code&gt; into &lt;code&gt;DefaultFeatures.BuildCommands&lt;/code&gt;, &lt;code&gt;DefaultFeatures.HostingCommands&lt;/code&gt;, and &lt;code&gt;DefaultFeatures.CustomCommands&lt;/code&gt; for finer control.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;DefaultsToAdd&lt;/code&gt; to &lt;code&gt;DefaultFeatures&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds a new &lt;code&gt;ThrowException&lt;/code&gt; module that can be used to throw exceptions based on a config value.&lt;/li&gt;
+&lt;li&gt;Renames &lt;code&gt;BuildCommand&lt;/code&gt; to &lt;code&gt;PipelinesCommand&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Refactors default commands by renaming &lt;code&gt;build&lt;/code&gt; to &lt;code&gt;pipelines&lt;/code&gt; and accepting pipelines to execute as an argument (moving the root path to an option).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.AddCommands&amp;lt;TParent&amp;gt;()&lt;/code&gt; to add all nested class commands of a parent type.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.AddPipelines&amp;lt;TParent&amp;gt;()&lt;/code&gt; to add all nested class pipelines of a parent type.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Bootstrapper.CreateDefaultWithout()&lt;/code&gt; and &lt;code&gt;IBootstrapper.AddDefaultsWithout()&lt;/code&gt; to create a default bootstrapper without specific components.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IBootstrapper.AddBuildCommand()&lt;/code&gt; methods to &lt;code&gt;IBootstrapper.AddPipelineCommand()&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/22/statiq.framework-1.0.0-alpha.19</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.19</title>
+		<link href="https://statiq.dev/news/2019/11/22/statiq.framework-1.0.0-alpha.19" />
+		<updated>2019-11-22T04:14:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;StartProcess.WithArgument()&lt;/code&gt; methods to add arguments to the module using a fluent interface.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Config&amp;lt;TValue&amp;gt;.CombineWith()&lt;/code&gt; extensions for combining two configs.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Config&amp;lt;TValue&amp;gt;.Transform()&lt;/code&gt; extensions for transforming from one value to another.&lt;/li&gt;
+&lt;li&gt;Made &lt;code&gt;IExecutionContext&lt;/code&gt; (re)implement &lt;code&gt;IMetadata&lt;/code&gt; through &lt;code&gt;Settings&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ToString()&lt;/code&gt; overloads to &lt;code&gt;IFileSystemEntry&lt;/code&gt; (can't believe those weren't already there).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Statiq.Netlify&lt;/code&gt; extension with a &lt;code&gt;DeployNetlifySite&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;IDocument&lt;/code&gt; now implements &lt;code&gt;IContentProviderFactory&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added some additional &lt;code&gt;IContentProvider&lt;/code&gt; overloads to the &lt;code&gt;DeployAppService&lt;/code&gt; module.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/08/statiq.framework-1.0.0-alpha.18</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.18</title>
+		<link href="https://statiq.dev/news/2019/11/08/statiq.framework-1.0.0-alpha.18" />
+		<updated>2019-11-08T03:21:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated several low-risk package versions.&lt;/li&gt;
+&lt;li&gt;Adds option names to all command option values (#64, thanks &amp;#64;&amp;#64;patriksvensson).&lt;/li&gt;
+&lt;li&gt;New &lt;code&gt;serve&lt;/code&gt; command for serving arbitrary folders with a local preview server (#55, #60, thanks &amp;#64;&amp;#64;duracellko).&lt;/li&gt;
+&lt;li&gt;Fix for regression when there are dependencies on pipelines that aren't executing.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.17</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.17</title>
+		<link href="https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.17" />
+		<updated>2019-11-07T20:53:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Small -- prefix in console/logs to help indicate when a pipeline phase is finished.&lt;/li&gt;
+&lt;li&gt;Set longer timeouts for App Service uploads.&lt;/li&gt;
+&lt;li&gt;Added support for uploading a zip file to Azure App Service (useful for artifact-based release processes).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.16</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.16</title>
+		<link href="https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.16" />
+		<updated>2019-11-07T19:07:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixes a bug in dependency ordering where deployment pipeline output phases were being run too early.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/11/06/statiq.framework-1.0.0-alpha.15</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.15</title>
+		<link href="https://statiq.dev/news/2019/11/06/statiq.framework-1.0.0-alpha.15" />
+		<updated>2019-11-06T15:02:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;SetMediaType&lt;/code&gt; module to set the media type without changing the content.&lt;/li&gt;
+&lt;li&gt;Changed the semantics of &lt;code&gt;IDocument.ContentProvider&lt;/code&gt; so that it's never null.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IContentProvider.Length&lt;/code&gt; to get the content length without needing to get the stream.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;AddMetadata&lt;/code&gt; to &lt;code&gt;SetMetadata&lt;/code&gt; to better match other module naming conventions and to reflect the metadata key being set might already exist.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;ReplaceContent&lt;/code&gt; to &lt;code&gt;SetContent&lt;/code&gt; to better match other module naming conventions.&lt;/li&gt;
+&lt;li&gt;Removed the pre/post render flag from &lt;code&gt;ProcessShortcodes&lt;/code&gt; and uses a default delimiter of &lt;code&gt;&amp;amp;lt;?# ... ?&amp;gt;&lt;/code&gt; (the forthcoming site generator will need to define the alternate delimiter for pre-transform shortcodes directly).&lt;/li&gt;
+&lt;li&gt;Added overloads of methods that create content providers to set the media type.&lt;/li&gt;
+&lt;li&gt;Updated all built-in modules to set the media type whenever appropriate.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IContentProvider.MediaType&lt;/code&gt; to surface the media type of content.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;MediaTypes&lt;/code&gt; static class that contains an exhaustive set of media type (MIME) mappings by file extension.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;DeploySearchIndex&lt;/code&gt; module that deploys an Azure search index from input document metadata.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;deploy&lt;/code&gt; command that executes deployment pipelines.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ExecutionPolicy.Normal&lt;/code&gt; policy and changed &lt;code&gt;ExecutionPolicy.Default&lt;/code&gt; to specify different behavior depending on if the pipeline is a deployment pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/31/statiq.framework-1.0.0-alpha.14</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.14</title>
+		<link href="https://statiq.dev/news/2019/10/31/statiq.framework-1.0.0-alpha.14" />
+		<updated>2019-10-31T13:51:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;The string overload of &lt;code&gt;SetDestination&lt;/code&gt; now takes either an extension or a path distinguished by a preceding dot.&lt;/li&gt;
+&lt;li&gt;Updated Statiq.Razor to 3.0 libraries.&lt;/li&gt;
+&lt;li&gt;Updated Statiq.Hosting to 3.0 libraries.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/24/statiq.framework-1.0.0-alpha.13</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.13</title>
+		<link href="https://statiq.dev/news/2019/10/24/statiq.framework-1.0.0-alpha.13" />
+		<updated>2019-10-24T15:48:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixes &lt;code&gt;ExecuteIf&lt;/code&gt; to work when there are no input documents and the config doesn't require one.&lt;/li&gt;
+&lt;li&gt;Fixes bug calculating command name for generic command types.&lt;/li&gt;
+&lt;li&gt;Refactors &lt;code&gt;CreateDocuments&lt;/code&gt; and adds additional config-based overloads.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.12</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.12</title>
+		<link href="https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.12" />
+		<updated>2019-10-23T18:11:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changed &lt;code&gt;IBoostrapper.ConfigureSettings()&lt;/code&gt; to use a new &lt;code&gt;IConfigurationSettings&lt;/code&gt; object that exposes the settings and the underlying &lt;code&gt;IConfiguration&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Renamed the execution-time &lt;code&gt;IConfigurationSettings&lt;/code&gt; to &lt;code&gt;IReadOnlyConfigurationSettings&lt;/code&gt; and introduced a new mutable &lt;code&gt;IConfigurationSettings&lt;/code&gt; to use in the bootstrapper.&lt;/li&gt;
+&lt;li&gt;Several bug fixes related to settings and configuration.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.11</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.11</title>
+		<link href="https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.11" />
+		<updated>2019-10-23T03:09:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Changed &lt;code&gt;IBootstrapper.AddSettings()&lt;/code&gt; calls to run after other configuration.&lt;/li&gt;
+&lt;li&gt;Adds a single pattern overload to &lt;code&gt;ReadFiles&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Some refactoring of the base &lt;code&gt;Pipeline&lt;/code&gt; class (most importantly to remove the &lt;code&gt;Dependencies&lt;/code&gt; setter in favor of adding to the existing hash set).&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;IReadOnlyApplicationState.IsCommand()&lt;/code&gt; to determine the current command.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/22/statiq.framework-1.0.0-alpha.10</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.10</title>
+		<link href="https://statiq.dev/news/2019/10/22/statiq.framework-1.0.0-alpha.10" />
+		<updated>2019-10-22T19:15:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added extensions for CLI &lt;code&gt;IConfigurator&lt;/code&gt; to allow more flexible direct configuration (such as command branches).&lt;/li&gt;
+&lt;li&gt;Removed configuration/settings debug output on startup as it could leak secrets via environment variables or other configuration providers.&lt;/li&gt;
+&lt;li&gt;Fix for &lt;code&gt;GenerateJson&lt;/code&gt; so it executes when no input documents are provided.&lt;/li&gt;
+&lt;li&gt;Fix for preview command when no output is generated and the output directory does not exist.&lt;/li&gt;
+&lt;li&gt;Fix for clearing content with empty string in &lt;code&gt;ReplaceContent&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;EngineSettings&lt;/code&gt; to &lt;code&gt;ConfigurationSettings&lt;/code&gt; to reflect a broader use than just the engine.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/18/statiq.framework-1.0.0-alpha.9</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.9</title>
+		<link href="https://statiq.dev/news/2019/10/18/statiq.framework-1.0.0-alpha.9" />
+		<updated>2019-10-18T03:16:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.AddDelegateCommand()&lt;/code&gt; fluent methods to configure delegate-based commands.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.AddBuildCommand()&lt;/code&gt; fluent methods to configure simple commands that build specified pipelines.&lt;/li&gt;
+&lt;li&gt;Refactored the base commands to allow consumers to derive from &lt;code&gt;EngineCommand&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;IEngineManager&lt;/code&gt; interface to expose the engine manager to commands that derive from &lt;code&gt;EngineCommand&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Refactored &lt;code&gt;IEngine.Settings&lt;/code&gt; and &lt;code&gt;IExecutionContext.Settings&lt;/code&gt; to use a &lt;code&gt;IConfiguration&lt;/code&gt; as the backing store and present it as metadata.&lt;/li&gt;
+&lt;li&gt;Lazily creates type-based pipelines using the DI container so they can have injected services (#59).&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;INamedPipeline&lt;/code&gt; to allow pipeline instances to provide names.&lt;/li&gt;
+&lt;li&gt;Changes &lt;code&gt;Module.AfterExecution()&lt;/code&gt; and &lt;code&gt;Module.AfterExecutionAsync()&lt;/code&gt; to pass a new &lt;code&gt;ExecutionOutputs&lt;/code&gt; class instead of by ref (which doesn't work with async).&lt;/li&gt;
+&lt;li&gt;Some tweaks to the &lt;code&gt;MirrorResources&lt;/code&gt; retry policy.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/09/statiq.framework-1.0.0-alpha.8</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.8</title>
+		<link href="https://statiq.dev/news/2019/10/09/statiq.framework-1.0.0-alpha.8" />
+		<updated>2019-10-09T02:29:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Adds &lt;code&gt;==&lt;/code&gt; overloads to &lt;code&gt;NormalizedPath&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds a special &lt;code&gt;RenderSection()&lt;/code&gt; to &lt;code&gt;StatiqRazorPage&lt;/code&gt; that renders default content if the section is not defined.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IDocument.GetStream()&lt;/code&gt; to &lt;code&gt;IDocument.GetContentStream()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IDocument.GetStringAsync()&lt;/code&gt; to &lt;code&gt;IDocument.GetContentStringAsync()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IDocument.GetBytesAsync()&lt;/code&gt; to &lt;code&gt;IDocument.GetContentBytesAsync()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IEngine.SerialExecution&lt;/code&gt; and &lt;code&gt;--serial&lt;/code&gt; CLI argument to run pipelines and modules in serial (#58).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/04/statiq.framework-1.0.0-alpha.7</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.7</title>
+		<link href="https://statiq.dev/news/2019/10/04/statiq.framework-1.0.0-alpha.7" />
+		<updated>2019-10-04T19:24:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Adds support for deployment pipelines (&lt;code&gt;IPipeline.Deployment&lt;/code&gt;) which run their output phase only after other output phases (#57).&lt;/li&gt;
+&lt;li&gt;Fixes a bug when specifying a setting on the CLI and the bootstrapper.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;StartProcess.WithErrorExitCode()&lt;/code&gt; to define a custom function for determining if the process existed in error.&lt;/li&gt;
+&lt;li&gt;Adds new &lt;code&gt;-d&lt;/code&gt;/&lt;code&gt;--defaults&lt;/code&gt; and a flag to the engine to indicate if default pipelines should be run independent of specified pipelines.&lt;/li&gt;
+&lt;li&gt;Renames &lt;code&gt;SimpleBuildCommand&lt;/code&gt; to &lt;code&gt;CustomBuildCommand&lt;/code&gt; and adds support for the default pipelines flag.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/03/statiq.framework-1.0.0-alpha.6</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.6</title>
+		<link href="https://statiq.dev/news/2019/10/03/statiq.framework-1.0.0-alpha.6" />
+		<updated>2019-10-03T12:57:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Adds back a &lt;code&gt;ExecuteModules&lt;/code&gt; module that works like the old &lt;code&gt;Branch&lt;/code&gt; module used to by dropping any output documents from the child modules.&lt;/li&gt;
+&lt;li&gt;Tweaks to the placeholder factory in &lt;code&gt;CreateTree&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fix for the JavaScript engine getting reset on execution.&lt;/li&gt;
+&lt;li&gt;No longer strips &amp;quot;Pipeline&amp;quot; from the end of pipeline classes for the pipeline name since &lt;code&gt;nameof&lt;/code&gt; is often used to refer to pipelines.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/10/01/statiq.framework-1.0.0-alpha.5</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.5</title>
+		<link href="https://statiq.dev/news/2019/10/01/statiq.framework-1.0.0-alpha.5" />
+		<updated>2019-10-01T17:13:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Adds &lt;code&gt;StartProcess.KeepContent()&lt;/code&gt; to prevent replacing document content with process output.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;StartProcess.OnlyOnce()&lt;/code&gt; to only execute the process once.&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;PipelineTrigger&lt;/code&gt; to &lt;code&gt;ExecutionPolicy&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds type-based methods for adding pipelines.&lt;/li&gt;
+&lt;li&gt;All &lt;code&gt;IPipeline&lt;/code&gt; implementations from the entry assembly are added by the bootstrapper by default.&lt;/li&gt;
+&lt;li&gt;All &lt;code&gt;ICommand&lt;/code&gt; implementations from the entry assembly are added by the bootstrapper by default.&lt;/li&gt;
+&lt;li&gt;Adds ability to specify which defaults to add to the bootstrapper.&lt;/li&gt;
+&lt;li&gt;Made &lt;code&gt;EngineManager&lt;/code&gt; public so it can be used by custom commands.&lt;/li&gt;
+&lt;li&gt;Adds a new &lt;code&gt;SimpleBuildCommand&lt;/code&gt; base command to make creating new pipeline-specific build commands easier.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;AddPipelines()&lt;/code&gt; and &lt;code&gt;AddCommands()&lt;/code&gt; methods to add pipelines and commands from the entry or a given assembly.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;MultiConfigModule&lt;/code&gt;, &lt;code&gt;ParallelMultiConfigModule&lt;/code&gt;, &lt;code&gt;SyncMultiConfigModule&lt;/code&gt;, and &lt;code&gt;ParallelSyncMultiConfigModule&lt;/code&gt; base classes for modules that use multiple &lt;code&gt;Config&amp;lt;T&amp;gt;&lt;/code&gt; values.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;ExecutionPipeline&lt;/code&gt; base pipeline for use when a custom pipeline that runs code for each phase is needed.&lt;/li&gt;
+&lt;li&gt;Adds new &lt;code&gt;ZipDirectory&lt;/code&gt; module.&lt;/li&gt;
+&lt;li&gt;Renames the &lt;code&gt;Statiq.AmazonWebServices&lt;/code&gt; extension library to &lt;code&gt;Statiq.Aws&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;Statiq.Azure&lt;/code&gt; extension library.&lt;/li&gt;
+&lt;li&gt;Adds new &lt;code&gt;DeployAppService&lt;/code&gt; module.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/09/25/statiq.framework-1.0.0-alpha.4</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.4</title>
+		<link href="https://statiq.dev/news/2019/09/25/statiq.framework-1.0.0-alpha.4" />
+		<updated>2019-09-25T18:54:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated to .NET Core 3.0 final&lt;/li&gt;
+&lt;li&gt;Isolated pipelines can now be dependencies of other pipelines (but output documents still can't be accessed).&lt;/li&gt;
+&lt;li&gt;Renames delegate-based &lt;code&gt;IBootstrapper.AddSettings()&lt;/code&gt; overload to &lt;code&gt;IBoostrapper.ConfigureSettings()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Renames &lt;code&gt;IBootstrapper.AddServices()&lt;/code&gt; to &lt;code&gt;IBoostrapper.ConfigureServices()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;IBootstrapper.ConfigureEngine()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Adds a &lt;code&gt;StartProcess&lt;/code&gt; module to start a process and create a document from it's output or run it in the background.&lt;/li&gt;
+&lt;li&gt;The bootstrapper now adds environment variables to the settings by default with ALL_CAPS keys.&lt;/li&gt;
+&lt;li&gt;Any setting with an ALL_CAPS key is masked during debug output on startup.&lt;/li&gt;
+&lt;li&gt;Ongoing console logging improvements.&lt;/li&gt;
+&lt;li&gt;Added trigger conditions to pipelines to include always running or manually running.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;-p&lt;/code&gt;/&lt;code&gt;--pipeline&lt;/code&gt; CLI argument to indicate which pipelines to execute.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/09/20/statiq.framework-1.0.0-alpha.3</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.3</title>
+		<link href="https://statiq.dev/news/2019/09/20/statiq.framework-1.0.0-alpha.3" />
+		<updated>2019-09-20T01:27:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;New execution summary table logged after execution.&lt;/li&gt;
+&lt;li&gt;New console logger with better output.&lt;/li&gt;
+&lt;li&gt;More refactoring of base &lt;code&gt;Module&lt;/code&gt; before/after methods.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/09/18/statiq.framework-1.0.0-alpha.2</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.2</title>
+		<link href="https://statiq.dev/news/2019/09/18/statiq.framework-1.0.0-alpha.2" />
+		<updated>2019-09-18T17:10:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Renamed the GitHub project/repo to &amp;quot;Statiq.Framework&amp;quot; to match forthcoming &amp;quot;Statiq.Web&amp;quot; and to distinguish between primary code repos (prefixed by &amp;quot;Statiq.&amp;quot;) and themes, etc. Also note the upcoming Statiq app will be known as Statiq Web from now on (as opposed to Statiq Framework).&lt;/li&gt;
+&lt;li&gt;The engine now returns a &lt;code&gt;IPipelineOutputs&lt;/code&gt; with the result documents from each pipeline.&lt;/li&gt;
+&lt;li&gt;Adds global events &lt;code&gt;BeforeModuleExecution&lt;/code&gt; and &lt;code&gt;AfterModuleExecution&lt;/code&gt; with ability to override outputs.&lt;/li&gt;
+&lt;li&gt;Adds a new global event mechanism via &lt;code&gt;IEventCollection&lt;/code&gt;, &lt;code&gt;IReadOnlyEventCollection&lt;/code&gt;, &lt;code&gt;IEngine.Events&lt;/code&gt;, and &lt;code&gt;IExecutionContext.Events&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Refactored the base module classes to include a before/after execution method, made the execution methods &lt;code&gt;protected&lt;/code&gt;, and renamed the execution methods for clarity.&lt;/li&gt;
+&lt;li&gt;Added property setters with null checks to &lt;code&gt;Pipeline&lt;/code&gt; so it works better as a base class and you can define the phase modules directly as properties.&lt;/li&gt;
+&lt;li&gt;Cleaned up &lt;code&gt;ModuleList&lt;/code&gt; methods to remove overload ambiguity between &lt;code&gt;params IModule[]&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;IModule&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added an implicit operator from &lt;code&gt;IModule[]&lt;/code&gt; to &lt;code&gt;ModuleList&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Raw application arguments as well as application input are now surfaced through a new &lt;code&gt;IReadOnlyApplicationState&lt;/code&gt; object in the &lt;code&gt;IExecutionContext&lt;/code&gt;, taking the place of the &lt;code&gt;ApplicationInput&lt;/code&gt; property.&lt;/li&gt;
+&lt;li&gt;Adds a bunch of &lt;code&gt;Config.FromSettings()&lt;/code&gt; methods that get values from a &lt;code&gt;IReadOnlySettings&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&amp;quot;Pipeline&amp;quot; is now trimmed from the end of type names when types are added as a pipeline to a pipeline collection.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2019/09/09/statiq.framework-1.0.0-alpha.1</id>
+		<title>Statiq.Framework Release 1.0.0-alpha.1</title>
+		<link href="https://statiq.dev/news/2019/09/09/statiq.framework-1.0.0-alpha.1" />
+		<updated>2019-09-09T15:13:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Statiq Framework is comprehensive &amp;quot;reboot&amp;quot; of Wyam.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
 	</entry>
 </feed>
