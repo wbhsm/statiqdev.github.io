@@ -282,6 +282,10 @@ namespace MyGenerator
   }
 }
 </code></pre>
+<p>While Markdown support is part of Statiq Framework (and covered by the same MIT license), you'll also need to add the <a href="https://www.nuget.org/packages/Statiq.Markdown">Statiq.Markdown</a> package to get access to the <code>RenderMarkdown</code> module used in the above code:</p>
+<pre><code>dotnet add package Statiq.Markdown --version x.y.z
+</code></pre>
+<p>That's because Statiq Framework is completely general and doesn't make any assumptions about the kind of generator you're building (unlike <a href="/web">Statiq Web</a> which is somewhat opinionated and provides support for templates and more out of the box). Many other <a href="https://www.nuget.org/packages?q=statiq.">Statiq Framework extensions</a> also exist and you should pick and choose which ones you need.</p>
 <h2 id="step-6-run-it">Step 6: Run it!</h2>
 <p>Let the magic happen:</p>
 <pre><code>dotnet run

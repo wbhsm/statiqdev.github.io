@@ -5,8 +5,8 @@
 		<link>https://statiq.dev/</link>
 		<description />
 		<copyright>2020</copyright>
-		<pubDate>Mon, 17 Aug 2020 00:53:30 GMT</pubDate>
-		<lastBuildDate>Mon, 17 Aug 2020 00:53:30 GMT</lastBuildDate>
+		<pubDate>Mon, 24 Aug 2020 17:19:29 GMT</pubDate>
+		<lastBuildDate>Mon, 24 Aug 2020 17:19:29 GMT</lastBuildDate>
 		<item>
 			<title>Statiq.Web Release 1.0.0-beta.3</title>
 			<link>https://statiq.dev/news/2020/08/17/statiq.web-1.0.0-beta.3</link>
@@ -114,7 +114,9 @@ This version of Statiq Framework contains breaking changes which Statiq Web will
 			<guid>https://statiq.dev/news/2020/07/29/statiq.framework-1.0.0-beta.18</guid>
 			<pubDate>Wed, 29 Jul 2020 16:45:00 GMT</pubDate>
 			<content:encoded>&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the IPipelineOutputs&lt;code&gt;indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline. To use the previous behavior, call&lt;/code&gt;IPipelineOutputs.FromPipeline(string)&lt;code&gt;. This will make the more common case (finding a document or documents among all pipelines) easier. To refactor your code to match the old behavior, do a string search for &amp;quot;Outputs[&amp;quot; and replace with &lt;/code&gt;Outputs.FromPipeline()`.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the &lt;code&gt;IPipelineOutputs&lt;/code&gt; indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline.
+To use the previous behavior, call &lt;code&gt;IPipelineOutputs.FromPipeline(string)&lt;/code&gt;. This will make the more common case (finding a document or documents among all pipelines) easier.
+To refactor your code to match the old behavior, do a string search for &amp;quot;Outputs[&amp;quot; and replace with &lt;code&gt;Outputs.FromPipeline()&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the &lt;code&gt;DocumentList&amp;lt;TDocument&amp;gt;&lt;/code&gt; indexer to return all matching documents instead of the first matching document. To refactor your code
 to match the old behavior add a &lt;code&gt;.FirstOrDefault()&lt;/code&gt; after the call to the indexer.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;CompileScript&lt;/code&gt; module in favor of global script caching (so using the &lt;code&gt;EvaluateScript&lt;/code&gt; module will also cache the script compilation, removing the need for a separate cached assembly).&lt;/li&gt;

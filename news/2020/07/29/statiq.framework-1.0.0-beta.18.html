@@ -140,7 +140,9 @@
 
 
 <ul>
-<li><strong>Breaking change:</strong> Changed the IPipelineOutputs<code>indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline. To use the previous behavior, call</code>IPipelineOutputs.FromPipeline(string)<code>. This will make the more common case (finding a document or documents among all pipelines) easier. To refactor your code to match the old behavior, do a string search for "Outputs[" and replace with </code>Outputs.FromPipeline()`.</li>
+<li><strong>Breaking change:</strong> Changed the <code>IPipelineOutputs</code> indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline.
+To use the previous behavior, call <code>IPipelineOutputs.FromPipeline(string)</code>. This will make the more common case (finding a document or documents among all pipelines) easier.
+To refactor your code to match the old behavior, do a string search for "Outputs[" and replace with <code>Outputs.FromPipeline()</code>.</li>
 <li><strong>Breaking change:</strong> Changed the <code>DocumentList&lt;TDocument&gt;</code> indexer to return all matching documents instead of the first matching document. To refactor your code
 to match the old behavior add a <code>.FirstOrDefault()</code> after the call to the indexer.</li>
 <li><strong>Breaking change:</strong> Removed the <code>CompileScript</code> module in favor of global script caching (so using the <code>EvaluateScript</code> module will also cache the script compilation, removing the need for a separate cached assembly).</li>
