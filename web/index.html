@@ -226,16 +226,16 @@
 <p>Statiq Web consists of .NET Core libraries and <a href="https://dot.net">installing the .NET Core SDK</a> is the only prerequisite.</p>
 <h2 id="step-2-create-a.net-core-console-application">Step 2: Create a .NET Core Console Application</h2>
 <p>Create a new console application using the <code>dotnet</code> command-line interface:</p>
-<pre><code class="language-csharp">dotnet new console -o MySite
+<pre><code class="language-csharp">dotnet new console --name MySite
 </code></pre>
 <h2 id="step-3-install-statiq.web">Step 3: Install Statiq.Web</h2>
+<p>In same folder as your newly created project (<em>i.e. <code>MySite</code></em>).</p>
 <pre><code class="language-csharp">dotnet add package Statiq.Web --version x.y.z
 </code></pre>
 <p>Use whatever is the <a href="https://www.nuget.org/packages/Statiq.Web">most recent version of Statiq.Web</a>. The <code>--version</code> flag is needed while the package is pre-release.</p>
 <h2 id="step-4-create-a-bootstrapper">Step 4: Create a Bootstrapper</h2>
 <p>Creating a <a href="/framework/configuration/bootstrapper">bootstrapper</a> for Statiq Web initializes everything you’ll need to generate your web site. While you can certainly extend Statiq Web with new <a href="/framework/pipelines/defining-pipelines">pipelines</a> or <a href="/framework/pipelines/modules/writing-modules">custom modules</a>, you shouldn’t need to for most sites. Add the following code in your <code>Program.cs</code> file:</p>
-<pre><code class="language-csharp">using System;
-using System.Threading.Tasks;
+<pre><code class="language-csharp">using System.Threading.Tasks;
 using Statiq.App;
 using Statiq.Web;
 
@@ -252,14 +252,24 @@ namespace MySite
 }
 </code></pre>
 <h2 id="step-5-add-some-content">Step 5: Add Some Content</h2>
-<p>Start adding content by creating <a href="/framework/content/template-languages#markdown">Markdown</a> files in your "input" folder.</p>
+<p>Start adding content by creating <a href="/framework/content/template-languages#markdown">Markdown</a> files in your <code>input</code> folder, by default input folder is located in your project root.</p>
+<p>To get something served you can add the following code as <code>index.md</code> file in your <code>input</code> folder.</p>
+<pre><code class="language-md">Title: My First Statiq page
+---
+# Hello World!
+
+Hello from my first Statiq page.
+</code></pre>
 <h2 id="step-6-run-it">Step 6: Run it!</h2>
 <p>Let the magic happen:</p>
 <pre><code>dotnet run
 </code></pre>
+<p>This will by default create an <code>output</code> folder in your project folder if it doesn't exists and generate static web site content based on what's in your <code>input</code> folder.</p>
 <p>Or run it and <a href="/web/running/preview-server">preview the generated site</a>:</p>
 <pre><code>dotnet run -- preview
 </code></pre>
+<p>This will generate content and serve your output folder over HTTP (i.e. <code>http://localhost:5080</code>).
+<img src="https://user-images.githubusercontent.com/1647294/89655186-0198b580-d8ca-11ea-9db5-bef9a9592161.png" alt="statiq preview"></p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
