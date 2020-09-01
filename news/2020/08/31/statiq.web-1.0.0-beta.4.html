@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Statiq.Framework Release 1.0.0-alpha.25</title>
+        <title>Statiq - Statiq.Web Release 1.0.0-beta.4</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -87,11 +87,11 @@
                                                 <span><a href="/news">News</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Statiq.Framework Release 1.0.0-alpha.25                                            
+                                            Statiq.Web Release 1.0.0-beta.4                                            
                                         </div>
 
         <div class="text-white-50">
-            Wednesday, February 12, 2020 in
+            Monday, August 31, 2020 in
             <a href="/news/topics/release"><span class="badge badge-dark">Release Notes</span></a>
         </div>
                                     </div>
@@ -140,12 +140,30 @@
 
 
 <ul>
-<li>Added support for object-based settings to the bootstrapper (as opposed to just initial string-based configuration).</li>
-<li>Added support for <code>IConfig</code> metadata values.</li>
-<li>Added <code>LastWriteTime</code> and <code>CreationTime</code> to <code>IFileSystemEntry</code>.</li>
-<li>Fixed a race condition in <code>ScriptMetadataValue</code>.</li>
-<li>Changed behavior of <code>SetDestination</code> when using a config value to make <code>DestinationPath</code>, <code>DestinationFileName</code>, and <code>DestinationExtension</code> take precedence (with an option to override).</li>
-<li>Added a <code>Context</code> property for the current <code>IExecutionContext</code> to the available script properties (I.e., for use in metadata value scripts via "=&gt;" notation).</li>
+<li>Updated Statiq Framework to version <a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.21">1.0.0-beta.21</a>.</li>
+<li><strong>Breaking change:</strong> Removed the <code>IBootstrapper.SetDefaultTemplate()</code> extension given more general use of templates. The "default" template should now be specified
+by setting a templates for the HTML media type (by default it's still Razor, so this breaking change won't really affect anyone right now).</li>
+<li><strong>Breaking Change:</strong> Removed the <code>AssetFiles</code>, <code>DataFiles</code>, and <code>ContentFiles</code> settings and replaced with a single <code>InputFiles</code> setting for finding all input files.
+The target pipeline and content type are now determined from the media type and metadata of the document instead of via globbing patterns for each pipeline.
+If you previously had asset files that started with an underscore (such as a <code>_redirects</code> file), you will need to explicitly add those to the <code>InputFiles</code> patterns
+along with the default pattern: <code>.AddSetting(WebKeys.InputFiles, new [] { "**/{!_,}*", "_redirects" })</code>.</li>
+<li>Added a <code>ClearDataContent</code> document setting that clears content from data documents (for example, to support passing the data file to layouts).
+Set this for a single data document to clear it's content or globally with <code>.AddSetting(WebKeys.ClearDataContent, true)</code> to clear the content of all data files.</li>
+<li>Made the concept of "templates" more general. They now essentially use the media type of a document (typically inferred from file extension) to determine which pipeline to
+process the document in and what module to use for processing. Templates can now be defined for assets, data, and content and for the <code>Process</code> and <code>PostProcess</code> phases for each.</li>
+<li>Added a <code>ContentType</code> document setting to override the calculated pipeline and processing for a document (values are <code>Asset</code>, <code>Data</code>, and <code>Content</code>).
+For example, setting the <code>ContentType</code> of a file named "foo.json" to <code>Asset</code> will treat the file as an asset and will not process it's content as data.</li>
+<li>Added a <code>MediaType</code> document setting to override the media type calculated from the file extension.</li>
+<li>Added a <code>RemoveScriptExtension</code> document setting that will convert script file names like "foo.json.csx" to "foo.json" and reset their media types so the script output can be seamlessly
+processed by the appropriate pipeline and modules (for example, "foo.json.csx" will get processed by the <code>Data</code> pipeline while "foo.md.csx" will get processed by the <code>Content</code> pipeline).
+The default value is <code>true</code>.</li>
+<li>Removed the <code>Isolated</code> flag from the <code>Assets</code> pipeline so the set of copied assets can be retrieved from other pipelines (I.e. to generate a list of images in a directory).</li>
+<li>Added support for script files (<code>.csx</code> or <code>.cs</code>) to the <code>Archive</code> pipeline (I.e. to generate JSON APIs from a collection of documents or data).</li>
+<li>Added a <code>Script</code> document setting that will treat a file as a C# script, even if the extension is not <code>.cs</code> or <code>.csx</code>.</li>
+<li>Added a common <code>Inputs</code> pipeline that consolidates directory metadata, sidecar, and front matter parsing and supports evaluating scripts with a <code>.csx</code> or <code>.cs</code> extension.
+Detailed script usage will be documented on the site, but generally if the script returns null the original input document is returned, if the script returns a string the content
+of the document will be changed to the return value, or if the script returns a document(s) those will be added to the appropriate pipeline.</li>
+<li>New <code>Statiq.Web.Templates</code> project with a Statiq Web templates for the <code>dotnet new</code> CLI command (#915, thanks @@devlead).</li>
 </ul>
 
 

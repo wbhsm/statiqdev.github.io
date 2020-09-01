@@ -4,12 +4,78 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2020</rights>
-	<updated>2020-08-24T18:44:58Z</updated>
+	<updated>2020-09-01T02:25:41Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2020/09/01/statiq.web-1.0.0-beta.5</id>
+		<title>Statiq.Web Release 1.0.0-beta.5</title>
+		<link href="https://statiq.dev/news/2020/09/01/statiq.web-1.0.0-beta.5" />
+		<updated>2020-09-01T02:12:27Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Some tweaks to the new .NET template to prefer the directory name.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/08/31/statiq.web-1.0.0-beta.4</id>
+		<title>Statiq.Web Release 1.0.0-beta.4</title>
+		<link href="https://statiq.dev/news/2020/08/31/statiq.web-1.0.0-beta.4" />
+		<updated>2020-08-31T22:45:08Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.21"&gt;1.0.0-beta.21&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;IBootstrapper.SetDefaultTemplate()&lt;/code&gt; extension given more general use of templates. The &amp;quot;default&amp;quot; template should now be specified
+by setting a templates for the HTML media type (by default it's still Razor, so this breaking change won't really affect anyone right now).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking Change:&lt;/strong&gt; Removed the &lt;code&gt;AssetFiles&lt;/code&gt;, &lt;code&gt;DataFiles&lt;/code&gt;, and &lt;code&gt;ContentFiles&lt;/code&gt; settings and replaced with a single &lt;code&gt;InputFiles&lt;/code&gt; setting for finding all input files.
+The target pipeline and content type are now determined from the media type and metadata of the document instead of via globbing patterns for each pipeline.
+If you previously had asset files that started with an underscore (such as a &lt;code&gt;_redirects&lt;/code&gt; file), you will need to explicitly add those to the &lt;code&gt;InputFiles&lt;/code&gt; patterns
+along with the default pattern: &lt;code&gt;.AddSetting(WebKeys.InputFiles, new [] { &amp;quot;**/{!_,}*&amp;quot;, &amp;quot;_redirects&amp;quot; })&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;ClearDataContent&lt;/code&gt; document setting that clears content from data documents (for example, to support passing the data file to layouts).
+Set this for a single data document to clear it's content or globally with &lt;code&gt;.AddSetting(WebKeys.ClearDataContent, true)&lt;/code&gt; to clear the content of all data files.&lt;/li&gt;
+&lt;li&gt;Made the concept of &amp;quot;templates&amp;quot; more general. They now essentially use the media type of a document (typically inferred from file extension) to determine which pipeline to
+process the document in and what module to use for processing. Templates can now be defined for assets, data, and content and for the &lt;code&gt;Process&lt;/code&gt; and &lt;code&gt;PostProcess&lt;/code&gt; phases for each.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;ContentType&lt;/code&gt; document setting to override the calculated pipeline and processing for a document (values are &lt;code&gt;Asset&lt;/code&gt;, &lt;code&gt;Data&lt;/code&gt;, and &lt;code&gt;Content&lt;/code&gt;).
+For example, setting the &lt;code&gt;ContentType&lt;/code&gt; of a file named &amp;quot;foo.json&amp;quot; to &lt;code&gt;Asset&lt;/code&gt; will treat the file as an asset and will not process it's content as data.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;MediaType&lt;/code&gt; document setting to override the media type calculated from the file extension.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;RemoveScriptExtension&lt;/code&gt; document setting that will convert script file names like &amp;quot;foo.json.csx&amp;quot; to &amp;quot;foo.json&amp;quot; and reset their media types so the script output can be seamlessly
+processed by the appropriate pipeline and modules (for example, &amp;quot;foo.json.csx&amp;quot; will get processed by the &lt;code&gt;Data&lt;/code&gt; pipeline while &amp;quot;foo.md.csx&amp;quot; will get processed by the &lt;code&gt;Content&lt;/code&gt; pipeline).
+The default value is &lt;code&gt;true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;Isolated&lt;/code&gt; flag from the &lt;code&gt;Assets&lt;/code&gt; pipeline so the set of copied assets can be retrieved from other pipelines (I.e. to generate a list of images in a directory).&lt;/li&gt;
+&lt;li&gt;Added support for script files (&lt;code&gt;.csx&lt;/code&gt; or &lt;code&gt;.cs&lt;/code&gt;) to the &lt;code&gt;Archive&lt;/code&gt; pipeline (I.e. to generate JSON APIs from a collection of documents or data).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Script&lt;/code&gt; document setting that will treat a file as a C# script, even if the extension is not &lt;code&gt;.cs&lt;/code&gt; or &lt;code&gt;.csx&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a common &lt;code&gt;Inputs&lt;/code&gt; pipeline that consolidates directory metadata, sidecar, and front matter parsing and supports evaluating scripts with a &lt;code&gt;.csx&lt;/code&gt; or &lt;code&gt;.cs&lt;/code&gt; extension.
+Detailed script usage will be documented on the site, but generally if the script returns null the original input document is returned, if the script returns a string the content
+of the document will be changed to the return value, or if the script returns a document(s) those will be added to the appropriate pipeline.&lt;/li&gt;
+&lt;li&gt;New &lt;code&gt;Statiq.Web.Templates&lt;/code&gt; project with a Statiq Web templates for the &lt;code&gt;dotnet new&lt;/code&gt; CLI command (#915, thanks &amp;#64;&amp;#64;devlead).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/08/31/statiq.framework-1.0.0-beta.21</id>
+		<title>Statiq.Framework Release 1.0.0-beta.21</title>
+		<link href="https://statiq.dev/news/2020/08/31/statiq.framework-1.0.0-beta.21" />
+		<updated>2020-08-31T22:30:23Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added some optimizations for async file I/O.&lt;/li&gt;
+&lt;li&gt;Added overloads to &lt;code&gt;FilterSources&lt;/code&gt; and &lt;code&gt;FilterDestinations&lt;/code&gt; modules that accept &lt;code&gt;Config&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt;&lt;/code&gt; for the patterns.&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;IDirectory.GetFiles()&lt;/code&gt; and &lt;code&gt;IDirectory.GetDirectories()&lt;/code&gt; to make sure excluded paths are excluded from the results.&lt;/li&gt;
+&lt;li&gt;Creating a &lt;code&gt;ReadFiles&lt;/code&gt; module without any patterns now returns all files.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ExtractFrontMatter.RequireStartDelimiter()&lt;/code&gt; to require the front matter to start with a specified delimiter on the first line (for example, &lt;code&gt;/*&lt;/code&gt; as the opening of a comment block).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IMetadata.ToJson()&lt;/code&gt; utility extensions to serialize an &lt;code&gt;IMetadata&lt;/code&gt; object to JSON.&lt;/li&gt;
+&lt;li&gt;Fixed a bug where the &lt;code&gt;EvaluateScript&lt;/code&gt; module would reset the document media type for content return values.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;glob eval&lt;/code&gt; command to evaluate a globbing pattern against a specified directory and report all the matches.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;glob test&lt;/code&gt; command to test a specified path against a globbing pattern to see if it matches.&lt;/li&gt;
+&lt;li&gt;Removes subresource attributes in &lt;code&gt;MirrorResource&lt;/code&gt; (#127).&lt;/li&gt;
+&lt;li&gt;Updated Spectre.Cli CLI library for better console help messages.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ReadApi&lt;/code&gt; module for generally reading from an API client (#126, thanks &amp;#64;&amp;#64;unchase).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IBootstrapper.ModifyPipeline()&lt;/code&gt; to make it easier to modify an existing pipeline via the bootstrapper.&lt;/li&gt;
+&lt;li&gt;Added collection initializer and list support to the &lt;code&gt;ExecuteBranch&lt;/code&gt; module.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2020/08/17/statiq.web-1.0.0-beta.3</id>
 		<title>Statiq.Web Release 1.0.0-beta.3</title>
 		<link href="https://statiq.dev/news/2020/08/17/statiq.web-1.0.0-beta.3" />
-		<updated>2020-08-17T00:16:00Z</updated>
+		<updated>2020-08-17T00:16:57Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.20"&gt;1.0.0-beta.20&lt;/a&gt;.
 This version of Statiq Framework contains breaking changes which Statiq Web will inherit.&lt;/li&gt;
@@ -26,7 +92,7 @@ it's recommended that themes set this in their theme settings file (for example 
 		<id>https://statiq.dev/news/2020/08/17/statiq.framework-1.0.0-beta.20</id>
 		<title>Statiq.Framework Release 1.0.0-beta.20</title>
 		<link href="https://statiq.dev/news/2020/08/17/statiq.framework-1.0.0-beta.20" />
-		<updated>2020-08-17T00:12:00Z</updated>
+		<updated>2020-08-17T00:12:20Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;IDocument.GetParent()&lt;/code&gt;, &lt;code&gt;IDocument.HasChildren()&lt;/code&gt;, &lt;code&gt;IDocument.GetDescendants()&lt;/code&gt;, and &lt;code&gt;IDocument.GetDescendantsAndSelf()&lt;/code&gt; extension methods
 (&lt;code&gt;IDocument.GetChildren()&lt;/code&gt; still remains since it's fetching actual metadata values). Instead, the appropriate tree concept can now be accessed via an implementation
@@ -58,7 +124,7 @@ suffixed with a unique identifier to avoid conflicts between components (for exa
 		<id>https://statiq.dev/news/2020/08/04/statiq.web-1.0.0-beta.2</id>
 		<title>Statiq.Web Release 1.0.0-beta.2</title>
 		<link href="https://statiq.dev/news/2020/08/04/statiq.web-1.0.0-beta.2" />
-		<updated>2020-08-04T01:01:00Z</updated>
+		<updated>2020-08-04T01:01:39Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.19"&gt;1.0.0-beta.19&lt;/a&gt;.
 This version of Statiq Framework includes internal refactoring that provides a big performance boost.&lt;/li&gt;
@@ -70,7 +136,7 @@ This version of Statiq Framework includes internal refactoring that provides a b
 		<id>https://statiq.dev/news/2020/08/04/statiq.framework-1.0.0-beta.19</id>
 		<title>Statiq.Framework Release 1.0.0-beta.19</title>
 		<link href="https://statiq.dev/news/2020/08/04/statiq.framework-1.0.0-beta.19" />
-		<updated>2020-08-04T00:27:00Z</updated>
+		<updated>2020-08-04T00:27:31Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Lots of under-the-hood refactoring to make things faster.&lt;/li&gt;
 &lt;li&gt;Fix for invalid URIs in the &lt;code&gt;ValidateLinks&lt;/code&gt; module (#119).&lt;/li&gt;
@@ -105,7 +171,7 @@ This version of Statiq Framework contains breaking changes which Statiq Web will
 		<id>https://statiq.dev/news/2020/07/29/statiq.framework-1.0.0-beta.18</id>
 		<title>Statiq.Framework Release 1.0.0-beta.18</title>
 		<link href="https://statiq.dev/news/2020/07/29/statiq.framework-1.0.0-beta.18" />
-		<updated>2020-07-29T16:45:00Z</updated>
+		<updated>2020-07-29T16:45:35Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Changed the &lt;code&gt;IPipelineOutputs&lt;/code&gt; indexer to filter documents by destination path from all pipelines instead of get documents from a specified pipeline.
 To use the previous behavior, call &lt;code&gt;IPipelineOutputs.FromPipeline(string)&lt;/code&gt;. This will make the more common case (finding a document or documents among all pipelines) easier.
@@ -146,7 +212,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/07/08/statiq.web-1.0.0-alpha.21</id>
 		<title>Statiq.Web Release 1.0.0-alpha.21</title>
 		<link href="https://statiq.dev/news/2020/07/08/statiq.web-1.0.0-alpha.21" />
-		<updated>2020-07-08T02:21:00Z</updated>
+		<updated>2020-07-08T02:21:24Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.17"&gt;1.0.0-beta.17&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
@@ -156,7 +222,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/07/08/statiq.framework-1.0.0-beta.17</id>
 		<title>Statiq.Framework Release 1.0.0-beta.17</title>
 		<link href="https://statiq.dev/news/2020/07/08/statiq.framework-1.0.0-beta.17" />
-		<updated>2020-07-08T02:16:00Z</updated>
+		<updated>2020-07-08T02:16:31Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Made &lt;code&gt;RenderRazor.WithLayout()&lt;/code&gt; take precedence over an available &lt;code&gt;_ViewStart.cshtml&lt;/code&gt; file (by ignoring the &lt;code&gt;_ViewStart.cshtml&lt;/code&gt; file entirely which previously took precedence in this case).&lt;/li&gt;
 &lt;li&gt;Fixed some bugs with input-relative path finding for Razor layouts and partials (#102).&lt;/li&gt;
@@ -167,7 +233,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/19/statiq.web-1.0.0-alpha.20</id>
 		<title>Statiq.Web Release 1.0.0-alpha.20</title>
 		<link href="https://statiq.dev/news/2020/06/19/statiq.web-1.0.0-alpha.20" />
-		<updated>2020-06-19T00:27:00Z</updated>
+		<updated>2020-06-19T00:27:27Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;OutputPath&lt;/code&gt; setting so the output path can be set from the command-line or configuration file.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;ExcludedPaths&lt;/code&gt; setting so excluded paths can be set from the command-line or configuration file.&lt;/li&gt;
@@ -180,7 +246,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/19/statiq.framework-1.0.0-beta.16</id>
 		<title>Statiq.Framework Release 1.0.0-beta.16</title>
 		<link href="https://statiq.dev/news/2020/06/19/statiq.framework-1.0.0-beta.16" />
-		<updated>2020-06-19T00:27:00Z</updated>
+		<updated>2020-06-19T00:27:16Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;NormalizedPath.ContainsDescendantOrSelf()&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;NormalizedPath.ContainsChildOrSelf()&lt;/code&gt;.&lt;/li&gt;
@@ -200,7 +266,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.19</id>
 		<title>Statiq.Web Release 1.0.0-alpha.19</title>
 		<link href="https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.19" />
-		<updated>2020-06-07T14:36:00Z</updated>
+		<updated>2020-06-07T14:36:08Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added the new &lt;code&gt;Statiq.Web.props&lt;/code&gt; file to a &lt;code&gt;buildTransitive&lt;/code&gt; folder in the package so it flows transitively to consumers.&lt;/li&gt;
 &lt;/ul&gt;
@@ -210,7 +276,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/07/statiq.framework-1.0.0-beta.15</id>
 		<title>Statiq.Framework Release 1.0.0-beta.15</title>
 		<link href="https://statiq.dev/news/2020/06/07/statiq.framework-1.0.0-beta.15" />
-		<updated>2020-06-07T14:32:00Z</updated>
+		<updated>2020-06-07T14:32:28Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added the new &lt;code&gt;Statiq.App.props&lt;/code&gt; file to a &lt;code&gt;buildTransitive&lt;/code&gt; folder in the package so it flows transitively to consumers.&lt;/li&gt;
 &lt;/ul&gt;
@@ -220,7 +286,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.18</id>
 		<title>Statiq.Web Release 1.0.0-alpha.18</title>
 		<link href="https://statiq.dev/news/2020/06/07/statiq.web-1.0.0-alpha.18" />
-		<updated>2020-06-07T14:07:00Z</updated>
+		<updated>2020-06-07T14:07:57Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Bug fix for unclosed &lt;code&gt;&amp;lt;ItemGroup&amp;gt;&lt;/code&gt; in the new props file (#909, thanks &amp;#64;&amp;#64;drmathias).&lt;/li&gt;
 &lt;/ul&gt;
@@ -230,7 +296,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/06/statiq.web-1.0.0-alpha.17</id>
 		<title>Statiq.Web Release 1.0.0-alpha.17</title>
 		<link href="https://statiq.dev/news/2020/06/06/statiq.web-1.0.0-alpha.17" />
-		<updated>2020-06-06T20:38:00Z</updated>
+		<updated>2020-06-06T20:38:23Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a &lt;code&gt;IncludeInSitemap&lt;/code&gt; setting to control whether a document should be included in the sitemap (#907, thanks &amp;#64;&amp;#64;drmathias).&lt;/li&gt;
 &lt;li&gt;Fixed a bug that required feed items to have URI IDs when the specification indicates they can also be arbitrary strings (#906).&lt;/li&gt;
@@ -244,7 +310,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/06/06/statiq.framework-1.0.0-beta.14</id>
 		<title>Statiq.Framework Release 1.0.0-beta.14</title>
 		<link href="https://statiq.dev/news/2020/06/06/statiq.framework-1.0.0-beta.14" />
-		<updated>2020-06-06T19:39:00Z</updated>
+		<updated>2020-06-06T19:39:05Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixed a bug with async context-based &lt;code&gt;Config&lt;/code&gt; delegates not indicating that they don't require a document.&lt;/li&gt;
 &lt;li&gt;Added a &lt;code&gt;IReadOnlyPipelineCollection IExecutionState.ExecutingPipelines&lt;/code&gt; property that provides the currently executing pipelines.&lt;/li&gt;
@@ -264,7 +330,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/26/statiq.web-1.0.0-alpha.16</id>
 		<title>Statiq.Web Release 1.0.0-alpha.16</title>
 		<link href="https://statiq.dev/news/2020/05/26/statiq.web-1.0.0-alpha.16" />
-		<updated>2020-05-26T02:25:00Z</updated>
+		<updated>2020-05-26T02:25:32Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.13"&gt;1.0.0-beta.13&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Added support for reading &lt;code&gt;themesettings.json&lt;/code&gt; and &lt;code&gt;statiq.json&lt;/code&gt; from the theme paths.&lt;/li&gt;
@@ -276,7 +342,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/26/statiq.framework-1.0.0-beta.13</id>
 		<title>Statiq.Framework Release 1.0.0-beta.13</title>
 		<link href="https://statiq.dev/news/2020/05/26/statiq.framework-1.0.0-beta.13" />
-		<updated>2020-05-26T02:21:00Z</updated>
+		<updated>2020-05-26T02:21:42Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Removed the &lt;code&gt;StreamContent&lt;/code&gt; content provider in favor of the new &lt;code&gt;MemoryContent&lt;/code&gt; content provider (should also provide a nice performance boost since there's no more stream locking).&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;IExecutionContext.GetContentProvider()&lt;/code&gt; extensions that take a &lt;code&gt;byte[]&lt;/code&gt; buffer.&lt;/li&gt;
@@ -291,7 +357,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/20/statiq.web-1.0.0-alpha.15</id>
 		<title>Statiq.Web Release 1.0.0-alpha.15</title>
 		<link href="https://statiq.dev/news/2020/05/20/statiq.web-1.0.0-alpha.15" />
-		<updated>2020-05-20T20:30:00Z</updated>
+		<updated>2020-05-20T20:30:40Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added redirect support.&lt;/li&gt;
 &lt;li&gt;Added deployment support for Azure App Service.&lt;/li&gt;
@@ -305,7 +371,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/20/statiq.framework-1.0.0-beta.12</id>
 		<title>Statiq.Framework Release 1.0.0-beta.12</title>
 		<link href="https://statiq.dev/news/2020/05/20/statiq.framework-1.0.0-beta.12" />
-		<updated>2020-05-20T20:25:00Z</updated>
+		<updated>2020-05-20T20:25:50Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added document flattening by default when using the &lt;code&gt;DocumentFileProvider&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Added document flattening by default when using &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterSources()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.FilterDestinations()&lt;/code&gt; extensions.&lt;/li&gt;
@@ -318,7 +384,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/18/statiq.web-1.0.0-alpha.14</id>
 		<title>Statiq.Web Release 1.0.0-alpha.14</title>
 		<link href="https://statiq.dev/news/2020/05/18/statiq.web-1.0.0-alpha.14" />
-		<updated>2020-05-18T02:33:00Z</updated>
+		<updated>2020-05-18T02:33:29Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added support for directory metadata for data files.&lt;/li&gt;
 &lt;li&gt;Added support for front matter in data files.&lt;/li&gt;
@@ -333,7 +399,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/18/statiq.framework-1.0.0-beta.11</id>
 		<title>Statiq.Framework Release 1.0.0-beta.11</title>
 		<link href="https://statiq.dev/news/2020/05/18/statiq.framework-1.0.0-beta.11" />
-		<updated>2020-05-18T02:27:00Z</updated>
+		<updated>2020-05-18T02:27:11Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixed the &lt;code&gt;ProcessSidecarFile&lt;/code&gt; module to pass the media type to child modules.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;IBootstrapper.RunTestAsync()&lt;/code&gt; extensions to assist with testing entire bootstrappers.&lt;/li&gt;
@@ -347,7 +413,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/15/statiq.web-1.0.0-alpha.13</id>
 		<title>Statiq.Web Release 1.0.0-alpha.13</title>
 		<link href="https://statiq.dev/news/2020/05/15/statiq.web-1.0.0-alpha.13" />
-		<updated>2020-05-15T01:46:00Z</updated>
+		<updated>2020-05-15T01:46:24Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixed a bug in the preview command that exited on failures.&lt;/li&gt;
 &lt;li&gt;Changed preview server to listen to any hostname/IP on the specified port (this allows use from services like Gitpod).&lt;/li&gt;
@@ -359,7 +425,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/15/statiq.framework-1.0.0-beta.10</id>
 		<title>Statiq.Framework Release 1.0.0-beta.10</title>
 		<link href="https://statiq.dev/news/2020/05/15/statiq.framework-1.0.0-beta.10" />
-		<updated>2020-05-15T01:40:00Z</updated>
+		<updated>2020-05-15T01:40:56Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Better engine and pipeline exception handling and log messages.&lt;/li&gt;
 &lt;li&gt;Added a new &lt;code&gt;--debug&lt;/code&gt; CLI flag to launch a debugger and attach it.&lt;/li&gt;
@@ -370,7 +436,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.12</id>
 		<title>Statiq.Web Release 1.0.0-alpha.12</title>
 		<link href="https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.12" />
-		<updated>2020-05-07T14:33:00Z</updated>
+		<updated>2020-05-07T14:33:52Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a new &lt;code&gt;Bootstrapper.AddWeb()&lt;/code&gt; extension to add Statiq Web functionality to an existing bootstrapper.&lt;/li&gt;
 &lt;/ul&gt;
@@ -380,7 +446,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.11</id>
 		<title>Statiq.Web Release 1.0.0-alpha.11</title>
 		<link href="https://statiq.dev/news/2020/05/07/statiq.web-1.0.0-alpha.11" />
-		<updated>2020-05-07T02:16:00Z</updated>
+		<updated>2020-05-07T02:16:13Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changed resource mirroring to be opt-in instead of opt-out (you now need to set &lt;code&gt;MirrorResources&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; to enable) (#896).&lt;/li&gt;
 &lt;li&gt;Fix to filter tree placeholder pages out of the &lt;code&gt;Sitemap&lt;/code&gt; pipeline (#895).&lt;/li&gt;
@@ -391,7 +457,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/07/statiq.framework-1.0.0-beta.9</id>
 		<title>Statiq.Framework Release 1.0.0-beta.9</title>
 		<link href="https://statiq.dev/news/2020/05/07/statiq.framework-1.0.0-beta.9" />
-		<updated>2020-05-07T02:04:00Z</updated>
+		<updated>2020-05-07T02:04:52Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fix not to reuse a &lt;code&gt;HttpRequest&lt;/code&gt; during retry, changed the &lt;code&gt;HttpClient.SendWithRetryAsync()&lt;/code&gt; and related methods to take a factory instead of a single request (#98).&lt;/li&gt;
 &lt;li&gt;Fix for a &lt;code&gt;PipelineBuilder&lt;/code&gt; with no actions to return an empty pipeline.&lt;/li&gt;
@@ -403,7 +469,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/06/statiq.web-1.0.0-alpha.10</id>
 		<title>Statiq.Web Release 1.0.0-alpha.10</title>
 		<link href="https://statiq.dev/news/2020/05/06/statiq.web-1.0.0-alpha.10" />
-		<updated>2020-05-06T12:28:00Z</updated>
+		<updated>2020-05-06T12:28:52Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changed the default theme input path to &amp;quot;theme/input&amp;quot; in preparation for work on dedicated theme folders (see #891).&lt;/li&gt;
 &lt;li&gt;Added a new &lt;code&gt;RenderPostProcessTemplates&lt;/code&gt; key that prevents running post-processing templates like Razor.&lt;/li&gt;
@@ -420,7 +486,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/06/statiq.framework-1.0.0-beta.8</id>
 		<title>Statiq.Framework Release 1.0.0-beta.8</title>
 		<link href="https://statiq.dev/news/2020/05/06/statiq.framework-1.0.0-beta.8" />
-		<updated>2020-05-06T12:17:00Z</updated>
+		<updated>2020-05-06T12:17:06Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;IReadOnlyDictionary&amp;lt;string, Type&amp;gt;&lt;/code&gt; implementation to &lt;code&gt;ClassCatalog&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Optimized &lt;code&gt;ScriptMetadataValue&lt;/code&gt; metadata caching for big performance gains in certain scenarios.&lt;/li&gt;
@@ -434,7 +500,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/05/04/statiq.framework-1.0.0-beta.7</id>
 		<title>Statiq.Framework Release 1.0.0-beta.7</title>
 		<link href="https://statiq.dev/news/2020/05/04/statiq.framework-1.0.0-beta.7" />
-		<updated>2020-05-04T12:29:00Z</updated>
+		<updated>2020-05-04T12:29:12Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a &lt;code&gt;IDocument.GetParent()&lt;/code&gt; overload that uses the current execution context and doesn't require passing in a set of candidate documents.&lt;/li&gt;
 &lt;li&gt;The &lt;code&gt;GenerateFeeds&lt;/code&gt; module now replaces relative links in item descriptions and content.&lt;/li&gt;
@@ -446,7 +512,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/28/statiq.web-1.0.0-alpha.9</id>
 		<title>Statiq.Web Release 1.0.0-alpha.9</title>
 		<link href="https://statiq.dev/news/2020/04/28/statiq.web-1.0.0-alpha.9" />
-		<updated>2020-04-28T00:42:00Z</updated>
+		<updated>2020-04-28T00:42:25Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixed xref resolution to report all errors in a given document at once.&lt;/li&gt;
 &lt;li&gt;Changed the xref space placeholder character to a dash to match/roundtrip automatic file name titles.&lt;/li&gt;
@@ -458,7 +524,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/22/statiq.web-1.0.0-alpha.8</id>
 		<title>Statiq.Web Release 1.0.0-alpha.8</title>
 		<link href="https://statiq.dev/news/2020/04/22/statiq.web-1.0.0-alpha.8" />
-		<updated>2020-04-22T17:51:00Z</updated>
+		<updated>2020-04-22T17:51:41Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added support for validating links.&lt;/li&gt;
 &lt;li&gt;Refactored xref error messages to display for all documents at once (instead of one at a time).&lt;/li&gt;
@@ -469,7 +535,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/22/statiq.framework-1.0.0-beta.6</id>
 		<title>Statiq.Framework Release 1.0.0-beta.6</title>
 		<link href="https://statiq.dev/news/2020/04/22/statiq.framework-1.0.0-beta.6" />
-		<updated>2020-04-22T17:17:00Z</updated>
+		<updated>2020-04-22T17:17:55Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Refactored the &lt;code&gt;ValidateLinks&lt;/code&gt; module to accept &lt;code&gt;Config&amp;lt;bool&amp;gt;&lt;/code&gt; settings.&lt;/li&gt;
 &lt;li&gt;Changed shortcode semantics to only pass new metadata down (metadata is no longer merged up to host document, even though no existing shortcodes did that anyway).&lt;/li&gt;
@@ -483,7 +549,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/20/statiq.web-1.0.0-alpha.7</id>
 		<title>Statiq.Web Release 1.0.0-alpha.7</title>
 		<link href="https://statiq.dev/news/2020/04/20/statiq.web-1.0.0-alpha.7" />
-		<updated>2020-04-20T22:22:00Z</updated>
+		<updated>2020-04-20T22:22:01Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added xref support for links like &amp;quot;xref:xyz&amp;quot; where &amp;quot;xyz&amp;quot; is the value of the &amp;quot;Xref&amp;quot; metadata, the document title with spaces converted to underscores if no &amp;quot;Xref&amp;quot; value is defined, or the source file name if neither of those are available.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;IExecutionContext.TryGetXrefDocument()&lt;/code&gt; and &lt;code&gt;IExecutionContext.GetXrefDocument()&lt;/code&gt; extension methods to get a document by xref.&lt;/li&gt;
@@ -495,7 +561,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/20/statiq.framework-1.0.0-beta.5</id>
 		<title>Statiq.Framework Release 1.0.0-beta.5</title>
 		<link href="https://statiq.dev/news/2020/04/20/statiq.framework-1.0.0-beta.5" />
-		<updated>2020-04-20T22:10:00Z</updated>
+		<updated>2020-04-20T22:10:15Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a &lt;code&gt;Markdown&lt;/code&gt; shortcode to render Markdown content anywhere (for example, in another templating language like Razor).&lt;/li&gt;
 &lt;/ul&gt;
@@ -505,7 +571,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/18/statiq.web-1.0.0-alpha.6</id>
 		<title>Statiq.Web Release 1.0.0-alpha.6</title>
 		<link href="https://statiq.dev/news/2020/04/18/statiq.web-1.0.0-alpha.6" />
-		<updated>2020-04-18T01:22:00Z</updated>
+		<updated>2020-04-18T01:22:39Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added support for Handlebars for files with a &amp;quot;.hbs&amp;quot; or &amp;quot;.handlebars&amp;quot; extension.&lt;/li&gt;
 &lt;li&gt;Added ability to specify a default template via the &lt;code&gt;Bootstrapper.SetDefaultTemplate()&lt;/code&gt; extension.&lt;/li&gt;
@@ -520,7 +586,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/18/statiq.framework-1.0.0-beta.4</id>
 		<title>Statiq.Framework Release 1.0.0-beta.4</title>
 		<link href="https://statiq.dev/news/2020/04/18/statiq.framework-1.0.0-beta.4" />
-		<updated>2020-04-18T01:16:00Z</updated>
+		<updated>2020-04-18T01:16:06Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added Handlebars media types.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;WithInputDocument()&lt;/code&gt; to the &lt;code&gt;EnumerateValues&lt;/code&gt; module to include the original input document in the enumeration.&lt;/li&gt;
@@ -537,7 +603,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/12/statiq.web-1.0.0-alpha.5</id>
 		<title>Statiq.Web Release 1.0.0-alpha.5</title>
 		<link href="https://statiq.dev/news/2020/04/12/statiq.web-1.0.0-alpha.5" />
-		<updated>2020-04-12T15:40:00Z</updated>
+		<updated>2020-04-12T15:40:06Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Refactored the &lt;code&gt;ReadGitHub&lt;/code&gt; module to take configuration values.&lt;/li&gt;
 &lt;li&gt;The &amp;quot;Content&amp;quot; and &amp;quot;Data&amp;quot; pipelines now concatenate all documents from pipelines that declare themselves a dependency using &lt;code&gt;IPipeline.DependencyOf&lt;/code&gt;.&lt;/li&gt;
@@ -548,7 +614,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/12/statiq.framework-1.0.0-beta.3</id>
 		<title>Statiq.Framework Release 1.0.0-beta.3</title>
 		<link href="https://statiq.dev/news/2020/04/12/statiq.framework-1.0.0-beta.3" />
-		<updated>2020-04-12T15:18:00Z</updated>
+		<updated>2020-04-12T15:18:28Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;The &lt;code&gt;OrderDocuments&lt;/code&gt; module will now attempt to convert incompatible values.&lt;/li&gt;
 &lt;li&gt;Improved document path error messages to include path.&lt;/li&gt;
@@ -560,7 +626,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/10/statiq.framework-1.0.0-beta.2</id>
 		<title>Statiq.Framework Release 1.0.0-beta.2</title>
 		<link href="https://statiq.dev/news/2020/04/10/statiq.framework-1.0.0-beta.2" />
-		<updated>2020-04-10T23:48:00Z</updated>
+		<updated>2020-04-10T23:48:13Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changes the &lt;code&gt;GenerateFeeds&lt;/code&gt; module to order by descending publish date to meet feed conventions and adds a &lt;code&gt;GeenrateFeeds.PreserveOrdering(bool)&lt;/code&gt; method to revert to old behavior (#92).&lt;/li&gt;
 &lt;li&gt;Fixed a bug with the &lt;code&gt;OptimizeFileName&lt;/code&gt; stripping the path when optimizing the destination file name (#93).&lt;/li&gt;
@@ -578,7 +644,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/09/statiq.web-1.0.0-alpha.4</id>
 		<title>Statiq.Web Release 1.0.0-alpha.4</title>
 		<link href="https://statiq.dev/news/2020/04/09/statiq.web-1.0.0-alpha.4" />
-		<updated>2020-04-09T12:42:00Z</updated>
+		<updated>2020-04-09T12:42:05Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a new DeployGitHubPages module.&lt;/li&gt;
 &lt;li&gt;Moved the preview and serve commands into Statiq.Web from Statiq.App.&lt;/li&gt;
@@ -602,7 +668,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/04/09/statiq.framework-1.0.0-beta.1</id>
 		<title>Statiq.Framework Release 1.0.0-beta.1</title>
 		<link href="https://statiq.dev/news/2020/04/09/statiq.framework-1.0.0-beta.1" />
-		<updated>2020-04-09T03:11:00Z</updated>
+		<updated>2020-04-09T03:11:20Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added Statiq.Handlebars and a &lt;code&gt;RenderHandlebars&lt;/code&gt; module (#67, #90, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
 &lt;li&gt;Refactored the &lt;code&gt;OptimizeFileName&lt;/code&gt; module and added some extra configuration methods.&lt;/li&gt;
@@ -642,7 +708,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/03/27/statiq.framework-1.0.0-alpha.29</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.29</title>
 		<link href="https://statiq.dev/news/2020/03/27/statiq.framework-1.0.0-alpha.29" />
-		<updated>2020-03-27T02:39:00Z</updated>
+		<updated>2020-03-27T02:39:57Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Moved a bunch of &lt;code&gt;IBootstrapper&lt;/code&gt; extensions to Statiq.Common so they're available from extension libraries in an &lt;code&gt;IInitializer&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Renamed &lt;code&gt;IConfigurableBootstrapper&lt;/code&gt; to &lt;code&gt;IBootstrapper&lt;/code&gt;.&lt;/li&gt;
@@ -684,7 +750,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/03/08/statiq.web-1.0.0-alpha.3</id>
 		<title>Statiq.Web Release 1.0.0-alpha.3</title>
 		<link href="https://statiq.dev/news/2020/03/08/statiq.web-1.0.0-alpha.3" />
-		<updated>2020-03-08T21:21:00Z</updated>
+		<updated>2020-03-08T21:21:57Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a new Feeds pipeline that creates RSS and Atom feeds based on a definition file.&lt;/li&gt;
 &lt;li&gt;Added a new Data pipeline that reads YAML and JSON files.&lt;/li&gt;
@@ -696,7 +762,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/03/08/statiq.framework-1.0.0-alpha.28</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.28</title>
 		<link href="https://statiq.dev/news/2020/03/08/statiq.framework-1.0.0-alpha.28" />
-		<updated>2020-03-08T21:13:00Z</updated>
+		<updated>2020-03-08T21:13:45Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;ctx&lt;/code&gt; and &lt;code&gt;doc&lt;/code&gt; shorthand properties to the scripted metadata script host.&lt;/li&gt;
 &lt;li&gt;Ensured that scripted metadata uses a strongly-typed property in the script host for metadata properties like &lt;code&gt;Source&lt;/code&gt; and &lt;code&gt;Destination&lt;/code&gt;.&lt;/li&gt;
@@ -714,7 +780,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/02/29/statiq.framework-1.0.0-alpha.27</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.27</title>
 		<link href="https://statiq.dev/news/2020/02/29/statiq.framework-1.0.0-alpha.27" />
-		<updated>2020-02-29T01:06:00Z</updated>
+		<updated>2020-02-29T01:06:50Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added support to &lt;code&gt;MergeDocuments&lt;/code&gt; and &lt;code&gt;MergeMetadata&lt;/code&gt; for keeping existing metadata when merging.&lt;/li&gt;
 &lt;li&gt;Added a new &lt;code&gt;MergeContent&lt;/code&gt; module that merges content from child modules to input documents.&lt;/li&gt;
@@ -730,7 +796,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/02/25/statiq.framework-1.0.0-alpha.26</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.26</title>
 		<link href="https://statiq.dev/news/2020/02/25/statiq.framework-1.0.0-alpha.26" />
-		<updated>2020-02-25T03:15:00Z</updated>
+		<updated>2020-02-25T03:15:45Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added a phase timeline graphic to the execution summary output.&lt;/li&gt;
 &lt;li&gt;Added some &lt;code&gt;Span&amp;lt;char&amp;gt;.Replace()&lt;/code&gt; extension methods.&lt;/li&gt;
@@ -748,7 +814,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/02/12/statiq.framework-1.0.0-alpha.25</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.25</title>
 		<link href="https://statiq.dev/news/2020/02/12/statiq.framework-1.0.0-alpha.25" />
-		<updated>2020-02-12T03:42:00Z</updated>
+		<updated>2020-02-12T03:42:15Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added support for object-based settings to the bootstrapper (as opposed to just initial string-based configuration).&lt;/li&gt;
 &lt;li&gt;Added support for &lt;code&gt;IConfig&lt;/code&gt; metadata values.&lt;/li&gt;
@@ -763,7 +829,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/02/10/statiq.framework-1.0.0-alpha.24</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.24</title>
 		<link href="https://statiq.dev/news/2020/02/10/statiq.framework-1.0.0-alpha.24" />
-		<updated>2020-02-10T15:36:00Z</updated>
+		<updated>2020-02-10T15:36:22Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added new &lt;code&gt;ProcessHtml&lt;/code&gt; module for more flexible processing of DOM nodes.&lt;/li&gt;
 &lt;li&gt;Added new &lt;code&gt;IEnumerable&amp;lt;IDocument&amp;gt;.Flatten()&lt;/code&gt; extension to flatten document trees.&lt;/li&gt;
@@ -800,7 +866,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2020/01/13/statiq.framework-1.0.0-alpha.23</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.23</title>
 		<link href="https://statiq.dev/news/2020/01/13/statiq.framework-1.0.0-alpha.23" />
-		<updated>2020-01-13T17:23:00Z</updated>
+		<updated>2020-01-13T17:23:50Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changing target for all projects to .NET Core 3.1 LTS&lt;/li&gt;
 &lt;li&gt;New &lt;code&gt;Eval&lt;/code&gt; shortcode (#37, #68, thanks &amp;#64;&amp;#64;ProH4Ck)&lt;/li&gt;
@@ -812,7 +878,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/12/13/statiq.framework-1.0.0-alpha.22</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.22</title>
 		<link href="https://statiq.dev/news/2019/12/13/statiq.framework-1.0.0-alpha.22" />
-		<updated>2019-12-13T04:35:00Z</updated>
+		<updated>2019-12-13T04:35:16Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixes a bug with &lt;code&gt;MirrorResources&lt;/code&gt; and relative links (#72, thanks &amp;#64;&amp;#64;dafergu2)&lt;/li&gt;
 &lt;li&gt;The &lt;code&gt;PhaseOutputs&lt;/code&gt; collection now returns output documents from the most recent available phase or an empty result set if no phases were defined.&lt;/li&gt;
@@ -824,7 +890,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/12/05/statiq.framework-1.0.0-alpha.21</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.21</title>
 		<link href="https://statiq.dev/news/2019/12/05/statiq.framework-1.0.0-alpha.21" />
-		<updated>2019-12-05T19:33:00Z</updated>
+		<updated>2019-12-05T19:33:23Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixes a bug with parallel modules when they return a null enumerable.&lt;/li&gt;
 &lt;li&gt;Adds &lt;code&gt;AnalyzeCSharp.WithCompilationAssemblyName()&lt;/code&gt; to set the name of the module compilation (#71).&lt;/li&gt;
@@ -844,7 +910,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/24/statiq.framework-1.0.0-alpha.20</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.20</title>
 		<link href="https://statiq.dev/news/2019/11/24/statiq.framework-1.0.0-alpha.20" />
-		<updated>2019-11-24T04:22:00Z</updated>
+		<updated>2019-11-24T04:22:04Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Split &lt;code&gt;DefaultFeatures.Commands&lt;/code&gt; into &lt;code&gt;DefaultFeatures.BuildCommands&lt;/code&gt;, &lt;code&gt;DefaultFeatures.HostingCommands&lt;/code&gt;, and &lt;code&gt;DefaultFeatures.CustomCommands&lt;/code&gt; for finer control.&lt;/li&gt;
 &lt;li&gt;Renamed &lt;code&gt;DefaultsToAdd&lt;/code&gt; to &lt;code&gt;DefaultFeatures&lt;/code&gt;.&lt;/li&gt;
@@ -862,7 +928,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/22/statiq.framework-1.0.0-alpha.19</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.19</title>
 		<link href="https://statiq.dev/news/2019/11/22/statiq.framework-1.0.0-alpha.19" />
-		<updated>2019-11-22T04:14:00Z</updated>
+		<updated>2019-11-22T04:14:37Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;StartProcess.WithArgument()&lt;/code&gt; methods to add arguments to the module using a fluent interface.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;Config&amp;lt;TValue&amp;gt;.CombineWith()&lt;/code&gt; extensions for combining two configs.&lt;/li&gt;
@@ -879,7 +945,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/08/statiq.framework-1.0.0-alpha.18</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.18</title>
 		<link href="https://statiq.dev/news/2019/11/08/statiq.framework-1.0.0-alpha.18" />
-		<updated>2019-11-08T03:21:00Z</updated>
+		<updated>2019-11-08T03:21:17Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Updated several low-risk package versions.&lt;/li&gt;
 &lt;li&gt;Adds option names to all command option values (#64, thanks &amp;#64;&amp;#64;patriksvensson).&lt;/li&gt;
@@ -892,7 +958,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.17</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.17</title>
 		<link href="https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.17" />
-		<updated>2019-11-07T20:53:00Z</updated>
+		<updated>2019-11-07T20:53:10Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Small -- prefix in console/logs to help indicate when a pipeline phase is finished.&lt;/li&gt;
 &lt;li&gt;Set longer timeouts for App Service uploads.&lt;/li&gt;
@@ -904,7 +970,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.16</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.16</title>
 		<link href="https://statiq.dev/news/2019/11/07/statiq.framework-1.0.0-alpha.16" />
-		<updated>2019-11-07T19:07:00Z</updated>
+		<updated>2019-11-07T19:07:24Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixes a bug in dependency ordering where deployment pipeline output phases were being run too early.&lt;/li&gt;
 &lt;/ul&gt;
@@ -914,7 +980,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/11/06/statiq.framework-1.0.0-alpha.15</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.15</title>
 		<link href="https://statiq.dev/news/2019/11/06/statiq.framework-1.0.0-alpha.15" />
-		<updated>2019-11-06T15:02:00Z</updated>
+		<updated>2019-11-06T15:02:06Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;SetMediaType&lt;/code&gt; module to set the media type without changing the content.&lt;/li&gt;
 &lt;li&gt;Changed the semantics of &lt;code&gt;IDocument.ContentProvider&lt;/code&gt; so that it's never null.&lt;/li&gt;
@@ -936,7 +1002,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/31/statiq.framework-1.0.0-alpha.14</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.14</title>
 		<link href="https://statiq.dev/news/2019/10/31/statiq.framework-1.0.0-alpha.14" />
-		<updated>2019-10-31T13:51:00Z</updated>
+		<updated>2019-10-31T13:51:25Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;The string overload of &lt;code&gt;SetDestination&lt;/code&gt; now takes either an extension or a path distinguished by a preceding dot.&lt;/li&gt;
 &lt;li&gt;Updated Statiq.Razor to 3.0 libraries.&lt;/li&gt;
@@ -948,7 +1014,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/24/statiq.framework-1.0.0-alpha.13</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.13</title>
 		<link href="https://statiq.dev/news/2019/10/24/statiq.framework-1.0.0-alpha.13" />
-		<updated>2019-10-24T15:48:00Z</updated>
+		<updated>2019-10-24T15:48:31Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Fixes &lt;code&gt;ExecuteIf&lt;/code&gt; to work when there are no input documents and the config doesn't require one.&lt;/li&gt;
 &lt;li&gt;Fixes bug calculating command name for generic command types.&lt;/li&gt;
@@ -960,7 +1026,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.12</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.12</title>
 		<link href="https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.12" />
-		<updated>2019-10-23T18:11:00Z</updated>
+		<updated>2019-10-23T18:11:03Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changed &lt;code&gt;IBoostrapper.ConfigureSettings()&lt;/code&gt; to use a new &lt;code&gt;IConfigurationSettings&lt;/code&gt; object that exposes the settings and the underlying &lt;code&gt;IConfiguration&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Renamed the execution-time &lt;code&gt;IConfigurationSettings&lt;/code&gt; to &lt;code&gt;IReadOnlyConfigurationSettings&lt;/code&gt; and introduced a new mutable &lt;code&gt;IConfigurationSettings&lt;/code&gt; to use in the bootstrapper.&lt;/li&gt;
@@ -972,7 +1038,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.11</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.11</title>
 		<link href="https://statiq.dev/news/2019/10/23/statiq.framework-1.0.0-alpha.11" />
-		<updated>2019-10-23T03:09:00Z</updated>
+		<updated>2019-10-23T03:09:55Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Changed &lt;code&gt;IBootstrapper.AddSettings()&lt;/code&gt; calls to run after other configuration.&lt;/li&gt;
 &lt;li&gt;Adds a single pattern overload to &lt;code&gt;ReadFiles&lt;/code&gt;.&lt;/li&gt;
@@ -1000,7 +1066,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/18/statiq.framework-1.0.0-alpha.9</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.9</title>
 		<link href="https://statiq.dev/news/2019/10/18/statiq.framework-1.0.0-alpha.9" />
-		<updated>2019-10-18T03:16:00Z</updated>
+		<updated>2019-10-18T03:16:05Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Added &lt;code&gt;IBootstrapper.AddDelegateCommand()&lt;/code&gt; fluent methods to configure delegate-based commands.&lt;/li&gt;
 &lt;li&gt;Added &lt;code&gt;IBootstrapper.AddBuildCommand()&lt;/code&gt; fluent methods to configure simple commands that build specified pipelines.&lt;/li&gt;
@@ -1018,7 +1084,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/09/statiq.framework-1.0.0-alpha.8</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.8</title>
 		<link href="https://statiq.dev/news/2019/10/09/statiq.framework-1.0.0-alpha.8" />
-		<updated>2019-10-09T02:29:00Z</updated>
+		<updated>2019-10-09T02:29:36Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Adds &lt;code&gt;==&lt;/code&gt; overloads to &lt;code&gt;NormalizedPath&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Adds a special &lt;code&gt;RenderSection()&lt;/code&gt; to &lt;code&gt;StatiqRazorPage&lt;/code&gt; that renders default content if the section is not defined.&lt;/li&gt;
@@ -1033,7 +1099,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/04/statiq.framework-1.0.0-alpha.7</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.7</title>
 		<link href="https://statiq.dev/news/2019/10/04/statiq.framework-1.0.0-alpha.7" />
-		<updated>2019-10-04T19:24:00Z</updated>
+		<updated>2019-10-04T19:24:25Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Adds support for deployment pipelines (&lt;code&gt;IPipeline.Deployment&lt;/code&gt;) which run their output phase only after other output phases (#57).&lt;/li&gt;
 &lt;li&gt;Fixes a bug when specifying a setting on the CLI and the bootstrapper.&lt;/li&gt;
@@ -1047,7 +1113,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/03/statiq.framework-1.0.0-alpha.6</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.6</title>
 		<link href="https://statiq.dev/news/2019/10/03/statiq.framework-1.0.0-alpha.6" />
-		<updated>2019-10-03T12:57:00Z</updated>
+		<updated>2019-10-03T12:57:26Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Adds back a &lt;code&gt;ExecuteModules&lt;/code&gt; module that works like the old &lt;code&gt;Branch&lt;/code&gt; module used to by dropping any output documents from the child modules.&lt;/li&gt;
 &lt;li&gt;Tweaks to the placeholder factory in &lt;code&gt;CreateTree&lt;/code&gt;.&lt;/li&gt;
@@ -1060,7 +1126,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/10/01/statiq.framework-1.0.0-alpha.5</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.5</title>
 		<link href="https://statiq.dev/news/2019/10/01/statiq.framework-1.0.0-alpha.5" />
-		<updated>2019-10-01T17:13:00Z</updated>
+		<updated>2019-10-01T17:13:51Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Adds &lt;code&gt;StartProcess.KeepContent()&lt;/code&gt; to prevent replacing document content with process output.&lt;/li&gt;
 &lt;li&gt;Adds &lt;code&gt;StartProcess.OnlyOnce()&lt;/code&gt; to only execute the process once.&lt;/li&gt;
@@ -1085,7 +1151,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/09/25/statiq.framework-1.0.0-alpha.4</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.4</title>
 		<link href="https://statiq.dev/news/2019/09/25/statiq.framework-1.0.0-alpha.4" />
-		<updated>2019-09-25T18:54:00Z</updated>
+		<updated>2019-09-25T18:54:46Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Updated to .NET Core 3.0 final&lt;/li&gt;
 &lt;li&gt;Isolated pipelines can now be dependencies of other pipelines (but output documents still can't be accessed).&lt;/li&gt;
@@ -1105,7 +1171,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/09/20/statiq.framework-1.0.0-alpha.3</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.3</title>
 		<link href="https://statiq.dev/news/2019/09/20/statiq.framework-1.0.0-alpha.3" />
-		<updated>2019-09-20T01:27:00Z</updated>
+		<updated>2019-09-20T01:27:02Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;New execution summary table logged after execution.&lt;/li&gt;
 &lt;li&gt;New console logger with better output.&lt;/li&gt;
@@ -1117,7 +1183,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/09/18/statiq.framework-1.0.0-alpha.2</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.2</title>
 		<link href="https://statiq.dev/news/2019/09/18/statiq.framework-1.0.0-alpha.2" />
-		<updated>2019-09-18T17:10:00Z</updated>
+		<updated>2019-09-18T17:10:24Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Renamed the GitHub project/repo to &amp;quot;Statiq.Framework&amp;quot; to match forthcoming &amp;quot;Statiq.Web&amp;quot; and to distinguish between primary code repos (prefixed by &amp;quot;Statiq.&amp;quot;) and themes, etc. Also note the upcoming Statiq app will be known as Statiq Web from now on (as opposed to Statiq Framework).&lt;/li&gt;
 &lt;li&gt;The engine now returns a &lt;code&gt;IPipelineOutputs&lt;/code&gt; with the result documents from each pipeline.&lt;/li&gt;
@@ -1137,7 +1203,7 @@ Uses of global properties that refer to other metadata will have to be replaced 
 		<id>https://statiq.dev/news/2019/09/09/statiq.framework-1.0.0-alpha.1</id>
 		<title>Statiq.Framework Release 1.0.0-alpha.1</title>
 		<link href="https://statiq.dev/news/2019/09/09/statiq.framework-1.0.0-alpha.1" />
-		<updated>2019-09-09T15:13:00Z</updated>
+		<updated>2019-09-09T15:13:13Z</updated>
 		<content>&lt;ul&gt;
 &lt;li&gt;Statiq Framework is comprehensive &amp;quot;reboot&amp;quot; of Wyam.&lt;/li&gt;
 &lt;/ul&gt;

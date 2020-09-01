@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Statiq.Framework Release 1.0.0-alpha.25</title>
+        <title>Statiq - Statiq.Framework Release 1.0.0-beta.21</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -87,11 +87,11 @@
                                                 <span><a href="/news">News</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Statiq.Framework Release 1.0.0-alpha.25                                            
+                                            Statiq.Framework Release 1.0.0-beta.21                                            
                                         </div>
 
         <div class="text-white-50">
-            Wednesday, February 12, 2020 in
+            Monday, August 31, 2020 in
             <a href="/news/topics/release"><span class="badge badge-dark">Release Notes</span></a>
         </div>
                                     </div>
@@ -140,12 +140,20 @@
 
 
 <ul>
-<li>Added support for object-based settings to the bootstrapper (as opposed to just initial string-based configuration).</li>
-<li>Added support for <code>IConfig</code> metadata values.</li>
-<li>Added <code>LastWriteTime</code> and <code>CreationTime</code> to <code>IFileSystemEntry</code>.</li>
-<li>Fixed a race condition in <code>ScriptMetadataValue</code>.</li>
-<li>Changed behavior of <code>SetDestination</code> when using a config value to make <code>DestinationPath</code>, <code>DestinationFileName</code>, and <code>DestinationExtension</code> take precedence (with an option to override).</li>
-<li>Added a <code>Context</code> property for the current <code>IExecutionContext</code> to the available script properties (I.e., for use in metadata value scripts via "=&gt;" notation).</li>
+<li>Added some optimizations for async file I/O.</li>
+<li>Added overloads to <code>FilterSources</code> and <code>FilterDestinations</code> modules that accept <code>Config&lt;IEnumerable&lt;string&gt;&gt;</code> for the patterns.</li>
+<li>Fixed <code>IDirectory.GetFiles()</code> and <code>IDirectory.GetDirectories()</code> to make sure excluded paths are excluded from the results.</li>
+<li>Creating a <code>ReadFiles</code> module without any patterns now returns all files.</li>
+<li>Added <code>ExtractFrontMatter.RequireStartDelimiter()</code> to require the front matter to start with a specified delimiter on the first line (for example, <code>/*</code> as the opening of a comment block).</li>
+<li>Added <code>IMetadata.ToJson()</code> utility extensions to serialize an <code>IMetadata</code> object to JSON.</li>
+<li>Fixed a bug where the <code>EvaluateScript</code> module would reset the document media type for content return values.</li>
+<li>Added a new <code>glob eval</code> command to evaluate a globbing pattern against a specified directory and report all the matches.</li>
+<li>Added a new <code>glob test</code> command to test a specified path against a globbing pattern to see if it matches.</li>
+<li>Removes subresource attributes in <code>MirrorResource</code> (#127).</li>
+<li>Updated Spectre.Cli CLI library for better console help messages.</li>
+<li>Added a new <code>ReadApi</code> module for generally reading from an API client (#126, thanks @@unchase).</li>
+<li>Added <code>IBootstrapper.ModifyPipeline()</code> to make it easier to modify an existing pipeline via the bootstrapper.</li>
+<li>Added collection initializer and list support to the <code>ExecuteBranch</code> module.</li>
 </ul>
 
 
