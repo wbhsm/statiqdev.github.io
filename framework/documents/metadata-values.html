@@ -143,6 +143,9 @@
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/modifying-pipelines">Modifying Pipelines</a>
+                                                                                </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/settings">Settings</a>
@@ -237,7 +240,7 @@ My number is &lt;?#= MyNumber /?&gt;.
 <p>The actual value should be a string (the YAML syntax above assumes a string value) that starts with <code>=&gt;</code> and is a full C# script. It can even include multiple statements:</p>
 <pre><code class="language-txt">MyNumber: "=&gt; { int x = 1 + 2; int y = x; return y; }"
 </code></pre>
-<p>The script also a number of predefined global properties available to it (see the <code>ScriptBase</code> class in <code>Statiq.Core</code> for all script properties):</p>
+<p>The script also has access to a number of predefined global properties available to it (see the <code>ScriptBase</code> class in <code>Statiq.Core</code> for all script properties):</p>
 <ul>
 <li><code>ExecutionState</code> contains the current <code>IExecutionState</code> object.</li>
 <li><code>Context</code> (and the <code>ctx</code> shorthand) contain the current <a href="/framework/execution#execution-context">execution context</a>.</li>

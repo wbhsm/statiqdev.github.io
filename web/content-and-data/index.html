@@ -169,6 +169,9 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/scripts">Scripts</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/document-hierarchy">Document Hierarchy</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -219,11 +222,8 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content and data.</p>
-<p>Content and data files should be placed in the <code>input</code> folder (or a sub-folder). Whether a file is considered content or data is determined by two <a href="/web/configuration/settings">settings</a>:</p>
-<ul>
-<li>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how <a href="/web/content-and-data/content">content files</a> are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default. This loads all <code>.html</code>, <code>.cshtml</code>, and <code>.md</code> files in any input directory unless it starts with an underscore <code>_</code>.</li>
-<li>The <code>DataFiles</code> <a href="/web/configuration/settings">setting</a> controls how data files are located and is set to <code>**/{!_,}*.{json,yaml,yml}</code> by default. This loads all <code>.json</code>, <code>.yaml</code>, and <code>.yml</code> files in any input directory unless it starts with an underscore <code>_</code>.</li>
-</ul>
+<p>Content and data files should be placed in the <code>input</code> folder (or a sub-folder). Whether a file is considered content or data is determined by its media type (which is inferred from file extension).</p>
+<p>The <code>InputFiles</code> <a href="/web/configuration/settings">setting</a> controls what files from the input folder are loaded and is set to <code>**/{!_,}*</code> by default. This loads all files in any input directory unless it starts with an underscore <code>_</code>.</p>
 <p>Both <a href="/web/content-and-data/content">content files</a> and <a href="/web/content-and-data/data">data files</a> support functionality like <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> files, <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files, and <a href="/web/content-and-data/metadata/front-matter">front matter</a>. The main difference is that <a href="/web/content-and-data/templates">templates</a> like <a href="/framework/content/template-languages#markdown">Markdown</a> and <a href="/framework/content/template-languages#razor">Razor</a> are processed for content files whereas data files are parsed as data formats like JSON and YAML and add to the <a href="/framework/documents">metadata of a document</a>.</p>
 <p>Features like <a href="/web/content-and-data/archives">archives</a> and <a href="/web/content-and-data/feeds">feeds</a> also let you work with content and data and produce different kinds of outputs from them.</p>
 
@@ -245,6 +245,12 @@
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/content-and-data/metadata">Metadata</a></h4>
                                                                 <div class="font-size-sm"><p><a href="/framework/documents#about-metadata">Metadata</a> lets you add bits of information to <a href="/framework/documents">documents</a> and control their behavior.</p></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content-and-data/scripts">Scripts</a></h4>
+                                                                <div class="font-size-sm"><p>Files with a <code>.csx</code> or <code>.cs</code> extension are processed as a script. Similar to <a href="/framework/documents/metadata-values#computed-values">computed values</a>, full scripts also provide access to a number of predefined global properties (see the <code>ScriptBase</code> class in <code>Statiq.Core</code> for all script properties):</p></div>
                                                         </div>
                                                     </div>
                                                     <div>

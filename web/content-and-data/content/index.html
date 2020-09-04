@@ -170,6 +170,9 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/scripts">Scripts</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/document-hierarchy">Document Hierarchy</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -226,7 +229,6 @@
 <li><code>.md</code> processes the file as <a href="/framework/content/template-languages#markdown">Markdown</a>.</li>
 <li><code>.cshtml</code> processes the file as <a href="/framework/content/template-languages#razor">Razor</a>.</li>
 </ul>
-<p>The <code>ContentFiles</code> <a href="/web/configuration/settings">setting</a> controls how content files are located and is set to <code>**/{!_,}*.{html,cshtml,md}</code> by default. This loads all <code>.html</code>, <code>.cshtml</code>, and <code>.md</code> files in any input directory unless it starts with an underscore <code>_</code>.</p>
 <p>In all cases, global processing (such as processing <a href="/web/content-and-data/metadata/front-matter">front matter</a> and applying <a href="/web/content-and-data/content/shortcodes">shortcodes</a>) is performed and <a href="/web/content-and-data/templates#layouts">layouts</a> and <a href="/web/themes">themes</a> are applied.</p>
 <p>Many <a href="/web/themes">themes</a> treat content differently depending on what sub-folder the files are in. For example, themes for blogging often infer blog posts should go in a "input/posts" sub-folder. In most cases the specific paths used for different types of content are <a href="/web/configuration/settings">configurable as settings</a>.</p>
 <h1 id="accessing-content-files">Accessing Content Files</h1>

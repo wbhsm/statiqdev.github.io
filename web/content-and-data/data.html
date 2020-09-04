@@ -170,6 +170,9 @@
                                                                                 </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/scripts">Scripts</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/document-hierarchy">Document Hierarchy</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
@@ -226,7 +229,6 @@
 <li><code>.yaml</code> and <code>.yml</code> processes the file as YAML.</li>
 </ul>
 <p>Regardless of format the data files are parsed and the data in them is added as <a href="/framework/documents#about-metadata">metadata</a> to the resulting documents.</p>
-<p>The <code>DataFiles</code> <a href="/web/configuration/settings">setting</a> controls how data files are located and is set to <code>**/{!_,}*.{json,yaml,yml}</code> by default. This loads all <code>.json</code>, <code>.yaml</code>, and <code>.yml</code> files in any input directory unless it starts with an underscore <code>_</code>.</p>
 <h1 id="accessing-data-files">Accessing Data Files</h1>
 <p>Data files are processed by the <code>Data</code> pipeline and can be accessed through the <code>Outputs</code> property of the <a href="/framework/execution/execution-context">execution context</a> (which is also available directly in some templating languages like <a href="/framework/content/template-languages#razor">Razor</a> as an <code>Outputs</code> property).</p>
 <p>For example, the following code will find all documents containing data from YAML files that describe different fruits stored in a <code>food/fruit</code> folder under the default <code>input</code> folder:</p>

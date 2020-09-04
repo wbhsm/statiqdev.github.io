@@ -143,6 +143,9 @@
                                                                                 <div class="sidebar-nav-item">
                                                                                     <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
                                                                                 </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/modifying-pipelines">Modifying Pipelines</a>
+                                                                                </div>
                                                                         </div>
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/settings">Settings</a>
@@ -294,7 +297,15 @@
 </ul>
 </li>
 </ul>
-<p>Note that relative globbing patterns are often evaluated from the perspective of your <code>input</code> folder and not necessarily from where your config file resides, especially if the pattern is telling Statiq where to find certain files for processing. If you're having problems and a globbing pattern isn't returning the files you think it should, try adjusting it to start from the <code>input</code> folder.</p>
+<p>Note that relative globbing patterns are often evaluated from the perspective of your <code>input</code> folder.</p>
+<h2 id="troubleshooting-globbing-patterns">Troubleshooting Globbing Patterns</h2>
+<p>Statiq provides the <code>glob</code> command to help troubleshoot globbing patterns, which has two subcommands: <code>glob eval</code> and <code>blog test</code>.</p>
+<p>The <code>glob eval</code> command evaluates a globbing pattern against actual files on disk and returns all the files that match:</p>
+<pre><code>dotnet run -- glob eval &lt;pattern&gt; &lt;path&gt;
+</code></pre>
+<p>The <code>glob test</code> command tests a globbing pattern against a provided path and returns whether the pattern would match the path. The path does not have to be a real file or folder:</p>
+<pre><code>dotnet run -- glob test &lt;pattern&gt; &lt;path&gt;
+</code></pre>
 <h1 id="testing">Testing</h1>
 <p>Because the new IO abstraction includes support for virtual file systems, it can be used to greatly simplify testing your custom modules by providing files that don't actually have to exist on disk. Several classes in the <code>Statiq.Testing</code> library are provided to help with this.</p>
 
