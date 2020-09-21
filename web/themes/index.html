@@ -218,6 +218,9 @@
                                                                         <a href="/web/running/preview-server">Preview Server</a>
                                                                     </div>
                                                             </div>
+                                                        <div class="sidebar-nav-item">
+                                                            <a href="/web/porting-from-wyam">Porting From Wyam</a>
+                                                        </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
@@ -256,10 +259,23 @@ folder and can be named:</p>
 </ul>
 <p>Themes can be copied into the <code>theme</code> folder from anywhere. In the future, Statiq will support built-in commands for
 obtaining and working with themes.</p>
+<h1 id="installation">Installation</h1>
+<p>Statiq themes go in a <code>theme</code> folder alongside your <code>input</code> folder. If your site is inside a git repository, you can add the theme as a git submodule.</p>
+<p>For example, to add the <a href="https://github.com/statiqdev/CleanBlog">CleanBlog</a> theme as a submodule:</p>
+<pre><code>git submodule add https://github.com/statiqdev/CleanBlog.git theme
+</code></pre>
+<p>Alternatively you can clone the theme directly:</p>
+<pre><code>git clone https://github.com/statiqdev/CleanBlog.git theme
+</code></pre>
+<p>Once inside the <code>theme</code> folder, Statiq will automatically recognize the theme. If you want to tweak the theme you can edit files directly in the <code>theme</code> folder or copy them to your <code>input</code> folder and edit them there.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#installation">Installation</a></p>
+                                            </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/themes/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>

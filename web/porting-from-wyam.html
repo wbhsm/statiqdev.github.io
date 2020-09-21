@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Preview Server</title>
+        <title>Statiq - Porting From Wyam</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -85,10 +85,9 @@
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column flex-md-row">
                                                 <span><a href="/web">Web</a></span>
-                                                <span><a href="/web/running">Running Your Application</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Preview Server                                            
+                                            Porting From Wyam                                            
                                         </div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -215,76 +214,74 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/running/command-line">Command-Line Interface</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/running/preview-server">Preview Server</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item">
+                                                        <div class="sidebar-nav-item active">
                                                             <a href="/web/porting-from-wyam">Porting From Wyam</a>
                                                         </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq Web comes with a built-in preview server to help you while developing your layout and content.</p>
-<p>You can run the preview server with the <code>preview</code> command which will build the site and launch the server:</p>
-<pre><code class="language-txt">dotnet run -- preview
-</code></pre>
-<p>You can also see help for the preview command by typing:</p>
-<pre><code class="language-txt">dotnet run -- preview --help
-</code></pre>
-<pre><code class="language-txt">USAGE:
-    MyGenerator.dll preview [pipelines] [OPTIONS]
+                                            <p>Statiq Web is roughly compatible with the Wyam blog recipe. Here are some notes if you're porting from Wyam to Statiq Web:</p>
+<ul>
+<li>You will need to <a href="/web">create a Statiq Web app</a> at the root of your site (you can keep the <code>input</code> directory).
+<ul>
+<li>Run <code>dotnet new console</code> at the root of your site.</li>
+<li>Run <code>dotnet add package Statiq.Web --version x.y.z</code> (using the <a href="https://www.nuget.org/packages/Statiq.Web">latest Statiq Web version</a>).</li>
+<li>Change the generated <code>Program</code> class in <code>Program.cs</code> to:</li>
+</ul>
+</li>
+</ul>
+<pre><code>using System;
+using System.Threading.Tasks;
+using Statiq.App;
+using Statiq.Web;
 
-ARGUMENTS:
-    [pipelines]    The pipeline(s) to execute
-
-OPTIONS:
-    -h, --help                   Prints help information
-    -l, --log-level &lt;LEVEL&gt;      Sets the minimum log level ("Critical", "Error", "Warning", "Information", "Debug", "Trace", "None")
-        --attach                 Pause execution at the start of the program until a debugger is attached
-        --debug                  Allows you to select a debugger to attach
-    -f, --log-file &lt;LOGFILE&gt;     Log all messages to the specified log file
-    -s, --setting &lt;SETTING&gt;      Specifies a setting as a key=value pair (the value can be omited)
-    -i, --input &lt;PATH&gt;           The path(s) of input files, can be absolute or relative to the current folder
-    -o, --output &lt;PATH&gt;          The path to output files, can be absolute or relative to the current folder
-        --noclean                Prevents cleaning of the output path on each execution
-        --nocache                Prevents caching information during execution (less memory usage but slower execution)
-        --stdin                  Reads standard input at startup and sets ApplicationInput in the execution context
-        --serial                 Executes pipeline phases and modules in serial
-    -r, --root                   The root folder to use
-    -n, --normal                 Executes normal pipelines as well as those specified
-        --port &lt;PORT&gt;            Start the preview web server on the specified port (default is 5080)
-        --force-ext              Force the use of extensions in the preview web server (by default, extensionless URLs may be used)
-        --virtual-dir &lt;PATH&gt;     Serve files in the preview web server under the specified virtual directory
-        --content-type &lt;TYPE&gt;    Specifies additional supported content types for the preview server as extension=contenttype
-        --no-watch               Turns off watching the input folder(s) for changes and rebuilding
-        --no-reload              Turns off LiveReload support after changes
+namespace ...
+{
+  public class Program
+  {
+    public static async Task&lt;int&gt; Main(string[] args) =&gt;
+      await Bootstrapper
+        .Factory
+        .CreateWeb(args)
+        .RunAsync();
+  }
+}
 </code></pre>
-<h1 id="configuration">Configuration</h1>
-<p>You can set the port to use for the preview server with the <code>--port</code> option:</p>
-<pre><code class="language-txt">dotnet run -- preview --port 1234
-</code></pre>
-<p>There are also several other options that can be set (see the help output above).</p>
-<h1 id="live-reload">Live Reload</h1>
-<p>When building in preview mode, Statiq will inject a <a href="http://livereload.com">LiveReload</a> script into your generated output and will trigger reload
-on rebuilds. This will immediatly refresh the page you're viewing with new content (you don't have to hit the refresh button).
-Sometimes this gets disconnected and a quick browser refresh will reconnect LiveReload support.</p>
-<h1 id="serving-without-build">Serving Without Build</h1>
-<p>You can also launch the preview server and serve the contents of the <code>output</code> directory without rebuilding the site
-using the <code>serve</code> command:</p>
-<pre><code class="language-txt">dotnet run -- serve
-</code></pre>
+<ul>
+<li><p>Find a <a href="/web/themes">theme</a> and follow the <a href="/web/themes#installation">installation instructions</a> to install the theme into your site (optional).</p>
+</li>
+<li><p>Create a <code>settings.yml</code> file at the root of your site and copy over settings from your <code>config.wyam</code> file</p>
+<ul>
+<li>Since the new settings file is YAML you don't need to prefix strings or anything, for example <code>Settings[Keys.Host] = "daveaglick.com";</code> becomes <code>Host: daveaglick.com</code>.</li>
+<li>If you defined a global "Title" setting in <code>config.wyam</code> the new theme should set "SiteTitle" instead (and if not, a "SiteTitle" should be defined).</li>
+<li>If you defined an "Intro" setting, that should be placed in a new <code>_index.yml</code> file in your <code>input</code> directory with a key of "Description".</li>
+</ul>
+</li>
+<li><p>If you created an <code>input/assets/css/override.css</code> file, move it to <code>input/scss/_overrides.scss</code> (and you can now use Sass inside the CSS overrides file).</p>
+</li>
+<li><p>Replace any uses of <code>img-response</code> CSS class with <code>img-fluid</code> since this theme uses a newer version of Bootstrap and that CSS class changed.</p>
+</li>
+<li><p>Rename and fix up any override theme files or partials according to the supported ones documented in the new theme.</p>
+<ul>
+<li>For example, the old Wyam CleanBlog supported a <code>_PostFooter.cshtml</code> which should be renamed to <code>_post-footer.cshtml</code> in the new Statiq <a href="https://github.com/statiqdev/CleanBlog">CleanBlog</a> theme.</li>
+<li>The CSS may not match exactly, especially if you're changing themes, so you may need to take a look at the default partial implementations in the new theme and adjust your override files accordingly.</li>
+</ul>
+</li>
+<li><p>You can likely remove any build scripting and bootstrapping code since you can now run <code>dotnet run -- preview</code> to preview the site.</p>
+<ul>
+<li>You can also now setup <a href="/web/deployment">built-in deployment</a>.</li>
+</ul>
+</li>
+</ul>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                            <div class="border-bottom mb-3">
-                                                <p class="small font-weight-bold">On This Page</p>
-                                                    <p class="small"><a href="#configuration">Configuration</a></p>
-                                                    <p class="small"><a href="#live-reload">Live Reload</a></p>
-                                                    <p class="small"><a href="#serving-without-build">Serving Without Build</a></p>
-                                            </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/running/preview-server.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/porting-from-wyam.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
