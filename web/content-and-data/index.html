@@ -68,6 +68,9 @@
                                             <a class="nav-link" href="https://twitter.com/statiqdev"><i class="fab fa-twitter"></i> Twitter</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="https://github.com/statiqdev/Discussions/discussions"><i class="fad fa-question-circle"></i> Get Help</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link font-weight-bold text-red" href="/support"><i class="fad fa-heart icon-red"></i> Support</a>
                                         </li>
                                     </ul>
@@ -131,6 +134,9 @@
                                                             <a href="/web/content-and-data">Content And Data</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/content-and-data/assets">Assets</a>
+                                                                    </div>
                                                                     <div class="sidebar-nav-item has-children">
                                                                         <a href="/web/content-and-data/content">Content</a>
                                                                     </div>
@@ -224,14 +230,31 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of content and data.</p>
-<p>Content and data files should be placed in the <code>input</code> folder (or a sub-folder). Whether a file is considered content or data is determined by its media type (which is inferred from file extension).</p>
-<p>The <code>InputFiles</code> <a href="/web/configuration/settings">setting</a> controls what files from the input folder are loaded and is set to <code>**/{!_,}*</code> by default. This loads all files in any input directory unless it starts with an underscore <code>_</code>.</p>
+                                            <p>Statiq Web has a variety of ways of reading, writing, and working with different kinds of files.</p>
+<p>There are three broad categories of files in Statiq Web:</p>
+<ul>
+<li><a href="/web/content-and-data/assets">Assets</a> which are either copied to the output folder directly or transformed during copying. Examples include images, standalone JavaScript, CSS stylesheets, and Less or Sass files.</li>
+<li><a href="/web/content-and-data/content">Content</a> which typically output as HTML files, directly or after one or more <a href="/web/content-and-data/templates">templates</a> are applied. Examples include Markdown, Razor, and HTML files.</li>
+<li><a href="/web/content-and-data/data">Data</a> which may or may not be output and can be used when applying a template to content files. Examples include JSON, YAML, and XML files.</li>
+</ul>
+<p>Files should be placed in the <code>input</code> folder (or a sub-folder) and the <code>InputFiles</code> <a href="/web/configuration/settings">setting</a> controls what files from the input folder are loaded. It's set to <code>**/{!_,}*</code> by default which loads all files in any input directory unless it starts with an underscore <code>_</code>.</p>
+<p>The category of a file, and thus what operations are performed on it, is determined by its media type (which is inferred from its file extension). Unless the file extension is recognized as a content or data file such as Markdown, Razor, JSON, or YAML, the file is considered an asset file. The category can be changed by setting <code>ContentType</code> for the document. For example, you can treat a JSON file which would normally be interpreted as a data file and processed as JSON as an asset file that should be copied to the output folder directly by setting <code>ContentType</code> to <code>Asset</code> via something like a <a href="/web/content-and-data/metadata/sidecar-files">sidecar file</a>.</p>
+<p>Within a given category, the media type of a file determines what <a href="/web/content-and-data/templates">templates</a> and other processing will be performed on the file. The media type is typically determined by file extension, but you can also change the media type of a file by changing the <code>MediaType</code> setting. This can often be useful in combination with the <code>ContentType</code> setting. For example, if you have a JSON file that you want to treat as data but it has a <code>.css</code> extension for some reason, set <code>ContentType</code> to <code>Data</code> <em>and</em> <code>MediaType</code> to <code>application/json</code>. This will treat the file as if it had a <code>.json</code> extension in the first place.</p>
+<p>You can also change the <code>ContentType</code> and <code>MediaType</code> for entire directories using <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a>. For example, if your input folder contains a subfolder like <code>node_modules</code> that you want to copy wholesale to the output folder, but some of the files contained within the <code>node_modules</code> folder would be processed by either asset, content, or data <a href="/web/content-and-data/templates">templates</a>, you can essentially treat every file as if it were a text file to be copied directly to the output folder by creating a <code>_directory.yaml</code> file inside your <code>node_modules</code> folder with the following content:</p>
+<pre><code class="language-yaml">ContentType: Asset
+MediaType: text/plain
+</code></pre>
 <p>Both <a href="/web/content-and-data/content">content files</a> and <a href="/web/content-and-data/data">data files</a> support functionality like <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> files, <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files, and <a href="/web/content-and-data/metadata/front-matter">front matter</a>. The main difference is that <a href="/web/content-and-data/templates">templates</a> like <a href="/framework/content/template-languages#markdown">Markdown</a> and <a href="/framework/content/template-languages#razor">Razor</a> are processed for content files whereas data files are parsed as data formats like JSON and YAML and add to the <a href="/framework/documents">metadata of a document</a>.</p>
 <p>Features like <a href="/web/content-and-data/archives">archives</a> and <a href="/web/content-and-data/feeds">feeds</a> also let you work with content and data and produce different kinds of outputs from them.</p>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content-and-data/assets">Assets</a></h4>
+                                                                <div class="font-size-sm"><p>Asset files are either copied directly to the output folder or, if the file type is known to require processing like Less or Sass files, transformed and then copied to output.</p></div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                         <div class="p-3 mb-2 bg-light page-box">
                                                             <h4><a href="/web/content-and-data/content">Content</a></h4>
