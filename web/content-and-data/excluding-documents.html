@@ -234,6 +234,18 @@
                                             <p>Documents can be easily excluded from generation, either by removing them entirely or by suppressing their output (but still processing them in the appropriate pipeline).</p>
 <p>To hide a document entirely, set the <code>Excluded</code> metadata value to <code>true</code>. By default, any file with a <code>Published</code> metadata value greater than the current date will be automatically excluded.</p>
 <p>To prevent a document from outputting but still include it in pipelines and the generation, set the metadata value of <code>ShouldOutput</code> to <code>false</code>. This is helpful when you want the document to be available to other documents without itself being an output. For example if you use a set of Markdown files to define content that's only intended to be included within other outputs.</p>
+<p>You can also exclude entire paths with the global <code>ExcludedPaths</code> setting. For example, this will entirely exclude the <code>exclude_me</code> folder and no files from that folder will be processed or copied to output:</p>
+<pre><code class="language-csharp">await Bootstrapper
+    .Factory
+    .CreateWeb(args)
+    .AddSetting(
+        WebKeys.ExcludedPaths,
+        new List&lt;NormalizedPath&gt;
+        {
+            new NormalizedPath("exclude_me")
+        })
+    .RunAsync();
+</code></pre>
 
 
                                         </div>

@@ -241,8 +241,10 @@
 <li><code>ApplyDirectoryMetadata</code>: Set to <code>false</code> to prevent processing directory metadata.</li>
 <li><code>ProcessSidecarFiles</code>: Set to <code>false</code> to prevent processing sidecar files.</li>
 <li><code>GenerateSitemap</code>: Indicates that a sitemap file should be generated (the default value is <code>true</code>).</li>
+<li><code>IncludeInSitemap</code>: Set to <code>false</code> to exclude a document from the sitemap file.</li>
 <li><code>MirrorResources</code>: Indicates that <a href="/web/content-and-data/content/resource-mirroring">resource mirroring</a> should be enabled.</li>
 <li><code>PublishedUsesLastModifiedDate</code>: Controls whether a file modified date should be used for getting published dates (the default value is <code>true</code>).</li>
+<li><code>GatherHeadingsLevel</code>: The level (<code>2</code> for <code>&lt;h2&gt;</code>, etc.) at which to gather headings for a document (this can be set globally or per-document).</li>
 <li><code>MakeLinksAbsolute</code>: Set to <code>true</code> to rewrite all relative links as absolute.</li>
 <li><code>MakeLinksRootRelative</code>: Set to <code>true</code> to rewrite all relative links as root-relative.</li>
 <li><code>ValidateAbsoluteLinks</code>: Indicates that absolute links should be validated (may add considerable time to your generation process).</li>
@@ -251,7 +253,22 @@
 <li><code>MetaRefreshRedirects</code>: Generates META-REFRESH <a href="/web/content-and-data/content/redirects">redirect pages</a> (the default value is <code>true</code>).</li>
 <li><code>NetlifyRedirects</code>: Generates a Netlify <a href="/web/content-and-data/content/redirects">redirects file</a>.</li>
 </ul>
-<p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class.</p>
+<p>In addition, the following settings can be applied to documents (for example via <a href="/web/content-and-data/metadata/front-matter">front matter</a> or <a href="/web/content-and-data/metadata/sidecar-files">sidecar files</a>):</p>
+<ul>
+<li><code>ContentType</code>: Indicates the type of content and thus which pipeline will process the file (recognized values are <code>Asset</code>, <code>Content</code>, and <code>Data</code>). Automatically set based on file extension but can be overridden.</li>
+<li><code>MediaType</code>: Changes the media type of the document (normally this is interpreted from the file extension).</li>
+<li><code>Script</code>: Set to <code>true</code> to indicate that the content contains a script that should be evaluated before processing normally.</li>
+<li><code>RemoveScriptExtension</code>: Indicates that if a script file has a second extension such as <code>foo.md.csx</code> that the script extension should be removed and the preceding extension should be used to reset the media type after script evaluation, and thus the templates that will be executed (the default is <code>true</code>).</li>
+<li><code>Title</code>: The title of the document, often used by themes.</li>
+<li><code>Description</code>: The description of the document, often used by themes.</li>
+<li><code>Excluded</code>: Indicates the document should be excluded from pipeline processing if <code>true</code>.</li>
+<li><code>ShouldOutput</code>: Indicates that the file should be output. By default content files are output and data files are not.</li>
+<li><code>ClearDataContent</code>: Set this to <code>true</code> to clear the content of data files after processing (the default is <code>false</code>).</li>
+<li><code>Layout</code>: Indicates the layout file that should be used for this document (currently only used by the Razor template engine).</li>
+<li><code>Xref</code>: Specifies the cross-reference ID of the current document. If not explicitly provided, it will default to the title of the document with spaces replaced by underscores.</li>
+<li><code>RenderPostProcessTemplates</code>: Indicates that post-process templates should be rendered (the default is <code>true</code>). Set this to <code>false</code> for a document to prevent rendering post-process templates such as Razor. This can be helpful when you have small bits of content like Markdown that you want to render as HTML but not as an entire page so that it can be included in other pages.</li>
+</ul>
+<p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class. Also note the lists above are not exhaustive and additional global or document-level settings might be available based on extra modules, the theme in use, or other factors.</p>
 <p>You can also define settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
 <pre><code class="language-csharp">using System;
 using System.Threading.Tasks;
