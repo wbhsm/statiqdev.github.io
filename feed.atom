@@ -4,7 +4,106 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2020</rights>
-	<updated>2020-09-23T12:12:49Z</updated>
+	<updated>2020-10-14T22:32:20Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/14/statiq.web-1.0.0-beta.8</id>
+		<title>Statiq.Web Release 1.0.0-beta.8</title>
+		<link href="https://statiq.dev/news/2020/10/14/statiq.web-1.0.0-beta.8" />
+		<updated>2020-10-14T20:40:47Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.24"&gt;1.0.0-beta.24&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Removed the &lt;code&gt;ValidateAbsoluteLinks&lt;/code&gt;, &lt;code&gt;ValidateRelativeLinks&lt;/code&gt;, and &lt;code&gt;ValidateLinksAsError&lt;/code&gt; settings in favor of the new analyzers.
+For example, to turn on absolute link validation with an error log level, set &lt;code&gt;Analyzers: ValidateAbsoluteLinks=Error&lt;/code&gt; in your configuration file (or bootstrapper, etc.)&lt;/li&gt;
+&lt;li&gt;Added new &lt;code&gt;ValidateAbsoluteLinks&lt;/code&gt; and &lt;code&gt;ValidateRelativeLinks&lt;/code&gt; analyzers (replaces the &lt;code&gt;ValidateLinks&lt;/code&gt; pipeline).&lt;/li&gt;
+&lt;li&gt;Removed the &lt;code&gt;ValidateLinks&lt;/code&gt; pipeline.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;AnalyzeContent&lt;/code&gt; pipeline.&lt;/li&gt;
+&lt;li&gt;Added base &lt;code&gt;HtmlAnalyzer&lt;/code&gt; and &lt;code&gt;SyncHtmlAnalyzer&lt;/code&gt; classes for analyzing HTML content.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Bootstrapper.AnalyzeHtml()&lt;/code&gt; extensions for defining delegate-based HTML analyzers.&lt;/li&gt;
+&lt;li&gt;Made the &lt;code&gt;PreviewCommand&lt;/code&gt; and &lt;code&gt;ServeCommand&lt;/code&gt; in Statiq.Web.Hosting public so you can call &lt;code&gt;IBootstrapper.AddCommand&amp;lt;PreviewCommand&amp;gt;()&lt;/code&gt; directly without Statiq.Web.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/14/statiq.framework-1.0.0-beta.24</id>
+		<title>Statiq.Framework Release 1.0.0-beta.24</title>
+		<link href="https://statiq.dev/news/2020/10/14/statiq.framework-1.0.0-beta.24" />
+		<updated>2020-10-14T20:34:12Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;StartProcess.LogErrors()&lt;/code&gt; to configure whether standard error output is logged as debug or error messages.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IContentProvider.GetCacheHashCodeAsync()&lt;/code&gt; to get and cache a hash code for a given content provider.&lt;/li&gt;
+&lt;li&gt;Updated AngleSharp to 0.14.0 (#135, #136, thanks &amp;#64;&amp;#64;alanta).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;RenderMarkdown.WithMarkdownDocumentKey(string markdownDocumentKey)&lt;/code&gt; to indicate where the &lt;code&gt;MarkdownDocument&lt;/code&gt; should be saved, or not at all.&lt;/li&gt;
+&lt;li&gt;Removed &lt;code&gt;DocumentAnalyzer&lt;/code&gt; and &lt;code&gt;SyncDocumentAnalyzer&lt;/code&gt; in favor of combining into alternate overloads in &lt;code&gt;Analyzer&lt;/code&gt; and &lt;code&gt;SyncAnalyzer&lt;/code&gt; similar to how &lt;code&gt;Module&lt;/code&gt; handles it
+(this lets analyzers provide functionality before documents are processed individually).&lt;/li&gt;
+&lt;li&gt;Renamed &lt;code&gt;IInitializer&lt;/code&gt; to &lt;code&gt;IBootstrapperInitializer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IEngineInitializer&lt;/code&gt; which will be instantiated and called when an engine first starts up (for example, lets you hook engine events from extensions).&lt;/li&gt;
+&lt;li&gt;Moved engine event classes like &lt;code&gt;BeforeEngineExecution&lt;/code&gt; to &lt;code&gt;Statiq.Common&lt;/code&gt; so they can be subscribed by extensions using a &lt;code&gt;IEngineInitializer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Removed documents from the &lt;code&gt;IAnalyzer&lt;/code&gt; methods, added &lt;code&gt;IExecutionContext&lt;/code&gt; as a base interface for &lt;code&gt;IAnalyzerContext&lt;/code&gt;, and analyzer documents now passed as &lt;code&gt;IAnalyzerContext.Inputs&lt;/code&gt; similar to modules.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IAnalyzer.BeforeEngineExecutionAsync(IEngine engine, Guid executionId)&lt;/code&gt; to get called one-per-instance for each analyzer prior to each engine execution (for resetting caches, etc.).&lt;/li&gt;
+&lt;li&gt;Changed analyzer pipeline and phase specification to be a collection of &lt;code&gt;KeyValuePair&amp;lt;string, Phase&amp;gt;&lt;/code&gt; instead of distinct pipeline and phase arrays.&lt;/li&gt;
+&lt;li&gt;Changed deployment pipelines so that none of their phases are executed until all phases of non-deployment pipelines are completed (I.e. deployment pipelines now don't start executing until all non-deployment pipelines are done).&lt;/li&gt;
+&lt;li&gt;Non-deployment pipelines can no longer have a dependency on deployment pipelines (this didn't really make sense before, but now it's enforced).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/04/statiq.web-1.0.0-beta.7</id>
+		<title>Statiq.Web Release 1.0.0-beta.7</title>
+		<link href="https://statiq.dev/news/2020/10/04/statiq.web-1.0.0-beta.7" />
+		<updated>2020-10-04T01:22:37Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.23"&gt;1.0.0-beta.23&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/04/statiq.framework-1.0.0-beta.23</id>
+		<title>Statiq.Framework Release 1.0.0-beta.23</title>
+		<link href="https://statiq.dev/news/2020/10/04/statiq.framework-1.0.0-beta.23" />
+		<updated>2020-10-04T01:08:02Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Removed a debugging break statement that snuck into the last release.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/03/statiq.web-1.0.0-beta.6</id>
+		<title>Statiq.Web Release 1.0.0-beta.6</title>
+		<link href="https://statiq.dev/news/2020/10/03/statiq.web-1.0.0-beta.6" />
+		<updated>2020-10-03T03:34:25Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.22"&gt;1.0.0-beta.22&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added base Markdown analyzers &lt;code&gt;MarkdownAnalyzer&lt;/code&gt; and &lt;code&gt;SyncMarkdownAnalyzer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Bootstrapper.AnalyzeMarkdown()&lt;/code&gt; extensions for defining delegate-based Markdown analyzers.&lt;/li&gt;
+&lt;li&gt;Fixed a bug in the preview server related to non-ASCII paths (#918, thanks &amp;#64;&amp;#64;Vladekk).&lt;/li&gt;
+&lt;li&gt;Fixed some bugs in the preview server related to cache reset (#914, thanks &amp;#64;&amp;#64;Backs).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/10/03/statiq.framework-1.0.0-beta.22</id>
+		<title>Statiq.Framework Release 1.0.0-beta.22</title>
+		<link href="https://statiq.dev/news/2020/10/03/statiq.framework-1.0.0-beta.22" />
+		<updated>2020-10-03T03:29:18Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;ValidateLinks&lt;/code&gt; module when using a &lt;code&gt;&amp;lt;base&amp;gt;&lt;/code&gt; element on the page.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IExecutionState.LogBuildServerWarning()&lt;/code&gt; and &lt;code&gt;IExecutionState.LogBuildServerError()&lt;/code&gt; extensions to log messages to the console in a format build servers can recognize for build checks (GitHub Actions and Azure Pipelines).&lt;/li&gt;
+&lt;li&gt;Fixed bugs with relative link validation (#128, #134, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;StartProcess.HideArguments()&lt;/code&gt; method to hide arguments when logging process commands.&lt;/li&gt;
+&lt;li&gt;Fixed several bugs related to cancellation and error codes.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with &lt;code&gt;NormalizedPath.GetTitle()&lt;/code&gt; when the file name contains multiple extensions (#130, #131, thanks &amp;#64;&amp;#64;devlead).&lt;/li&gt;
+&lt;li&gt;Added support for analyzers (#104).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Analyzer&lt;/code&gt;, &lt;code&gt;SyncAnalyzer&lt;/code&gt;, &lt;code&gt;DocumentAnalyzer&lt;/code&gt;, and &lt;code&gt;SyncDocumentAnalyzer&lt;/code&gt; base analyzer classes (#104).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Bootstrapper.Analyze()&lt;/code&gt; and &lt;code&gt;Bootstrapper.AnalyzeDocument()&lt;/code&gt; for defining delegate-based analyzers (#104).&lt;/li&gt;
+&lt;li&gt;Fixed a bug in the console logger when logging with &lt;code&gt;LogLevel.None&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;--failure-log-level &amp;lt;LEVEL&amp;gt;&lt;/code&gt; CLI command to fail generation and return a non-zero exit code if any log messages exceed the provided threshold (I.e. &lt;code&gt;--failure-log-level Warning&lt;/code&gt;) (#101).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;Bootstrapper.SetFailureLogLevel()&lt;/code&gt; extension to set the failure log level from code (#101).&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;RenderMarkdown&lt;/code&gt; module now adds &lt;code&gt;MarkdownDocument&lt;/code&gt; metadata that contains the Markdig &lt;code&gt;MarkdownDocument&lt;/code&gt; created during processing.&lt;/li&gt;
+&lt;li&gt;Added Scriban (Liquid) support via new &lt;code&gt;RenderScriban&lt;/code&gt; module (#120, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ExecuteDestinations&lt;/code&gt; and &lt;code&gt;ExecuteSources&lt;/code&gt; modules to filter documents by destination or source and then execute modules on the filtered documents.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2020/09/01/statiq.web-1.0.0-beta.5</id>
 		<title>Statiq.Web Release 1.0.0-beta.5</title>

@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Settings</title>
+        <title>Statiq - Analyzers</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -80,18 +80,18 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-grow-1 d-flex flex-column section-undefined section-web">
+            <div class="flex-grow-1 d-flex flex-column section-undefined section-framework">
                     <div id="titlebar" class="py-4">
                         <div class="container-xl">
                             <div class="row">
                                 <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column flex-md-row">
-                                                <span><a href="/web">Web</a></span>
-                                                <span><a href="/web/configuration">Configuration</a></span>
+                                                <span><a href="/framework">Framework</a></span>
+                                                <span><a href="/framework/execution">Execution</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Settings                                            
+                                            Analyzers                                            
                                         </div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -121,187 +121,163 @@
                                         <div class="col-md-3 col-lg-2 bg-body">
                                             <div id="collapse-sidebar" class="sidebar collapse px-0 px-md-3 pt-3">
                                                     <div class="sidebar-nav-item">
-                                                        <a href="/web">About Statiq Web</a>
+                                                        <a href="/framework">About Statiq Framework</a>
                                                     </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/configuration">Configuration</a>
+                                                            <a href="/framework/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/configuration/bootstrapper">Bootstrapper</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/configurators">Configurators</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/specifying-settings">Specifying Settings</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/commands">Commands</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/registering-services">Registering Services</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/adding-pipelines">Adding Pipelines</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/configuration/bootstrapper/modifying-pipelines">Modifying Pipelines</a>
+                                                                                </div>
+                                                                        </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/pipelines">Pipelines and Modules</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/pipelines/defining-pipelines">Defining Pipelines</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item has-children">
+                                                                        <a href="/framework/pipelines/modules">About Modules</a>
+                                                                    </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/pipelines/modules/module-patterns">Module Patterns</a>
+                                                                                </div>
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/framework/pipelines/modules/writing-modules">Writing Modules</a>
+                                                                                </div>
+                                                                        </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/documents">Documents and Metadata</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/documents/metadata-values">Metadata Values</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/documents/accessing-metadata">Accessing Metadata</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/content">Working With Content</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/front-matter">Front Matter</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/linking">Linking To Documents</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/shortcodes">Shortcodes</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/content/template-languages">Template Languages</a>
+                                                                    </div>
+                                                            </div>
+                                                        <div class="sidebar-nav-item has-children">
+                                                            <a href="/framework/execution">Execution</a>
+                                                        </div>
+                                                            <div class="sidebar-nav-children">
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/execution-context">Execution Context</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/events">Events</a>
+                                                                    </div>
                                                                     <div class="sidebar-nav-item active">
-                                                                        <a href="/web/configuration/settings">Settings</a>
+                                                                        <a href="/framework/execution/analyzers">Analyzers</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/execution/files">Files and Paths</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/content-and-data">Content And Data</a>
+                                                            <a href="/framework/running">Running Your Application</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/assets">Assets</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/web/content-and-data/content">Content</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/excerpts-and-headings">Excerpts And Headings</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/links-and-cross-references">Links And Cross References</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/redirects">Redirects</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/resource-mirroring">Resource Mirroring</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/content/shortcodes">Shortcodes</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/data">Data</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/web/content-and-data/metadata">Metadata</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/metadata/directory-metadata">Directory Metadata</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/metadata/sidecar-files">Sidecar Files</a>
-                                                                                </div>
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/metadata/front-matter">Front Matter</a>
-                                                                                </div>
-                                                                        </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/scripts">Scripts</a>
+                                                                        <a href="/framework/running/command-line">Command-Line Interface</a>
                                                                     </div>
                                                                     <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/document-hierarchy">Document Hierarchy</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/enumerating-values">Enumerating Values</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/archives">Archives</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/feeds">Feeds</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item has-children">
-                                                                        <a href="/web/content-and-data/templates">Templates</a>
-                                                                    </div>
-                                                                        <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
-                                                                                    <a href="/web/content-and-data/templates/razor">Razor</a>
-                                                                                </div>
-                                                                        </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/themes">Themes</a>
-                                                        </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/deployment">Deployment</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/azure-app-service">Azure App Service</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/github-pages">Github Pages</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/deployment/netlify">Netlify</a>
+                                                                        <a href="/framework/running/debugging">Debugging</a>
                                                                     </div>
                                                             </div>
-                                                        <div class="sidebar-nav-item has-children">
-                                                            <a href="/web/running">Running Your Application</a>
-                                                        </div>
-                                                            <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/running/command-line">Command-Line Interface</a>
-                                                                    </div>
-                                                                    <div class="sidebar-nav-item">
-                                                                        <a href="/web/running/preview-server">Preview Server</a>
-                                                                    </div>
-                                                            </div>
-                                                        <div class="sidebar-nav-item">
-                                                            <a href="/web/porting-from-wyam">Porting From Wyam</a>
-                                                        </div>
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior. Global settings that apply to the generation process and all documents are generally defined <a href="/framework/configuration/settings#configuration-files">in a configuration file</a>. Most settings are also appropriate to define <a href="/web/content-and-data/metadata/directory-metadata">at the directory level</a> or <a href="/web/content-and-data/metadata/front-matter">per-document</a> if you only want them to apply to specific files.</p>
-<p>The following global settings are available:</p>
+                                            <p>Analyzers provide a mechansim to run validation checks, inspect documents, and otherwise report on the status of your content and data.</p>
+<p>An analyzer implements <code>IAnalyzer</code> and is run on the output documents from one (or more) pipeline(s) and phase(s). Analyzers are run after each phase so exceptions propogate immediatly, but analyzer results are reported at the end of execution. An analyzer receives an <code>IAnalyzerContext</code> that includes the documents to be analyzed as <code>IAnalyzerContext.Inputs</code> an <code>AddAnalyzerResult(...)</code> method used to add analyzer messages.</p>
+<h1 id="writing-analyzers">Writing Analyzers</h1>
+<p>Some base classes are provided that make writing analyzers easier:</p>
 <ul>
-<li><code>InputFiles</code>: The globbing pattern(s) that are be used to read files from the input folder.</li>
-<li><code>DirectoryMetadataFiles</code>: The globbing pattern(s) that will be used to read <a href="/web/content-and-data/metadata/directory-metadata">directory metadata files</a>.</li>
-<li><code>OptimizeContentFileNames</code>: Indicates that content output file names should be optimized to remove spaces, etc.</li>
-<li><code>OptimizeDataFileNames</code>: Indicates that data output file names should be optimized to remove spaces, etc.</li>
-<li><code>ApplyDirectoryMetadata</code>: Set to <code>false</code> to prevent processing directory metadata.</li>
-<li><code>ProcessSidecarFiles</code>: Set to <code>false</code> to prevent processing sidecar files.</li>
-<li><code>GenerateSitemap</code>: Indicates that a sitemap file should be generated (the default value is <code>true</code>).</li>
-<li><code>IncludeInSitemap</code>: Set to <code>false</code> to exclude a document from the sitemap file.</li>
-<li><code>MirrorResources</code>: Indicates that <a href="/web/content-and-data/content/resource-mirroring">resource mirroring</a> should be enabled.</li>
-<li><code>PublishedUsesLastModifiedDate</code>: Controls whether a file modified date should be used for getting published dates (the default value is <code>true</code>).</li>
-<li><code>GatherHeadingsLevel</code>: The level (<code>2</code> for <code>&lt;h2&gt;</code>, etc.) at which to gather headings for a document (this can be set globally or per-document).</li>
-<li><code>MakeLinksAbsolute</code>: Set to <code>true</code> to rewrite all relative links as absolute.</li>
-<li><code>MakeLinksRootRelative</code>: Set to <code>true</code> to rewrite all relative links as root-relative.</li>
-<li><code>ValidateAbsoluteLinks</code>: Indicates that absolute links should be validated (may add considerable time to your generation process).</li>
-<li><code>ValidateRelativeLinks</code>: Indicates that relative links should be validated (the default value is <code>true</code>).</li>
-<li><code>ValidateLinksAsError</code>: Indicates that link validation failures should be treated as errors and fail the build.</li>
-<li><code>MetaRefreshRedirects</code>: Generates META-REFRESH <a href="/web/content-and-data/content/redirects">redirect pages</a> (the default value is <code>true</code>).</li>
-<li><code>NetlifyRedirects</code>: Generates a Netlify <a href="/web/content-and-data/content/redirects">redirects file</a>.</li>
+<li><code>Analyzer</code> is a basic analyzer that analyzes documents from one (or more) pipeline(s) and phase(s).</li>
+<li><code>SyncAnalyzer</code> can be used when the analyze method should be synchronous (I.e. not <code>async</code>).</li>
 </ul>
-<p>In addition, the following settings can be applied to documents (for example via <a href="/web/content-and-data/metadata/front-matter">front matter</a> or <a href="/web/content-and-data/metadata/sidecar-files">sidecar files</a>):</p>
-<ul>
-<li><code>ContentType</code>: Indicates the type of content and thus which pipeline will process the file (recognized values are <code>Asset</code>, <code>Content</code>, and <code>Data</code>). Automatically set based on file extension but can be overridden.</li>
-<li><code>MediaType</code>: Changes the media type of the document (normally this is interpreted from the file extension).</li>
-<li><code>Script</code>: Set to <code>true</code> to indicate that the content contains a script that should be evaluated before processing normally.</li>
-<li><code>RemoveScriptExtension</code>: Indicates that if a script file has a second extension such as <code>foo.md.csx</code> that the script extension should be removed and the preceding extension should be used to reset the media type after script evaluation, and thus the templates that will be executed (the default is <code>true</code>).</li>
-<li><code>Title</code>: The title of the document, often used by themes.</li>
-<li><code>Description</code>: The description of the document, often used by themes.</li>
-<li><code>Excluded</code>: Indicates the document should be excluded from pipeline processing if <code>true</code>.</li>
-<li><code>ShouldOutput</code>: Indicates that the file should be output. By default content files are output and data files are not.</li>
-<li><code>ClearDataContent</code>: Set this to <code>true</code> to clear the content of data files after processing (the default is <code>false</code>).</li>
-<li><code>Layout</code>: Indicates the layout file that should be used for this document (currently only used by the Razor template engine).</li>
-<li><code>Xref</code>: Specifies the cross-reference ID of the current document. If not explicitly provided, it will default to the title of the document with spaces replaced by underscores.</li>
-<li><code>RenderPostProcessTemplates</code>: Indicates that post-process templates should be rendered (the default is <code>true</code>). Set this to <code>false</code> for a document to prevent rendering post-process templates such as Razor. This can be helpful when you have small bits of content like Markdown that you want to render as HTML but not as an entire page so that it can be included in other pages.</li>
-</ul>
-<p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class. Also note the lists above are not exhaustive and additional global or document-level settings might be available based on extra modules, the theme in use, or other factors.</p>
-<p>You can also define settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
-<pre><code class="language-csharp">using System;
-using System.Threading.Tasks;
-using Statiq.App;
-using Statiq.Common;
-using Statiq.Web;
-
-namespace MySite
-{
-  public class Program
-  {
-    public static async Task&lt;int&gt; Main(string[] args) =&gt;
-      await Bootstrapper
-        .Factory
-        .CreateWeb(args)
-        .AddSetting(
-          WebKeys.ValidateAbsoluteLinks,
-          true)
-        .RunAsync();
-  }
-}
+<p>An analyzer defines which pipeline(s) and phase(s) it should be run after using the <code>PipelinePhases</code> property. Analyzers also define a default logging level their result messages should be logged as using the <code>LogLevel</code> property (which can be overriden, see below).</p>
+<h2 id="using-the-bootstrapper">Using The Bootstrapper</h2>
+<p>The <a href="/framework/configuration/bootstrapper">Bootstrapper</a> also includes some extension methods like <code>Analyze(...)</code> and <code>AnalyzeDocument(...)</code> that let you define analyzers as a delegate.</p>
+<h1 id="registering-analyzers">Registering Analyzers</h1>
+<h2 id="registering-with-the-bootstrapper">Registering With The Bootstrapper</h2>
+<p>When using the <a href="/framework/configuration/bootstrapper">Bootstrapper</a> all analyzer classes in the entry assembly are instantiated and added with their default log level automatically.</p>
+<p>The Bootstrapper also has a number of <code>AddAnalyzer(...)</code> methods that allow you to manually register analyzers and optionally define their log level.</p>
+<h2 id="registering-in-settings-and-metadata">Registering In Settings And Metadata</h2>
+<p>You can also add analyzers by setting an <code>Analyzers</code>    <a href="/framework/configuration/settings">setting</a>. For example, in a <a href="/framework/configuration/settings#configuration-files">configuration file</a> you can write:</p>
+<pre><code class="language-txt">Analyzers:
+  - ValidateSomeMetadata
 </code></pre>
-<p>As with any other metadata, setting values can be <a href="/framework/documents/metadata-values#computed-values">computed values</a> or <a href="/framework/configuration/configuration-delegates">configuration delegates</a> and their value will be evaluated at run-time.</p>
+<p>This will add the <code>ValidateSomeMetadata</code> analyzer (provided it exists within referenced assemblies). The analyzer will be added with it's default log level, but you can also specify a different log level by using an equal sign:</p>
+<pre><code class="language-txt">Analyzers:
+  - ValidateSomeMetadata=Warning
+</code></pre>
+<p>This will register the <code>ValidateSomeMetadata</code> analyzer with a log level of <code>Warning</code>, or change the log level to <code>Warning</code> if the analyzer has previously been registered.</p>
+<p>You can also change the log level of a registered analyzer on a per-document basis using metadata. For example, to disable the <code>ValidateSomeMetadata</code> analyzer for a prtocular document, place the following in the front matter of the document:</p>
+<pre><code class="language-txt">Analyzers:
+  - ValidateSomeMetadata=None
+</code></pre>
+<h2 id="registering-on-the-command-line">Registering On The Command Line</h2>
+<p>Analyzers can be registered and log levels set using the <a href="/framework/running/command-line">command line</a> as well using either <code>-a</code> or <code>--analyzer</code> and the same <code>name=log-level</code> syntax. For example:</p>
+<pre><code>dotnet run -- -a ValidateSomeMetadata=Warning
+</code></pre>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/configuration/settings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#writing-analyzers">Writing Analyzers</a></p>
+                                                    <p class="small"><a href="#registering-analyzers">Registering Analyzers</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/execution/analyzers.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

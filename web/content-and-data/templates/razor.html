@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Settings</title>
+        <title>Statiq - Razor</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -88,10 +88,11 @@
                                     <div class="flex-grow-1">
                                         <div class="breadcrumbs text-uppercase d-flex flex-column flex-md-row">
                                                 <span><a href="/web">Web</a></span>
-                                                <span><a href="/web/configuration">Configuration</a></span>
+                                                <span><a href="/web/content-and-data">Content And Data</a></span>
+                                                <span><a href="/web/content-and-data/templates">Templates</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Settings                                            
+                                            Razor                                            
                                         </div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -127,7 +128,7 @@
                                                             <a href="/web/configuration">Configuration</a>
                                                         </div>
                                                             <div class="sidebar-nav-children">
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item">
                                                                         <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
                                                             </div>
@@ -197,7 +198,7 @@
                                                                         <a href="/web/content-and-data/templates">Templates</a>
                                                                     </div>
                                                                         <div class="sidebar-nav-children">
-                                                                                <div class="sidebar-nav-item">
+                                                                                <div class="sidebar-nav-item active">
                                                                                     <a href="/web/content-and-data/templates/razor">Razor</a>
                                                                                 </div>
                                                                         </div>
@@ -236,72 +237,28 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>In addition to the <a href="/framework/configuration/settings">settings available from Statiq Framework</a>, Statiq Web also has a number of settings that can be used to control behavior. Global settings that apply to the generation process and all documents are generally defined <a href="/framework/configuration/settings#configuration-files">in a configuration file</a>. Most settings are also appropriate to define <a href="/web/content-and-data/metadata/directory-metadata">at the directory level</a> or <a href="/web/content-and-data/metadata/front-matter">per-document</a> if you only want them to apply to specific files.</p>
-<p>The following global settings are available:</p>
-<ul>
-<li><code>InputFiles</code>: The globbing pattern(s) that are be used to read files from the input folder.</li>
-<li><code>DirectoryMetadataFiles</code>: The globbing pattern(s) that will be used to read <a href="/web/content-and-data/metadata/directory-metadata">directory metadata files</a>.</li>
-<li><code>OptimizeContentFileNames</code>: Indicates that content output file names should be optimized to remove spaces, etc.</li>
-<li><code>OptimizeDataFileNames</code>: Indicates that data output file names should be optimized to remove spaces, etc.</li>
-<li><code>ApplyDirectoryMetadata</code>: Set to <code>false</code> to prevent processing directory metadata.</li>
-<li><code>ProcessSidecarFiles</code>: Set to <code>false</code> to prevent processing sidecar files.</li>
-<li><code>GenerateSitemap</code>: Indicates that a sitemap file should be generated (the default value is <code>true</code>).</li>
-<li><code>IncludeInSitemap</code>: Set to <code>false</code> to exclude a document from the sitemap file.</li>
-<li><code>MirrorResources</code>: Indicates that <a href="/web/content-and-data/content/resource-mirroring">resource mirroring</a> should be enabled.</li>
-<li><code>PublishedUsesLastModifiedDate</code>: Controls whether a file modified date should be used for getting published dates (the default value is <code>true</code>).</li>
-<li><code>GatherHeadingsLevel</code>: The level (<code>2</code> for <code>&lt;h2&gt;</code>, etc.) at which to gather headings for a document (this can be set globally or per-document).</li>
-<li><code>MakeLinksAbsolute</code>: Set to <code>true</code> to rewrite all relative links as absolute.</li>
-<li><code>MakeLinksRootRelative</code>: Set to <code>true</code> to rewrite all relative links as root-relative.</li>
-<li><code>ValidateAbsoluteLinks</code>: Indicates that absolute links should be validated (may add considerable time to your generation process).</li>
-<li><code>ValidateRelativeLinks</code>: Indicates that relative links should be validated (the default value is <code>true</code>).</li>
-<li><code>ValidateLinksAsError</code>: Indicates that link validation failures should be treated as errors and fail the build.</li>
-<li><code>MetaRefreshRedirects</code>: Generates META-REFRESH <a href="/web/content-and-data/content/redirects">redirect pages</a> (the default value is <code>true</code>).</li>
-<li><code>NetlifyRedirects</code>: Generates a Netlify <a href="/web/content-and-data/content/redirects">redirects file</a>.</li>
-</ul>
-<p>In addition, the following settings can be applied to documents (for example via <a href="/web/content-and-data/metadata/front-matter">front matter</a> or <a href="/web/content-and-data/metadata/sidecar-files">sidecar files</a>):</p>
-<ul>
-<li><code>ContentType</code>: Indicates the type of content and thus which pipeline will process the file (recognized values are <code>Asset</code>, <code>Content</code>, and <code>Data</code>). Automatically set based on file extension but can be overridden.</li>
-<li><code>MediaType</code>: Changes the media type of the document (normally this is interpreted from the file extension).</li>
-<li><code>Script</code>: Set to <code>true</code> to indicate that the content contains a script that should be evaluated before processing normally.</li>
-<li><code>RemoveScriptExtension</code>: Indicates that if a script file has a second extension such as <code>foo.md.csx</code> that the script extension should be removed and the preceding extension should be used to reset the media type after script evaluation, and thus the templates that will be executed (the default is <code>true</code>).</li>
-<li><code>Title</code>: The title of the document, often used by themes.</li>
-<li><code>Description</code>: The description of the document, often used by themes.</li>
-<li><code>Excluded</code>: Indicates the document should be excluded from pipeline processing if <code>true</code>.</li>
-<li><code>ShouldOutput</code>: Indicates that the file should be output. By default content files are output and data files are not.</li>
-<li><code>ClearDataContent</code>: Set this to <code>true</code> to clear the content of data files after processing (the default is <code>false</code>).</li>
-<li><code>Layout</code>: Indicates the layout file that should be used for this document (currently only used by the Razor template engine).</li>
-<li><code>Xref</code>: Specifies the cross-reference ID of the current document. If not explicitly provided, it will default to the title of the document with spaces replaced by underscores.</li>
-<li><code>RenderPostProcessTemplates</code>: Indicates that post-process templates should be rendered (the default is <code>true</code>). Set this to <code>false</code> for a document to prevent rendering post-process templates such as Razor. This can be helpful when you have small bits of content like Markdown that you want to render as HTML but not as an entire page so that it can be included in other pages.</li>
-</ul>
-<p>Settings keys are just strings, but most built-in settings are also defined as string constants in the <code>WebKeys</code> class. Also note the lists above are not exhaustive and additional global or document-level settings might be available based on extra modules, the theme in use, or other factors.</p>
-<p>You can also define settings using the <a href="/framework/configuration/bootstrapper/specifying-settings">bootstrapper</a>:</p>
-<pre><code class="language-csharp">using System;
-using System.Threading.Tasks;
-using Statiq.App;
-using Statiq.Common;
-using Statiq.Web;
+                                            <p>Statiq supports the Razor engine from ASP.NET Core 3.0.</p>
+<h1 id="imports-file-and-intellisense">Imports File and Intellisense</h1>
+<p>Because Statiq uses a custom Razor base page, the Razor Intellisense engine doesn't actually know about the default namespaces, base page, or model. While these will be set during generation, it might be helpful to also let the Intellisense version of Razor know about them so you get better hints and errors. To do so, create a <code>_ViewImports.cshtml</code> file in your input folder:</p>
+<pre><code class="language-html">@using Statiq.Common
+@using Statiq.Razor
+@using Statiq.Web
+@using Statiq.Web.Pipelines
+@using Statiqdev
+@using Microsoft.Extensions.Logging
 
-namespace MySite
-{
-  public class Program
-  {
-    public static async Task&lt;int&gt; Main(string[] args) =&gt;
-      await Bootstrapper
-        .Factory
-        .CreateWeb(args)
-        .AddSetting(
-          WebKeys.ValidateAbsoluteLinks,
-          true)
-        .RunAsync();
-  }
-}
+@inherits StatiqRazorPage&lt;IDocument&gt;
 </code></pre>
-<p>As with any other metadata, setting values can be <a href="/framework/documents/metadata-values#computed-values">computed values</a> or <a href="/framework/configuration/configuration-delegates">configuration delegates</a> and their value will be evaluated at run-time.</p>
+<p><strong>Important note:</strong> if you do create a <code>_ViewImports.cshtml</code> file, it will also instruct the Statiq Razor engine during generation. Generally this isn't a problem since the file is just reiterating what Statiq is doing behind the scenes. However, if any of your partial views change the model with a <code>@model</code> directive, the <code>@inherits</code> directive in the <code>_ViewImports.cshtml</code> file will take precedence and the model you define in the partial view will not work. In this case you should define your partial model using a full <code>@inherits</code> directive. For example, <code>@model int</code> should become <code>@inherits StatiqRazorPage&lt;int&gt;</code>.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/configuration/settings.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#imports-file-and-intellisense">Imports File and Intellisense</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/templates/razor.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

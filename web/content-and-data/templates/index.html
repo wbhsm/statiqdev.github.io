@@ -193,9 +193,14 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/content-and-data/excluding-documents">Excluding Documents</a>
                                                                     </div>
-                                                                    <div class="sidebar-nav-item active">
+                                                                    <div class="sidebar-nav-item active has-children">
                                                                         <a href="/web/content-and-data/templates">Templates</a>
                                                                     </div>
+                                                                        <div class="sidebar-nav-children">
+                                                                                <div class="sidebar-nav-item">
+                                                                                    <a href="/web/content-and-data/templates/razor">Razor</a>
+                                                                                </div>
+                                                                        </div>
                                                             </div>
                                                         <div class="sidebar-nav-item">
                                                             <a href="/web/themes">Themes</a>
@@ -239,7 +244,7 @@ indicates the <a href="/framework/pipelines#phases">processing phase</a> in whic
 <p>By default the following templates are defined:</p>
 <ul>
 <li>Markdown (in the <a href="/framework/pipelines#process-phase">process phase</a>)</li>
-<li>Razor</li>
+<li><a href="/web/content-and-data/templates/razor">Razor</a></li>
 <li>Handlebars</li>
 </ul>
 <p>A default template is also specified which will be executed last regardless of media type. This allows a particular template
@@ -263,6 +268,13 @@ of files the template should be executed on, and the <a href="/framework/pipelin
 of layout files and other common functionality is often called a <a href="/web/themes">theme</a>.</p>
 
 
+                                                <h4 class="h-section mb-2">Child Pages</h4>
+                                                    <div>
+                                                        <div class="p-3 mb-2 bg-light page-box">
+                                                            <h4><a href="/web/content-and-data/templates/razor">Razor</a></h4>
+                                                                <div class="font-size-sm"><p>Statiq supports the Razor engine from ASP.NET Core 3.0.</p></div>
+                                                        </div>
+                                                    </div>
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
@@ -271,7 +283,7 @@ of layout files and other common functionality is often called a <a href="/web/t
                                                     <p class="small"><a href="#modifying-templates">Modifying Templates</a></p>
                                                     <p class="small"><a href="#layouts">Layouts</a></p>
                                             </div>
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/templates.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/templates/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>
