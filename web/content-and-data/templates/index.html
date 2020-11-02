@@ -237,20 +237,17 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq Web supports multiple template languages (<em>templates</em>) and you can specify which ones should be applied for your site.</p>
-<p>A template applies to a documents with a particular media type (generally infered from the file extension) and the definition
+<p>A template applies to a documents with a particular media type (generally inferred from the file extension) and the definition
 indicates the <a href="/framework/pipelines#phases">processing phase</a> in which the template engine should be executed
-(templates are executed in the <a href="/framework/pipelines#post-process-phase">post-process phase</a> unless otherwise specified.</p>
+(either the <a href="/framework/pipelines#process-phase">process</a> or <a href="/framework/pipelines#post-process-phase">post-process</a> phase).</p>
 <h1 id="default-templates">Default Templates</h1>
 <p>By default the following templates are defined:</p>
 <ul>
-<li>Markdown (in the <a href="/framework/pipelines#process-phase">process phase</a>)</li>
-<li><a href="/web/content-and-data/templates/razor">Razor</a></li>
-<li>Handlebars</li>
+<li>Markdown (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
+<li><a href="/web/content-and-data/templates/razor">Razor</a> (<a href="/framework/pipelines#post-process-phase">post-process phase</a>)</li>
+<li>Handlebars (<a href="/framework/pipelines#post-process-phase">post-process phase</a>)</li>
+<li>HTML (<a href="/framework/pipelines#post-process-phase">post-process phase</a>, see the <a href="#layouts">layouts</a> section below)</li>
 </ul>
-<p>A default template is also specified which will be executed last regardless of media type. This allows a particular template
-engine to process layouts and other global files for all documents. For example, the Razor template is specified as the standard
-default and any Markdown or Handlebars documents will still be processed by the Razor engine to add layouts from files
-like <code>_Layout.cshtml</code>.</p>
 <h1 id="modifying-templates">Modifying Templates</h1>
 <p>Templates are defined and modified using the <code>Template</code> class and <code>Templates</code> collection. When defining a template you can specify
 the <a href="/framework/pipelines#phases">processing phase</a> in which the template engine should be executed, the media type
@@ -259,13 +256,25 @@ of files the template should be executed on, and the <a href="/framework/pipelin
 <ul>
 <li><code>.ConfigureTemplates(templates =&gt; ...)</code></li>
 </ul>
-<p>You can also set the default template (by name) if you want to change it:</p>
-<ul>
-<li><code>.SetDefaultTemplate("Handlebars")</code></li>
-</ul>
+<p>If you want to modify an existing template, you can access the current module for that template using the <code>Templates</code> indexer. For
+example, to modify the Markdown template to process emoji shortcuts of the form <code>:smile:</code> using Markdig's emoji extension, you can write:</p>
+<pre><code class="language-csharp">.ConfigureTemplates(templates =&gt;
+  ((RenderMarkdown)templates[MediaTypes.Markdown].Module)
+    .UseExtension(new EmojiExtension()))
+</code></pre>
+<p>In the code above, the second line gets the template for documents with a media type of <code>MediaType.Markdown</code> and casts it to a <code>RenderMarkdown</code> module
+(since we know that's the kind of module registered for Markdown documents). Then the next like adds the <code>Markdig.Extensions.Emoji.EmojiExtension</code>
+extension to the module using the <code>RenderMarkdown.UseExtension()</code> method.</p>
+<p>You can adjust the module for any template this way by getting the module, casting it to the correct type, and then changing it.</p>
 <h1 id="layouts">Layouts</h1>
 <p>In addition to rendering content in the document, templates are responsible for rendering common layouts. A collection
 of layout files and other common functionality is often called a <a href="/web/themes">theme</a>.</p>
+<p>The HTML template is generally responsible for applying layouts, which is why one is defined. By default, the HTML template
+references the same <a href="/web/content-and-data/templates/razor">Razor</a> module as the Razor template. That way, any plain HTML files or other non-Razor
+document like Markdown files will still be run through the Razor engine to apply layouts. To change this behavior and specify
+a different template for processing HTML files, you can replace the module:</p>
+<pre><code class="language-csharp">.ConfigureTemplates(templates =&gt; templates[MediaTypes.Html].Module = new SomeOtherModule())
+</code></pre>
 
 
                                                 <h4 class="h-section mb-2">Child Pages</h4>

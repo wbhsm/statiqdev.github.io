@@ -276,6 +276,8 @@
 <p>If the pipeline is <a href="/framework/configuration/bootstrapper/adding-pipelines">added by type</a>, any services that were <a href="/framework/configuration/bootstrapper/registering-services">registered with the dependency injection container</a> will be available to the constructor and you can inject them.</p>
 <h1 id="adding-pipelines">Adding Pipelines</h1>
 <p>You can add pipelines to an <a href="/framework/execution#engine">engine</a> directly using it's <code>Pipelines</code> property, but the easiest way to add and manipulate pipelines is <a href="/framework/configuration/bootstrapper/adding-pipelines">through the bootstrapper</a>.</p>
+<h1 id="naming-pipelines">Naming Pipelines</h1>
+<p>Several mechanisms for adding pipelines infer the pipeline name from the class name if you don't provide an explicit name. If you want to define a different name for a pipeline, you can implement the <code>INamedPipeline</code> interface which contains a <code>PipelineName</code> property.</p>
 
 
                                         </div>
@@ -287,6 +289,7 @@
                                                     <p class="small"><a href="#adding-modules">Adding Modules</a></p>
                                                     <p class="small"><a href="#service-injection">Service Injection</a></p>
                                                     <p class="small"><a href="#adding-pipelines">Adding Pipelines</a></p>
+                                                    <p class="small"><a href="#naming-pipelines">Naming Pipelines</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/framework/pipelines/defining-pipelines.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
