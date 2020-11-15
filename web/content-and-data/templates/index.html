@@ -236,36 +236,73 @@
                                             </div>
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
-                                            <p>Statiq Web supports multiple template languages (<em>templates</em>) and you can specify which ones should be applied for your site.</p>
+                                            <p>Statiq Web supports multiple template languages and you can specify which ones should be applied for your site. The specification of a template language, to what files it should apply, and when it should be executed is generally referred to as a <em>template</em>.</p>
 <p>A template applies to a documents with a particular media type (generally inferred from the file extension) and the definition
-indicates the <a href="/framework/pipelines#phases">processing phase</a> in which the template engine should be executed
+indicates the <a href="/web/content-and-data">content type</a> and <a href="/framework/pipelines#phases">processing phase</a> in which the template engine should be executed
 (either the <a href="/framework/pipelines#process-phase">process</a> or <a href="/framework/pipelines#post-process-phase">post-process</a> phase).</p>
 <h1 id="default-templates">Default Templates</h1>
-<p>By default the following templates are defined:</p>
+<p>The following templates are defined by default and are executed in the specified phase:</p>
+<h2 id="assets">Assets</h2>
+<ul>
+<li>Less (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
+<li>Sass (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
+</ul>
+<h2 id="data">Data</h2>
+<ul>
+<li>JSON (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
+<li>YAML (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
+</ul>
+<h2 id="content">Content</h2>
 <ul>
 <li>Markdown (<a href="/framework/pipelines#process-phase">process phase</a>)</li>
 <li><a href="/web/content-and-data/templates/razor">Razor</a> (<a href="/framework/pipelines#post-process-phase">post-process phase</a>)</li>
 <li>Handlebars (<a href="/framework/pipelines#post-process-phase">post-process phase</a>)</li>
 <li>HTML (<a href="/framework/pipelines#post-process-phase">post-process phase</a>, see the <a href="#layouts">layouts</a> section below)</li>
 </ul>
-<h1 id="modifying-templates">Modifying Templates</h1>
-<p>Templates are defined and modified using the <code>Template</code> class and <code>Templates</code> collection. When defining a template you can specify
+<h1 id="adding-templates">Adding Templates</h1>
+<p>Templates are defined and modified using the <code>Template</code> class and <code>Templates</code> collection. When defining a template you can specify the <a href="/web/content-and-data">content type</a> the template should apply to (assets, content, or data),
 the <a href="/framework/pipelines#phases">processing phase</a> in which the template engine should be executed, the media type
 of files the template should be executed on, and the <a href="/framework/pipelines/modules">module</a> to execute for the template.</p>
 <p>You can add or modify templates with the <a href="/framework/configuration/bootstrapper">bootstrapper</a>:</p>
 <ul>
 <li><code>.ConfigureTemplates(templates =&gt; ...)</code></li>
 </ul>
-<p>If you want to modify an existing template, you can access the current module for that template using the <code>Templates</code> indexer. For
-example, to modify the Markdown template to process emoji shortcuts of the form <code>:smile:</code> using Markdig's emoji extension, you can write:</p>
-<pre><code class="language-csharp">.ConfigureTemplates(templates =&gt;
-  ((RenderMarkdown)templates[MediaTypes.Markdown].Module)
-    .UseExtension(new EmojiExtension()))
+<p>There's also a specific extension for adding a new template:</p>
+<ul>
+<li><code>.AddTemplate(string mediaType, ContentType contentType, Phase phase, IModule module)</code></li>
+</ul>
+<h1 id="modifying-templates">Modifying Templates</h1>
+<p>A bootstrapper extensions is also provided for modifying existing templates:</p>
+<ul>
+<li><code>.ModifyTemplate(string mediaType, Func&lt;IModule, IModule&gt; modifyModule)</code></li>
+</ul>
+<p>This lets you edit or change the module used in the template for a given media type. For example, if you want to customize the <code>RenderMarkdown</code> module by adding an extension:</p>
+<pre><code class="language-csharp">bootstrapper
+// ...
+  .ModifyTemplate(MediaTypes.Markdown, module =&gt; ((RenderMarkdown)module)
+    .UseExtension(new Markdig.Extensions.Emoji.EmojiExtension()))
 </code></pre>
-<p>In the code above, the second line gets the template for documents with a media type of <code>MediaType.Markdown</code> and casts it to a <code>RenderMarkdown</code> module
-(since we know that's the kind of module registered for Markdown documents). Then the next like adds the <code>Markdig.Extensions.Emoji.EmojiExtension</code>
-extension to the module using the <code>RenderMarkdown.UseExtension()</code> method.</p>
-<p>You can adjust the module for any template this way by getting the module, casting it to the correct type, and then changing it.</p>
+<p>Using this approach you can change the module for any template by casting the module to the correct type and modifying it.</p>
+<p>You can also return an entirely new module:</p>
+<pre><code class="language-csharp">bootstrapper
+// ...
+  .ModifyTemplate(MediaTypes.Markdown, _ =&gt; new MyCustomMarkdownModule())
+</code></pre>
+<p>If you return <code>null</code> from the delegate you can "deactivate" the template as well. For example, this will turn off Markdown rendering:</p>
+<pre><code class="language-csharp">bootstrapper
+// ...
+  .ModifyTemplate(MediaTypes.Markdown, _ =&gt; null)
+</code></pre>
+<h1 id="removing-templates">Removing Templates</h1>
+<p>Instead of modifying the template to set a <code>null</code> module, there's also an extension for removing a template entirely:</p>
+<ul>
+<li><code>.RemoveTemplate(string mediaType)</code></li>
+</ul>
+<p>For example, if you process Sass files yourself you might not want Statiq to process them:</p>
+<pre><code class="language-csharp">bootstrapper
+// ...
+  .RemoveTemplate(MediaTypes.Sass)
+</code></pre>
 <h1 id="layouts">Layouts</h1>
 <p>In addition to rendering content in the document, templates are responsible for rendering common layouts. A collection
 of layout files and other common functionality is often called a <a href="/web/themes">theme</a>.</p>
@@ -289,7 +326,9 @@ a different template for processing HTML files, you can replace the module:</p>
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
                                                     <p class="small"><a href="#default-templates">Default Templates</a></p>
+                                                    <p class="small"><a href="#adding-templates">Adding Templates</a></p>
                                                     <p class="small"><a href="#modifying-templates">Modifying Templates</a></p>
+                                                    <p class="small"><a href="#removing-templates">Removing Templates</a></p>
                                                     <p class="small"><a href="#layouts">Layouts</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/templates/index.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
