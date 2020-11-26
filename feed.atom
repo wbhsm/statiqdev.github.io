@@ -4,7 +4,57 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2020</rights>
-	<updated>2020-11-15T16:30:22Z</updated>
+	<updated>2020-11-26T17:14:56Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2020/11/22/statiq.web-1.0.0-beta.14</id>
+		<title>Statiq.Web Release 1.0.0-beta.14</title>
+		<link href="https://statiq.dev/news/2020/11/22/statiq.web-1.0.0-beta.14" />
+		<updated>2020-11-22T15:09:14Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.29"&gt;1.0.0-beta.29&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;interactive&lt;/code&gt; command that provides a REPL (read-eval-print prompt) after execution, useful for inspecting the state of the engine and debugging the generation.&lt;/li&gt;
+&lt;li&gt;Added the REPL to the &lt;code&gt;preview&lt;/code&gt; command.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/11/22/statiq.framework-1.0.0-beta.29</id>
+		<title>Statiq.Framework Release 1.0.0-beta.29</title>
+		<link href="https://statiq.dev/news/2020/11/22/statiq.framework-1.0.0-beta.29" />
+		<updated>2020-11-22T14:57:39Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a new &lt;code&gt;interactive&lt;/code&gt; command that provides a REPL (read-eval-print prompt) after execution, useful for inspecting the state of the engine and debugging the generation.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/11/16/statiq.web-1.0.0-beta.13</id>
+		<title>Statiq.Web Release 1.0.0-beta.13</title>
+		<link href="https://statiq.dev/news/2020/11/16/statiq.web-1.0.0-beta.13" />
+		<updated>2020-11-16T13:28:19Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added &amp;quot;processes&amp;quot; which are CLI commands you can run as part of your generation process at various points.&lt;/li&gt;
+&lt;li&gt;Added support for forwarded proxy headers in the preview server to make working with GitHub Codespaces and similar easier (#925).&lt;/li&gt;
+&lt;li&gt;Fixed a bug with LiveReload functionality related to trying to serialize empty JSON payloads.&lt;/li&gt;
+&lt;li&gt;Fixed preview server logging (it had stopped working), now Kestrel log messages will begin appearing again.&lt;/li&gt;
+&lt;li&gt;Added additional bootstrapper extensions to make working with templates easier.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2020/11/16/statiq.framework-1.0.0-beta.28</id>
+		<title>Statiq.Framework Release 1.0.0-beta.28</title>
+		<link href="https://statiq.dev/news/2020/11/16/statiq.framework-1.0.0-beta.28" />
+		<updated>2020-11-16T13:17:05Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Added a &lt;code&gt;.PreserveFrontMatter()&lt;/code&gt; configuration method to the &lt;code&gt;ExtractFrontMatter&lt;/code&gt; module that preserves the front matter content.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with gathered headings where HTML was included in the heading text (#142).&lt;/li&gt;
+&lt;li&gt;Added support for specifying &lt;code&gt;ViewData&lt;/code&gt; in the &lt;code&gt;RenderRazor&lt;/code&gt; module (#145, #146, thanks &amp;#64;&amp;#64;alanta).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;BeforeDeployment&lt;/code&gt; event that gets raised before any deployment pipelines are run (or at the end of execution if there are no deployment pipelines).&lt;/li&gt;
+&lt;li&gt;Added a new &lt;code&gt;ProcessLauncher&lt;/code&gt; utility class to &lt;code&gt;Statiq.Common&lt;/code&gt; that does what the &lt;code&gt;StartProcess&lt;/code&gt; module does, but in a way that can be used outside of the module since it's such a general use case.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2020/10/28/statiq.web-1.0.0-beta.12</id>
 		<title>Statiq.Web Release 1.0.0-beta.12</title>
